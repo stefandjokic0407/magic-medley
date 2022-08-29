@@ -74,5 +74,13 @@ class AccountService {
     )
     return account
   }
+
+  async edit(accountData) {
+    const account = await dbContext.Account.findByIdAndUpdate(accountData.id)
+
+    account.name = accountData.name || account?.name
+    account.picture = accountData.picture || account.picture
+    account.email = accountData.email || account.email
+  }
 }
 export const accountService = new AccountService()

@@ -18,4 +18,13 @@ export class AccountController extends BaseController {
       next(error)
     }
   }
+
+  async edit(req, res, next) {
+    try {
+      const account = await accountService.edit(req.body)
+      return res.send(account)
+    } catch (error) {
+      next(error)
+    }
+  }
 }

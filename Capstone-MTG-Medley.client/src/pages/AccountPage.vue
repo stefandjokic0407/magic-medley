@@ -4,6 +4,13 @@
     <img class="rounded" :src="account.picture" alt="" />
     <p>{{ account.email }}</p>
   </div>
+
+  <div class="row m-auto">
+  <div class="col-3 offset-5"><h2>Edit Account:</h2></div>
+  <div class="col-6 m-auto ">
+ <AccountForm />
+  </div> 
+</div>
 </template>
 
 <script>
