@@ -1,0 +1,16 @@
+
+  {
+    "name": "capstone-mtg-medley",
+    "version": "1.0.0",
+    "scripts": {
+      "build": "npm run setup:server",
+      "setup:app": "npm run setup:server && npm run setup:client",
+      "setup:client": "cd Capstone-MTG-Medley.client && npm i",
+      "setup:server": "cd Capstone-MTG-Medley && npm i",
+      "start": "node Capstone-MTG-Medley/index.js"
+    },
+    "engines": {
+      "node": "^14.17.0"
+    }
+  }
+  
