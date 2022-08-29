@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
 import { AppState } from "../AppState";
 import { accountService } from "../services/AccountService";
 import { logger } from "../utils/Logger";

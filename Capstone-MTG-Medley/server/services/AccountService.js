@@ -78,8 +78,11 @@ class AccountService {
   async edit(accountData) {
     const account = await dbContext.Account.findByIdAndUpdate(accountData.id)
 
-    account.name = accountData.name || account?.name
+    // @ts-ignore
+    account.name = accountData.name || account.name
+    // @ts-ignore
     account.picture = accountData.picture || account.picture
+    // @ts-ignore
     account.email = accountData.email || account.email
   }
 }
