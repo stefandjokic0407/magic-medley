@@ -17,11 +17,12 @@
 
 <script>
 import { Card } from "../models/Card";
+import { logger } from "../utils/Logger";
+import Pop from "../utils/Pop";
 
 
 export default {
   props: { card: { type: Card, required: true } },
-
 
   setup() {
 

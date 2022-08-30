@@ -6,10 +6,11 @@
     </div>
     <div class="col-md-6">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h5 class="card-title"></h5>
+        <p class="card-text"></p>
+        <p class="card-text"><small class="text-muted"></small></p>
       </div>
+       <!-- NOTE MAKE SURE TO ADD AN ADD TO ACCOUNT BUTTON -->
     </div>
   </div>
 </div>
@@ -21,7 +22,15 @@ import { Card } from "../models/Card";
 
 export default {
   props: { card: { type: Card, required: true } },
-  setup() {
+  
+  async function getCardByOracle() {
+    try {
+      
+    } catch (error) {
+      logger.error(error)
+      Pop.toast(error.message, 'error')
+    }
+  }
     return {
     };
 
