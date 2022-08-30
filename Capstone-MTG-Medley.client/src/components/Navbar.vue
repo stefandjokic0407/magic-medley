@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light px-3 my-0 py-0">
+  <nav class="navbar navbar-expand-lg  bg-light px-3 my-0 py-0">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
         <img alt="logo" src="../assets/img/mtg-logo.png" height="55" />
@@ -68,7 +68,6 @@ a:hover {
   text-transform: uppercase;
 }
 .navbar-nav .router-link-exact-active {
-  border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }

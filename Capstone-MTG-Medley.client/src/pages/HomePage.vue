@@ -1,7 +1,7 @@
 <template>
   <!-- <button @click="getRandomCard()">Click Me</button> -->
   <div class="row">
-      <div v-for="c in searchedCards" :key="c.id" class="col-12 col-md-3">
+      <div v-for="c in searchedCards" :key="c.id" class="col-12 col-md-2">
         <SearchedCards :card="c" />
     </div>
   </div>
