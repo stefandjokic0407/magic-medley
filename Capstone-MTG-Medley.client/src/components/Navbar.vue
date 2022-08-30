@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light px-3 my-0 py-0">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/mtg-logo.png" height="45" />
+        <img alt="logo" src="../assets/img/mtg-logo.png" height="55" />
       </div>
     </router-link>
     <button
@@ -19,12 +19,28 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <!-- <router-link
-            :to="{ name: 'About' }"
-            class="btn text-success lighten-30 selectable text-uppercase"
+          <router-link
+            :to="{ name: 'Collection' }"
+            class="btn text-black lighten-30 selectable text-uppercase square buttonPadding"
           >
-            About
-          </router-link> -->
+            Collection
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            :to="{ name: 'Search' }"
+            class="btn text-black lighten-30 selectable text-uppercase square buttonPadding"
+          >
+            Search
+          </router-link>
+        </li>
+        <li>
+          <router-link
+            :to="{ name: 'Guild' }"
+            class="btn text-black lighten-30 selectable text-uppercase square buttonPadding"
+          >
+            Guild
+          </router-link>
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
@@ -52,5 +68,12 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.buttonPadding{
+  padding-top: 21px;
+  padding-bottom: 21px;
+  border-bottom: none;
+  border-top: none;
 }
 </style>
