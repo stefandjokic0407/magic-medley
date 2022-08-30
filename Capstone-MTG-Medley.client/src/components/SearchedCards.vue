@@ -1,10 +1,12 @@
 <template>
 
-<div class="card selectable text-dark bg-light text-start mt-4 eventCard shadow">
-      <div>
-        <img class="img-fluid" :src=card.image_uris.small>
-        </div>
-      </div>
+  <div class=" selectable text-dark bg-light text-start mt-4 eventCard shadow">
+    <div class="row">
+      <div class="">
+      <img class="img-fluid" :src=card.image_uris.normal :alt="card.name">
+    </div>
+    </div>
+  </div>
 
 </template>
 
@@ -13,19 +15,18 @@ import { Card } from "../models/Card";
 
 
 export default {
-  props: { card: { type: Card, required: true}},
+  props: { card: { type: Card, required: true } },
 
 
-setup() {
+  setup() {
 
-  return {
+    return {
 
-  };
+    };
 
   }
 }
 </script>
 
-<style> 
-
+<style>
 </style>
