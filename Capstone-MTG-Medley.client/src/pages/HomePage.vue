@@ -1,12 +1,10 @@
 <template>
   <!-- <button @click="getRandomCard()">Click Me</button> -->
   <div class="row">
-    <div v-for="c in searchedCards">
-
+      <div v-for="c in searchedCards" :key="c.id" class="col-12 col-md-3">
+        <SearchedCards :card="c" />
     </div>
   </div>
-  {{searchedCards}}
-
   <div>
     <div class="row mx-5">
       <div class="col-md-6">
@@ -18,14 +16,7 @@
       </div>
       <div class="col-md-5">
         <div class="row">
-          <div class="col-md-12">
-            <h2>{{  searchedCards.name  }}</h2><span>{{  searchedCards.mana_cost  }}</span>
-            <h3>{{  searchedCards.type_line  }}</h3>
-            <p>{{  searchedCards.oracle_text  }}</p>
-            <p><em>"{{  searchedCards.flavor_text  }}"</em></p>
-            <p>Illustrated by {{  searchedCards.artist  }}</p>
-          </div>
-            <!-- <button class="col-7 btn text-start noDeco selectable"><a :href="card.purchase_uris.tcgplayer">Buy on
+          <!-- <button class="col-7 btn text-start noDeco selectable"><a :href="card.purchase_uris.tcgplayer">Buy on
                 TCGplayer ${{ card.prices.usd }}</a></button>
             <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardmarket">Buy foil on
                 TCGplayer ${{ card.prices.usd_foil }}</a></button>
@@ -45,44 +36,39 @@ import Pop from "../utils/Pop";
 import { cardsService } from "../services/CardsService"
 import { symbolsService } from "../services/SymbolsService"
 import { onMounted } from "vue";
+import SearchedCards from "../components/SearchedCards.vue";
 
 
 export default {
-
-
-
   setup() {
-
     async function getRandomCard() {
       try {
-      let card = await cardsService.getRandomCard()
+        let card = await cardsService.getRandomCard();
       }
       catch (error) {
-        logger.error('[Getting Random Card]', error)
-        Pop.toast(error.message, 'error')
+        logger.error("[Getting Random Card]", error);
+        Pop.toast(error.message, "error");
       }
     }
-
     async function getSymbols() {
       try {
-        await symbolsService.getSymbols()
-      } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, 'error')
+        await symbolsService.getSymbols();
+      }
+      catch (error) {
+        logger.error(error);
+        Pop.toast(error.message, "error");
       }
     }
-
     onMounted(() => {
       getRandomCard();
       getSymbols();
-    })
-
+    });
     return {
       card: computed(() => AppState.card),
       searchedCards: computed(() => AppState.searchedCards),
     };
-
-  }
+  },
+  components: { SearchedCards }
 }
 </script>
 
