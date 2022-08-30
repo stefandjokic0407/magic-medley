@@ -11,6 +11,10 @@
         <input type="url" class="form-control" v-model="editable.picture"  placeholder="picture">
       </div>
       <div>
+        <label for="coverImg">Cover Image:</label>
+        <input type="url" class="form-control" v-model="editable.coverImg"  placeholder="Cover Image">
+      </div>
+      <div>
         <label for="email">Email:</label>
         <input type="text" class="form-control" v-model="editable.email" >
       </div>
@@ -23,6 +27,7 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
 import { ref, watchEffect } from "vue";
 import { AppState } from "../AppState";
 import { accountService } from "../services/AccountService";
@@ -45,6 +50,7 @@ watchEffect(() => {
 
   return {
     editable,
+    // account: computed(() => AppState.account),
     async handleSubmit() {
       try {
         await accountService.edit(editable.value)

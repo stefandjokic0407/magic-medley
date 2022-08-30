@@ -5,5 +5,13 @@ export const AppState = reactive({
   user: {},
   /**@type {import('./models/Account.js').Account} */
   account: {},
+  /**@type {import('./models/Card.js').Card} */
   card: {},
+  activeProfile: null,
+  searchedCards: [],
+
+  // potential boolean "storage" in the appstate lets us keep searchterms between reloads
+  searchByRarity: false,
+  searchByColor: false,
+  searchByType: false,
 })

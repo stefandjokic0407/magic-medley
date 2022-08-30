@@ -1,10 +1,20 @@
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
-import { mtg } from "./AxiosService"
+import { Card } from "../models/Card.js"
+import { mtg, search } from "./AxiosService"
 
 class CardsService {
-  async getCardsBySearch() {
-    const res = await mtg.get("cards")
+  async getCardsBySearch(searchTerm) {
+
+    // if statements can add params to the searchterm
+    // if (AppState.searchByColor == true){searchTerm = searchTerm.toString()+'color%3d'+AppState.colorString.toString() }
+    // console.log('this is the moddified search term', searchTerm);
+
+    const res = await search.get(searchTerm)
+    console.log('Searched Cards:', res.data.data)
+    AppState.searchedCards = res.data.data.map(c => new Card(c))
+    console.log(AppState.searchedCards)
+    // AppState.cards = res.data.
   }
   async getCardsByName() {
     const res = await mtg.get()
@@ -16,7 +26,7 @@ class CardsService {
   
   async getRandomCard() {
     const res = await mtg.get('cards/random')
-    logger.log('Getting Random Card:', res.data)
+    console.log('Getting Random Card:', res.data)
     AppState.card = res.data
   }
   
