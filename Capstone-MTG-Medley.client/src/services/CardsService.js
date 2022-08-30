@@ -19,21 +19,21 @@ class CardsService {
   async getCardsByName() {
     const res = await mtg.get()
   }
-  
+
   async cardsAutocomplete() {
     const res = await mtg.get()
   }
-  
+
   async getRandomCard() {
     const res = await mtg.get('cards/random')
     console.log('Getting Random Card:', res.data)
     AppState.card = res.data
   }
-  
+
   async cardsCollection() {
     const res = await mtg.get()
   }
-  
+
   async cardsById() {
     const res = await mtg.get()
   }

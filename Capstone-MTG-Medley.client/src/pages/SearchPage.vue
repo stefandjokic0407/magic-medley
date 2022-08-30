@@ -4,7 +4,11 @@
       <SearchFilters />
     </div>
     <div class="col-md-9">
-      search results
+      <div class="row">
+        <div v-for="c in searchedCards" :key="c.id" class="col-md-2">
+          <SearchedCards :card="c" />
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -14,11 +18,18 @@
 <script>
 import SearchFilters from '../components/SearchFilters.vue';
 import SearchForm from '../components/SearchForm.vue';
+import SearchedCards from '../components/SearchedCards.vue';
+import { AppState } from '../AppState';
+import { computed } from '@vue/reactivity';
 export default {
   setup() {
-    return {};
+    return {
+      card: computed(() => AppState.card),
+      searchedCards: computed(() => AppState.searchedCards),
+
+    };
   },
-  components: { SearchFilters, SearchForm }
+  components: { SearchFilters, SearchForm, SearchedCards }
 };
 </script>
 
