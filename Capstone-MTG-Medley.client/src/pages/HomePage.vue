@@ -5,7 +5,7 @@
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-12">
-            <img v-if="card" class="img-fluid" :src="card.image_uris.normal" alt="Photo">
+            <!-- <img class="img-fluid" :src="card.image_uris.normal" alt="Photo"> -->
           </div>
         </div>
       </div>
@@ -18,9 +18,12 @@
             <p><em>"{{  card.flavor_text  }}"</em></p>
             <p>Illustrated by {{  card.artist  }}</p>
           </div>
-          <button class="col-7 btn text-start noDeco selectable"><a :href="card.purchase_uris.tcgplayer">Buy on TCGplayer ${{card.prices.usd}}</a></button>
-          <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardmarket">Buy foil on TCGplayer ${{card.prices.usd_foil}}</a></button>
-          <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardhoarder">Buy on Cardhoarder {{card.prices.tix}}</a></button>
+            <!-- <button class="col-7 btn text-start noDeco selectable"><a :href="card.purchase_uris.tcgplayer">Buy on
+                TCGplayer ${{ card.prices.usd }}</a></button>
+            <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardmarket">Buy foil on
+                TCGplayer ${{ card.prices.usd_foil }}</a></button>
+            <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardhoarder">Buy on Cardhoarder
+                {{ card.prices.tix }}</a></button> -->
         </div>
       </div>
     </div>
@@ -45,7 +48,7 @@ export default {
 
     async function getRandomCard() {
       try {
-        await cardsService.getRandomCard()
+      let card = await cardsService.getRandomCard()
       }
       catch (error) {
         logger.error('[Getting Random Card]', error)
@@ -76,15 +79,16 @@ export default {
 </script>
 
 <style>
-
 a {
   text-decoration: none;
   color: inherit;
 }
 
-a, a:hover, a:focus, a:active {
-      text-decoration: none;
-      color: inherit;
- }
-
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
 </style>

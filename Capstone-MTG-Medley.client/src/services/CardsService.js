@@ -16,7 +16,7 @@ class CardsService {
   
   async getRandomCard() {
     const res = await mtg.get('cards/random')
-    logger.log('Getting Random Card:', res.data)
+    console.log('Getting Random Card:', res.data)
     AppState.card = res.data
   }
   

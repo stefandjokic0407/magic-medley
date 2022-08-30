@@ -4,7 +4,7 @@ import { mtg } from "./AxiosService"
 class SymbolsService {
 
   async getSymbols() {
-    let res = mtg.get('/symbology/parse-mana')
+    let res = mtg.get('/symbology')
     logger.log('Symbols: ', res.data)
 
   }

@@ -84,6 +84,8 @@ class AccountService {
     account.picture = accountData.picture || account.picture
     // @ts-ignore
     account.email = accountData.email || account.email
+    // @ts-ignore
+    account.coverImg = accountData.coverImg || account.coverImg
   }
 }
 export const accountService = new AccountService()

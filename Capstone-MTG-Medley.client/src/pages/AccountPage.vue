@@ -1,5 +1,6 @@
 <template>
   <div class="about text-center">
+    <img :src="account.coverImg" alt="">
     <h1>Welcome {{ account.name }}</h1>
     <img class="rounded" :src="account.picture" alt="" />
     <p>{{ account.email }}</p>
