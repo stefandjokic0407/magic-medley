@@ -50,7 +50,7 @@ watchEffect(() => {
 
   return {
     editable,
-    account: computed(() => AppState.account),
+    // account: computed(() => AppState.account),
     async handleSubmit() {
       try {
         await accountService.edit(editable.value)

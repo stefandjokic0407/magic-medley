@@ -85,7 +85,12 @@ class AccountService {
     // @ts-ignore
     account.email = accountData.email || account.email
     // @ts-ignore
+    account.subs = accountData.subs || account.subs
+    // @ts-ignore
     account.coverImg = accountData.coverImg || account.coverImg
+    // @ts-ignore
+    await account.save()
+    return account
   }
 }
 export const accountService = new AccountService()

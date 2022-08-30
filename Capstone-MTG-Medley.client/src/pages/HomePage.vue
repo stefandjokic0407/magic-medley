@@ -5,7 +5,7 @@
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-12">
-            <!-- <img class="img-fluid" :src="card.image_uris.normal" alt="Photo"> -->
+            <img class="img-fluid" :src="card.image_uris.normal" alt="Photo">
           </div>
         </div>
       </div>
@@ -18,12 +18,12 @@
             <p><em>"{{  card.flavor_text  }}"</em></p>
             <p>Illustrated by {{  card.artist  }}</p>
           </div>
-            <!-- <button class="col-7 btn text-start noDeco selectable"><a :href="card.purchase_uris.tcgplayer">Buy on
+            <button class="col-7 btn text-start noDeco selectable"><a :href="card.purchase_uris.tcgplayer">Buy on
                 TCGplayer ${{ card.prices.usd }}</a></button>
             <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardmarket">Buy foil on
                 TCGplayer ${{ card.prices.usd_foil }}</a></button>
             <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardhoarder">Buy on Cardhoarder
-                {{ card.prices.tix }}</a></button> -->
+                {{ card.prices.tix }}</a></button>
         </div>
       </div>
     </div>
