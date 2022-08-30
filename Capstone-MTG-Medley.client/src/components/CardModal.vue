@@ -1,8 +1,6 @@
 <template>
 
-<div>
-  <h1>{{card}}</h1>
-</div>
+
 
 </template>
 
@@ -11,13 +9,9 @@ import { Card } from "../models/Card";
 
 
 export default {
-  props: { card: {type: Card, required: true}},
-
-
-
+  props: { card: { type: Card, required: true } },
 setup() {
   return {
-    
   };
 
   }

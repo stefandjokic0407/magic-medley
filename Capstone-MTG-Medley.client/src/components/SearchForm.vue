@@ -1,10 +1,12 @@
 <template>
+  <form @submit.prevent="searchCards()">
   <div class="input-group">
     <input class="form-control" type="text" required v-model="query" />
-    <button @click="" class="btn btn-outline-dark" type="submit">
+    <button class="btn btn-outline-dark" type="submit">
       <i class="mdi mdi-magnify"></i>
     </button>
   </div>
+</form>
 </template>
 
 <script>
@@ -40,6 +42,7 @@ export default {
 
 <style>
  input {
+   outline: black !important;
    border: black;
  }
 </style>
