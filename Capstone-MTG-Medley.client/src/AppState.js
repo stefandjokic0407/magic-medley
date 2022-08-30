@@ -12,9 +12,6 @@ export const AppState = reactive({
 
   // potential boolean "storage" in the appstate lets us keep searchterms between reloads
   searchByRarity: false,
-  rarity: [],
   searchByColor: false,
-  colors: [],
   searchByType: false,
-  searchByText: false,
 })
