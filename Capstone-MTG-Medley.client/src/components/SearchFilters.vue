@@ -118,7 +118,7 @@ export default {
           } else {
             filter.value[type].push(val)
           }
-          await cardsService.getCardsBySearch()
+          // await cardsService.getCardsBySearch(filter.value)
         } catch (error) {
           logger.error(error)
           Pop.error('[filtering]', error)
