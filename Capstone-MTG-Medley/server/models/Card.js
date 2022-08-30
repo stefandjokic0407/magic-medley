@@ -19,7 +19,17 @@ export const CardSchema = new Schema(
     set_name: { type: String},
     rarity: { type: String },
     artist: { type: String},
-    
+    prices: { type: Object},
+    related_uris: { type: Object},
+    purchase_uris: { type: Object},
+    accountId: {type: Schema.Types.ObjectId, ref: 'Account', required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
+
+CardSchema.virtual('account', {
+  localField: 'accountId',
+  foreignField: '_id',
+  justOne: true,
+  ref: 'Account'
+})
