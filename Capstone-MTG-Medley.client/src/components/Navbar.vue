@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+        <img alt="logo" src="../assets/img/mtg-logo.png" height="45" />
       </div>
     </router-link>
     <button
@@ -19,12 +19,12 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link
+          <!-- <router-link
             :to="{ name: 'About' }"
             class="btn text-success lighten-30 selectable text-uppercase"
           >
             About
-          </router-link>
+          </router-link> -->
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
