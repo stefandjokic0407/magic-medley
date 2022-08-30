@@ -6,12 +6,14 @@ import { mtg, search } from "./AxiosService"
 class CardsService {
   async getCardsBySearch(searchTerm) {
 
-    if (AppState.searchByColor == true) { searchTerm = searchTerm + 'color%3d' + AppState.colorString.toString() }
+    if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
     console.log('this is the moddified search term', searchTerm)
 
-    if (AppState.searchByType == true) { searchTerm = 'type%3A' + searchTerm.toString() }
+    if (AppState.searchByType) { searchTerm += '+type%3A' + searchTerm }
 
-    if (AppState.searchByRarity == true) { searchTerm = searchTerm + 'rarity%3A' + AppState.rarity }
+    if (AppState.searchByRarity) { searchTerm += '+rarity%3A' + AppState.rarity }
+
+    if (AppState.searchByText) {}
 
     const res = await search.get(searchTerm)
     console.log('Searched Cards:', res.data.data)
