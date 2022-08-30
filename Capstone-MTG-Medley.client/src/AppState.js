@@ -9,4 +9,9 @@ export const AppState = reactive({
   card: {},
   activeProfile: null,
   searchedCards: [],
+
+  // potential boolean "storage" in the appstate lets us keep searchterms between reloads
+  searchByRarity: false,
+  searchByColor: false,
+  searchByType: false,
 })

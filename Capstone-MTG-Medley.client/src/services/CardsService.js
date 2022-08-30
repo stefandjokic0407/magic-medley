@@ -5,6 +5,11 @@ import { mtg, search } from "./AxiosService"
 
 class CardsService {
   async getCardsBySearch(searchTerm) {
+
+    // if statements can add params to the searchterm
+    // if (AppState.searchByColor == true){searchTerm = searchTerm.toString()+'color%3d'+AppState.colorString.toString() }
+    // console.log('this is the moddified search term', searchTerm);
+
     const res = await search.get(searchTerm)
     console.log('Searched Cards:', res.data.data)
     AppState.searchedCards = res.data.data.map(c => new Card(c))
