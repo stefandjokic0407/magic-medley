@@ -1,29 +1,36 @@
 <template>
   <!-- <button @click="getRandomCard()">Click Me</button> -->
+  <div class="row">
+    <div v-for="c in searchedCards">
+
+    </div>
+  </div>
+  {{searchedCards}}
+
   <div>
     <div class="row mx-5">
       <div class="col-md-6">
         <div class="row">
           <div class="col-md-12">
-            <img class="img-fluid" :src="card.image_uris.normal" alt="Photo">
+            <!-- <img class="img-fluid" :src="card.image_uris.normal" alt="Photo"> -->
           </div>
         </div>
       </div>
       <div class="col-md-5">
         <div class="row">
           <div class="col-md-12">
-            <h2>{{  card.name  }}</h2><span>{{  card.mana_cost  }}</span>
-            <h3>{{  card.type_line  }}</h3>
-            <p>{{  card.oracle_text  }}</p>
-            <p><em>"{{  card.flavor_text  }}"</em></p>
-            <p>Illustrated by {{  card.artist  }}</p>
+            <h2>{{  searchedCards.name  }}</h2><span>{{  searchedCards.mana_cost  }}</span>
+            <h3>{{  searchedCards.type_line  }}</h3>
+            <p>{{  searchedCards.oracle_text  }}</p>
+            <p><em>"{{  searchedCards.flavor_text  }}"</em></p>
+            <p>Illustrated by {{  searchedCards.artist  }}</p>
           </div>
-            <button class="col-7 btn text-start noDeco selectable"><a :href="card.purchase_uris.tcgplayer">Buy on
+            <!-- <button class="col-7 btn text-start noDeco selectable"><a :href="card.purchase_uris.tcgplayer">Buy on
                 TCGplayer ${{ card.prices.usd }}</a></button>
             <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardmarket">Buy foil on
                 TCGplayer ${{ card.prices.usd_foil }}</a></button>
             <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardhoarder">Buy on Cardhoarder
-                {{ card.prices.tix }}</a></button>
+                {{ card.prices.tix }}</a></button> -->
         </div>
       </div>
     </div>
@@ -71,7 +78,8 @@ export default {
     })
 
     return {
-      card: computed(() => AppState.card)
+      card: computed(() => AppState.card),
+      searchedCards: computed(() => AppState.searchedCards),
     };
 
   }

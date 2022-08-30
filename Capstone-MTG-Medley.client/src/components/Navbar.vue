@@ -43,6 +43,7 @@
           </router-link>
         </li>
       </ul>
+      <SearchForm />
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
@@ -50,10 +51,12 @@
 </template>
 
 <script>
+import SearchForm from "./SearchForm.vue";
 export default {
-  setup() {
-    return {};
-  },
+    setup() {
+        return {};
+    },
+    components: { SearchForm }
 };
 </script>
 

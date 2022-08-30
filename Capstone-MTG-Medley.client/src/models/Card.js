@@ -1,4 +1,4 @@
-export class RandomCard {
+export class Card {
 
   constructor(data) {
     this.artist = data.artist || ""
@@ -7,7 +7,7 @@ export class RandomCard {
     this.flavor_text = data.flavor_text || ""
     this.id = data.id || ""
     this.image_uris = data.image_uris || ""
-    this.image_uris.normal = data.image_uris.normal || ""
+    // this.image_uris.normal = data.image_uris.normal || ""
     this.layout = data.layout || ""
     this.legalities = data.legalities || ""
     this.mana_cost = data.mana_cost || ""

@@ -1,10 +1,15 @@
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
-import { mtg } from "./AxiosService"
+import { Card } from "../models/Card.js"
+import { mtg, search } from "./AxiosService"
 
 class CardsService {
-  async getCardsBySearch() {
-    const res = await mtg.get("cards")
+  async getCardsBySearch(searchTerm) {
+    const res = await search.get(searchTerm)
+    console.log('Searched Cards:', res.data.data)
+    AppState.searchedCards = res.data.data.map(c => new Card(c))
+    console.log(AppState.searchedCards)
+    // AppState.cards = res.data.
   }
   async getCardsByName() {
     const res = await mtg.get()

@@ -9,3 +9,8 @@ export const mtg = Axios.create({
   baseURL: 'https://api.scryfall.com/',
   timeout: 4000
 })
+
+export const search = Axios.create({
+  baseURL: 'https://api.scryfall.com/cards/search?as=grid&order=name&q=',
+  timeout: 4000
+})
