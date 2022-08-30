@@ -17,16 +17,19 @@
 
 <script>
 import { Card } from "../models/Card";
-import Modal from "./Modal.vue";
-import CardModal from "./CardModal.vue";
 
 
 export default {
   props: { card: { type: Card, required: true } },
+
+
   setup() {
-    return {};
-  },
-  components: { Modal, CardModal }
+
+    return {
+
+    };
+
+  }
 }
 </script>
 
