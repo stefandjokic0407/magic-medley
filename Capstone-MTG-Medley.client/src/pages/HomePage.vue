@@ -5,6 +5,7 @@
         <SearchedCards :card="c" />
     </div>
   </div>
+
   <div>
     <div class="row mx-5">
       <div class="col-md-6">
@@ -26,6 +27,10 @@
       </div>
     </div>
   </div>
+
+  <div class="sticky-bottom">
+    <!-- <FooterNav /> -->
+  </div>
 </template>
 
 <script>
@@ -37,6 +42,7 @@ import { cardsService } from "../services/CardsService"
 import { symbolsService } from "../services/SymbolsService"
 import { onMounted } from "vue";
 import SearchedCards from "../components/SearchedCards.vue";
+import FooterNav from "../components/FooterNav.vue";
 
 
 export default {
@@ -68,7 +74,7 @@ export default {
       searchedCards: computed(() => AppState.searchedCards),
     };
   },
-  components: { SearchedCards }
+  components: { SearchedCards, FooterNav }
 }
 </script>
 
