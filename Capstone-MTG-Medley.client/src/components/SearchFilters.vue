@@ -1,0 +1,109 @@
+<template>
+  <div class="search-form">
+    <div class="row">
+      <form @submit.prevent="searchCards">
+        <div class="fs-3">
+          Search By:
+        </div>
+        <div class="col-md-12 d-flex justify-content-evenly my-3">
+          <div>
+            <input type="checkbox" class="">
+            <label class="form-check-label"><span class="fs-5">Name</span></label>
+          </div>
+          <div>
+            <input type="checkbox" class="">
+            <label class="form-check-label"><span class="fs-5">Type</span></label>
+          </div>
+          <div>
+            <input type="checkbox" class="">
+            <label class="form-check-label"><span class="fs-5">Text</span></label>
+          </div>
+        </div>
+        <div class="input-group">
+          <input class="form-control" type="text" required v-model="query" />
+          <button class="btn btn-outline-success" type="submit">
+            <i class="mdi mdi-magnify"></i>
+          </button>
+        </div>
+        <div href="#collapseColor" data-bs-toggle="collapse" class="bg-dark mt-3 fs-4 px-2 selectable rounded">
+          Color
+        </div>
+        <div class="collapse bg-light" id="collapseColor">
+          <input type="checkbox" class="mx-2">
+          <label class="form-check-label px-3">Blue</label><br>
+          <input type="checkbox" class="mx-2">
+          <label class="form-check-label px-3">Green</label><br>
+          <input type="checkbox" class="mx-2">
+          <label class="form-check-label px-3">White</label><br>
+          <input type="checkbox" class="mx-2">
+          <label class="form-check-label px-3">Red</label><br>
+          <input type="checkbox" class="mx-2">
+          <label class="form-check-label px-3">Black</label><br>
+          <input type="checkbox" class="mx-2">
+          <label class="form-check-label px-3">Colorless</label><br>
+        </div>
+        <div href="#collapseRarity" data-bs-toggle="collapse" class="bg-dark mt-3 fs-4 px-2 selectable rounded">
+          Rarity
+        </div>
+        <div class="collapse bg-light" id="collapseRarity">
+          <!-- function filterChange() will pass in the type and value of filter -->
+          <input type="checkbox" class="mx-2" @change="filterChange(type, val)">
+          <label class="form-check-label px-3">Common</label><br>
+          <input type="checkbox" class="mx-2">
+          <label class="form-check-label px-3">Uncommon</label><br>
+          <input type="checkbox" class="mx-2">
+          <label class="form-check-label px-3">Rare</label><br>
+          <input type="checkbox" class="mx-2">
+          <label class="form-check-label px-3">Mythic Rare</label><br>
+        </div>
+        <div href="#collapsePrice" data-bs-toggle="collapse" class="bg-dark mt-3 fs-4 px-2 selectable rounded">
+          Price
+        </div>
+        <!-- Working on making a multiselect range for min-price & max-price -->
+        <div class="collapse bg-light" id="collapsePrice">
+          <label for="priceRange">Price</label><br>
+          <input type="range" class="cs-range" min="0" max="5" id="priceRange">
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<script>
+import { ref } from "vue";
+import { cardsService } from "../services/CardsService";
+import { logger } from "../utils/Logger";
+import Pop from "../utils/Pop";
+
+
+export default {
+
+
+
+  setup() {
+
+    const query = ref('')
+
+    return {
+      query,
+      async searchCards() {
+        try {
+          await cardsService.getCardsBySearch(query.value)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      }
+
+
+    };
+
+  }
+}
+</script>
+
+<style>
+.cs-range {
+  min-width: 100%;
+}
+</style>

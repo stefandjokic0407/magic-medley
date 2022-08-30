@@ -8,16 +8,15 @@ export default {
 
 
 
-setup() {
+  setup() {
 
-  return {
-    
-  };
+    return {
+
+    };
 
   }
 }
 </script>
 
-<style> 
-
+<style>
 </style>
