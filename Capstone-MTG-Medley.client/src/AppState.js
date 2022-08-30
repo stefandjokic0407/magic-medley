@@ -9,4 +9,5 @@ export const AppState = reactive({
   card: {},
   activeProfile: null,
   searchedCards: [],
+
 })
