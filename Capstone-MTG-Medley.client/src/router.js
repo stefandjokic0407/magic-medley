@@ -14,18 +14,18 @@ const routes = [
   {
     path: '/collection',
     name: 'Collection',
-    component: loadPage('Collection'),
+    component: loadPage('CollectionPage'),
     beforeEnter: authSettled
   },
   {
     path: '/search',
     name: 'Search',
-    component: loadPage('Search')
+    component: loadPage('SearchPage')
   },
   {
     path: '/guild',
     name: 'Guild',
-    component: loadPage('Guild'),
+    component: loadPage('GuildPage'),
     beforeEnter: authSettled
   },
   {
