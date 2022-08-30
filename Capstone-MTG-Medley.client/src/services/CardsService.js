@@ -37,6 +37,10 @@ class CardsService {
   async cardsById() {
     const res = await mtg.get()
   }
+
+  async getCardByOracle() {
+    const res = await mtg.get()
+  }
 }
 
 

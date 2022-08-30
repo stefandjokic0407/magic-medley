@@ -1,41 +1,47 @@
 <template>
-<div class="card mb-3" style="max-width: 1100px;">
-  <div class="row g-0">
-    <div class="col-md-6">
-      <img :src=card.image_uris.normal class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-6">
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text"></p>
-        <p class="card-text"><small class="text-muted"></small></p>
+  <div class="card mb-3" style="max-width: 1100px;">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <img :src=card.image_uris.normal class="img-fluid rounded-start" alt="...">
       </div>
-       <!-- NOTE MAKE SURE TO ADD AN ADD TO ACCOUNT BUTTON -->
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text"></p>
+          <p class="card-text"><small class="text-muted"></small></p>
+        </div>
+        <!-- NOTE MAKE SURE TO ADD AN ADD TO ACCOUNT BUTTON -->
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
+import { onMounted } from "vue";
 import { Card } from "../models/Card";
+import { cardsService } from "../services/CardsService";
 
 
 export default {
   props: { card: { type: Card, required: true } },
-  
-  async function getCardByOracle() {
-    try {
-      
+  setup() {
+    async function getCardByOracle() {
+      try {
+        await cardsService.getCardByOracle(card.oracle_id)
     } catch (error) {
-      logger.error(error)
-      Pop.toast(error.message, 'error')
+        logger.error(error)
+        Pop.toast(error.message, 'error')
+      }
     }
-  }
+
+    onMounted(() => getCardByOracle())
+
     return {
     };
-
   }
 }
+
+
 </script>
 
 <style>
