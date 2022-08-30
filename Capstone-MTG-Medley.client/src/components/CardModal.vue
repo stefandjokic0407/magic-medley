@@ -1,6 +1,7 @@
 <template>
 
-
+{{card.name}}
+<img class="img-fluid selectable shadow" :src=card.image_uris.normal :alt="card.name">
 
 </template>
 
