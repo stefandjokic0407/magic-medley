@@ -7,6 +7,7 @@
         <div>
           <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#cardModal"><i
               class="mdi mdi-plus"></i></button>
+          <button>Remove</button>
           <Modal id="cardModal" >
             <CardModal />
           </Modal>
