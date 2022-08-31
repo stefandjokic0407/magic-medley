@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="searchCardsTwo()">
+  <form @submit.prevent="searchCardsTwo">
   <div class="input-group">
     <input class="form-control" type="text" required v-model="query" />
     <button class="btn btn-outline-dark" type="submit">
@@ -11,6 +11,7 @@
 
 <script>
 import { ref } from "vue";
+import { router } from "../router";
 import { cardsService } from "../services/CardsService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
@@ -37,6 +38,7 @@ export default {
       async searchCardsTwo() {
         try {
           await cardsService.searchBarGet(query.value)
+          router.push({ name: 'Search'})
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
