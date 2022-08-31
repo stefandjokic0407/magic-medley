@@ -1,6 +1,9 @@
 <template>
 
-{{oracleCard.name}}
+<div class="col-6">
+{{oracleCard.set_name}} 
+{{oracleCard.prices.usd}}
+</div>
 
 </template>
 

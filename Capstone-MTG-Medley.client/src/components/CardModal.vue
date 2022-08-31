@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  {{}}
+
 </template>
 
 <script>
@@ -43,7 +43,7 @@ export default {
         }
         onMounted(() => getCardByOracle());
         return {
-            oracleCard: computed(() => AppState.oracleCard)
+            oracleCards: computed(() => AppState.oracleCard)
         };
     },
     components: { OracleCard }
