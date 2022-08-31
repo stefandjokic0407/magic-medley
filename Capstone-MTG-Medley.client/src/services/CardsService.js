@@ -43,8 +43,10 @@ class CardsService {
     const res = await mtg.get()
   }
 
-  async getCardByOracle() {
-    const res = await mtg.get()
+  async getCardByOracle(oracleId) {
+    console.log('Oracle ID:', oracleId)
+    const res = await mtg.get('cards/search?q=oracleid%3A' + oracleId + "&unique=prints")
+    console.log('Getting card by oracle', res.data)
   }
 }
 

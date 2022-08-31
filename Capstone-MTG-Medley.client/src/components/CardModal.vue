@@ -20,14 +20,17 @@
 import { onMounted } from "vue";
 import { Card } from "../models/Card";
 import { cardsService } from "../services/CardsService";
+import { logger } from "../utils/Logger";
+import Pop from "../utils/Pop";
 
 
 export default {
   props: { card: { type: Card, required: true } },
-  setup() {
+  setup(props) {
     async function getCardByOracle() {
       try {
-        await cardsService.getCardByOracle(card.oracle_id)
+        console.log('Getting Oracle Id', props.card.oracleId)
+        await cardsService.getCardByOracle(props.card.oracleId)
     } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'error')
