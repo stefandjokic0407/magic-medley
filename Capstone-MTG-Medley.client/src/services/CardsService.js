@@ -48,8 +48,10 @@ class CardsService {
     const res = await mtg.get()
   }
 
-  async cardsById() {
-    const res = await mtg.get()
+  async cardsById(oracleCardId) {
+    const res = await mtg.get('cards/' + oracleCardId)
+    console.log('Oracle Card Id', res.data)
+    AppState.activeCard = res.data
   }
 
   async getCardByOracle(oracleId) {
