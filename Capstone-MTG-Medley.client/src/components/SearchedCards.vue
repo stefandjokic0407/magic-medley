@@ -10,9 +10,9 @@
       </div>
     </div>
   </div>
-  <!-- <Modal :id="'cardModal' + card.id">
+  <Modal :id="'cardModal' + card.id">
         <CardModal :card="card" />
-      </Modal> -->
+      </Modal>
 
 </template>
 

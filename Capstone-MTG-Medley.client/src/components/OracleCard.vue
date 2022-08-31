@@ -1,6 +1,6 @@
 <template>
 
-{{card.name}}
+{{oracleCard.name}}
 
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="searchCards()">
+  <form @submit.prevent="searchCardsTwo()">
   <div class="input-group">
     <input class="form-control" type="text" required v-model="query" />
     <button class="btn btn-outline-dark" type="submit">
@@ -29,6 +29,14 @@ export default {
       async searchCards() {
         try {
           await cardsService.getCardsBySearch(query.value)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
+      async searchCardsTwo() {
+        try {
+          await cardsService.searchBarGet(query.value)
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')

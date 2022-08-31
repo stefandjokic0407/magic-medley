@@ -22,6 +22,11 @@ class CardsService {
     AppState.searchedCards = res.data.data.map(c => new Card(c))
     // AppState.cards = res.data.
   }
+
+  async searchBarGet(searchTerm) {
+    const res = await search.get(searchTerm)
+    AppState.searchedCards = res.data.data.map(c => new Card(c))
+  }
   async getCardsByName() {
     const res = await mtg.get()
   }
