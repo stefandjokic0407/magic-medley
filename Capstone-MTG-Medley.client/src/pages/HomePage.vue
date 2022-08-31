@@ -2,16 +2,41 @@
   <div class="hero-img">
     <!-- TODO fix padding issues -->
     <div class="row">
-      <h1 class="col-12 text-center py-3"> My Magic Medley</h1>
+      <div class="col-2 text-center">
+        <button class="btn btn-outline img-text text-black fs-3" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasLeft" aria-controls="offcanvasExample">
+          Offcanvas Left
+        </button>
+      </div>
+      <h1 class="col-8 text-center py-3 img-text">
+        <img src="../assets/img/Cool Text - Magic Medley 418347543411867.png" alt="">
+      </h1>
+      <div class="col-2 text-center">
+        <button class="btn btn-outline img-text text-black fs-3" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
+          Offcanvas Right
+        </button>
+      </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-8 text-center">
-      </div>
+
+
 
     </div>
     <div class="sticky-bottom">
       <FooterNav />
     </div>
+  </div>
+
+
+  <div class="offcanvas offcanvas-start offcanvas-style" tabindex="-1" id="offcanvasLeft"
+    aria-labelledby="offcanvasExampleLabel">
+
+  </div>
+
+  <div class="offcanvas offcanvas-end offcanvas-style" tabindex="-1" id="offcanvasRight"
+    aria-labelledby="offcanvasExampleLabel">
+
   </div>
 </template>
 
@@ -79,5 +104,25 @@ a:active {
   background-position: top;
   background-size: cover;
   height: 100vh;
+  /* filter: grayscale(25%); */
+  /* opacity: .5; */
+}
+
+.img-text {
+  text-shadow: 1px 1px 2px black;
+  font-weight: 700;
+  color: rgb(215, 215, 215);
+}
+
+.offcanvas-style {
+  background: rgb(0 0 0 / 38%);
+  backdrop-filter: blur(4px);
+  border: solid #8d8b8b1f;
+  color: white;
+  border-radius: 8px;
+  text-shadow: 5px 5px 5px black;
+  padding: 0.5em;
+  width: 30vw;
+  height: 80vh;
 }
 </style>
