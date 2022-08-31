@@ -46,7 +46,7 @@ async getAllAccountCards(req, res, next){
 
 async getCardById(req, res, next) {
   try {
-    const card = await cardsService.getCardById(req.params.cardId, req.userInfo.id)
+    const card = await cardsService.getCardById(req.params.cardId)
     return res.send(card)
   } catch (error) {
     next(error)
