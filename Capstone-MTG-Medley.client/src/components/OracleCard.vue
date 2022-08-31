@@ -2,7 +2,7 @@
 
 <div class="col-6">
 {{oracleCard.set_name}} 
-{{oracleCard.prices.usd}}
+{{oracleCard.prices?.usd}}
 </div>
 
 </template>
