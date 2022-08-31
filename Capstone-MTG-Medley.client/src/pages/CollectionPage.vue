@@ -1,19 +1,46 @@
 <template>
-  <header>
+  <header class="row">
     <Navbar />
   </header>
+  <div class="row">
+    <!-- add deck component -->
+    <div class="col-12">My Decks</div>
+  </div>
+  <div class="row">
+    <div class="col-12">My Collection</div>
+    <div v-for="c in cards" :key="c.id" :card="c">
+      <div class="col-3 card selectable"></div>
+    </div>
+  </div>
 </template>
 
 <script>
+import { computed } from '@vue/reactivity';
+import { onMounted } from 'vue';
+import { AppState } from '../AppState.js';
+import { cardsService } from '../services/CardsService.js';
+import { logger } from '../utils/Logger.js';
+import Pop from '../utils/Pop.js';
+
 
 export default {
-
-
-
   setup() {
 
-    return {
+    async function getAllCards(){
+      try {
+        await cardsService.getAllCards()
+      } catch (error) {
+        logger.log('[getting all cards]', error)
+        Pop.error(error)
+      }
+    }
 
+    onMounted(() => {
+      getAllCards();
+    })
+
+    return {
+      cards: computed(() => AppState.card)
     };
 
   }
