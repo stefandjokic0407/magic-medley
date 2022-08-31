@@ -33,7 +33,7 @@ export default {
     setup(props) {
         async function getCardByOracle() {
             try {
-                console.log("Getting Oracle Id", props.card.oracleId);
+                // console.log(" Id", props.card.oracleId);
                 await cardsService.getCardByOracle(props.card.oracleId);
             }
             catch (error) {
