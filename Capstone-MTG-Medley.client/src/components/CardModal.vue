@@ -1,12 +1,12 @@
 <template>
-  <div class="card mb-3" style="max-width: 1100px;">
+  <div class="card" style="max-width: 1100px;">
     <div class="row g-0">
       <div class="col-md-6">
         <img :src=card.image_uris.normal class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-6">
         <div class="col-12 bg-dark text-light">PRINTS</div>
-        <div class="card-body magicCard p-0" v-for="c in oracleCards" :key="c.id">
+        <div class="card-body magicCard p-0 " v-for="c in oracleCards" :key="c.id">
           <OracleCard :oracleCard="c" />
         </div>
         <!-- NOTE MAKE SURE TO ADD AN ADD TO ACCOUNT BUTTON -->

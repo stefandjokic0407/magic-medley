@@ -1,35 +1,17 @@
 <template>
-  <!-- <button @click="getRandomCard()">Click Me</button> -->
-  <div class="row">
-      <div v-for="c in searchedCards" :key="c.id" class="col-12 col-md-2">
-        <SearchedCards :card="c" />
+  <div class="hero-img">
+    <!-- TODO fix padding issues -->
+    <div class="row">
+      <h1 class="col-12 text-center py-3"> My Magic Medley</h1>
     </div>
-  </div>
+    <div class="row justify-content-center">
+      <div class="col-8 text-center">
+      </div>
 
-  <div>
-    <div class="row mx-5">
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- <img class="img-fluid" :src="card.image_uris.normal" alt="Photo"> -->
-          </div>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="row">
-          <!-- <button class="col-7 btn text-start noDeco selectable"><a :href="card.purchase_uris.tcgplayer">Buy on
-                TCGplayer ${{ card.prices.usd }}</a></button>
-            <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardmarket">Buy foil on
-                TCGplayer ${{ card.prices.usd_foil }}</a></button>
-            <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardhoarder">Buy on Cardhoarder
-                {{ card.prices.tix }}</a></button> -->
-        </div>
-      </div>
     </div>
-  </div>
-
-  <div class="sticky-bottom">
-    <!-- <FooterNav /> -->
+    <div class="sticky-bottom">
+      <FooterNav />
+    </div>
   </div>
 </template>
 
@@ -78,7 +60,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 a {
   text-decoration: none;
   color: inherit;
@@ -90,5 +72,12 @@ a:focus,
 a:active {
   text-decoration: none;
   color: inherit;
+}
+
+.hero-img {
+  background-image: url('https://i.etsystatic.com/17561722/r/il/c0c7fb/2782343489/il_fullxfull.2782343489_l201.jpg');
+  background-position: top;
+  background-size: cover;
+  height: 100vh;
 }
 </style>
