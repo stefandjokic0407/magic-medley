@@ -1,7 +1,7 @@
 <template>
   <div class="search-form">
     <div class="row">
-      <form @submit.prevent="searchCards">
+      <form @submit.prevent="searchCards()">
         <!-- Search bar with checkbox name, type, text -->
         <section>
           <div class="fs-3">
@@ -34,17 +34,17 @@
             Color
           </div>
           <div class="collapse bg-light" id="collapseColor">
-            <input type="checkbox" class="mx-2" value="u" @change="filterChange('color', 'u')">
+            <input type="checkbox" class="mx-2" @change="filterChange('color', 'u')">
             <label class="form-check-label px-3">Blue</label><br>
-            <input type="checkbox" class="mx-2">
+            <input type="checkbox" class="mx-2" @change="filterChange('color', 'g')">
             <label class="form-check-label px-3">Green</label><br>
-            <input type="checkbox" class="mx-2">
+            <input type="checkbox" class="mx-2" @change="filterChange('color', 'w')">
             <label class="form-check-label px-3">White</label><br>
-            <input type="checkbox" class="mx-2">
+            <input type="checkbox" class="mx-2" @change="filterChange('color', 'r')">
             <label class="form-check-label px-3">Red</label><br>
-            <input type="checkbox" class="mx-2">
+            <input type="checkbox" class="mx-2" @change="filterChange('color', 'b')">
             <label class="form-check-label px-3">Black</label><br>
-            <input type="checkbox" class="mx-2">
+            <input type="checkbox" class="mx-2" @change="filterChange('color', 'c')">
             <label class="form-check-label px-3">Colorless</label><br>
           </div>
         </section>
@@ -55,14 +55,18 @@
           </div>
           <div class="collapse bg-light" id="collapseRarity">
             <!-- function filterChange() will pass in the type and value of filter -->
-            <input type="checkbox" class="mx-2" @change="filterChange(type, val)">
+            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'common')">
             <label class="form-check-label px-3">Common</label><br>
-            <input type="checkbox" class="mx-2">
+            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'uncommon')">
             <label class="form-check-label px-3">Uncommon</label><br>
-            <input type="checkbox" class="mx-2">
+            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'rare')">
             <label class="form-check-label px-3">Rare</label><br>
-            <input type="checkbox" class="mx-2">
+            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'mythic')">
             <label class="form-check-label px-3">Mythic Rare</label><br>
+            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'special')">
+            <label class="form-check-label px-3">Special</label><br>
+            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'bonus')">
+            <label class="form-check-label px-3">Bonus</label><br>
           </div>
         </section>
         <!-- Price -->
@@ -96,20 +100,16 @@ export default {
     const query = ref('')
     let filter = ref({
       color: [],
-      rarity: ['common', 'uncommon', 'rare', 'mythic']
+      rarity: []
     })
+
+
+
 
     return {
       filter,
       query,
-      async searchCards() {
-        try {
-          await cardsService.getCardsBySearch(query.value)
-        } catch (error) {
-          logger.error(error)
-          Pop.toast(error.message, 'error')
-        }
-      },
+
 
       async filterChange(type, val) {
         try {
@@ -118,13 +118,25 @@ export default {
           } else {
             filter.value[type].push(val)
           }
-          // await cardsService.getCardsBySearch(filter.value)
+          let filterTerm = filter.value[type].join('').toString();
+          console.log(filterTerm);
+          await cardsService.getCardsBySearch(query.value, filterTerm)
+
         } catch (error) {
           logger.error(error)
           Pop.error('[filtering]', error)
         }
-      }
+      },
 
+      // async searchCards() {
+      //   try {
+      //     let filterTerm = this.filterChange()
+      //     await cardsService.getCardsBySearch(query.value, filterTerm)
+      //   } catch (error) {
+      //     logger.error(error)
+      //     Pop.toast(error.message, 'error')
+      //   }
+      // },
 
     };
 
