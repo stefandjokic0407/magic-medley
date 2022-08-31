@@ -37,7 +37,7 @@ export class AccountController extends BaseController {
 
 async getAllAccountCards(req, res, next){
   try {
-      const cards = await cardsService.getAllAccountCards(req.userInfo.id)
+      const cards = await cardsService.getAllAccountCards()
       return res.send(cards)
   } catch (error) {
       next(error)
