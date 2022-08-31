@@ -1,9 +1,10 @@
+import { Collection } from "mongoose";
 import { dbContext } from "../db/DbContext.js";
 import { BadRequest } from "../utils/Errors.js"
 
 
 class CardsService{
-  async getAllAccountCards(id) {
+  async getAllAccountCards() {
     const cards = await dbContext.Cards.find()
     return cards
   }
@@ -13,9 +14,20 @@ class CardsService{
     return card
   }
   async createCard(body) {
+    // @ts-ignore
+    collectionCard = await this.getCardById(body.id)
+    // @ts-ignore
+    if(!collectionCard){
     const card = await dbContext.Cards.create(body)
     await card.populate('account', 'name picture')
     return card
+    }
+    // @ts-ignore
+    collectionCard.count++
+    // @ts-ignore
+    await collectionCard.save()
+    // @ts-ignore
+    return collectionCard
   }
   async updateCard(cardId, cardData) {
     const card = await this.getCardById(cardId)
@@ -37,7 +49,7 @@ class CardsService{
     card.remove()
     return `${card.name} has been removed from your collection`
   }
-
+    
 }
 
 
