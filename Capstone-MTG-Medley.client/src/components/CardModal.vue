@@ -12,7 +12,8 @@
       </div>
     </div>
   </div>
-  {{oracleCard}}
+
+  {{}}
 </template>
 
 <script>
