@@ -12,6 +12,8 @@ export const AppState = reactive({
   searchedCards: [],
   /**@type {import('./models/Card.js').Card} */
   oracleCard: {},
+  /**@type {import('./models/Card.js').Card} */
+  activeCard: {},
 
   nextPage: null,
   previousPage: null,
