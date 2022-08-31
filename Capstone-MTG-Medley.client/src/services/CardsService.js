@@ -7,7 +7,7 @@ class CardsService {
   async getCardsBySearch(searchTerm) {
 
     if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
-    console.log('this is the moddified search term', searchTerm)
+    console.log('this is the modified search term', searchTerm)
 
     if (AppState.searchByType) { searchTerm += '+type%3A' + searchTerm }
 
@@ -46,7 +46,8 @@ class CardsService {
   async getCardByOracle(oracleId) {
     console.log('Oracle ID:', oracleId)
     const res = await mtg.get('cards/search?q=oracleid%3A' + oracleId + "&unique=prints")
-    console.log('Getting card by oracle', res.data)
+    AppState.oracleCard = res.data.data.map(c => new Card(c))
+    console.log('Getting card by oracle', AppState.oracleCard)
   }
 }
 
