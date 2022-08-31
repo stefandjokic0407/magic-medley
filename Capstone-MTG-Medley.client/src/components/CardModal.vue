@@ -1,11 +1,14 @@
 <template>
-  <div class="card" style="max-width: 1100px;">
+  <div @blur="reset()" class="card" style="max-width: 1100px;">
     <div class="row g-0">
-      <div class="col-md-6">
-        <img :src=card.image_uris.normal class="img-fluid rounded-start" alt="...">
+      <div v-if="activeCard" class="col-md-6 cardBorder">
+        <img :src='activeCard.image_uris?.normal' class="img-fluid cardBorder rounded-start" alt="...">
       </div>
-      <div class="col-md-6">
-        <div class="col-12 bg-dark text-light">PRINTS</div>
+      <div v-else class="col-md-6 cardBorder">
+        <img :src='card.image_uris.normal' class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-6 cardOverflow">
+        <div class="bg-dark text-light sticky-top"><h5>PRINTS</h5></div>
         <div class="card-body magicCard p-0 " v-for="c in oracleCards" :key="c.id">
           <OracleCard :oracleCard="c" />
         </div>
@@ -19,7 +22,7 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { onMounted } from "vue";
+import { onMounted, watchEffect } from "vue";
 import { Card } from "../models/Card";
 import { cardsService } from "../services/CardsService";
 import { logger } from "../utils/Logger";
@@ -44,8 +47,13 @@ export default {
         }
         // onMounted(() => getCardByOracle());
         return {
-            oracleCards: computed(() => AppState.oracleCard)
+            oracleCards: computed(() => AppState.oracleCard),
+            activeCard: computed(() => AppState.activeCard),
+            reset() {
+              AppState.activeCard.reset()
+            },
         };
+
     },
     components: { OracleCard }
 }
@@ -55,5 +63,14 @@ export default {
 
 <style>
 
+.cardOverflow {
+  overflow-y: scroll;
+  max-height: 32vh;
+  overflow-x: hidden;
+}
+
+.cardBorder{
+  border-radius: 20%;
+}
 
 </style>
