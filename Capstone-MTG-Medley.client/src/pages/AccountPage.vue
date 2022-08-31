@@ -1,19 +1,24 @@
 <template>
+  <header>
+    <Navbar />
+  </header>
   <div class="about text-center">
     <div>
-    <img class="img-fluid" :src="account.coverImg">
+      <img class="img-fluid" :src="account.coverImg">
     </div>
-    <h1>Welcome {{ account.name }}</h1>
+    <h1>Welcome {{  account.name  }}</h1>
     <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+    <p>{{  account.email  }}</p>
   </div>
 
   <div class="row m-auto">
-  <div class="col-3 offset-5"><h2>Edit Account:</h2></div>
-  <div class="col-6 m-auto ">
- <AccountForm />
-  </div> 
-</div>
+    <div class="col-3 offset-5">
+      <h2>Edit Account:</h2>
+    </div>
+    <div class="col-6 m-auto ">
+      <AccountForm />
+    </div>
+  </div>
 </template>
 
 <script>

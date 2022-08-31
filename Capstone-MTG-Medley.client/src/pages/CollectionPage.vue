@@ -1,5 +1,7 @@
 <template>
-
+  <header>
+    <Navbar />
+  </header>
 </template>
 
 <script>
@@ -8,16 +10,15 @@ export default {
 
 
 
-setup() {
+  setup() {
 
-  return {
-    
-  };
+    return {
+
+    };
 
   }
 }
 </script>
 
-<style> 
-
+<style>
 </style>

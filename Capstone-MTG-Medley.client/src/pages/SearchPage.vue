@@ -1,4 +1,7 @@
 <template>
+  <header>
+    <Navbar />
+  </header>
   <section class="row">
     <div class="col-md-3 search-bar py-5">
       <SearchFilters />
@@ -39,7 +42,7 @@ export default {
       nextPage: computed(() => AppState.nextPage),
       previousPage: computed(() => AppState.previousPage),
 
-      async changePage(url){
+      async changePage(url) {
         try {
           await cardsService.changePage(url)
         } catch (error) {
