@@ -5,7 +5,8 @@
         <img :src=card.image_uris.normal class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-6">
-        <div class="card-body" v-for="c in oracleCards" :key="c.id">
+        <div class="col-12 bg-dark text-light">PRINTS</div>
+        <div class="card-body magicCard" v-for="c in oracleCards" :key="c.id">
           <OracleCard :oracleCard="c" />
         </div>
         <!-- NOTE MAKE SURE TO ADD AN ADD TO ACCOUNT BUTTON -->
@@ -13,7 +14,7 @@
     </div>
   </div>
 
-  {{}}
+
 </template>
 
 <script>
@@ -41,9 +42,9 @@ export default {
                 Pop.toast(error.message, "error");
             }
         }
-        onMounted(() => getCardByOracle());
+        // onMounted(() => getCardByOracle());
         return {
-            oracleCard: computed(() => AppState.oracleCard)
+            oracleCards: computed(() => AppState.oracleCard)
         };
     },
     components: { OracleCard }
@@ -53,4 +54,6 @@ export default {
 </script>
 
 <style>
+
+
 </style>
