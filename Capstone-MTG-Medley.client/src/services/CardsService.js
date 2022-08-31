@@ -19,16 +19,16 @@ class CardsService {
     const rarityFilter = 'rarity%3A' + filterTerm
     // console.log(colorFilter, searchTerm, filterTerm);
     const res = await search.get(searchTerm + rarityFilter + colorFilter)
-    logger.log('getting searched cards', res)
     AppState.searchedCards = res.data.data.map(c => new Card(c))
     // AppState.cards = res.data.
-    AppState.nextPage = res.data.next
-    AppState.previousPage = res.data.previous
   }
-
+  
   async searchBarGet(searchTerm) {
     const res = await search.get(searchTerm)
     AppState.searchedCards = res.data.data.map(c => new Card(c))
+    AppState.nextPage = res.data.next_page
+    console.log('next page', AppState.nextPage)
+    AppState.previousPage = res.data.previous
   }
   async getCardsByName() {
     const res = await mtg.get()
@@ -60,10 +60,10 @@ class CardsService {
   }
 
   async changePage(url){
-    const res = await search.get(url)
+    const res = await search.get(AppState.nextPage)
     logger.log(res.data)
     AppState.card = res.data.results
-    AppState.nextPage = res.data.next
+    AppState.nextPage = res.data.next_page
     AppState.previousPage = res.data.previous
   }
 }
