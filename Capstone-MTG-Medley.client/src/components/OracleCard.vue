@@ -10,12 +10,12 @@
     <span v-if="hover">This is a secret message.</span>
   </div> -->
 
-    <div class="col-12 magicCard selectable text-start border p-2" @mouseover="hover = true" @mouseleave="hover = false">
+    <div class="col-12 magicCard text-start border p-2" @mouseover="hover = true" @mouseleave="hover = false">
       {{ oracleCard.set_name }}
       <span v-if="oracleCard.prices.usd">${{ oracleCard.prices.usd }}</span>
       <span v-else>{{oracleCard.prices.usd}}</span>
     </div>
-    <div v-if="hover">
+    <div class="col-1" v-if="hover">
       <img :src="oracleCard.image_uris.small" alt="">
     </div>
 
@@ -43,5 +43,9 @@ export default {
 </script>
 
 <style>
+
+.magicCard {
+  font-size: small;
+}
 
 </style>
