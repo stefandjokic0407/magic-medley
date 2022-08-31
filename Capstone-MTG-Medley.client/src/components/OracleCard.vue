@@ -3,7 +3,7 @@
 
 <div class="col-12 magicCard selectable text-start border py-2">
 {{oracleCard.set_name}} 
-{{oracleCard.prices.usd}}
+{{oracleCard.prices?.usd}}
 </div>
 
 </template>
