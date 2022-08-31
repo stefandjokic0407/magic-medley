@@ -6,7 +6,7 @@
       </div>
       <div class="col-md-6">
         <div class="col-12 bg-dark text-light">PRINTS</div>
-        <div class="card-body magicCard p-0" v-for="c in oracleCards" :key="c.id">
+        <div class="card-body magicCard p-0 " v-for="c in oracleCards" :key="c.id">
           <OracleCard :oracleCard="c" />
         </div>
         <!-- NOTE MAKE SURE TO ADD AN ADD TO ACCOUNT BUTTON -->
