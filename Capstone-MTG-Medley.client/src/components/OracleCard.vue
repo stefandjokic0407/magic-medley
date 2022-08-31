@@ -5,10 +5,9 @@
 
   <div @click="getCardById" class="row position-relative">
     <div class="col-1 position-absolute cardPosition" v-if="hover">
-      <img :src="activeCard.image_uris?.small" alt="">
-    </div>
-    <div v-else class="col-1 position-absolute cardPosition">
+
       <img :src="oracleCard.image_uris.small" alt="">
+    </div>
  
     <div class="col-10 offset-1 magicCard text-start border p-2 mt-1 rounded " @mouseover="hover = true"
       @mouseleave="hover = false">
