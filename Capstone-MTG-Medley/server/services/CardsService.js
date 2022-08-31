@@ -37,7 +37,7 @@ class CardsService{
     return card
   }
 
-  async deleteCard(cardId, id) {
+  async deleteCard(cardId) {
     const card = await dbContext.Cards.findById(cardId)
     if(!card){ throw new BadRequest('that card does not exist') }
     // @ts-ignore

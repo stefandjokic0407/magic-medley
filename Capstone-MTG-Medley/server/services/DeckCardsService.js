@@ -2,44 +2,27 @@ import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class DeckCardsService{
-  async deleteTicket(ticketId, userId) {
-    
-    const ticket = await dbContext.Tickets.findById(ticketId)
-    if(!ticket){
-      throw new BadRequest('Ticket does not exist!')
+
+  async deleteCardFromDeck(deckCardId, userId) {
+
+    const card = await dbContext.DeckCards.findById(deckCardId)
+    if(!card){
+      throw new BadRequest('Card does not exist in that deck!')
     }
     // @ts-ignore
-    if(ticket.accountId.toString() != userId){
-      throw new Forbidden('You can not remove that')
+    if(deck.accountId.toString() != userId){
+      throw new Forbidden('You are not authorized to make changes to this deck')
     }
-    // @ts-ignore
-    const eventId = ticket.eventId.toString()
-    await eventsService.increaseCapacity(eventId)
-    await ticket.remove()
-    return 'You are no longer attending this event'
-  }
-  async deleteCardFromDeck(id, id) {
-    throw new Error("Method not implemented.");
+    await card.remove()
+    return 'Card has been removed from deck'
   }
   
-  async getCardsByDeckId(deckId) {
-    const cards = await dbContext.Cards.find({deckId}).populate('deck', 'name')
-    return cards
-  }
-
-  async addCardToDeck(body) {
-    const deck = await this.getDById(data.eventId)
-    // @ts-ignore
-    if (event.capacity <= 0){
-      throw new BadRequest('this event is full')
-    } 
-    const ticket = await dbContext.Tickets.create(data)
-    await ticket.populate('event', 'name coverImg startDate')
-    await ticket.populate('profile', 'name picture')
-    // @ts-ignore
-    const eventId = ticket.eventId.toString()
-    await eventsService.reduceCapacity(eventId)
-    return ticket
+  async addCardToDeck(data) {
+    //                 ^^^  this needs an ID generated on client side, a deck ID and a Card Id
+    const deckCard = await dbContext.DeckCards.create(data)
+    await deckCard.populate('deck', 'name picture')
+    await deckCard.populate('card', 'name picture')
+    return deckCard
   }
 
 }

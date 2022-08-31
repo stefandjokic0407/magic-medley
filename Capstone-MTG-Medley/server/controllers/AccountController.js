@@ -1,6 +1,7 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
 import { cardsService } from "../services/CardsService.js"
+import { decksService } from "../services/DecksService.js"
 import BaseController from '../utils/BaseController'
 
 export class AccountController extends BaseController {
@@ -12,6 +13,7 @@ export class AccountController extends BaseController {
       .put('', this.edit)
       .get('/cards', this.getAllAccountCards)
       .get('/cards/:cardId', this.getCardById)
+      .get('/decks/:id', this.getDecksByAccountId)
       .post('/cards', this.createCard)
       .put('/cards/:cardId', this.updateCard)
       .delete('/cards/:cardId', this.deleteCard)
@@ -75,11 +77,20 @@ async updateCard(req, res, next) {
 }
 async deleteCard(req, res, next) {
   try {
-    const response = await cardsService.deleteCard(req.params.cardId, req.userInfo.id)
+    const response = await cardsService.deleteCard(req.params.cardId)
     return res.send(response)
   } catch (error) {
     next(error)
   }
+}
+
+async getDecksByAccountId(req,res,next){
+try {
+const decks = await decksService.getDecksByAccountId(req.userInfo.id)
+return decks 
+} catch (error) {
+next(error)   
+}
 }
 
 }
