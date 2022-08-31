@@ -14,7 +14,6 @@ class DbContext {
 
   DeckCards = mongoose.model('DeckCard', DeckCardSchema);
 
-
 }
 
 export const dbContext = new DbContext()
