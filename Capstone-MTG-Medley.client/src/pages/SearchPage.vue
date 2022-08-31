@@ -13,10 +13,10 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-3">
+        <div v-if="previousPage" class="col-3">
           <button @click="changePage(previousPage)" class="btn btn-outline-dark w-50">Previous</button>
         </div>
-        <div class="col-3">
+        <div v-if="nextPage" class="col-3">
           <button @click="changePage(nextPage)" class="btn btn-outline-dark w-50">Next</button>
         </div>
       </div>

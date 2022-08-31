@@ -28,7 +28,7 @@ class CardsService {
     AppState.searchedCards = res.data.data.map(c => new Card(c))
     AppState.nextPage = res.data.next_page
     console.log('next page', AppState.nextPage)
-    AppState.previousPage = res.data.previous
+    AppState.previousPage = res.data.previous_page
   }
   async getCardsByName() {
     const res = await mtg.get()
@@ -48,8 +48,10 @@ class CardsService {
     const res = await mtg.get()
   }
 
-  async cardsById() {
-    const res = await mtg.get()
+  async cardsById(oracleCardId) {
+    const res = await mtg.get('cards/' + oracleCardId)
+    console.log('Oracle Card Id', res.data)
+    AppState.activeCard = res.data
   }
 
   async getCardByOracle(oracleId) {
@@ -60,11 +62,11 @@ class CardsService {
   }
 
   async changePage(url){
-    const res = await search.get(AppState.nextPage)
+    const res = await search.get(url)
     AppState.searchedCards = res.data.data.map(c => new Card(c))
     AppState.nextPage = res.data.next_page
     console.log('next page', AppState.nextPage)
-    AppState.previousPage = res.data.previous
+    AppState.previousPage = res.data.previous_page
   }
 }
 
