@@ -9,6 +9,14 @@
           <SearchedCards :card="c" />
         </div>
       </div>
+      <div class="row justify-content-center">
+        <div class="col-3">
+          <button @click="changePage(previousPage)" class="btn btn-outline-dark w-50">Previous</button>
+        </div>
+        <div class="col-3">
+          <button @click="changePage(nextPage)" class="btn btn-outline-dark w-50">Next</button>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -21,11 +29,23 @@ import SearchForm from '../components/SearchForm.vue';
 import SearchedCards from '../components/SearchedCards.vue';
 import { AppState } from '../AppState';
 import { computed } from '@vue/reactivity';
+import { logger } from '../utils/Logger.js';
+import { cardsService } from '../services/CardsService.js';
 export default {
   setup() {
     return {
       card: computed(() => AppState.card),
       searchedCards: computed(() => AppState.searchedCards),
+      nextPage: computed(() => AppState.nextPage),
+      previousPage: computed(() => AppState.previousPage),
+
+      async changePage(url){
+        try {
+          await cardsService.changePage(url)
+        } catch (error) {
+          logger.log(error)
+        }
+      },
 
     };
   },
