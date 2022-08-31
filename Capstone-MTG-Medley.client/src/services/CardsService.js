@@ -21,6 +21,8 @@ class CardsService {
     const res = await search.get(searchTerm + rarityFilter + colorFilter)
     AppState.searchedCards = res.data.data.map(c => new Card(c))
     // AppState.cards = res.data.
+    AppState.nextPage = res.data.next
+    AppState.previousPage = res.data.previous
   }
 
   async searchBarGet(searchTerm) {
@@ -54,6 +56,14 @@ class CardsService {
     const res = await mtg.get('cards/search?q=oracleid%3A' + oracleId + "&unique=prints")
     AppState.oracleCard = res.data.data.map(c => new Card(c))
     console.log('Getting card by oracle', AppState.oracleCard)
+  }
+
+  async changePage(url){
+    const res = await mtg.get(url)
+    logger.log(res.data)
+    AppState.card = res.data.results
+    AppState.nextPage = res.data.next
+    AppState.previousPage = res.data.previous
   }
 }
 
