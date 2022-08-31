@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3" style="max-width: 1100px;">
+  <div class="card" style="max-width: 1100px;">
     <div class="row g-0">
       <div class="col-md-6">
         <img :src=card.image_uris.normal class="img-fluid rounded-start" alt="...">

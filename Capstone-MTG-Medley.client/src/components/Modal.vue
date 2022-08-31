@@ -8,7 +8,7 @@
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
 
-        <div class="modal-body ">
+        <div class="modal-body p-0 rounded">
           <slot></slot>
         </div>
       </div>
