@@ -7,7 +7,6 @@ export const CardSchema = new Schema(
     cmc: { type: Number },
     colors: { type: Array },
     flavor_text: { type: String },
-    id: { type: String, required: true },
     image_uris: { type: Object },
     layout: { type: String },
     legalities: { type: Object },
