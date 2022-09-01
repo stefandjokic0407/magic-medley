@@ -43,10 +43,10 @@ class CardsService {
   //   AppState.card = res.data
   // }
 
-  async getAccountCards(accountId){
-    const res = await api.get(`account/cards`)
+  async getAccountCards(){
+    const res = await api.get('account/cards')
     console.log('Getting Account Cards', res.data)
-    AppState.collection = res.data
+    AppState.collection = res.data.map(c => new Card(c))
   }
 
   async cardsById(oracleCardId) {
