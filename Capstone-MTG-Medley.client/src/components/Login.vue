@@ -22,7 +22,7 @@
             height="40"
             class="rounded"
           /> -->
-          <span class="text-light lighten-30 text-uppercase">{{ user.name }}</span>
+          <span class="text-light lighten-30 text-uppercase">{{ account.name }}</span>
         </div>
       </div>
       <div
