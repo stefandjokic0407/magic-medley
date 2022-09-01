@@ -48,13 +48,10 @@ class CardsService {
     console.log('Getting card by oracle', AppState.oracleCard)
   }
 
-<<<<<<< HEAD
+
   async changePage(url) {
     const res = await search.get(AppState.nextPage)
-=======
-  async changePage(url){
-    const res = await search.get(url)
->>>>>>> f4e3860adf839133f056cdecdc229b152846d990
+
     AppState.searchedCards = res.data.data.map(c => new Card(c))
     AppState.nextPage = res.data.next_page
     console.log('next page', AppState.nextPage)

@@ -110,7 +110,6 @@ export default {
       filter,
       query,
 
-
       async filterChange(type, val) {
         try {
           if (filter.value[type].includes(val)) {
@@ -119,9 +118,8 @@ export default {
             filter.value[type].push(val)
           }
           let filterTerm = filter.value[type].join('').toString();
-          console.log(filterTerm);
           await cardsService.getCardsBySearch(query.value, filterTerm)
-
+          return filterTerm
         } catch (error) {
           logger.error(error)
           Pop.error('[filtering]', error)
