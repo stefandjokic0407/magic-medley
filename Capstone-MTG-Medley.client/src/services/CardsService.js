@@ -44,7 +44,7 @@ class CardsService {
   // }
 
   async getAccountCards(accountId){
-    const res = await api.get(`account/${accountId}/cards`)
+    const res = await api.get(`account/cards`)
     console.log('Getting Account Cards', res.data)
     AppState.collection = res.data
   }
