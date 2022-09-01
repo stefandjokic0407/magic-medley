@@ -77,17 +77,35 @@
             <label class="form-check-label px-3">Bonus</label><br> -->
           </div>
         </section>
-        <!-- SECTION Price -->
+        <!-- SECTION Min Price -->
         <section>
-          <div href="#collapsePrice" data-bs-toggle="collapse" class="bg-dark mt-3 fs-4 px-2 selectable rounded">
-            Price
+          <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
+            <span class="no-select" href="#collapseMinPrice" data-bs-toggle="collapse">
+              Min-Price
+            </span>
+            <input @change="toggleMinPrice" type="checkbox" name="" id="">
           </div>
-          <!-- Work on making a multiselect range for min-price & max-price -->
-          <div class="collapse bg-light" id="collapsePrice">
-            <label for="customRange1" class="form-label">Example range</label>
-            <input type="range" class="form-range" id="customRange1">
+          <div class="collapse bg-light" id="collapseMinPrice">
+            <input type="number" class="mx-2" v-model="filter.min">
+            <label class="form-check-label px-3">Min:</label><br>
           </div>
         </section>
+
+
+        <!-- SECTION Max Price -->
+        <section>
+          <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
+            <span class="no-select" href="#collapsePrice" data-bs-toggle="collapse">
+              Price
+            </span>
+            <input @change="toggleMaxPrice" type="checkbox" name="" id="">
+          </div>
+          <div class="collapse bg-light" id="collapseColor">
+            <input type="checkbox" class="mx-2" @change="filterChange('color', 'u')">
+            <label class="form-check-label px-3"> Less $1.00</label><br>
+          </div>
+        </section>
+
         <!-- SECTION Mana Cost -->
         <section></section>
 
@@ -121,7 +139,9 @@ export default {
     const query = ref('')
     let filter = ref({
       color: [],
-      rarity: []
+      rarity: [],
+      min: null,
+      max: null
     })
 
 
@@ -139,10 +159,6 @@ export default {
           } else {
             filter.value[type].push(val)
           }
-          let filterTerm = filter.value[type].join('').toString();
-          console.log(filterTerm);
-          await cardsService.getCardsBySearch(query.value, filterTerm)
-
         } catch (error) {
           logger.error(error)
           Pop.error('[filtering]', error)
@@ -152,7 +168,10 @@ export default {
       async searchCards() {
         try {
 
-          await cardsService.getCardsBySearch(query.value)
+          filter.value['color'] = filter.value['color'].join('').toString();
+          filter.value['rarity'] = filter.value['rarity'].join('').toString();
+          console.log(filter.value);
+          await cardsService.getCardsBySearch(query.value, filter.value)
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
@@ -174,6 +193,10 @@ export default {
       async toggleRarity() {
         AppState.filterByRarity = !AppState.filterByRarity
         // logger.log('and and sav', AppState.filterByRarity)
+      },
+      async toggleMinPrice() {
+        AppState.filterByMinPrice = !AppState.filterByMinPrice
+        logger.log('and and sav', AppState.filterByMinPrice)
       },
 
     };

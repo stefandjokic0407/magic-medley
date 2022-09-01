@@ -16,11 +16,14 @@ class CardsService {
     
     if (AppState.searchByText) { searchTerm = '+oracle%3A' + searchTerm }
     
-    if (AppState.filterByColor) { searchTerm += '+color%3D' + filterTerm }
+    if (AppState.filterByColor) { searchTerm += '+color%3D' + filterTerm.color }
     
-    if(AppState.filterByRarity) { searchTerm += '+rarity%3A' + filterTerm}
-    
-    // if (AppState.searchByRarity) { searchTerm += '+rarity%3A' + AppState.rarity }
+    if(AppState.filterByRarity) { searchTerm += '+rarity%3A' + filterTerm.rarity}
+
+    if(filterTerm.min > 0) {searchTerm += '+usd<%3D' + filterTerm.min}
+
+    if(filterTerm.max > 0) {searchTerm += '+usd>%3D' + filterTerm.max}
+
 
     console.log('and and sav', searchTerm, filterTerm);
 
