@@ -13,11 +13,11 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div v-if="previousPage" class="col-3">
-          <button @click="changePage(previousPage)" class="btn btn-outline-dark w-50">Previous</button>
+        <div v-if="page > 1" class="col-3">
+          <button @click="changePage(previousPage, page - 1)" class="btn btn-outline-dark w-50">Previous</button>
         </div>
         <div v-if="nextPage" class="col-3">
-          <button @click="changePage(nextPage)" class="btn btn-outline-dark w-50">Next</button>
+          <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-dark w-50">Next</button>
         </div>
       </div>
     </div>
@@ -31,20 +31,24 @@ import SearchFilters from '../components/SearchFilters.vue';
 import SearchForm from '../components/SearchForm.vue';
 import SearchedCards from '../components/SearchedCards.vue';
 import { AppState } from '../AppState';
-import { computed } from '@vue/reactivity';
+import { computed, ref } from '@vue/reactivity';
 import { logger } from '../utils/Logger.js';
 import { cardsService } from '../services/CardsService.js';
 export default {
   setup() {
+    const page = ref(1)
+
     return {
+      page,
       card: computed(() => AppState.card),
-      searchedCards: computed(() => AppState.searchedCards),
+      searchedCards: computed(() => AppState.searchedCards.slice(page.value - 1, (175 * page.value) - 1)),
       nextPage: computed(() => AppState.nextPage),
       previousPage: computed(() => AppState.previousPage),
 
-      async changePage(url) {
+      async changePage(url, num) {
         try {
           await cardsService.changePage(url)
+          page.value = num
         } catch (error) {
           logger.log(error)
         }
