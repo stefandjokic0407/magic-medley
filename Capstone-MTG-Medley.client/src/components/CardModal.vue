@@ -3,7 +3,7 @@
     <div class="row g-0">
       <!-- SECTION MODALS ACTIVE CARD PHOTO -->
       <div v-if="activeCard" class="col-md-6 ">
-        <img :src='activeCard.image_uris?.normal' class="cardBg img-fluid cardBorder" alt="...">
+        <img :src='activeCard.image_uris?.normal' class="cardBg img-fluid cardBorder" alt="https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013">
       </div>
       <div v-else class="col-md-6 cardBorder ">
         <img :src='card.image_uris.normal' class="cardBg img-fluid" alt="...">
@@ -76,7 +76,7 @@ export default {
 
       async createCard() {
         try {
-          console.log(AppState.activeCard)
+          console.log('Active Card:', AppState.activeCard)
           await cardsService.createCard(AppState.activeCard)
         } catch (error) {
           logger.error(error)

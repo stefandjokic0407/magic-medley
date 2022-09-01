@@ -62,6 +62,7 @@ class CardsService {
     const res = await api.post('/account/cards', newCard)
     logger.log('Adding Card to Profile', res.data)
     AppState.activeProfile = res.data
+    return res.data
   }
 }
 
