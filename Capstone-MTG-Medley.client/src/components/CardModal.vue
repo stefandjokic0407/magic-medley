@@ -6,7 +6,9 @@
         <img :src='activeCard.image_uris?.normal' class="cardBg img-fluid cardBorder">
       </div>
       <div v-if="!activeCard.image_uris?.normal" class="col-md-6 cardBorder">
-        <img src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712" class="cardBg img-fluid" alt="...">
+        <img
+          src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+          class="cardBg img-fluid" alt="...">
       </div>
       <!-- SECTION THE ORACLE CARD INFORMATION DIV -->
       <div class="col-md-6  ">
@@ -29,7 +31,19 @@
           <div v-else></div>
         </div>
         <!-- NOTE  IF LEGAL/BANNED/RESTRICT BOXES-->
-        
+        <div class="row mx-3 my-3">
+          <div v-if="activeCard.legalities?.standard == true">
+            <div class="col-4 bg-dark text-light text-center">
+              <p>LEGAL</p>
+            </div>
+            <div class="col-1">Standard</div>
+          </div>
+          <div v-else="activeCard.legalities?.standard == false">
+            <div class="col-4 bg-dark text-light text-center">
+              <p>NOT LEGAL</p>
+            </div>
+          </div>
+        </div>
         <!-- NOTE MAKE SURE TO ADD AN ADD TO ACCOUNT BUTTON -->
         <div class="col-5 mx-auto py-0 my-0">
           <button @click.prevent="createCard(activeCard)" class="btn">
@@ -111,5 +125,9 @@ export default {
 
 .printsBg {
   background-color: rgb(143, 143, 143);
+}
+
+p {
+  margin: 0;
 }
 </style>
