@@ -61,7 +61,7 @@ export default {
     async function getCardByOracle() {
       try {
         // console.log(" Id", props.card.oracleId);
-        await cardsService.getCardByOracle(props.card.oracle_Id);
+        await cardsService.getCardByOracle(props.card.oracle_id);
       }
       catch (error) {
         logger.error(error);

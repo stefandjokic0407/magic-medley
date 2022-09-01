@@ -14,7 +14,7 @@ export class Card {
     this.legalities = data.legalities || {}
     this.mana_cost = data.mana_cost || ""
     this.name = data.name || ""
-    this.oracle_Id = data.oracle_id || ""
+    this.oracle_id = data.oracle_id || ""
     this.oracle_text = data.oracle_text || ""
     this.power = data.power || null
     this.prices = data.prices|| {}
