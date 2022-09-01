@@ -46,6 +46,12 @@ class CardsService {
   //   AppState.card = res.data
   // }
 
+  async getAccountCards(){
+    const res = await api.get('account/cards')
+    console.log('Getting Account Cards', res.data)
+    AppState.collection = res.data.map(c => new Card(c))
+  }
+
   async cardsById(oracleCardId) {
     const res = await mtg.get('cards/' + oracleCardId)
     console.log('Oracle Card Id', res.data)
