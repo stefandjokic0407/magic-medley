@@ -4,10 +4,10 @@
   </header>
   <div class="row">
     <!-- add deck component -->
-    <div class="col-12">My Decks</div>
+    <h3 class="col-12">My Decks <button class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button> </h3>
   </div>
   <div class="row">
-    <div class="col-12">My Collection</div>
+    <h3 class="col-12">My Collection</h3>
     <div v-for="c in cards" :key="c.id" :card="c">
       <div class="col-3 card selectable"></div>
     </div>
@@ -31,6 +31,15 @@ export default {
         await cardsService.getAllCards()
       } catch (error) {
         logger.log('[getting all cards]', error)
+        Pop.error(error)
+      }
+    }
+
+    async function createDeck(){
+      try {
+        await decksService.createDeck()
+      } catch (error) {
+        logger.log('[Creating Deck]', error)  
         Pop.error(error)
       }
     }
