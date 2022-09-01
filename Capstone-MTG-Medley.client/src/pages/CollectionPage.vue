@@ -26,9 +26,10 @@ import Pop from '../utils/Pop.js';
 export default {
   setup() {
 
-    async function getAllCards(){
+    async function getAccountCards(){
       try {
-        await cardsService.getAllCards()
+        const accountId = AppState.account.id
+        await cardsService.getAccountCards(accountId)
       } catch (error) {
         logger.log('[getting all cards]', error)
         Pop.error(error)
@@ -45,7 +46,7 @@ export default {
     }
 
     onMounted(() => {
-      getAllCards();
+      getAccountCards();
     })
 
     return {
