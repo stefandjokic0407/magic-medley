@@ -23,6 +23,7 @@ class CardsService{
     }
     // @ts-ignore
     collectionCard.count++
+    collectionCard.image_uris = body.image_uris
     // @ts-ignore
     await collectionCard.save()
     // @ts-ignore
