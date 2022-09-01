@@ -8,8 +8,10 @@
   </div>
   <div class="row">
     <h3 class="col-12">My Collection</h3>
-    <div v-for="c in cards" :key="c.id" :card="c">
-      <div class="col-3 card selectable"></div>
+    <div v-for="c in cards" :key="c.id">
+      <div class="col-3 card selectable">
+        <CollectionCard :card="c"/>
+      </div>
     </div>
   </div>
 </template>
@@ -21,42 +23,43 @@ import { AppState } from '../AppState.js';
 import { cardsService } from '../services/CardsService.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
+import SearchedCards from '../components/SearchedCards.vue';
+import CollectionCard from '../components/CollectionCard.vue';
 
 
 export default {
-  setup() {
-
-    async function getAccountCards(){
-      try {
-        const accountId = AppState.account.id
-        await cardsService.getAccountCards(accountId)
-      } catch (error) {
-        logger.log('[getting all cards]', error)
-        Pop.error(error)
-      }
-    }
-
-    async function createDeck(newDeck){
-      try {
-        await decksService.createDeck(newDeck)
-      } catch (error) {
-        logger.log('[Creating Deck]', error)  
-        Pop.error(error)
-      }
-    }
-
-    onMounted(() => {
-      getAccountCards();
-    })
-
-    return {
-      cards: computed(() => AppState.card),
-      decks: computed(()=> AppState.decks)
-    };
-
-  }
+    setup() {
+        async function getAccountCards() {
+            try {
+                const accountId = AppState.account.id;
+                await cardsService.getAccountCards(accountId);
+            }
+            catch (error) {
+                logger.log("[getting all cards]", error);
+                Pop.error(error);
+            }
+        }
+        async function createDeck(newDeck) {
+            try {
+                await decksService.createDeck(newDeck);
+            }
+            catch (error) {
+                logger.log("[Creating Deck]", error);
+                Pop.error(error);
+            }
+        }
+        onMounted(() => {
+            getAccountCards();
+        });
+        return {
+            cards: computed(() => AppState.collection),
+            decks: computed(() => AppState.decks)
+        };
+    },
+    components: { SearchedCards, CollectionCard }
 }
 </script>
 
 <style>
+
 </style>
