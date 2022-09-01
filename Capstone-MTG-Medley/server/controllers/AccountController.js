@@ -57,11 +57,11 @@ async getCardById(req, res, next) {
 
 async createCard(req, res, next) {
   try {
-    req.body.accountId = req.userInfo.Id
+    req.body.accountId = req.userInfo.id
     const card = await cardsService.createCard(req.body)
     return res.send(card)
   } catch (error) {
-    
+    next(error)
   }
 }
 
