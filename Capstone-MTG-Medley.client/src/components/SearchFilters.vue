@@ -32,11 +32,9 @@
         <!-- SECTION Color -->
         <section>
           <!-- TODO change from collapsable to a drop down toggled by checkbox -->
-          <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
-            <span class="no-select" href="#collapseColor" data-bs-toggle="collapse">
-              Color
-            </span>
-            <input @change="toggleColor" type="checkbox" name="" id="">
+          <div href="#collapseColor" data-bs-toggle="collapse"
+            class="no-select bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
+            Color
           </div>
           <div class="collapse bg-light" id="collapseColor">
             <input type="checkbox" class="mx-2" @change="filterChange('color', 'u')">
@@ -55,11 +53,9 @@
         </section>
         <!-- SECTION Rarity -->
         <section>
-          <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
-            <span class="no-select" href="#collapseRarity" data-bs-toggle="collapse">
-              Rarity
-            </span>
-            <input @change="toggleRarity" type="checkbox" name="" id="">
+          <div href="#collapseRarity" data-bs-toggle="collapse"
+            class=" no-select bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
+            Rarity
           </div>
           <div class="collapse bg-light" id="collapseRarity">
             <!-- function filterChange() will pass in the type and value of filter -->
@@ -138,27 +134,12 @@ export default {
           filter.value['rarity'] = filter.value['rarity'].join('').toString();
           console.log(filter.value);
           await cardsService.getCardsBySearch(query.value, filter.value)
+          filter.value['color'] = filter.value['color'].split('')
+          filter.value['rarity'] = filter.value['rarity'].split('')
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
         }
-      },
-
-      async toggleType() {
-        AppState.searchByType = !AppState.searchByType
-        // logger.log('and and sav', AppState.searchByType)
-      },
-      async toggleText() {
-        AppState.searchByText = !AppState.searchByText
-        // logger.log('and and sav', AppState.searchByText)
-      },
-      async toggleColor() {
-        AppState.filterByColor = !AppState.filterByColor
-        // logger.log('and and sav', AppState.filterByColor)
-      },
-      async toggleRarity() {
-        AppState.filterByRarity = !AppState.filterByRarity
-        // logger.log('and and sav', AppState.filterByRarity)
       },
 
     };
