@@ -16,9 +16,9 @@ class CardsService {
     
     if (AppState.searchByText) { searchTerm = '+oracle%3A' + searchTerm }
     
-    if (AppState.filterByColor) { searchTerm += '+color%3D' + filterTerm.color }
+    if (filterTerm.color.length > 0) { searchTerm += '+color%3D' + filterTerm.color }
     
-    if(AppState.filterByRarity) { searchTerm += '+rarity%3A' + filterTerm.rarity}
+    if(filterTerm.rarity.length > 0) { searchTerm += '+rarity%3A' + filterTerm.rarity}
 
     
     console.log('and and sav', searchTerm, filterTerm);
