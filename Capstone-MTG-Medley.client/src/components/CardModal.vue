@@ -24,21 +24,21 @@
         </div>
 
         <!-- NOTE IF CARD IS PART OF RESERVED LIST -->
-        <div class="row align-items-center">
-          <div class="col-10 offset-1 mx-auto text-center mt-3" v-if="activeCard.reserved = true">
+        <div class="row align-items-center legalSize">
+          <div class="col-10 offset-1 mx-auto text-center mt-3" v-if="activeCard.reserved == true">
             <p class="my-0">This card is Part of the Reserved List</p>
           </div>
           <div v-else></div>
         </div>
         <!-- NOTE  IF LEGAL/BANNED/RESTRICT BOXES-->
-        <div class="row mx-auto my-3">
-          <div v-if="activeCard.legalities?.standard == true" class="col-5 mx-auto">
+        <div class="row mx-auto my-3 legalSize">
+          <div v-if="activeCard.legalities?.standard == legal" class="col-5 mx-auto">
             <div class="text-center">Standard</div>
             <div class=" bgLegal text-light text-center rounded">
               <p>LEGAL</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.standard == false" class="col-5 mx-auto">
+          <div v-else class="col-5 mx-auto">
             <div class=" text-center">Standard</div>
             <div class=" bgNotLegal text-light text-center rounded">
               <p>NOT LEGAL</p>
@@ -243,7 +243,7 @@ export default {
 <style>
 .cardOverflow {
   overflow-y: scroll;
-  max-height: 32vh;
+  max-height: 32.4vh;
   overflow-x: hidden;
 }
 
@@ -271,6 +271,10 @@ p {
 
 .bgNotLegal {
   background-color: rgba(22, 100, 22, 0.406);
+}
+
+.legalSize {
+  font-size: .8em;
 }
 
 </style>
