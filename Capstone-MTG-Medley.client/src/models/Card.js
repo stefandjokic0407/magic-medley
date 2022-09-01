@@ -16,7 +16,7 @@ export class Card {
     this.name = data.name || ""
     this.oracle_id = data.oracle_id || ""
     this.oracle_text = data.oracle_text || ""
-    this.power = data.power || null
+    this.power = data.power || ""
     this.prices = data.prices|| {}
     this.purchase_uris = data.purchase_uris || {}
     this.reprint = data.reprint || false

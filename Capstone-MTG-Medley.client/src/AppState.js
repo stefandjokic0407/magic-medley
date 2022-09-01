@@ -23,6 +23,13 @@ export const AppState = reactive({
   searchByText: false,
   filterByColor: false,
   filterByRarity: false,
+  // filterByPrice: false,
+  // filterByManaCost: false,
+  // filterByConvertedMana: false,
+  // filterByPower: false,
+  // filterByToughness: false,
+  // filterByLoyalty: false,
+  // filterByLegal: false,
 
 
 })
