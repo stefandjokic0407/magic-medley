@@ -18,4 +18,7 @@ export const AppState = reactive({
 
   nextPage: null,
   previousPage: null,
+  searchByType: false,
+  searchByText: false
+
 })

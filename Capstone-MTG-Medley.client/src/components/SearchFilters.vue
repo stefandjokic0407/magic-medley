@@ -9,15 +9,15 @@
           </div>
           <div class="col-md-12 d-flex justify-content-evenly my-3">
             <div>
-              <input type="checkbox" class="">
+              <input checked type="checkbox" class="">
               <label class="form-check-label"><span class="fs-5">Name</span></label>
             </div>
             <div>
-              <input type="checkbox" class="">
+              <input @change="toggleType" type="checkbox" class="">
               <label class="form-check-label"><span class="fs-5">Type</span></label>
             </div>
             <div>
-              <input type="checkbox" class="">
+              <input @change="toggleText" type="checkbox" class="">
               <label class="form-check-label"><span class="fs-5">Text</span></label>
             </div>
           </div>
@@ -87,6 +87,7 @@
 
 <script>
 import { ref } from "vue";
+import { AppState } from "../AppState.js";
 import { cardsService } from "../services/CardsService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
@@ -136,6 +137,15 @@ export default {
           logger.error(error)
           Pop.toast(error.message, 'error')
         }
+      },
+
+      async toggleType() {
+        AppState.searchByType = !AppState.searchByType
+        // logger.log('and and sav', AppState.searchByType)
+      },
+      async toggleText() {
+        AppState.searchByText = !AppState.searchByText
+        // logger.log('and and sav', AppState.searchByText)
       },
 
     };
