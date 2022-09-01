@@ -3,10 +3,10 @@
     <div class="row g-0">
       <!-- SECTION MODALS ACTIVE CARD PHOTO -->
       <div v-if="activeCard" class="col-md-6 ">
-        <img :src='activeCard.image_uris?.normal' class="cardBg img-fluid cardBorder" alt="https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013">
+        <img :src='activeCard.image_uris?.normal' class="cardBg img-fluid cardBorder">
       </div>
-      <div v-else class="col-md-6 cardBorder ">
-        <img :src='card.image_uris.normal' class="cardBg img-fluid" alt="...">
+      <div v-if="!activeCard.image_uris?.normal" class="col-md-6 cardBorder">
+        <img src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712" class="cardBg img-fluid" alt="...">
       </div>
       <!-- SECTION THE ORACLE CARD INFORMATION DIV -->
       <div class="col-md-6  ">
