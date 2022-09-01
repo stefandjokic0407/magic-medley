@@ -1,5 +1,4 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
-import { get } from "mongoose";
 import { decksService } from "../services/DecksService.js";
 import BaseController from "../utils/BaseController.js";
 

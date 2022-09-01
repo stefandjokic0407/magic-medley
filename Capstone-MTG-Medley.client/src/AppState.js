@@ -13,7 +13,7 @@ export const AppState = reactive({
   /**@type {import('./models/Card.js').Card} */
   oracleCard: {},
   /**@type {import('./models/Card.js').Card} */
-  activeCard: null,
+  activeCard: {},
 
   nextPage: null,
   previousPage: null,
