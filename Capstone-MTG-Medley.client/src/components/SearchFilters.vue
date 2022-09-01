@@ -28,6 +28,7 @@
             </button>
           </div>
         </section>
+        <!-- NOTE maybe block all the filter options until after a search is done -->
         <!-- Color -->
         <section>
           <!-- NOTE change from collapsable to a drop down toggled by checkbox -->
@@ -157,6 +158,10 @@ export default {
       async toggleColor() {
         AppState.filterByColor = !AppState.filterByColor
         // logger.log('and and sav', AppState.filterByColor)
+      },
+      async toggleRarity() {
+        AppState.filterByRarity = !AppState.filterByRarity
+        // logger.log('and and sav', AppState.filterByRarity)
       },
 
     };

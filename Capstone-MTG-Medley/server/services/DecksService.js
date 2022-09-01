@@ -5,7 +5,7 @@ class DecksService{
 
     async createDeck(deckData){
     const deck = await dbContext.Decks.create(deckData)
-    await deck.populate('account', 'name picture')
+    await deck.populate('profile', 'name picture')
     return deck
     }
     async getById(id) {

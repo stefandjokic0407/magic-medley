@@ -48,7 +48,7 @@ export class DecksController extends BaseController {
     try {
     req.body.accountId = req.userInfo.id
     const deck = await decksService.createDeck(req.body)    
-    return deck
+    return res.send(deck)
     } catch (error) {
     next(error)   
     }
