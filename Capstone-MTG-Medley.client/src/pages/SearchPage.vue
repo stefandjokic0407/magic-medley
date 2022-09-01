@@ -1,4 +1,7 @@
 <template>
+  <header>
+    <Navbar />
+  </header>
   <section class="row">
     <div class="col-md-3 search-bar py-5">
       <SearchFilters />
@@ -10,10 +13,10 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-3">
+        <div v-if="previousPage" class="col-3">
           <button @click="changePage(previousPage)" class="btn btn-outline-dark w-50">Previous</button>
         </div>
-        <div class="col-3">
+        <div v-if="nextPage" class="col-3">
           <button @click="changePage(nextPage)" class="btn btn-outline-dark w-50">Next</button>
         </div>
       </div>
@@ -39,7 +42,7 @@ export default {
       nextPage: computed(() => AppState.nextPage),
       previousPage: computed(() => AppState.previousPage),
 
-      async changePage(url){
+      async changePage(url) {
         try {
           await cardsService.changePage(url)
         } catch (error) {

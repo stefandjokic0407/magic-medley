@@ -1,7 +1,7 @@
 <template>
   <span class="navbar-text">
     <button
-      class="btn selectable text-black text-uppercase my-2 my-lg-0"
+      class="btn selectable text-light text-uppercase my-2 my-lg-0"
       @click="login"
       v-if="!user.isAuthenticated"
     >
@@ -16,13 +16,13 @@
         id="authDropdown"
       >
         <div v-if="account.picture || user.picture">
-          <img
+          <!-- <img
             :src="account.picture || user.picture"
             alt="account photo"
             height="40"
             class="rounded"
-          />
-          <span class="mx-3 text-black lighten-30">{{ account.name || user.name }}</span>
+          /> -->
+          <span class="text-light lighten-30 text-uppercase">{{ account.name || user.name }}</span>
         </div>
       </div>
       <div

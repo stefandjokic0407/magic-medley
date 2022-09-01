@@ -1,5 +1,7 @@
 <template>
-
+  <header>
+    <Navbar />
+  </header>
 </template>
 
 <script>

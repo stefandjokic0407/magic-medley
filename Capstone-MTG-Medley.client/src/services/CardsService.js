@@ -1,7 +1,7 @@
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { Card } from "../models/Card.js"
-import { mtg, search } from "./AxiosService"
+import { api, mtg, search } from "./AxiosService"
 
 class CardsService {
   async getCardsBySearch(searchTerm, filterTerm) {
@@ -27,28 +27,18 @@ class CardsService {
     AppState.searchedCards = res.data.data.map(c => new Card(c))
     AppState.nextPage = res.data.next_page
     console.log('next page', AppState.nextPage)
-    AppState.previousPage = res.data.previous
-  }
-  async getCardsByName() {
-    const res = await mtg.get()
-  }
-
-  async cardsAutocomplete() {
-    const res = await mtg.get()
+    AppState.previousPage = res.data.previous_page
   }
 
   async getRandomCard() {
     const res = await mtg.get('cards/random')
-    console.log('Getting Random Card:', res.data)
     AppState.card = res.data
   }
 
-  async cardsCollection() {
-    const res = await mtg.get()
-  }
-
-  async cardsById() {
-    const res = await mtg.get()
+  async cardsById(oracleCardId) {
+    const res = await mtg.get('cards/' + oracleCardId)
+    console.log('Oracle Card Id', res.data)
+    AppState.activeCard = res.data
   }
 
   async getCardByOracle(oracleId) {
@@ -58,12 +48,23 @@ class CardsService {
     console.log('Getting card by oracle', AppState.oracleCard)
   }
 
+<<<<<<< HEAD
   async changePage(url) {
     const res = await search.get(AppState.nextPage)
+=======
+  async changePage(url){
+    const res = await search.get(url)
+>>>>>>> f4e3860adf839133f056cdecdc229b152846d990
     AppState.searchedCards = res.data.data.map(c => new Card(c))
     AppState.nextPage = res.data.next_page
     console.log('next page', AppState.nextPage)
-    AppState.previousPage = res.data.previous
+    AppState.previousPage = res.data.previous_page
+  }
+
+  async createCard(newCard) {
+    const res = await api.post('/account/cards', newCard)
+    logger.log('Adding Card to Profile', res.data)
+    AppState.activeProfile = res.data
   }
 }
 

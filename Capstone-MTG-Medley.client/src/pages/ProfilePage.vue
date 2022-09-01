@@ -1,5 +1,7 @@
 <template>
-
+  <header>
+    <Navbar />
+  </header>
 
 
 </template>
@@ -18,33 +20,32 @@ export default {
 
 
 
-setup() {
+  setup() {
 
-const route = useRoute()
+    const route = useRoute()
 
-async function getProfileById() {
-  try {
-    await profilesService.getProfileById(route.params.profileId)
-  } catch (error) {
-    logger.error(error)
-    Pop.toast(error.message, 'error')
-    router.push({ name: 'Home' })
-  }
-}
+    async function getProfileById() {
+      try {
+        await profilesService.getProfileById(route.params.profileId)
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error')
+        router.push({ name: 'Home' })
+      }
+    }
 
-onMounted(() => {
-  getProfileById();
-})
+    onMounted(() => {
+      getProfileById();
+    })
 
-  return {
-    account: computed(() => AppState.account),
-    profile: computed(() => AppState.activeProfile)
-  };
+    return {
+      account: computed(() => AppState.account),
+      profile: computed(() => AppState.activeProfile)
+    };
 
   }
 }
 </script>
 
-<style> 
-
+<style>
 </style>

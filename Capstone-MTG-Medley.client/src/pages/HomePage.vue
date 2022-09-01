@@ -1,36 +1,37 @@
 <template>
-  <!-- <button @click="getRandomCard()">Click Me</button> -->
-  <div class="row">
-      <div v-for="c in searchedCards" :key="c.id" class="col-12 col-md-2">
-        <SearchedCards :card="c" />
+  <div class="row justify-content-center hero-img">
+    <div class="col-2 p-3">
+        <button class="btn btn-outline-dark img-text fs-5 w-100" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasLeft" aria-controls="offcanvasExample">
+            Resources
+        </button>
+    </div>
+
+    <div class="col-8 text-center my-5">
+      <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="">
+    </div>
+
+    <div class="col-2 p-3 text-end">
+        <button class="btn btn-outline-dark img-text fs-5 w-100" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
+            Basics
+        </button>
+    </div>
+
+    <div>
+      <FooterNav />
     </div>
   </div>
 
-  <div>
-    <div class="row mx-5">
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- <img class="img-fluid" :src="card.image_uris.normal" alt="Photo"> -->
-          </div>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div class="row">
-          <!-- <button class="col-7 btn text-start noDeco selectable"><a :href="card.purchase_uris.tcgplayer">Buy on
-                TCGplayer ${{ card.prices.usd }}</a></button>
-            <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardmarket">Buy foil on
-                TCGplayer ${{ card.prices.usd_foil }}</a></button>
-            <button class="col-7 btn text-start selectable"><a :href="card.purchase_uris.cardhoarder">Buy on Cardhoarder
-                {{ card.prices.tix }}</a></button> -->
-        </div>
-      </div>
-    </div>
+
+  <div class="offcanvas offcanvas-start offcanvas-style" tabindex="-1" id="offcanvasLeft"
+    aria-labelledby="offcanvasExampleLabel">
   </div>
 
-  <div class="sticky-bottom">
-    <!-- <FooterNav /> -->
+  <div class="offcanvas offcanvas-end offcanvas-style" tabindex="-1" id="offcanvasRight"
+    aria-labelledby="offcanvasExampleLabel">
   </div>
+
 </template>
 
 <script>
@@ -78,7 +79,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 a {
   text-decoration: none;
   color: inherit;
@@ -90,5 +91,36 @@ a:focus,
 a:active {
   text-decoration: none;
   color: inherit;
+}
+
+img{
+  height: 40em;
+  width: 50em;
+}
+
+.hero-img {
+  background-image: url(../assets/img/bg-mtg.jpg);
+  background-position: top;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+.img-text {
+  text-shadow: 0px 0px 1px black;
+  font-weight: 700;
+  color: #162052;
+}
+
+.offcanvas-style {
+  background: rgb(0 0 0 / 38%);
+  backdrop-filter: blur(4px);
+  border: solid #8d8b8b1f;
+  color: white;
+  border-radius: 8px;
+  text-shadow: 5px 5px 5px black;
+  padding: 0.5em;
+  width: 30vw;
+  height: 76vh;
 }
 </style>
