@@ -8,8 +8,7 @@
       <img class="img-fluid shadow cardsBg"
         src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
     </div>
-    <!-- TODO v-if activeDeck -->
-    <button class="btn add-to-deck" @click="createDeckCard(card.cardId)"><i title="add to deck" class="mdi mdi-plus-circle"></i></button>
+    <button v-if="activeDeck" class="btn add-to-deck" @click="createDeckCard(card.cardId)"><i title="add to deck" class="mdi mdi-plus-circle"></i></button>
   </div>
 
 </template>
@@ -23,7 +22,8 @@ export default {
 
   setup() {
     return {
-      cards: computed(() => AppState.collection)
+      cards: computed(() => AppState.collection),
+      activeDeck: computed(() => AppState.activeDeck)
     }
   }
 }

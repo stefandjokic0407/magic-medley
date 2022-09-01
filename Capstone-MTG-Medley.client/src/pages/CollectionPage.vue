@@ -76,7 +76,9 @@ export default {
           logger.log("[creating deck card]", error);
           Pop.error(error);
         }
-      }
+      },
+
+
 
     };
   },

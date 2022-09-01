@@ -17,7 +17,7 @@ export const AppState = reactive({
   activeCard: {},
   decks: [],
   deckCards: [],
-  activeDeck: {},
+  activeDeck: null,
   collection: [],
 
   nextPage: null,
