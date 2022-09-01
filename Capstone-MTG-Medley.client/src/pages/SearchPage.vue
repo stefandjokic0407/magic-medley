@@ -13,11 +13,11 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div v-if="page > 1" class="col-3">
+        <!-- <div v-if="page > 1" class="col-3">
           <button @click="changePage(previousPage, page - 1)" class="btn btn-outline-dark w-50">Previous</button>
-        </div>
-        <div v-if="nextPage" class="col-3">
-          <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-dark w-50">Next</button>
+        </div> -->
+        <div v-if="nextPage" class="col-3 py-3">
+          <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-dark w-50">More Results</button>
         </div>
       </div>
     </div>
