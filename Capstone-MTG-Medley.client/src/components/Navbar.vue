@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg  bg-light px-3 my-0 py-0">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/mtg-logo.png" height="55" />
+        <img alt="logo" src="../assets/img/FullLogo_Transparent_NoBuffer.png" height="55" />
       </div>
     </router-link>
     <button
