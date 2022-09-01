@@ -128,15 +128,15 @@ export default {
         }
       },
 
-      // async searchCards() {
-      //   try {
-      //     let filterTerm = this.filterChange()
-      //     await cardsService.getCardsBySearch(query.value, filterTerm)
-      //   } catch (error) {
-      //     logger.error(error)
-      //     Pop.toast(error.message, 'error')
-      //   }
-      // },
+      async searchCards() {
+        try {
+
+          await cardsService.getCardsBySearch(query.value)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
 
     };
 
