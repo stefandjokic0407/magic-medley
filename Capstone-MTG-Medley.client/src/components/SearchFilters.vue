@@ -2,7 +2,7 @@
   <div class="search-form">
     <div class="row">
       <form @submit.prevent="searchCards()">
-        <!-- Search bar with checkbox name, type, text -->
+        <!-- SECTION Search bar with checkbox name, type, text -->
         <section>
           <div class="fs-3">
             Search By:
@@ -28,10 +28,10 @@
             </button>
           </div>
         </section>
-        <!-- NOTE maybe block all the filter options until after a search is done -->
-        <!-- Color -->
+        <!-- TODO maybe block all the filter options until after a search is done -->
+        <!-- SECTION Color -->
         <section>
-          <!-- NOTE change from collapsable to a drop down toggled by checkbox -->
+          <!-- TODO change from collapsable to a drop down toggled by checkbox -->
           <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
             <span class="no-select" href="#collapseColor" data-bs-toggle="collapse">
               Color
@@ -53,7 +53,7 @@
             <label class="form-check-label px-3">Colorless</label><br>
           </div>
         </section>
-        <!-- Rarity -->
+        <!-- SECTION Rarity -->
         <section>
           <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
             <span class="no-select" href="#collapseRarity" data-bs-toggle="collapse">
@@ -77,7 +77,7 @@
             <label class="form-check-label px-3">Bonus</label><br> -->
           </div>
         </section>
-        <!-- Price -->
+        <!-- SECTION Price -->
         <section>
           <div href="#collapsePrice" data-bs-toggle="collapse" class="bg-dark mt-3 fs-4 px-2 selectable rounded">
             Price
@@ -88,6 +88,18 @@
             <input type="range" class="form-range" id="customRange1">
           </div>
         </section>
+        <!-- SECTION Mana Cost -->
+        <section></section>
+
+        <!-- SECTION cmc -->
+        <section></section>
+
+        <!-- SECTION Power -->
+        <section></section>
+
+        <!-- SECTION Toughness  -->
+        <section></section>
+
       </form>
     </div>
   </div>
