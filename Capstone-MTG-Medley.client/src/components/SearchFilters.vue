@@ -128,18 +128,12 @@ export default {
       },
 
       async searchCards() {
-        try {
-
-          filter.value['color'] = filter.value['color'].join('').toString();
-          filter.value['rarity'] = filter.value['rarity'].join('').toString();
-          console.log(filter.value);
-          await cardsService.getCardsBySearch(query.value, filter.value)
-          filter.value['color'] = filter.value['color'].split('')
-          filter.value['rarity'] = filter.value['rarity'].split('')
-        } catch (error) {
-          logger.error(error)
-          Pop.toast(error.message, 'error')
-        }
+        filter.value['color'] = filter.value['color'].join('').toString();
+        filter.value['rarity'] = filter.value['rarity'].join('').toString();
+        console.log('filer value', filter.value);
+        await cardsService.getCardsBySearch(query.value, filter.value)
+        filter.value['color'] = filter.value['color'].split('')
+        filter.value['rarity'] = filter.value['rarity'].split('')
       },
 
     };
