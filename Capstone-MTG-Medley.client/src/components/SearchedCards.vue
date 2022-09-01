@@ -7,13 +7,14 @@
         <img class="img-fluid shadow cardsBg" :src=card.image_uris.normal>
       </div>
       <div v-else class="col-12">
-        <img class="img-fluid shadow cardsBg" src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
+        <img class="img-fluid shadow cardsBg"
+          src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
       </div>
     </div>
   </div>
   <Modal :id="'cardModal' + card.id">
-        <CardModal :card="card" />
-      </Modal>
+    <CardModal :card="card" />
+  </Modal>
 
 </template>
 
@@ -31,23 +32,23 @@ export default {
 
 
   setup(props) {
-    
+
     return {
       activeCard: computed(() => AppState.activeCard),
       reset() {
-              AppState.activeCard = props.card
-              console.log('Active Card:', props.card)
-            },
-      async  getCardByOracle() {
-            try {
-                // console.log(" Id", props.card.oracleId);
-                await cardsService.getCardByOracle(props.card.oracle_id);
-            }
-            catch (error) {
-                logger.error(error);
-                Pop.toast(error.message, "error");
-            }
+        AppState.activeCard = props.card
+        console.log('Active Card:', props.card)
+      },
+      async getCardByOracle() {
+        try {
+          // console.log(" Id", props.card.oracleId);
+          await cardsService.getCardByOracle(props.card.oracle_id);
         }
+        catch (error) {
+          logger.error(error);
+          Pop.toast(error.message, "error");
+        }
+      }
     };
 
   }
@@ -55,9 +56,9 @@ export default {
 </script>
 
 <style>
-
 .cardsBg {
-  border-radius:8px;
+  background-image: url(https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712);
+  border-radius: 8px;
   border-color: black;
 }
 
