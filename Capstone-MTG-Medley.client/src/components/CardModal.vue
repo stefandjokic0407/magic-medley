@@ -32,14 +32,63 @@
         </div>
         <!-- NOTE  IF LEGAL/BANNED/RESTRICT BOXES-->
         <div class="row mx-3 my-3">
-          <div v-if="activeCard.legalities?.standard == true">
-            <div class="col-4 bg-dark text-light text-center">
+          <div v-if="activeCard.legalities?.standard == true" class="col-5">
+            <div class="text-center">Standard</div>
+            <div class=" bgLegal text-light text-center rounded">
               <p>LEGAL</p>
             </div>
-            <div class="col-1">Standard</div>
           </div>
-          <div v-else="activeCard.legalities?.standard == false">
-            <div class="col-4 bg-dark text-light text-center">
+          <div v-else="activeCard.legalities?.standard == false" class="col-5">
+            <div class=" text-center">Standard</div>
+            <div class=" bgNotLegal text-light text-center rounded">
+              <p>NOT LEGAL</p>
+            </div>
+          </div>
+          <div v-if="activeCard.legalities?.alchemy == true" class="col-5">
+            <div class=" text-center">Alchemy</div>
+            <div class=" bgLegal text-light text-center rounded">
+              <p>LEGAL</p>
+            </div>
+          </div>
+          <div v-else="activeCard.legalities?.alchemy == false" class="col-5">
+            <div class="text-center">Alchemy</div>
+            <div class="bgNotLegal text-light text-center rounded">
+              <p>NOT LEGAL</p>
+            </div>
+          </div>
+          <div v-if="activeCard.legalities?.pioneer == true">
+            <div class="text-center">Pioneer</div>
+            <div class="bgLegal text-light text-center rounded">
+              <p>LEGAL</p>
+            </div>
+          </div>
+          <div v-else="activeCard.legalities?.pioneer == false">
+            <div class="text-center">Pioneer</div>
+            <div class="bgNotLegal text-light text-center rounded">
+              <p>NOT LEGAL</p>
+            </div>
+          </div>
+          <div v-if="activeCard.legalities?.explorer == true">
+            <div class="text-center">Explorer</div>
+            <div class="bgLegal text-light text-center rounded">
+              <p>LEGAL</p>
+            </div>
+          </div>
+          <div v-else="activeCard.legalities?.explorer == false">
+            <div class="text-center">Explorer</div>
+            <div class="bgNotLegal text-light text-center rounded">
+              <p>NOT LEGAL</p>
+            </div>
+          </div>
+          <div v-if="activeCard.legalities?.modern == true">
+            <div class="text-center">Modern</div>
+            <div class="bgLegal text-light text-center rounded">
+              <p>LEGAL</p>
+            </div>
+          </div>
+          <div v-else="activeCard.legalities?.modern == false">
+            <div class="text-center">Modern</div>
+            <div class="bgNotLegal text-light text-center rounded">
               <p>NOT LEGAL</p>
             </div>
           </div>
@@ -128,6 +177,16 @@ export default {
 }
 
 p {
+  padding: 0;
   margin: 0;
 }
+
+.bgLegal {
+ background-color: rgb(24, 126, 24);
+}
+
+.bgNotLegal {
+  background-color: rgba(22, 100, 22, 0.406);
+}
+
 </style>
