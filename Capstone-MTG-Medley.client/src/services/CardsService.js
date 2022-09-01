@@ -16,7 +16,9 @@ class CardsService {
     
     if (AppState.searchByText) { searchTerm = '+oracle%3A' + searchTerm }
     
-    if(AppState.filterByColor) { searchTerm += '+color%3D' + filterTerm}
+    if (AppState.filterByColor) { searchTerm += '+color%3D' + filterTerm }
+    
+    if(AppState.filterByRarity) { searchTerm += '+rarity%3A' + filterTerm}
     
     // if (AppState.searchByRarity) { searchTerm += '+rarity%3A' + AppState.rarity }
 

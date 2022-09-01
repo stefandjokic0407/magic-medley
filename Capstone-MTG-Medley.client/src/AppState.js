@@ -15,11 +15,14 @@ export const AppState = reactive({
   oracleCard: {},
   /**@type {import('./models/Card.js').Card} */
   activeCard: {},
+  decks:[],
 
   nextPage: null,
   previousPage: null,
   searchByType: false,
   searchByText: false,
-  filterByColor: false
+  filterByColor: false,
+  filterByRarity: false,
+
 
 })
