@@ -2,14 +2,14 @@
   <header class="row">
     <Navbar />
   </header>
-  <div class="row">
+  <div class="">
     <!-- add deck component -->
     <h3 class="col-12">My Decks <button @click="createDeck" class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button> </h3>
   </div>
   <div class="row">
     <h3 class="col-12">My Collection</h3>
-    <div v-for="c in cards" :key="c.id">
-      <div class="col-2 card selectable">
+    <div v-for="c in cards" :key="c.id" class="col-md-2">
+      <div class="selectable row">
         <CollectionCard :card="c"/>
       </div>
     </div>
