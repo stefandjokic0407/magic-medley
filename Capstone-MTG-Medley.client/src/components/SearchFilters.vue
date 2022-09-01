@@ -71,10 +71,6 @@
             <label class="form-check-label px-3">Rare</label><br>
             <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'm')">
             <label class="form-check-label px-3">Mythic Rare</label><br>
-            <!-- <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'special')">
-            <label class="form-check-label px-3">Special</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'bonus')">
-            <label class="form-check-label px-3">Bonus</label><br> -->
           </div>
         </section>
 
@@ -112,8 +108,6 @@ export default {
     let filter = ref({
       color: [],
       rarity: [],
-      min: null,
-      max: null
     })
 
 
@@ -165,10 +159,6 @@ export default {
       async toggleRarity() {
         AppState.filterByRarity = !AppState.filterByRarity
         // logger.log('and and sav', AppState.filterByRarity)
-      },
-      async toggleMinPrice() {
-        AppState.filterByMinPrice = !AppState.filterByMinPrice
-        logger.log('and and sav', AppState.filterByMinPrice)
       },
 
     };
