@@ -5,23 +5,22 @@ import { api, mtg, search } from "./AxiosService"
 
 class CardsService {
 
-  // this is connected to the search bar and works
+  // NOTE this is connected to the search bar and works
   async getCardsBySearch(searchTerm, filterTerm) {
 
-    // if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
-    // console.log('this is the moddified search term', searchTerm)
-
     if (AppState.searchByType) { searchTerm = '+type%3A' + searchTerm }
-// logger.log('and and sav',searchTerm)
+    // logger.log('and and sav',searchTerm)
+    
+    if (AppState.searchByText) { searchTerm = '+oracle%3A' + searchTerm }
+    
+    if(AppState.filterByColor) { searchTerm += '+color%3D' + filterTerm}
+    
     // if (AppState.searchByRarity) { searchTerm += '+rarity%3A' + AppState.rarity }
 
-    if (AppState.searchByText) { searchTerm = '+oracle%3A' + searchTerm}
+    console.log('and and sav', searchTerm, filterTerm);
 
-    const colorFilter = '+color%3D' + filterTerm
-    console.log(colorFilter, searchTerm, filterTerm);
-    const res = await search.get(searchTerm + colorFilter)
+    const res = await search.get(searchTerm)
     AppState.searchedCards = res.data.data.map(c => new Card(c))
-    // AppState.cards = res.data.
   }
 
 
