@@ -2,7 +2,7 @@
   <div @blur="reset()" class="card" style="max-width: 1100px;">
     <div class="row g-0">
       <!-- SECTION MODALS ACTIVE CARD PHOTO -->
-      <div v-if="activeCard" class="col-md-6 ">
+      <div v-if="activeCard" class="col-md-6">
         <img :src='activeCard.image_uris?.normal' class="cardBg img-fluid cardBorder">
       </div>
       <div v-if="!activeCard.image_uris?.normal" class="col-md-6 cardBorder">
@@ -218,6 +218,7 @@ export default {
         Pop.toast(error.message, "error");
       }
     }
+    
     // onMounted(() => getCardByOracle());
     return {
       oracleCards: computed(() => AppState.oracleCard),
@@ -278,6 +279,10 @@ p {
 
 .legalSize {
   font-size: .8em;
+}
+
+.rotated {
+  transform: scale(1.1);
 }
 
 </style>
