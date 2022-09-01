@@ -9,18 +9,17 @@ class CardsService {
   async getCardsBySearch(searchTerm, filterTerm) {
 
     // if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
-    // console.log('this is the moddified search term', searchTerm)
+    // console.log('this is the modified search term', searchTerm)
 
     if (AppState.searchByType) { searchTerm = '+type%3A' + searchTerm }
     // logger.log('and and sav',searchTerm)
     
     if (AppState.searchByText) { searchTerm = '+oracle%3A' + searchTerm }
     
-    if (AppState.filterByColor) { searchTerm += '+color%3D' + filterTerm }
+    if (AppState.filterByColor) { searchTerm += '+color%3D' + filterTerm.color }
     
-    if(AppState.filterByRarity) { searchTerm += '+rarity%3A' + filterTerm}
-    
-    // if (AppState.searchByRarity) { searchTerm += '+rarity%3A' + AppState.rarity }
+    if(AppState.filterByRarity) { searchTerm += '+rarity%3A' + filterTerm.rarity}
+
 
     console.log('and and sav', searchTerm, filterTerm);
 

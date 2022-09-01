@@ -71,23 +71,9 @@
             <label class="form-check-label px-3">Rare</label><br>
             <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'm')">
             <label class="form-check-label px-3">Mythic Rare</label><br>
-            <!-- <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'special')">
-            <label class="form-check-label px-3">Special</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'bonus')">
-            <label class="form-check-label px-3">Bonus</label><br> -->
           </div>
         </section>
-        <!-- SECTION Price -->
-        <section>
-          <div href="#collapsePrice" data-bs-toggle="collapse" class="bg-dark mt-3 fs-4 px-2 selectable rounded">
-            Price
-          </div>
-          <!-- Work on making a multiselect range for min-price & max-price -->
-          <div class="collapse bg-light" id="collapsePrice">
-            <label for="customRange1" class="form-label">Example range</label>
-            <input type="range" class="form-range" id="customRange1">
-          </div>
-        </section>
+
         <!-- SECTION Mana Cost -->
         <section></section>
 
@@ -121,7 +107,7 @@ export default {
     const query = ref('')
     let filter = ref({
       color: [],
-      rarity: []
+      rarity: [],
     })
 
 
@@ -139,10 +125,6 @@ export default {
           } else {
             filter.value[type].push(val)
           }
-          let filterTerm = filter.value[type].join('').toString();
-          console.log(filterTerm);
-          await cardsService.getCardsBySearch(query.value, filterTerm)
-
         } catch (error) {
           logger.error(error)
           Pop.error('[filtering]', error)
@@ -152,7 +134,10 @@ export default {
       async searchCards() {
         try {
 
-          await cardsService.getCardsBySearch(query.value)
+          filter.value['color'] = filter.value['color'].join('').toString();
+          filter.value['rarity'] = filter.value['rarity'].join('').toString();
+          console.log(filter.value);
+          await cardsService.getCardsBySearch(query.value, filter.value)
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
