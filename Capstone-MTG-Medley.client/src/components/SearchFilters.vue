@@ -30,8 +30,12 @@
         </section>
         <!-- Color -->
         <section>
-          <div href="#collapseColor" data-bs-toggle="collapse" class="bg-dark mt-3 fs-4 px-2 selectable rounded">
-            Color
+          <!-- NOTE change from collapsable to a drop down toggled by checkbox -->
+          <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
+            <span class="no-select" href="#collapseColor" data-bs-toggle="collapse">
+              Color
+            </span>
+            <input @change="toggleColor" type="checkbox" name="" id="">
           </div>
           <div class="collapse bg-light" id="collapseColor">
             <input type="checkbox" class="mx-2" @change="filterChange('color', 'u')">
@@ -146,6 +150,10 @@ export default {
       async toggleText() {
         AppState.searchByText = !AppState.searchByText
         // logger.log('and and sav', AppState.searchByText)
+      },
+      async toggleColor() {
+        AppState.filterByColor = !AppState.filterByColor
+        // logger.log('and and sav', AppState.filterByColor)
       },
 
     };
