@@ -11,7 +11,7 @@
  
     <div class="col-10 offset-1 magicCard text-start border p-2 mt-1 rounded " @mouseover="hover = true"
       @mouseleave="hover = false">
-      <span class="star position-absolute"><i class="mdi mdi-star"></i></span>
+      <!-- <span class="star position-absolute "><i class="mdi display-none  mdi-star"></i></span> -->
       {{ oracleCard.set_name }}
       <span class="magicCard" :title="oracleCard.set_name + ' ' + oracleCard.name" v-if="oracleCard.prices.usd"><a
           :href="oracleCard.purchase_uris.tcgplayer">${{ oracleCard.prices.usd }}</a></span>

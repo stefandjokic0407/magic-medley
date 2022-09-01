@@ -1,7 +1,7 @@
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { Card } from "../models/Card.js"
-import { mtg, search } from "./AxiosService"
+import { api, mtg, search } from "./AxiosService"
 
 class CardsService {
   async getCardsBySearch(searchTerm, filterTerm) {
@@ -30,22 +30,10 @@ class CardsService {
     console.log('next page', AppState.nextPage)
     AppState.previousPage = res.data.previous_page
   }
-  async getCardsByName() {
-    const res = await mtg.get()
-  }
-
-  async cardsAutocomplete() {
-    const res = await mtg.get()
-  }
 
   async getRandomCard() {
     const res = await mtg.get('cards/random')
-    console.log('Getting Random Card:', res.data)
     AppState.card = res.data
-  }
-
-  async cardsCollection() {
-    const res = await mtg.get()
   }
 
   async cardsById(oracleCardId) {
@@ -67,6 +55,12 @@ class CardsService {
     AppState.nextPage = res.data.next_page
     console.log('next page', AppState.nextPage)
     AppState.previousPage = res.data.previous_page
+  }
+
+  async createCard(newCard) {
+    const res = await api.post('/account/cards', newCard)
+    logger.log('Adding Card to Profile', res.data)
+    AppState.activeProfile = res.data
   }
 }
 
