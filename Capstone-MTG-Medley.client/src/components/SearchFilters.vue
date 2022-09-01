@@ -71,38 +71,6 @@
             <label class="form-check-label px-3">Rare</label><br>
             <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'm')">
             <label class="form-check-label px-3">Mythic Rare</label><br>
-            <!-- <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'special')">
-            <label class="form-check-label px-3">Special</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'bonus')">
-            <label class="form-check-label px-3">Bonus</label><br> -->
-          </div>
-        </section>
-        <!-- SECTION Min Price -->
-        <section>
-          <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
-            <span class="no-select" href="#collapseMinPrice" data-bs-toggle="collapse">
-              Min-Price
-            </span>
-            <input @change="toggleMinPrice" type="checkbox" name="" id="">
-          </div>
-          <div class="collapse bg-light" id="collapseMinPrice">
-            <input type="number" class="mx-2" v-model="filter.min">
-            <label class="form-check-label px-3">Min:</label><br>
-          </div>
-        </section>
-
-
-        <!-- SECTION Max Price -->
-        <section>
-          <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
-            <span class="no-select" href="#collapsePrice" data-bs-toggle="collapse">
-              Price
-            </span>
-            <input @change="toggleMaxPrice" type="checkbox" name="" id="">
-          </div>
-          <div class="collapse bg-light" id="collapseColor">
-            <input type="checkbox" class="mx-2" @change="filterChange('color', 'u')">
-            <label class="form-check-label px-3"> Less $1.00</label><br>
           </div>
         </section>
 
@@ -140,8 +108,6 @@ export default {
     let filter = ref({
       color: [],
       rarity: [],
-      min: null,
-      max: null
     })
 
 
@@ -193,10 +159,6 @@ export default {
       async toggleRarity() {
         AppState.filterByRarity = !AppState.filterByRarity
         // logger.log('and and sav', AppState.filterByRarity)
-      },
-      async toggleMinPrice() {
-        AppState.filterByMinPrice = !AppState.filterByMinPrice
-        logger.log('and and sav', AppState.filterByMinPrice)
       },
 
     };

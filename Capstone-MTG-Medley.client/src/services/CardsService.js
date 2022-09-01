@@ -9,7 +9,7 @@ class CardsService {
   async getCardsBySearch(searchTerm, filterTerm) {
 
     // if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
-    // console.log('this is the moddified search term', searchTerm)
+    // console.log('this is the modified search term', searchTerm)
 
     if (AppState.searchByType) { searchTerm = '+type%3A' + searchTerm }
     // logger.log('and and sav',searchTerm)
@@ -20,11 +20,7 @@ class CardsService {
     
     if(AppState.filterByRarity) { searchTerm += '+rarity%3A' + filterTerm.rarity}
 
-    if(filterTerm.min > 0) {searchTerm += '+usd<%3D' + filterTerm.min}
-
-    if(filterTerm.max > 0) {searchTerm += '+usd>%3D' + filterTerm.max}
-
-
+    
     console.log('and and sav', searchTerm, filterTerm);
 
     const res = await search.get(searchTerm)

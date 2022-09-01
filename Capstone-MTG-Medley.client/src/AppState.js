@@ -24,8 +24,6 @@ export const AppState = reactive({
   searchByText: false,
   filterByColor: false,
   filterByRarity: false,
-  filterByMinPrice: false,
-  filterByMaxPrice: false,
   // filterByManaCost: false,
   // filterByConvertedMana: false,
   // filterByPower: false,
