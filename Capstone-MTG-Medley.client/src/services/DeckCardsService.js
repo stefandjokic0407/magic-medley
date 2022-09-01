@@ -1,3 +1,4 @@
+import { AppState } from "../AppState.js"
 import { api } from "./AxiosService.js"
 
 
@@ -7,7 +8,7 @@ class DeckCardsService{
     deckCard.cardId = cardId
     deckCard.deckId = deckId
     const res = await api.post('api/deckCards', deckCard)
-    
+    AppState.deckCards.push(res.data)
   }
 
 
