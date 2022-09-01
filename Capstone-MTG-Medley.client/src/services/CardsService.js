@@ -20,7 +20,7 @@ class CardsService {
     
     if(AppState.filterByRarity) { searchTerm += '+rarity%3A' + filterTerm.rarity}
 
-
+    
     console.log('and and sav', searchTerm, filterTerm);
 
     const res = await search.get(searchTerm)
