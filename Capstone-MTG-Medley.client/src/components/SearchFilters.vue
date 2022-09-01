@@ -23,7 +23,7 @@
           </div>
           <div class="input-group">
             <input class="form-control" type="text" required v-model="query" />
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn btn-outline-dark" type="submit">
               <i class="mdi mdi-magnify"></i>
             </button>
           </div>

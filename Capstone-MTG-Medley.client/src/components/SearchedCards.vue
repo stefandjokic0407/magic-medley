@@ -1,9 +1,9 @@
 <template>
 
   <div  @click="getCardByOracle() && reset(card)"  type="button" data-bs-toggle="modal" :data-bs-target="'#cardModal' + card.id"
-    class="mt-4 shadow">
+    class="mt-4 shadow rotated">
     <div class="row">
-      <div v-if="card.image_uris.normal" class="col-12">
+      <div v-if="card.image_uris.normal" class="col-12 ">
         <img class="img-fluid shadow cardsBg" :src=card.image_uris.normal>
       </div>
       <div v-else class="col-12">
@@ -59,6 +59,20 @@ export default {
 .cardsBg {
   border-radius:8px;
   border-color: black;
+}
+
+.rotated{
+  background: transparent;
+  
+}
+
+.rotated:hover img{
+  transform: scale(1.1);
+  transition: ease .1s;
+}
+
+input {
+  border: black !important;
 }
 
 </style>
