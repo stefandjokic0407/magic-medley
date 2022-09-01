@@ -16,6 +16,8 @@ export const AppState = reactive({
   /**@type {import('./models/Card.js').Card} */
   activeCard: {},
   decks:[],
+  deckCards: [],
+  activeDeck: {},
   collection: [],
 
   nextPage: null,
