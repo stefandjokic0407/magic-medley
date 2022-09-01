@@ -7,6 +7,7 @@ export const AppState = reactive({
   account: {},
   /**@type {import('./models/Card.js').Card} */
   card: {},
+  /**@type {import('./models/Card.js').Card} */
   activeProfile: null,
   /**@type {import('./models/Card.js').Card} */
   searchedCards: [],
