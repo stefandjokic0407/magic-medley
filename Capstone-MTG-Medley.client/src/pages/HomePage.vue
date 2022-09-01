@@ -1,9 +1,9 @@
 <template>
   <div class="row justify-content-center hero-img">
-    <div class="col-2">
-        <button class="btn btn-outline img-text text-black fs-3" type="button" data-bs-toggle="offcanvas"
+    <div class="col-2 p-3">
+        <button class="btn btn-outline-dark img-text fs-5 w-100" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasLeft" aria-controls="offcanvasExample">
-            Offcanvas Left
+            Resources
         </button>
     </div>
 
@@ -11,10 +11,10 @@
       <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="">
     </div>
 
-    <div class="col-2">
-        <button class="btn btn-outline img-text text-black fs-3" type="button" data-bs-toggle="offcanvas"
+    <div class="col-2 p-3 text-end">
+        <button class="btn btn-outline-dark img-text fs-5 w-100" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
-            Offcanvas Right
+            Basics
         </button>
     </div>
 
@@ -106,11 +106,11 @@ img{
   width: 100vw;
 }
 
-/* .img-text {
-  text-shadow: 1px 1px 2px black;
+.img-text {
+  text-shadow: 0px 0px 1px black;
   font-weight: 700;
-  color: rgb(215, 215, 215);
-} */
+  color: #162052;
+}
 
 .offcanvas-style {
   background: rgb(0 0 0 / 38%);
