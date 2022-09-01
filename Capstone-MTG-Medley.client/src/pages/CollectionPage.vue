@@ -9,7 +9,7 @@
   <div class="row">
     <h3 class="col-12">My Collection</h3>
     <div v-for="c in cards" :key="c.id">
-      <div class="col-3 card selectable">
+      <div class="col-2 card selectable">
         <CollectionCard :card="c"/>
       </div>
     </div>
