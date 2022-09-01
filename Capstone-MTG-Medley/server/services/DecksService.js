@@ -1,38 +1,38 @@
 import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
-class DecksService{
+class DecksService {
 
-    async createDeck(deckData){
+  async createDeck(deckData) {
     const deck = await dbContext.Decks.create(deckData)
     await deck.populate('profile', 'name picture')
     return deck
-    }
-    async getById(id) {
+  }
+  async getById(id) {
     const deck = await dbContext.Decks.findById(id).populate('profile', 'name picture')
-    if(!deck){
+    if (!deck) {
       throw new BadRequest('Invalid Deck')
     }
     return deck
-    }
-    async getDeckCards(query={}) {
+  }
+  async getDeckCards(query = {}) {
     const deckCards = await dbContext.DeckCards.find(query).populate('card', 'name picture')
     return deckCards
-    }
-    async getAllDecks(query = {}) {
+  }
+  async getAllDecks(query = {}) {
     const decks = await dbContext.Decks.find(query).populate('profile', 'name picture')
     return decks
-    }
+  }
 
-    async getDecksByAccountId(accountId){
-    const decks = await dbContext.Decks.find({accountId})
+  async getDecksByAccountId(accountId) {
+    const decks = await dbContext.Decks.find({ accountId })
     return decks
-    }
+  }
 
-    async editDeck(deckId, id, deckData) {
+  async editDeck(deckId, id, deckData) {
     let deck = await this.getById(deckId)
     // @ts-ignore
-    if (deck.accountId.toString != id){
+    if (deck.accountId.toString != id) {
       throw new Forbidden('You cannot edit this')
     }
 
@@ -44,15 +44,15 @@ class DecksService{
     return deck
   }
 
-  async deleteDeck(deckId){
-  const deck = await dbContext.Decks.findById(deckId)
-  if(!deck){
-    throw new BadRequest('Deck does not exist')
+  async deleteDeck(deckId) {
+    const deck = await dbContext.Decks.findById(deckId)
+    if (!deck) {
+      throw new BadRequest('Deck does not exist')
+    }
+    await dbContext.DeckCards.deleteMany({ deckId })
+    await deck.remove()
+    return `${deck.name} has been deleted`
   }
-  await dbContext.DeckCards.deleteMany({deckId})
-  await deck.remove()
-  return `${deck.name} has been deleted`
-}
 }
 
 
