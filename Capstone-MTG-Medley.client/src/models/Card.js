@@ -6,7 +6,7 @@ export class Card {
     this.colors = data.colors || []
     this.count = data.count || null
     this.flavor_text = data.flavor_text || ""
-    this.id = data.id || ""
+    this.cardId = data.id || ""
     this.accountId = data.accountId 
     this.image_uris = data.image_uris || {}
     // this.image_normal = data.image_uris.normal || ""
@@ -14,7 +14,7 @@ export class Card {
     this.legalities = data.legalities || {}
     this.mana_cost = data.mana_cost || ""
     this.name = data.name || ""
-    this.oracleId = data.oracle_id || ""
+    this.oracle_Id = data.oracle_id || ""
     this.oracle_text = data.oracle_text || ""
     this.power = data.power || null
     this.prices = data.prices|| {}
