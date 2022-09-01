@@ -54,23 +54,26 @@
         </section>
         <!-- Rarity -->
         <section>
-          <div href="#collapseRarity" data-bs-toggle="collapse" class="bg-dark mt-3 fs-4 px-2 selectable rounded">
-            Rarity
+          <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
+            <span class="no-select" href="#collapseRarity" data-bs-toggle="collapse">
+              Rarity
+            </span>
+            <input @change="toggleRarity" type="checkbox" name="" id="">
           </div>
           <div class="collapse bg-light" id="collapseRarity">
             <!-- function filterChange() will pass in the type and value of filter -->
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'common')">
+            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'c')">
             <label class="form-check-label px-3">Common</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'uncommon')">
+            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'u')">
             <label class="form-check-label px-3">Uncommon</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'rare')">
+            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'r')">
             <label class="form-check-label px-3">Rare</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'mythic')">
+            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'm')">
             <label class="form-check-label px-3">Mythic Rare</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'special')">
+            <!-- <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'special')">
             <label class="form-check-label px-3">Special</label><br>
             <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'bonus')">
-            <label class="form-check-label px-3">Bonus</label><br>
+            <label class="form-check-label px-3">Bonus</label><br> -->
           </div>
         </section>
         <!-- Price -->

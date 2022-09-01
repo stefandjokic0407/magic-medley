@@ -3,7 +3,6 @@ const Schema = mongoose.Schema
 
 export const DeckSchema = new Schema(
   {
-    id: { type: String, required: true },
     picture: { type: String, default: 'https://preview.redd.it/dm8s72bg1zf51.jpg?width=1632&format=pjpg&auto=webp&s=77acaefbbfef40c240a13b7ef6006974b19cf6f9'},
     name: {type: String, required: true, minlength: 1, maxlength: 50},
     cardIds: { type: Array},
