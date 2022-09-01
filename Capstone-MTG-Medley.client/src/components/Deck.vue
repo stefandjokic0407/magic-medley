@@ -3,7 +3,7 @@
   <div>
     <button class="btn add-to-deck" @click="setActiveDeck(deck.deckId)">
     <div>
-      <p>{{d.name}}</p>
+      <p>{{deck.name}}</p>
       <img class="img-fluid position-relative shadow cardsBg" :src=deck.picture>
     </div>
     </button>
