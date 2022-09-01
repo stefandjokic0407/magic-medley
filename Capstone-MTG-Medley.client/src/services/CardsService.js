@@ -7,7 +7,7 @@ class CardsService {
   async getCardsBySearch(searchTerm, filterTerm) {
 
     // if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
-    // console.log('this is the moddified search term', searchTerm)
+    // console.log('this is the modified search term', searchTerm)
 
     // if (AppState.searchByType) { searchTerm += '+type%3A' + searchTerm }
 
