@@ -5,9 +5,15 @@ import { api } from "./AxiosService.js"
 class DecksService{
     async createDeck(newDeck){
     const res = await api.post('/api/decks', newDeck)
-    logger.log('Creating Deck', res.data)
     AppState.decks = res.data
     return res.data
+    }
+
+    async getAccountDecks(){
+        const res = await api.get('/api/decks')
+        logger.log('getting all decks', res.data)
+        AppState.decks.push(res.data)
+        return res.data
     }
 
 }
