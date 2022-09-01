@@ -1,29 +1,24 @@
 <template>
-  <div class="hero-img">
-    <!-- TODO fix padding issues -->
-    <div class="row">
-      <div class="col-2 text-center">
+  <div class="row justify-content-center hero-img">
+    <div class="col-2">
         <button class="btn btn-outline img-text text-black fs-3" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasLeft" aria-controls="offcanvasExample">
-          Offcanvas Left
+            data-bs-target="#offcanvasLeft" aria-controls="offcanvasExample">
+            Offcanvas Left
         </button>
-      </div>
-      <h1 class="col-8 text-center py-3 img-text">
-        <img src="../assets/img/Cool Text - Magic Medley 418347543411867.png" alt="">
-      </h1>
-      <div class="col-2 text-center">
+    </div>
+
+    <div class="col-8 text-center my-5">
+      <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="">
+    </div>
+
+    <div class="col-2">
         <button class="btn btn-outline img-text text-black fs-3" type="button" data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
-          Offcanvas Right
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
+            Offcanvas Right
         </button>
-      </div>
     </div>
-    <div class="row justify-content-center">
 
-
-
-    </div>
-    <div class="sticky-bottom">
+    <div>
       <FooterNav />
     </div>
   </div>
@@ -31,13 +26,12 @@
 
   <div class="offcanvas offcanvas-start offcanvas-style" tabindex="-1" id="offcanvasLeft"
     aria-labelledby="offcanvasExampleLabel">
-
   </div>
 
   <div class="offcanvas offcanvas-end offcanvas-style" tabindex="-1" id="offcanvasRight"
     aria-labelledby="offcanvasExampleLabel">
-
   </div>
+
 </template>
 
 <script>
@@ -99,20 +93,24 @@ a:active {
   color: inherit;
 }
 
+img{
+  height: 40em;
+  width: 50em;
+}
+
 .hero-img {
-  background-image: url('https://i.etsystatic.com/17561722/r/il/c0c7fb/2782343489/il_fullxfull.2782343489_l201.jpg');
+  background-image: url(../assets/img/bg-mtg.jpg);
   background-position: top;
   background-size: cover;
   height: 100vh;
-  /* filter: grayscale(25%); */
-  /* opacity: .5; */
+  width: 100vw;
 }
 
-.img-text {
+/* .img-text {
   text-shadow: 1px 1px 2px black;
   font-weight: 700;
   color: rgb(215, 215, 215);
-}
+} */
 
 .offcanvas-style {
   background: rgb(0 0 0 / 38%);
@@ -123,6 +121,6 @@ a:active {
   text-shadow: 5px 5px 5px black;
   padding: 0.5em;
   width: 30vw;
-  height: 80vh;
+  height: 76vh;
 }
 </style>

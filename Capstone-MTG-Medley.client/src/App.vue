@@ -2,9 +2,11 @@
   <header>
     <!-- <Navbar /> -->
   </header>
+
   <main class="container-fluid">
     <router-view />
   </main>
+  
   <footer>
   </footer>
 </template>
