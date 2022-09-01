@@ -45,8 +45,8 @@ export default {
       activeCard: computed(() => AppState.activeCard),
       async getCardById() {
         try {
-          console.log('Props ID:', props.oracleCard.id)
-          await cardsService.cardsById(props.oracleCard.id)
+          console.log('Props ID:', props.oracleCard)
+          await cardsService.cardsById(props.oracleCard.cardId)
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')

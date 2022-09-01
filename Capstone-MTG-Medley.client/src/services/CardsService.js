@@ -8,6 +8,9 @@ class CardsService {
   // NOTE this is connected to the search bar and works
   async getCardsBySearch(searchTerm, filterTerm) {
 
+    // if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
+    // console.log('this is the moddified search term', searchTerm)
+
     if (AppState.searchByType) { searchTerm = '+type%3A' + searchTerm }
     // logger.log('and and sav',searchTerm)
     

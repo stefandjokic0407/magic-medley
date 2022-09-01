@@ -61,7 +61,7 @@ export default {
     async function getCardByOracle() {
       try {
         // console.log(" Id", props.card.oracleId);
-        await cardsService.getCardByOracle(props.card.oracleId);
+        await cardsService.getCardByOracle(props.card.oracle_id);
       }
       catch (error) {
         logger.error(error);
@@ -78,6 +78,7 @@ export default {
         try {
           console.log('Active Card:', activeCard)
           await cardsService.createCard(activeCard)
+          Pop.success('Added to Collection')
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
