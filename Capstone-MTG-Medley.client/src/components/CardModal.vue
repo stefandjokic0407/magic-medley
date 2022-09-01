@@ -32,7 +32,7 @@
         
         <!-- NOTE MAKE SURE TO ADD AN ADD TO ACCOUNT BUTTON -->
         <div class="col-5 mx-auto py-0 my-0">
-          <button @click.prevent="createCard()" class="btn">
+          <button @click.prevent="createCard(activeCard)" class="btn">
             <p class="my-0">Add To Collection</p>
           </button>
         </div>
@@ -74,10 +74,10 @@ export default {
       activeCard: computed(() => AppState.activeCard),
 
 
-      async createCard() {
+      async createCard(activeCard) {
         try {
-          console.log('Active Card:', AppState.activeCard)
-          await cardsService.createCard(AppState.activeCard)
+          console.log('Active Card:', activeCard)
+          await cardsService.createCard(activeCard)
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
