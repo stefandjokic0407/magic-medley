@@ -77,34 +77,6 @@
             <label class="form-check-label px-3">Bonus</label><br> -->
           </div>
         </section>
-        <!-- SECTION Min Price -->
-        <section>
-          <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
-            <span class="no-select" href="#collapseMinPrice" data-bs-toggle="collapse">
-              Min-Price
-            </span>
-            <input @change="toggleMinPrice" type="checkbox" name="" id="">
-          </div>
-          <div class="collapse bg-light" id="collapseMinPrice">
-            <input type="number" class="mx-2" v-model="filter.min">
-            <label class="form-check-label px-3">Min:</label><br>
-          </div>
-        </section>
-
-
-        <!-- SECTION Max Price -->
-        <section>
-          <div class="bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
-            <span class="no-select" href="#collapsePrice" data-bs-toggle="collapse">
-              Price
-            </span>
-            <input @change="toggleMaxPrice" type="checkbox" name="" id="">
-          </div>
-          <div class="collapse bg-light" id="collapseColor">
-            <input type="checkbox" class="mx-2" @change="filterChange('color', 'u')">
-            <label class="form-check-label px-3"> Less $1.00</label><br>
-          </div>
-        </section>
 
         <!-- SECTION Mana Cost -->
         <section></section>
