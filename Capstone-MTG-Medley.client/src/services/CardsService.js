@@ -16,13 +16,12 @@ class CardsService {
     // if (AppState.searchByText) {}
 
     const colorFilter = '+color%3D' + filterTerm
-    const rarityFilter = 'rarity%3A' + filterTerm
     // console.log(colorFilter, searchTerm, filterTerm);
-    const res = await search.get(searchTerm + rarityFilter + colorFilter)
+    const res = await search.get(searchTerm + colorFilter)
     AppState.searchedCards = res.data.data.map(c => new Card(c))
     // AppState.cards = res.data.
   }
-  
+
   async searchBarGet(searchTerm) {
     const res = await search.get(searchTerm)
     AppState.searchedCards = res.data.data.map(c => new Card(c))
@@ -49,6 +48,8 @@ class CardsService {
     console.log('Getting card by oracle', AppState.oracleCard)
   }
 
+  // async changePage(url) {
+  //   const res = await search.get(AppState.nextPage)
   async changePage(url){
     const res = await search.get(url)
     AppState.searchedCards = res.data.data.map(c => new Card(c))
@@ -61,6 +62,7 @@ class CardsService {
     const res = await api.post('/account/cards', newCard)
     logger.log('Adding Card to Profile', res.data)
     AppState.activeProfile = res.data
+    return res.data
   }
 }
 

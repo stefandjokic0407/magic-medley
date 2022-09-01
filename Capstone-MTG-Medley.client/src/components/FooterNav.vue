@@ -16,7 +16,7 @@
 
         <div class="col-3">
             <div class="my-5 p-2">
-                <SearchForm />
+                <!-- <SearchForm /> -->
             </div>
         </div>
 
