@@ -29,6 +29,7 @@ import Pop from '../utils/Pop.js';
 import SearchedCards from '../components/SearchedCards.vue';
 import CollectionCard from '../components/CollectionCard.vue';
 import DeckForm from "../components/DeckForm.vue";
+import { decksService } from "../services/DecksService.js";
 
 export default {
   setup() {
@@ -48,7 +49,18 @@ export default {
     });
     return {
       cards: computed(() => AppState.collection),
-      decks: computed(() => AppState.decks)
+      decks: computed(() => AppState.decks),
+
+      async createDeckCard(cardId){
+        try {
+          const deckId = AppState.activeDeck.id
+          await decksService.createDeckCard(cardId, deckId)
+        } catch (error) {
+          logger.log("[creating deck card]", error);
+          Pop.error(error);
+        }
+      }
+
     };
   },
   components: { SearchedCards, CollectionCard, DeckForm }
