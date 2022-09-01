@@ -11,12 +11,12 @@ export class AccountController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
       .put('', this.edit)
-      .get('/:userId/cards', this.getAllAccountCards)
-      .get('/:userId/cards/:cardId', this.getCardById)
-      .get('/:userId/decks/:id', this.getDecksByAccountId)
-      .post('/:userId/cards', this.createCard)
-      .put('/:userId/cards/:cardId', this.updateCard)
-      .delete('/:userId/cards/:cardId', this.deleteCard)
+      .get('/cards', this.getAllAccountCards)
+      .get('/cards/:cardId', this.getCardById)
+      .get('/decks/:id', this.getDecksByAccountId)
+      .post('/cards', this.createCard)
+      .put('/cards/:cardId', this.updateCard)
+      .delete('/cards/:cardId', this.deleteCard)
   }
 
   async getUserAccount(req, res, next) {
