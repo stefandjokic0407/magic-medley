@@ -7,7 +7,7 @@
     <h3 class="col-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
         class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
     </h3>
-    <div v-if="decks" class="row">
+    <div v-if="decks.length">
       <div v-for="d in decks" :key="d.id" class="col-2">
         <Deck :deck="d" />
       </div>
