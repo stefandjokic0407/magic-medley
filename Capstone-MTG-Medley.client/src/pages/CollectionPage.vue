@@ -7,13 +7,13 @@
     <h3 class="col-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
         class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button> </h3>
   </div>
-  <div class="row">
-    <h3 class="col-12">My Collection</h3>
-    <div v-for="c in cards" :key="c.id">
-      <div class="col-2 card selectable">
+  <div>
+    <h3>My Collection</h3>
+    <div class="row">
+    <div v-for="c in cards" :key="c.id" class="col-2">
         <CollectionCard :card="c"/>
-      </div>
     </div>
+  </div>
   </div>
   <DeckForm />
 </template>

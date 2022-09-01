@@ -68,7 +68,7 @@ export default {
 .cardPosition {
   z-index: 1;
   right: 100px;
-  top: 50px;
+  top: 33px;
 }
 
 a {
