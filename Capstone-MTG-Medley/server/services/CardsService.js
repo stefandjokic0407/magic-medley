@@ -3,8 +3,8 @@ import { BadRequest } from "../utils/Errors.js"
 
 
 class CardsService{
-  async getAllAccountCards() {
-    const cards = await dbContext.Cards.find()
+  async getAllAccountCards(accountId) {
+    const cards = await dbContext.Cards.find({accountId})
     return cards
   }
   async getCardById(cardId) {
