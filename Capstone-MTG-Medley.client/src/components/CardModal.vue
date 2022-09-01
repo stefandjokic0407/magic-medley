@@ -78,6 +78,7 @@ export default {
         try {
           console.log('Active Card:', activeCard)
           await cardsService.createCard(activeCard)
+          Pop.success('Added to Collection')
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
