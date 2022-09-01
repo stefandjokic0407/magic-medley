@@ -3,10 +3,10 @@
     <div class="row g-0">
       <!-- SECTION MODALS ACTIVE CARD PHOTO -->
       <div v-if="activeCard" class="col-md-6 ">
-        <img :src='activeCard.image_uris?.normal' class="cardBg img-fluid cardBorder" alt="...">
+        <img :src='activeCard.image_uris?.normal' class="cardBg img-fluid cardBorder">
       </div>
-      <div v-else class="col-md-6 cardBorder ">
-        <img :src='card.image_uris.normal' class="cardBg img-fluid" alt="...">
+      <div v-if="!activeCard.image_uris?.normal" class="col-md-6 cardBorder">
+        <img src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712" class="cardBg img-fluid" alt="...">
       </div>
       <!-- SECTION THE ORACLE CARD INFORMATION DIV -->
       <div class="col-md-6  ">
@@ -32,7 +32,7 @@
         
         <!-- NOTE MAKE SURE TO ADD AN ADD TO ACCOUNT BUTTON -->
         <div class="col-5 mx-auto py-0 my-0">
-          <button @click.prevent="createCard()" class="btn">
+          <button @click.prevent="createCard(activeCard)" class="btn">
             <p class="my-0">Add To Collection</p>
           </button>
         </div>
@@ -61,7 +61,7 @@ export default {
     async function getCardByOracle() {
       try {
         // console.log(" Id", props.card.oracleId);
-        await cardsService.getCardByOracle(props.card.oracleId);
+        await cardsService.getCardByOracle(props.card.oracle_id);
       }
       catch (error) {
         logger.error(error);
@@ -74,10 +74,11 @@ export default {
       activeCard: computed(() => AppState.activeCard),
 
 
-      async createCard() {
+      async createCard(activeCard) {
         try {
-          console.log(AppState.activeCard)
-          await cardsService.createCard(AppState.activeCard)
+          console.log('Active Card:', activeCard)
+          await cardsService.createCard(activeCard)
+          Pop.success('Added to Collection')
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')

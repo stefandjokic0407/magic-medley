@@ -7,6 +7,7 @@ export const AppState = reactive({
   account: {},
   /**@type {import('./models/Card.js').Card} */
   card: {},
+  /**@type {import('./models/Card.js').Card} */
   activeProfile: null,
   /**@type {import('./models/Card.js').Card} */
   searchedCards: [],
@@ -14,7 +15,22 @@ export const AppState = reactive({
   oracleCard: {},
   /**@type {import('./models/Card.js').Card} */
   activeCard: {},
+  decks:[],
+  collection: [],
 
   nextPage: null,
   previousPage: null,
+  searchByType: false,
+  searchByText: false,
+  filterByColor: false,
+  filterByRarity: false,
+  // filterByPrice: false,
+  // filterByManaCost: false,
+  // filterByConvertedMana: false,
+  // filterByPower: false,
+  // filterByToughness: false,
+  // filterByLoyalty: false,
+  // filterByLegal: false,
+
+
 })

@@ -4,10 +4,10 @@
   </header>
   <div class="row">
     <!-- add deck component -->
-    <div class="col-12">My Decks</div>
+    <h3 class="col-12">My Decks <button @click="createDeck" class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button> </h3>
   </div>
   <div class="row">
-    <div class="col-12">My Collection</div>
+    <h3 class="col-12">My Collection</h3>
     <div v-for="c in cards" :key="c.id" :card="c">
       <div class="col-3 card selectable"></div>
     </div>
@@ -26,21 +26,32 @@ import Pop from '../utils/Pop.js';
 export default {
   setup() {
 
-    async function getAllCards(){
+    async function getAccountCards(){
       try {
-        await cardsService.getAllCards()
+        const accountId = AppState.account.id
+        await cardsService.getAccountCards(accountId)
       } catch (error) {
         logger.log('[getting all cards]', error)
         Pop.error(error)
       }
     }
 
+    async function createDeck(newDeck){
+      try {
+        await decksService.createDeck(newDeck)
+      } catch (error) {
+        logger.log('[Creating Deck]', error)  
+        Pop.error(error)
+      }
+    }
+
     onMounted(() => {
-      getAllCards();
+      getAccountCards();
     })
 
     return {
-      cards: computed(() => AppState.card)
+      cards: computed(() => AppState.card),
+      decks: computed(()=> AppState.decks)
     };
 
   }

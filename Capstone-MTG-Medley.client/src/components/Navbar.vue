@@ -43,9 +43,9 @@
           </router-link>
         </li>
       </ul>
-      <SearchForm />
+      <!-- <SearchForm /> -->
       <!-- LOGIN COMPONENT HERE -->
-      <Login />
+      <!-- <Login /> -->
     </div>
   </nav>
 </template>

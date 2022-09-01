@@ -67,7 +67,6 @@ export default {
       }
     }
     onMounted(() => {
-      getRandomCard();
       getSymbols();
     });
     return {

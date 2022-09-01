@@ -26,50 +26,49 @@ export class DecksController extends BaseController {
         }
     }
 
-    async getDeckCards(req,res,next){
-    try {
-    const cards = await decksService.getDeckCards({deckId: req.params.id})
-    return res.send(cards)   
-    } catch (error) {
-    next(error)    
-    }
-    }
-
-    async getDeckById(req,res,next){
-    try {
-    const deck = await decksService.getById(req.params.id)
-    return res.send(deck)  
-    } catch (error) {
-    next(error)   
-    }
+    async getDeckCards(req, res, next) {
+        try {
+            const cards = await decksService.getDeckCards({ deckId: req.params.id })
+            return res.send(cards)
+        } catch (error) {
+            next(error)
+        }
     }
 
-    async createDeck(req,res,next){
-    try {
-    req.body.accountId = req.userInfo.id
-    const deck = await decksService.createDeck(req.body)    
-    return deck
-    } catch (error) {
-    next(error)   
-    }
-    }
-
-    async editDeck(req,res,next){
-    try {
-    let deck = await decksService.editDeck(req.params.deckId, req.userInfo.id, req.body)
-    return res.send(deck)
-    } catch (error) {
-    next(error)   
-    }
+    async getDeckById(req, res, next) {
+        try {
+            const deck = await decksService.getById(req.params.id)
+            return res.send(deck)
+        } catch (error) {
+            next(error)
+        }
     }
 
-    async deleteDeck(req,res,next){
-    try {
-       
-    } catch (error) {
-    next(error)   
-    }
+    async createDeck(req, res, next) {
+        try {
+            req.body.accountId = req.userInfo.id
+            const deck = await decksService.createDeck(req.body)
+            return res.send(deck)
+        } catch (error) {
+            next(error)
+        }
     }
 
-    
+    async editDeck(req, res, next) {
+        try {
+            let deck = await decksService.editDeck(req.params.deckId, req.userInfo.id, req.body)
+            return res.send(deck)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async deleteDeck(req, res, next) {
+        try {
+            const response = await decksService.deleteDeck(req.params.deckId)
+        } catch (error) {
+            next(error)
+        }
+    }
+
 }

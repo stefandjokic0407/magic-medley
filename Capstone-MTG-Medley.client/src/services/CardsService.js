@@ -4,35 +4,49 @@ import { Card } from "../models/Card.js"
 import { api, mtg, search } from "./AxiosService"
 
 class CardsService {
+
+  // NOTE this is connected to the search bar and works
   async getCardsBySearch(searchTerm, filterTerm) {
 
     // if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
     // console.log('this is the moddified search term', searchTerm)
 
-    // if (AppState.searchByType) { searchTerm += '+type%3A' + searchTerm }
+    if (AppState.searchByType) { searchTerm = '+type%3A' + searchTerm }
+    // logger.log('and and sav',searchTerm)
+
+    if (AppState.searchByText) { searchTerm = '+oracle%3A' + searchTerm }
+
+    if (AppState.filterByColor) { searchTerm += '+color%3D' + filterTerm }
+
+    if (AppState.filterByRarity) { searchTerm += '+rarity%3A' + filterTerm }
 
     // if (AppState.searchByRarity) { searchTerm += '+rarity%3A' + AppState.rarity }
 
-    // if (AppState.searchByText) {}
+    console.log('and and sav', searchTerm, filterTerm);
 
-    const colorFilter = '+color%3D' + filterTerm
-    // console.log(colorFilter, searchTerm, filterTerm);
-    const res = await search.get(searchTerm + colorFilter)
-    AppState.searchedCards = res.data.data.map(c => new Card(c))
-    // AppState.cards = res.data.
-  }
-
-  async searchBarGet(searchTerm) {
     const res = await search.get(searchTerm)
     AppState.searchedCards = res.data.data.map(c => new Card(c))
-    AppState.nextPage = res.data.next_page
-    console.log('next page', AppState.nextPage)
-    AppState.previousPage = res.data.previous_page
   }
 
-  async getRandomCard() {
-    const res = await mtg.get('cards/random')
-    AppState.card = res.data
+
+  // TODO do we really need this?
+  // async searchBarGet(searchTerm) {
+  //   const res = await search.get(searchTerm)
+  //   AppState.searchedCards = res.data.data.map(c => new Card(c))
+  //   AppState.nextPage = res.data.next_page
+  //   console.log('next page', AppState.nextPage)
+  //   AppState.previousPage = res.data.previous_page
+  // }
+
+  // async getRandomCard() {
+  //   const res = await mtg.get('cards/random')
+  //   AppState.card = res.data
+  // }
+
+  async getAccountCards(accountId) {
+    const res = await api.get(`account/${accountId}/cards`)
+    console.log('Getting Account Cards', res.data)
+    AppState.collection = res.data
   }
 
   async cardsById(oracleCardId) {
@@ -48,10 +62,15 @@ class CardsService {
     console.log('Getting card by oracle', AppState.oracleCard)
   }
 
+<<<<<<< HEAD
 
   async changePage(url) {
     const res = await search.get(AppState.nextPage)
 
+=======
+  async changePage(url){
+    const res = await search.get(url)
+>>>>>>> 9d12199111424b963385b3f1530725e88f768ca4
     AppState.searchedCards = res.data.data.map(c => new Card(c))
     AppState.nextPage = res.data.next_page
     console.log('next page', AppState.nextPage)
@@ -62,6 +81,7 @@ class CardsService {
     const res = await api.post('/account/cards', newCard)
     logger.log('Adding Card to Profile', res.data)
     AppState.activeProfile = res.data
+    return res.data
   }
 }
 
