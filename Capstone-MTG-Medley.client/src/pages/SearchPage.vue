@@ -3,21 +3,7 @@
     <Navbar />
   </header>
   <section class="row">
-
-    <button class="btn col-md-2 offset-md-5 d-flex align-items-center justify-content-center" type="button"
-      data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      <i class="mdi mdi-chevron-double-down fs-3"></i> Search <i class="mdi mdi-chevron-double-down fs-3"></i>
-    </button>
-    <div class="col-md-12">
-      <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-          <SearchFilters />
-        </div>
-      </div>
-    </div>
-    <!-- <div class="col-md-3 search-bar py-5">
-      <SearchFilters />
-    </div> -->
+    <SearchFilters />
     <div class="col-md-12">
       <div class="row">
         <div v-for="c in searchedCards" :key="c.id" class="col-md-2">

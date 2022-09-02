@@ -3,7 +3,7 @@
 
   <form @submit.prevent="searchCards()" class="row justify-content-around">
     <!-- SECTION Search bar with checkbox name, type, text -->
-    <section class="col-md-3">
+    <section class="col-12 col-md-4">
       <div class="row">
         <div class="col-12 d-flex justify-content-around">
           <div class="form-check form-check-inline">
@@ -31,108 +31,163 @@
       </div>
     </section>
 
-    <!-- SECTION Rarity -->
-    <section class="col-md-2">
-      <div href="#collapseRarity" data-bs-toggle="collapse" class=" no-select selectable">
-        Rarity
-      </div>
-      <div class="collapse bg-light" id="collapseRarity">
-        <!-- function filterChange() will pass in the type and value of filter -->
-        <input type="checkbox" class="" @change="filterChange('rarity', 'c')">
-        <label class="form-check-label">Common</label><br>
-        <input type="checkbox" class="" @change="filterChange('rarity', 'u')">
-        <label class="form-check-label">Uncommon</label><br>
-        <input type="checkbox" class="" @change="filterChange('rarity', 'r')">
-        <label class="form-check-label">Rare</label><br>
-        <input type="checkbox" class="" @change="filterChange('rarity', 'm')">
-        <label class="form-check-label">Mythic Rare</label><br>
+
+
+
+
+
+
+    <!-- SECTION All Filter options collapse toggle-->
+    <section class="col-12 col-md-4 fs-3 d-flex align-self-center justify-content-center" type="button"
+      data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <i class="mdi mdi-chevron-down"></i>
+      Filter Search
+      <i class="mdi mdi-chevron-down"></i>
+    </section>
+
+    <!-- SECTION Buttons for Collapsable Filters -->
+    <section class="col-12 collapse" id="collapseExample">
+      <div class="row">
+
+        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1"
+          aria-expanded="false" aria-controls="multiCollapseExample1">Format</button>
+
+        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2"
+          aria-expanded="false" aria-controls="multiCollapseExample2">Rarity</button>
+
+        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3"
+          aria-expanded="false" aria-controls="multiCollapseExample3">Color</button>
+
+        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4"
+          aria-expanded="false" aria-controls="multiCollapseExample4">Mana
+          Cost</button>
+
+        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5"
+          aria-expanded="false" aria-controls="multiCollapseExample5">Set</button>
+
+        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample6"
+          aria-expanded="false" aria-controls="multiCollapseExample6">Converted</button>
+
+        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample7"
+          aria-expanded="false" aria-controls="multiCollapseExample7">Power</button>
+
+        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample8"
+          aria-expanded="false" aria-controls="multiCollapseExample8">Toughness</button>
       </div>
     </section>
 
+    <!-- SECTION Collapsable Filters -->
+    <section class="row justify-content-around">
 
-    <!-- SECTION Color -->
-    <section class="col-md-1">
-      <div href="#collapseColor" data-bs-toggle="collapse" class="no-select selectable">
-        Color
-      </div>
-      <div class="collapse bg-light" id="collapseColor">
-        <input type="checkbox" class="" @change="filterChange('color', 'u')">
-        <label class="form-check-label">Blue</label><br>
-        <input type="checkbox" class="" @change="filterChange('color', 'g')">
-        <label class="form-check-label">Green</label><br>
-        <input type="checkbox" class="" @change="filterChange('color', 'w')">
-        <label class="form-check-label">White</label><br>
-        <input type="checkbox" class="" @change="filterChange('color', 'r')">
-        <label class="form-check-label ">Red</label><br>
-        <input type="checkbox" class="" @change="filterChange('color', 'b')">
-        <label class="form-check-label">Black</label><br>
-        <input type="checkbox" class="" @change="filterChange('color', 'c')">
-        <label class="form-check-label">Colorless</label><br>
-      </div>
+      <!-- SECTION Format -->
+      <section class="col-3">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="card card-body">
+            <h5 class="card-title">Format</h5>
+            Some placeholder content for the first collapse component of this multi-collapse example. This panel is
+            hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION Rarity -->
+      <section class="col-3">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="card card-body">
+            <h5 class="card-title">Rarity</h5>
+            <div class="">
+              <!-- function filterChange() will pass in the type and value of filter -->
+              <input type="checkbox" class="" @change="filterChange('rarity', 'c')">
+              <label class="form-check-label ps-2">Common</label><br>
+              <input type="checkbox" class="" @change="filterChange('rarity', 'u')">
+              <label class="form-check-label ps-2">Uncommon</label><br>
+              <input type="checkbox" class="" @change="filterChange('rarity', 'r')">
+              <label class="form-check-label ps-2">Rare</label><br>
+              <input type="checkbox" class="" @change="filterChange('rarity', 'm')">
+              <label class="form-check-label ps-2">Mythic Rare</label><br>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION Color -->
+      <section class="col-3">
+        <div class="collapse multi-collapse" id="multiCollapseExample3">
+          <div class="card card-body">
+            <h5 class="card-title">Color</h5>
+            <div class="">
+              <input type="checkbox" class="" @change="filterChange('color', 'u')">
+              <label class="form-check-label ps-2">Blue</label><br>
+              <input type="checkbox" class="" @change="filterChange('color', 'g')">
+              <label class="form-check-label ps-2">Green</label><br>
+              <input type="checkbox" class="" @change="filterChange('color', 'w')">
+              <label class="form-check-label ps-2">White</label><br>
+              <input type="checkbox" class="" @change="filterChange('color', 'r')">
+              <label class="form-check-label ps-2 ">Red</label><br>
+              <input type="checkbox" class="" @change="filterChange('color', 'b')">
+              <label class="form-check-label ps-2">Black</label><br>
+              <input type="checkbox" class="" @change="filterChange('color', 'c')">
+              <label class="form-check-label ps-2">Colorless</label><br>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION Mana Cost -->
+      <section class="col-3">
+        <div class="collapse multi-collapse" id="multiCollapseExample4">
+          <div class="card card-body">
+            <h5 class="card-title">Mana Cost</h5>
+            Some placeholder content for the second collapse component of this multi-collapse example. This panel is
+            hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION Set -->
+      <section class="col-3">
+        <div class="collapse multi-collapse" id="multiCollapseExample5">
+          <div class="card card-body">
+            <h5 class="card-title">Set</h5>
+            Some placeholder content for the second collapse component of this multi-collapse example. This panel is
+            hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION Converted Mana Cost -->
+      <section class="col-3">
+        <div class="collapse multi-collapse" id="multiCollapseExample6">
+          <div class="card card-body">
+            <h5 class="card-title">Converted</h5>
+            Some placeholder content for the second collapse component of this multi-collapse example. This panel is
+            hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION Power -->
+      <section class="col-3">
+        <div class="collapse multi-collapse" id="multiCollapseExample7">
+          <div class="card card-body">
+            <h5 class="card-title">Power</h5>
+            Some placeholder content for the second collapse component of this multi-collapse example. This panel is
+            hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION Toughness -->
+      <section class="col-3">
+        <div class="collapse multi-collapse" id="multiCollapseExample8">
+          <div class="card card-body">
+            <h5 class="card-title">Toughness</h5>
+            Some placeholder content for the second collapse component of this multi-collapse example. This panel is
+            hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </section>
     </section>
-
-
-    <!-- SECTION Mana Cost -->
-    <section class="col-md-1">
-      <div href="#collapseManaCost" data-bs-toggle="collapse" class=" no-select selectable">
-        Mana Cost
-      </div>
-      <div class="collapse bg-light" id="collapseManaCost">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </div>
-    </section>
-
-    <!-- SECTION cmc -->
-    <section class="col-md-1">
-      <div href="#collapseConvertedMana" data-bs-toggle="collapse" class=" no-select selectable"
-        title="Converted Mana Cost">
-        Converted
-      </div>
-      <div class="collapse bg-light" id="collapseConvertedMana">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </div>
-    </section>
-
-    <!-- SECTION Power -->
-    <section class="col-md-1">
-      <div href="#collapsePower" data-bs-toggle="collapse" class=" no-select selectable">
-        Power
-      </div>
-      <div class="collapse bg-light" id="collapsePower">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </div>
-    </section>
-
-    <!-- SECTION Toughness  -->
-    <section class="col-md-1">
-      <div href="#collapseToughness" data-bs-toggle="collapse" class=" no-select selectable">
-        Toughness
-      </div>
-      <div class="collapse bg-light" id="collapseToughness">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </div>
-    </section>
-
-    <!-- SECTION Loyalty  -->
-    <section class="col-md-1">
-      <div href="#collapseLoyalty" data-bs-toggle="collapse" class=" no-select selectable">
-        Loyalty
-      </div>
-      <div class="collapse bg-light" id="collapseLoyalty">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </div>
-    </section>
-
   </form>
 </template>
 
