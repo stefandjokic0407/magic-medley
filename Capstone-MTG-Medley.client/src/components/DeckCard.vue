@@ -3,7 +3,7 @@
   <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
     :data-bs-target="'#deckCardModal' + card.id" class="mt-4 shadow rotated col-12">
     <div v-if="card">
-      <img class="img-fluid shadow cardsBg" :src=card.card.image_uris.normal>
+      <img class="img-fluid shadow cardsBg" :src=card.card.image_uris?.normal>
     </div>
     <div v-else>
       <img class="img-fluid shadow cardsBg"
@@ -31,7 +31,6 @@ export default {
   props: { card: { type: Object, required: true } },
   setup(props) {
 
-    onMounted(() => console.log('Deck Card:', props.card.card.image_uris?.small))
 
     return {
       activeCard: computed(() => AppState.activeCard),

@@ -16,7 +16,7 @@ class DecksService {
     return deck
   }
   async getDeckCards(query = {}) {
-    const deckCards = await dbContext.DeckCards.find(query).populate('card', 'name picture')
+    const deckCards = await dbContext.DeckCards.find(query).populate('card', 'name image_uris')
     return deckCards
   }
   async getAllDecks(query = {}) {
@@ -32,7 +32,7 @@ class DecksService {
   async editDeck(deckId, id, deckData) {
     let deck = await this.getById(deckId)
     // @ts-ignore
-    if (deck.accountId.toString != id) {
+    if (deck.accountId.toString() != id) {
       throw new Forbidden('You cannot edit this')
     }
 
@@ -45,7 +45,7 @@ class DecksService {
   }
 
   async deleteDeck(deckId) {
-    const deck = await dbContext.Decks.findOne({_id: deckId})
+    const deck = await dbContext.Decks.findById(deckId)
     if (!deck) {
       throw new BadRequest('Deck does not exist')
     }
