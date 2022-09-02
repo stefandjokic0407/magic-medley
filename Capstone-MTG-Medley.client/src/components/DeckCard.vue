@@ -2,7 +2,7 @@
     <div>
         <button @click="removeCardFromDeck()" class="btn-outline btn magicCard">Remove from Deck</button>
         <div v-if="card" class="deleteCard">
-            <img class="img-fluid shadow cardsBg childElement deleteCard selectable" :src=card.card.image_uris?.small
+            <img class="img-fluid shadow cardsBg childElement deleteCard" :src=card.card.image_uris?.small
                 :title="card.card.name">
         </div>
         <div v-else>
@@ -11,13 +11,6 @@
         </div>
         <p>{{ card.quantity }}</p>
     </div>
-
-    <Modal>
-        <DeckForm />
-    </Modal>
-
-
-
 </template>
 
 <script>

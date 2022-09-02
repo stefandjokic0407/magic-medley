@@ -10,7 +10,8 @@
     <div class="col-1 ms-2">
       <h4 class="m-0 p-0">{{ activeDeck?.name }}</h4>
       <h5 v-if="deckCards.length" class="m-0 p-0">Cards:{{ " " + deckCards.length }}</h5>
-      <button class="btn btn-outline text-warning" @click="">Edit Deck</button>
+      <button class="btn btn-outline text-warning" data-bs-toggle="modal" :data-bs-target="'#cardFormEdit'">Edit
+        Deck</button>
     </div>
     <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
     <div class="col-12">
@@ -30,7 +31,7 @@
     </div>
     <DeckForm />
 
-    <Modal>
+    <Modal id="cardFormEdit">
       <DeckForm />
     </Modal>
 
