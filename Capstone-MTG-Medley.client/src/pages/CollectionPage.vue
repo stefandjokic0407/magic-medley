@@ -57,6 +57,7 @@ import CollectionCard from '../components/CollectionCard.vue';
 import DeckForm from "../components/DeckForm.vue";
 import { decksService } from "../services/DecksService.js";
 import Deck from "../components/Deck.vue";
+import { deckCardsService } from "../services/DeckCardsService.js";
 
 export default {
   setup() {
@@ -96,14 +97,15 @@ export default {
       cards: computed(() => AppState.collection),
       decks: computed(() => AppState.decks),
       activeDeck: computed(() => AppState.activeDeck),
+
       async createDeckCard(cardId) {
         try {
           const deckId = AppState.activeDeck.id
-          const newDeckCard = {}
-          newDeckCard.cardId = cardId
-          newDeckCard.deckId = deckId
-          newDeckCard.accountId = AppState.user.id
-          await decksService.createDeckCard(newDeckCard)
+          const DeckCard = {}
+          DeckCard.cardId = cardId
+          DeckCard.deckId = deckId
+          DeckCard.accountId = AppState.user.id
+          await deckCardsService.createDeckCard(DeckCard)
         } catch (error) {
           logger.log("[creating deck card]", error);
           Pop.error(error);
