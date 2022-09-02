@@ -2,7 +2,7 @@
   <header class="row">
     <Navbar />
   </header>
-  <div>
+  <div class="row">
     <!-- add deck component -->
     <h3 class="col-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
         class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
@@ -10,8 +10,12 @@
 
     <h4 class="col-1 text-center">{{ activeDeck?.name }}</h4>
     <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
-    <div v-for="c in deckCards" :key="c.id" class="col-2 mx-2 my-3">
-      <DeckCard :card="c" />
+    <div class="col-12">
+      <div class="row mx-auto">
+        <div v-for="c in deckCards" :key="c.id" class="col-2 mx-2 my-3">
+          <DeckCard :card="c" />
+        </div>
+      </div>
     </div>
     <div>
       <h3>My Collection</h3>
