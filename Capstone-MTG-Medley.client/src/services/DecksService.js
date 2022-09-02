@@ -15,8 +15,8 @@ class DecksService{
     return res.data
     }
 
-    async getAccountDecks(){
-        const res = await api.get('/api/decks')
+    async getAccountDecks(accountId){
+        const res = await api.get('/account/decks/'+ accountId)
         logger.log('getting all decks', res.data)
         AppState.decks = res.data
         return res.data
