@@ -8,6 +8,8 @@
       class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
     </h3>
    
+    <img class="img-fluid col-1" :src="activeDeck.picture" alt="" srcset="">
+
   </div>
   <div>
     <h3>My Collection</h3>
@@ -92,7 +94,7 @@ export default {
     return {
       cards: computed(() => AppState.collection),
       decks: computed(() => AppState.decks),
-
+      activeDeck: computed(() => AppState.activeDeck),
       async createDeckCard(cardId) {
         try {
           const deckId = AppState.activeDeck.id

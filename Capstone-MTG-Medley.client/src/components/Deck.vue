@@ -28,6 +28,7 @@ export default {
   setup() {
     return {
       decks: computed(() => AppState.decks),
+      activeDeck: computed(() => AppState.activeDeck),
       async setActiveDeck(deckId) {
         try {
           await decksService.setActiveDeck(deckId)
