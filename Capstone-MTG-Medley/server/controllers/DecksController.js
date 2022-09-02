@@ -56,7 +56,7 @@ export class DecksController extends BaseController {
 
     async editDeck(req, res, next) {
         try {
-            let deck = await decksService.editDeck(req.params.deckId, req.userInfo.id, req.body)
+            let deck = await decksService.editDeck(req.params.id, req.userInfo.id, req.body)
             return res.send(deck)
         } catch (error) {
             next(error)
