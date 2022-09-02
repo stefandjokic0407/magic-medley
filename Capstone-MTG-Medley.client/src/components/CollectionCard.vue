@@ -15,7 +15,7 @@
     </div>
 
   </div>
-  <Modal :id="'collectionCardModal' + card.id">
+  <Modal :id="'collectionCardModal' + card.cardId">
     <CardModal :card="card" />
   </Modal>
 
@@ -54,7 +54,7 @@ export default {
     return {
       cards: computed(() => AppState.collection),
       activeDeck: computed(() => AppState.activeDeck),
-      user: computed(()=> AppState.account),
+      user: computed(() => AppState.account),
       reset() {
         AppState.activeCard = props.card
         console.log('Active Card:', props.card)
