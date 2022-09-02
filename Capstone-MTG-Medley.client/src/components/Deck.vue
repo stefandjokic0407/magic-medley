@@ -18,6 +18,7 @@
 <script>
 import { computed } from '@vue/reactivity';
 import { AppState } from '../AppState.js';
+import { deckCardsService } from "../services/DeckCardsService.js";
 import { decksService } from "../services/DecksService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
@@ -32,6 +33,7 @@ export default {
       async setActiveDeck(deckId) {
         try {
           await decksService.setActiveDeck(deckId)
+          await deckCardsService.getDeckCards(deckId)
         } catch (error) {
           logger.error('[setting active deck]', error);
           Pop.error(error);

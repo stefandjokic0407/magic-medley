@@ -2,7 +2,7 @@
   <header class="row">
     <Navbar />
   </header>
-  <div>
+  <div class="row">
     <!-- add deck component -->
     <h3 class="col-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
         class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
@@ -10,8 +10,12 @@
 
     <h4 class="col-1 text-center">{{ activeDeck?.name }}</h4>
     <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
-    <div v-for="c in deckCards" :key="c.id" class="col-2 mx-2 my-3">
-      <DeckCard :card="c" />
+    <div class="col-12">
+      <div class="row mx-auto">
+        <div v-for="c in deckCards" :key="c.id" class="col-2 mx-2 my-3">
+          <DeckCard :card="c" />
+        </div>
+      </div>
     </div>
     <div>
       <h3>My Collection</h3>
@@ -59,7 +63,6 @@ import CollectionCard from '../components/CollectionCard.vue';
 import DeckForm from "../components/DeckForm.vue";
 import { decksService } from "../services/DecksService.js";
 import Deck from "../components/Deck.vue";
-import { deckCardsService } from "../services/DeckCardsService.js";
 import DeckCard from "../components/DeckCard.vue";
 
 export default {
@@ -83,15 +86,6 @@ export default {
       }
     }
 
-    async function getDeckByDeckId() {
-      try {
-
-      } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, 'error')
-      }
-    }
-
     onMounted(() => {
       getAccountDecks();
       getAccountCards();
@@ -102,19 +96,6 @@ export default {
       activeDeck: computed(() => AppState.activeDeck),
       deckCards: computed(() => AppState.deckCards),
 
-      async createDeckCard(cardId) {
-        try {
-          const deckId = AppState.activeDeck.id
-          const DeckCard = {}
-          DeckCard.cardId = cardId
-          DeckCard.deckId = deckId
-          DeckCard.accountId = AppState.user.id
-          await deckCardsService.createDeckCard(DeckCard)
-        } catch (error) {
-          logger.log("[creating deck card]", error);
-          Pop.error(error);
-        }
-      },
       async removeFromCollection() {
         try {
 
@@ -132,8 +113,6 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-
-
 
     };
   },

@@ -7,6 +7,10 @@ class DeckCardsService{
     AppState.deckCards.push(res.data)
   }
 
+  async getDeckCards(deckId){
+    const res = await api.get('api/decks/'+ deckId +'/deckCards')
+    AppState.deckCards = res.data
+  }
 
 }
 export const deckCardsService = new DeckCardsService()
