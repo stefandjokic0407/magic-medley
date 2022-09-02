@@ -12,5 +12,10 @@ class DeckCardsService{
     AppState.deckCards = res.data
   }
 
+  async removeCard(cardId) {
+    const res = await api.delete('api/deckCards/' + cardId)
+    AppState.deckCards = AppState.deckCards.filter(c => c.id != cardId)
+  }
+
 }
 export const deckCardsService = new DeckCardsService()

@@ -9,11 +9,11 @@
     </h3>
 
     <h4 class="col-1 text-center">{{ activeDeck?.name }}</h4>
-    <h5 class="col-1">Cards:{{ " "+deckCards.length }}</h5>
+    <h5 v-if="deckCards.length" class="col-1">Cards:{{ " "+deckCards.length }}</h5>
     <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
     <div class="col-12">
       <div class="row">
-        <div v-for="c in deckCards" :key="c.id" class="col-1 mx-1 my-3">
+        <div v-for="c in displayCards" :key="c.id" class="col-1 mx-1 my-3">
           <DeckCard :card="c" />
         </div>
       </div>
@@ -96,6 +96,22 @@ export default {
       decks: computed(() => AppState.decks),
       activeDeck: computed(() => AppState.activeDeck),
       deckCards: computed(() => AppState.deckCards),
+      displayCards: computed(() => {
+        let newArray =[...AppState.deckCards] 
+        for (let i = 0; i < newArray.length; i++) {
+          const firstCard = newArray[i];
+          firstCard.quantity = 1
+          for (let j = i + 1; j < newArray.length; j++) {
+            const secondCard = newArray[j];
+            if (firstCard.cardId == secondCard.cardId) {
+              firstCard.quantity++
+              newArray.splice(j, 1)
+              j--
+            }
+          }
+        }
+        return newArray
+      } ),
 
       async removeFromCollection() {
         try {
