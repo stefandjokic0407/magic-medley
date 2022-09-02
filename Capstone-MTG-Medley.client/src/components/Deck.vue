@@ -1,13 +1,18 @@
 <template>
 
-  <div>
-    <button class="btn add-to-deck" @click="setActiveDeck(deck.id)">
-      <div>
-        <p>{{ deck.name }}</p>
-        <img class="img-fluid position-relative shadow cardsBg" :src=deck.picture>
+  <div class="row">
+    <button class="btn" @click="setActiveDeck(deck.id)">
+      <div class="col-12 rotated text-light">
+        <p class="deckFont">{{ deck.name }}</p>
+
+        <img v-if="deck.picture" class="img-fluid shadow cardsBg" :src=deck.picture>
+        <img v-if="!deck.picture" class="img-fluid shadow cardsBg"
+          src='https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712'>
       </div>
     </button>
   </div>
+
+
 
 </template>
 <script>
@@ -23,16 +28,16 @@ export default {
   setup() {
     return {
       decks: computed(() => AppState.decks),
-      async setActiveDeck(deckId){
-      try {
-        await decksService.setActiveDeck(deckId)
-      } catch (error) {
-        logger.error('[setting active deck]', error);
-        Pop.error(error);
+      async setActiveDeck(deckId) {
+        try {
+          await decksService.setActiveDeck(deckId)
+        } catch (error) {
+          logger.error('[setting active deck]', error);
+          Pop.error(error);
+        }
       }
     }
   }
-}
 }
 </script>
 
@@ -43,5 +48,9 @@ export default {
 
 .position-relative {
   position: relative;
+}
+
+.deckFont {
+  font-size: x-small;
 }
 </style>
