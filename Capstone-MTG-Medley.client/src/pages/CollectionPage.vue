@@ -69,11 +69,20 @@ export default {
     }
     async function getAccountDecks() {
       try {
-        // const accountId = AppState.account.id;
-        await decksService.getAccountDecks()
+        const accountId = AppState.account.id;
+        await decksService.getAccountDecks(accountId)
       } catch (error) {
         logger.error('[getting account decks]', error);
         Pop.error(error);
+      }
+    }
+
+    async function getDeckByDeckId() {
+      try {
+        
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error')
       }
     }
 
