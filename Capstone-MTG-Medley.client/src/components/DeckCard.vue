@@ -1,5 +1,5 @@
 <template>
-
+  <div>
     <div v-if="card">
       <img class="img-fluid shadow cardsBg" :src=card.card.image_uris?.small :title="card.card.name">
     </div>
@@ -7,7 +7,8 @@
       <img class="img-fluid shadow cardsBg"
         src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
     </div>
-
+    <p>{{card.quantity}}</p>
+  </div>
 
 </template>
 
