@@ -20,7 +20,7 @@ class CardsService {
 
       if (AppState.searchByText) { searchTerm = '+oracle%3A' + searchTerm }
 
-      if (filterTerm.color.length > 0) { searchTerm += '+color=' + filterTerm.color }
+      if (filterTerm.color.length > 0) { searchTerm += '+color<%3D' + filterTerm.color }
 
       if (filterTerm.rarity) { searchTerm += '+rarity%3A' + filterTerm.rarity }
 

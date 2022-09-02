@@ -152,6 +152,7 @@
               <label class="form-check-label ps-2 ">Red</label><br>
               <input type="checkbox" class="" @change="filterChange('color', 'b')">
               <label class="form-check-label ps-2">Black</label><br>
+              <!-- FIXME all searches show colorless when its not selected -->
               <input type="checkbox" class="" @change="filterChange('color', 'c')">
               <label class="form-check-label ps-2">Colorless</label><br>
             </div>
