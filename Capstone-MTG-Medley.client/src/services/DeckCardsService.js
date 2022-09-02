@@ -8,7 +8,8 @@ class DeckCardsService{
   }
 
   async getDeckCards(deckId){
-    const res = await api.get('api/decks/'+deckId+'deckCards')
+    const res = await api.get('api/decks/'+ deckId +'/deckCards')
+    AppState.deckCards.map(res.data)
   }
 
 }

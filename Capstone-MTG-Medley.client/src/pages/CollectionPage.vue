@@ -59,7 +59,6 @@ import CollectionCard from '../components/CollectionCard.vue';
 import DeckForm from "../components/DeckForm.vue";
 import { decksService } from "../services/DecksService.js";
 import Deck from "../components/Deck.vue";
-import { deckCardsService } from "../services/DeckCardsService.js";
 import DeckCard from "../components/DeckCard.vue";
 
 export default {
@@ -80,15 +79,6 @@ export default {
       } catch (error) {
         logger.error('[getting account decks]', error);
         Pop.error(error);
-      }
-    }
-
-    async function getDeckByDeckId() {
-      try {
-
-      } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, 'error')
       }
     }
 
@@ -119,8 +109,6 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-
-
 
     };
   },
