@@ -174,7 +174,7 @@
         <div class="collapse multi-collapse" id="multiCollapseConverted">
           <div class="card card-body mt-1">
             <h5 class="card-title">Converted Mana Cost</h5>
-            <input type="number" class="form-control" value="0">
+            <input v-model="filter.mana" type="number" class="form-control" placeholder="Total mana...">
           </div>
         </div>
       </section>
@@ -220,7 +220,8 @@ export default {
       color: [],
       rarity: [],
       // NOTE this should prob change, overcomplicated ask andrew
-      format: []
+      format: [],
+      mana: null,
     })
 
 
@@ -229,6 +230,7 @@ export default {
     return {
       filter,
       query,
+      // selected,
 
 
       async filterChange(type, val) {

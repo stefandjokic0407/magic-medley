@@ -26,6 +26,8 @@ class CardsService {
 
       if (filterTerm.format.length > 0) { searchTerm += '+legal%3A' + filterTerm.format }
 
+      if(filterTerm.mana) {searchTerm += '+cmc%3D' + filterTerm.mana}
+
 
       console.log('AAS searchTerm', searchTerm, 'filterTerm', filterTerm);
 
