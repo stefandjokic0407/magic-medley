@@ -2,14 +2,16 @@
   <header class="row">
     <Navbar />
   </header>
-  <div class="row">
+  <div class="row align-items-center">
     <!-- add deck component -->
     <h3 class="col-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
         class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
     </h3>
-
-    <h4 class="col-1 text-center">{{ activeDeck?.name }}</h4>
-    <h5 v-if="deckCards.length" class="col-1">Cards:{{ " "+deckCards.length }}</h5>
+    <div class="col-1 ms-2">
+      <h4 class="m-0 p-0">{{ activeDeck?.name }}</h4>
+      <h5 v-if="deckCards.length" class="m-0 p-0">Cards:{{ " " + deckCards.length }}</h5>
+      <button class="btn btn-outline text-warning" @click="">Edit Deck</button>
+    </div>
     <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
     <div class="col-12">
       <div class="row">
@@ -97,7 +99,7 @@ export default {
       activeDeck: computed(() => AppState.activeDeck),
       deckCards: computed(() => AppState.deckCards),
       displayCards: computed(() => {
-        let newArray =[...AppState.deckCards] 
+        let newArray = [...AppState.deckCards]
         for (let i = 0; i < newArray.length; i++) {
           const firstCard = newArray[i];
           firstCard.quantity = 1
@@ -111,7 +113,7 @@ export default {
           }
         }
         return newArray
-      } ),
+      }),
 
       async removeFromCollection() {
         try {
