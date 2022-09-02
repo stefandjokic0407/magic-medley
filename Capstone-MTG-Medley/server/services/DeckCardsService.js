@@ -3,7 +3,7 @@ import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class DeckCardsService{
 
-  async deleteCardFromDeck(deckCardId, userId) {
+  async  deleteCardFromDeck(deckCardId, userId) {
 
     const card = await dbContext.DeckCards.findById(deckCardId)
     if(!card){

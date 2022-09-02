@@ -30,6 +30,10 @@
     </div>
     <DeckForm />
 
+    <Modal>
+      <DeckForm />
+    </Modal>
+
 
     <!-- SECTION THE OFFCANVAS FOR THE DECKS -->
     <div class="col-2 p-3 text-end">
