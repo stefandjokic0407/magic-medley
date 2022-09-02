@@ -7,7 +7,7 @@
   <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
     :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 shadow rotated">
     <div v-if="card.image_uris?.normal">
-      <img class="img-fluid position-relative shadow cardsBg" :src=card.image_uris?.normal>
+      <img class="img-fluid position-relative shadow cardsBg" :src=card.image_uris?.normal :title="card.name">
     </div>
     <div v-else>
       <img class="img-fluid shadow cardsBg"

@@ -19,8 +19,8 @@
     </div>
     <div>
       <h3>My Collection</h3>
-      <div class="row mx-auto justify-content-between">
-        <div v-for="c in cards" :key="c.id" class="col-2 mx-2 my-3">
+      <div class="row">
+        <div v-for="c in cards" :key="c.id" class="col-2 mx-4 my-3">
           <CollectionCard :card="c" />
         </div>
       </div>
@@ -125,7 +125,7 @@ export default {
 .deckCanvas {
   position: absolute;
   right: 0px;
-  top: 27px;
+  top: 70px;
 
 }
 
