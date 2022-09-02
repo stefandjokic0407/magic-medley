@@ -1,6 +1,5 @@
 <template>
 
-
   <form @submit.prevent="searchCards()" class="row justify-content-around">
     <!-- SECTION Search bar with checkbox name, type, text -->
     <section class="col-12 col-md-4">
@@ -30,12 +29,6 @@
         </div>
       </div>
     </section>
-
-
-
-
-
-
 
     <!-- SECTION All Filter options collapse toggle-->
     <button class="btn col-12 col-md-4 fs-3 d-flex align-self-center justify-content-center" type="button"
