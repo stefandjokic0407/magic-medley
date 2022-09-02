@@ -4,7 +4,6 @@
     <button class="btn" @click="setActiveDeck(deck.id)">
       <div class="col-12 rotated text-light">
         <p class="deckFont">{{ deck.name }}</p>
-
         <img v-if="deck.picture" class="img-fluid shadow cardsBg" :src=deck.picture>
         <img v-if="!deck.picture" class="img-fluid shadow cardsBg"
           src='https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712'>
@@ -24,12 +23,15 @@ import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
 export default {
-  props: { deck: { type: Object, required: true } },
+  props: { 
+    deck: { type: Object, required: true } },
 
   setup() {
     return {
       decks: computed(() => AppState.decks),
       activeDeck: computed(() => AppState.activeDeck),
+      deckCards: computed(()=> AppState.deckCards),
+
       async setActiveDeck(deckId) {
         try {
           await decksService.setActiveDeck(deckId)
@@ -56,4 +58,7 @@ export default {
 .deckFont {
   font-size: x-small;
 }
+
+
+
 </style>

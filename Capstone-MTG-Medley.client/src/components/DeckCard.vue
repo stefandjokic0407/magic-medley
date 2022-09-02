@@ -1,7 +1,5 @@
 <template>
 
-  <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
-    :data-bs-target="'#deckCardModal' + card.id" class="mt-4 shadow rotated col-12">
     <div v-if="card">
       <img class="img-fluid shadow cardsBg" :src=card.card.image_uris?.small :title="card.card.name">
     </div>
@@ -10,10 +8,6 @@
         src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
     </div>
 
-  </div>
-  <!-- <Modal :id="'deckCardModal' + card.id">
-    <CardModal :card="card" />
-  </Modal> -->
 
 </template>
 

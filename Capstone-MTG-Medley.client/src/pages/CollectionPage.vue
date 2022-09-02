@@ -9,6 +9,7 @@
     </h3>
 
     <h4 class="col-1 text-center">{{ activeDeck?.name }}</h4>
+    <h5 class="col-1">Cards:{{ " "+deckCards.length }}</h5>
     <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
     <div class="col-12">
       <div class="row">
