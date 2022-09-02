@@ -13,7 +13,6 @@ class DeckCardsService{
   }
 
   async removeCard(cardId) {
-    debugger
     const res = await api.delete('api/deckCards/' + cardId)
     AppState.deckCards = AppState.deckCards.filter(c => c.id != cardId)
     return res
