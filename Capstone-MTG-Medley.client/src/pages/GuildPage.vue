@@ -45,28 +45,17 @@ export default {
     const user = AppState.account
 
     function sendMessage() {
-      if (!user) {
-        // Ask for the username if there is none set already
-        user = prompt('Choose a username:');
-        if (!user) {
-          alert('We cannot work with you like that!');
-        } else {
-        }
-      }
 
-      const socket = io();
+      // const socket = io();
 
-      // The user count. Can change when someone joins/leaves
-      socket.on('count', function (data) {
-        document.getElementById('user-count').innerHTML = data
-        console.log(data);
-      })
+      // socket.on('count', function (data) {
+      //   document.getElementById('user-count').innerHTML = data
+      //   console.log(data);
+      // })
 
-      // When we receive a message
-      // it will be like { user: 'username', message: 'text' }
-      socket.on('message', function (data) {
-        document.getElementById('chat').append('<div><b>' + data.user + '</b>: ' + data.message + '</div>');
-      });
+      // socket.on('message', function (data) {
+      //   document.getElementById('chat').append('<div><b>' + data.user + '</b>: ' + data.message + '</div>');
+      // });
     }
 
     onMounted(() => {
@@ -79,7 +68,6 @@ export default {
       handleSubmit() {
         const socket = io()
         let message = query.value
-        // Send the message to the server
         socket.emit('message', {
           user: user || 'Anonymous',
           message: message
