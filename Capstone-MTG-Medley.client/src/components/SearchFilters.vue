@@ -4,25 +4,25 @@
   <form @submit.prevent="searchCards()" class="row justify-content-around">
     <!-- SECTION Search bar with checkbox name, type, text -->
     <section class="col-12 col-md-4">
-      <div class="row">
+      <div class="row mt-1">
         <div class="col-12 d-flex justify-content-around">
           <div class="form-check form-check-inline">
-            <input @click="toggleName" checked class="form-check-input" type="radio" name="inlineRadioOptions"
-              id="inlineRadio1" value="option1">
-            <label class="form-check-label" for="inlineRadio1">Name</label>
+            <input @click="toggleName" checked class="form-check-input selectable no-select" type="radio"
+              name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <label class="form-check-label  selectable no-select" for="inlineRadio1">Name</label>
           </div>
           <div class="form-check form-check-inline">
-            <input @click="toggleType" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-              value="option2">
-            <label class="form-check-label" for="inlineRadio2">Type</label>
+            <input @click="toggleType" class="form-check-input selectable no-select" type="radio"
+              name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label selectable no-select" for="inlineRadio2">Type</label>
           </div>
           <div class="form-check form-check-inline">
-            <input @click="toggleText" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-              value="option3">
-            <label class="form-check-label" for="inlineRadio3">Text</label>
+            <input @click="toggleText" class="form-check-input selectable no-select" type="radio"
+              name="inlineRadioOptions" id="inlineRadio3" value="option3">
+            <label class="form-check-label selectable no-select" for="inlineRadio3">Text</label>
           </div>
         </div>
-        <div class="input-group col-12">
+        <div class="input-group col-12" title="Search">
           <input class="form-control" type="text" required v-model="query" />
           <button class="btn btn-outline-dark" type="submit">
             <i class="mdi mdi-magnify"></i>
@@ -38,41 +38,49 @@
 
 
     <!-- SECTION All Filter options collapse toggle-->
-    <section class="col-12 col-md-4 fs-3 d-flex align-self-center justify-content-center" type="button"
+    <button class="btn col-12 col-md-4 fs-3 d-flex align-self-center justify-content-center" type="button"
       data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      <i class="mdi mdi-chevron-down"></i>
       Filter Search
       <i class="mdi mdi-chevron-down"></i>
-    </section>
+    </button>
 
     <!-- SECTION Buttons for Collapsable Filters -->
     <section class="col-12 collapse" id="collapseExample">
-      <div class="row">
+      <div class="row mt-2">
 
-        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1"
-          aria-expanded="false" aria-controls="multiCollapseExample1">Format</button>
+        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
+          data-bs-toggle="collapse" data-bs-target="#multiCollapseFormat" aria-expanded="false"
+          aria-controls="multiCollapseFormat">Format<i class="mdi mdi-chevron-down fs-4"></i></button>
 
-        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2"
-          aria-expanded="false" aria-controls="multiCollapseExample2">Rarity</button>
+        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
+          data-bs-toggle="collapse" data-bs-target="#multiCollapseRarity" aria-expanded="false"
+          aria-controls="multiCollapseRarity">Rarity<i class="mdi mdi-chevron-down fs-4"></i></button>
 
-        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample3"
-          aria-expanded="false" aria-controls="multiCollapseExample3">Color</button>
+        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
+          data-bs-toggle="collapse" data-bs-target="#multiCollapseColor" aria-expanded="false"
+          aria-controls="multiCollapseColor">Color<i class="mdi mdi-chevron-down fs-4"></i></button>
 
-        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample4"
-          aria-expanded="false" aria-controls="multiCollapseExample4">Mana
-          Cost</button>
+        <!-- <button class="btn col-3 d-flex align-items-center justify-content-center" type="button"
+          data-bs-toggle="collapse" data-bs-target="#multiCollapseSet" aria-expanded="false"
+          aria-controls="multiCollapseSet">Set<i class="mdi mdi-chevron-down fs-4"></i></button> -->
 
-        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample5"
-          aria-expanded="false" aria-controls="multiCollapseExample5">Set</button>
+        <!-- <button class="btn col-3 d-flex align-items-center justify-content-center" type="button"
+          data-bs-toggle="collapse" data-bs-target="#multiCollapseManaCost" aria-expanded="false"
+          aria-controls="multiCollapseManaCost">Mana
+          Cost<i class="mdi mdi-chevron-down fs-4"></i></button> -->
 
-        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample6"
-          aria-expanded="false" aria-controls="multiCollapseExample6">Converted</button>
+        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
+          data-bs-toggle="collapse" data-bs-target="#multiCollapseConverted" aria-expanded="false"
+          aria-controls="multiCollapseConverted">Converted Mana Cost<i class="mdi mdi-chevron-down fs-4"></i></button>
 
-        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample7"
-          aria-expanded="false" aria-controls="multiCollapseExample7">Power</button>
+        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
+          data-bs-toggle="collapse" data-bs-target="#multiCollapsePower" aria-expanded="false"
+          aria-controls="multiCollapsePower">Power<i class="mdi mdi-chevron-down fs-4"></i>
+        </button>
 
-        <button class="btn col-3" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample8"
-          aria-expanded="false" aria-controls="multiCollapseExample8">Toughness</button>
+        <button class="btn col-2" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseToughness"
+          aria-expanded="false" aria-controls="multiCollapseToughness">Toughness<i
+            class="mdi mdi-chevron-down fs-4"></i></button>
       </div>
     </section>
 
@@ -80,20 +88,29 @@
     <section class="row justify-content-around">
 
       <!-- SECTION Format -->
-      <section class="col-3">
-        <div class="collapse multi-collapse" id="multiCollapseExample1">
-          <div class="card card-body">
+      <section class="col-2">
+        <div class="collapse multi-collapse" id="multiCollapseFormat">
+          <div class="card card-body mt-1">
             <h5 class="card-title">Format</h5>
-            Some placeholder content for the first collapse component of this multi-collapse example. This panel is
-            hidden by default but revealed when the user activates the relevant trigger.
+            <select v-model="selected" @change="filterChange('format', selected)" class="form-select"
+              aria-label="Format select menu">
+              <option selected>Please select a format</option>
+              <option value="standard">Standard</option>
+              <option value="modern">Modern</option>
+              <option value="legacy">Legacy</option>
+              <option value="vintage">Vintage</option>
+              <option value="pauper">Pauper</option>
+              <option value="commander">Commander</option>
+              <option value="paupercommander">Pauper Commander</option>
+            </select>
           </div>
         </div>
       </section>
 
       <!-- SECTION Rarity -->
-      <section class="col-3">
-        <div class="collapse multi-collapse" id="multiCollapseExample2">
-          <div class="card card-body">
+      <section class="col-2">
+        <div class="collapse multi-collapse" id="multiCollapseRarity">
+          <div class="card card-body mt-1">
             <h5 class="card-title">Rarity</h5>
             <div class="">
               <!-- function filterChange() will pass in the type and value of filter -->
@@ -111,9 +128,9 @@
       </section>
 
       <!-- SECTION Color -->
-      <section class="col-3">
-        <div class="collapse multi-collapse" id="multiCollapseExample3">
-          <div class="card card-body">
+      <section class="col-2">
+        <div class="collapse multi-collapse" id="multiCollapseColor">
+          <div class="card card-body mt-1">
             <h5 class="card-title">Color</h5>
             <div class="">
               <input type="checkbox" class="" @change="filterChange('color', 'u')">
@@ -133,57 +150,58 @@
         </div>
       </section>
 
-      <!-- SECTION Mana Cost -->
-      <section class="col-3">
-        <div class="collapse multi-collapse" id="multiCollapseExample4">
-          <div class="card card-body">
-            <h5 class="card-title">Mana Cost</h5>
-            Some placeholder content for the second collapse component of this multi-collapse example. This panel is
-            hidden by default but revealed when the user activates the relevant trigger.
-          </div>
-        </div>
-      </section>
 
       <!-- SECTION Set -->
-      <section class="col-3">
-        <div class="collapse multi-collapse" id="multiCollapseExample5">
-          <div class="card card-body">
+      <!-- NOTE might want to abandon this one, ton of options -->
+      <!-- <section class="col-3">
+        <div class="collapse multi-collapse" id="multiCollapseSet">
+          <div class="card card-body mt-1">
             <h5 class="card-title">Set</h5>
             Some placeholder content for the second collapse component of this multi-collapse example. This panel is
             hidden by default but revealed when the user activates the relevant trigger.
           </div>
         </div>
-      </section>
+      </section> -->
 
-      <!-- SECTION Converted Mana Cost -->
-      <section class="col-3">
-        <div class="collapse multi-collapse" id="multiCollapseExample6">
-          <div class="card card-body">
-            <h5 class="card-title">Converted</h5>
+      <!-- SECTION Mana Cost -->
+      <!-- NOTE redundant and difficult -->
+      <!-- <section class="col-3">
+        <div class="collapse multi-collapse" id="multiCollapseManaCost">
+          <div class="card card-body mt-1">
+            <h5 class="card-title">Mana Cost</h5>
             Some placeholder content for the second collapse component of this multi-collapse example. This panel is
             hidden by default but revealed when the user activates the relevant trigger.
+          </div>
+        </div>
+      </section> -->
+
+
+      <!-- SECTION Converted Mana Cost -->
+      <section class="col-2">
+        <div class="collapse multi-collapse" id="multiCollapseConverted">
+          <div class="card card-body mt-1">
+            <h5 class="card-title">Converted Mana Cost</h5>
+            <input type="number" class="form-control" value="0">
           </div>
         </div>
       </section>
 
       <!-- SECTION Power -->
-      <section class="col-3">
-        <div class="collapse multi-collapse" id="multiCollapseExample7">
-          <div class="card card-body">
+      <section class="col-2">
+        <div class="collapse multi-collapse" id="multiCollapsePower">
+          <div class="card card-body mt-1">
             <h5 class="card-title">Power</h5>
-            Some placeholder content for the second collapse component of this multi-collapse example. This panel is
-            hidden by default but revealed when the user activates the relevant trigger.
+            <input type="number" class="form-control" value="0">
           </div>
         </div>
       </section>
 
       <!-- SECTION Toughness -->
-      <section class="col-3">
-        <div class="collapse multi-collapse" id="multiCollapseExample8">
-          <div class="card card-body">
+      <section class="col-2">
+        <div class="collapse multi-collapse" id="multiCollapseToughness">
+          <div class="card card-body mt-1">
             <h5 class="card-title">Toughness</h5>
-            Some placeholder content for the second collapse component of this multi-collapse example. This panel is
-            hidden by default but revealed when the user activates the relevant trigger.
+            <input type="number" class="form-control" value="0">
           </div>
         </div>
       </section>
@@ -208,6 +226,8 @@ export default {
     let filter = ref({
       color: [],
       rarity: [],
+      // NOTE this should prob change, overcomplicated ask andrew
+      format: []
     })
 
 
@@ -234,10 +254,12 @@ export default {
       async searchCards() {
         filter.value['color'] = filter.value['color'].join('').toString();
         filter.value['rarity'] = filter.value['rarity'].join('').toString();
+        filter.value['format'] = filter.value['format'].splice(1, 1, ['format']).toString();
         console.log('filer value', filter.value);
         await cardsService.getCardsBySearch(query.value, filter.value)
         filter.value['color'] = filter.value['color'].split('')
         filter.value['rarity'] = filter.value['rarity'].split('')
+        filter.value['format'] = filter.value['format'].split(' ')
       },
 
       async toggleText() {

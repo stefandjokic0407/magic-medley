@@ -24,6 +24,8 @@ class CardsService {
 
       if (filterTerm.rarity.length > 0) { searchTerm += '+rarity%3A' + filterTerm.rarity }
 
+      if (filterTerm.format.length > 0) { searchTerm += '+legal%3A' + filterTerm.format }
+
 
       console.log('AAS searchTerm', searchTerm, 'filterTerm', filterTerm);
 
