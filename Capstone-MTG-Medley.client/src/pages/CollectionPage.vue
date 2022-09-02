@@ -76,6 +76,15 @@ export default {
       }
     }
 
+    async function getDeckByDeckId() {
+      try {
+        
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error')
+      }
+    }
+
     onMounted(() => {
       getAccountDecks();
       getAccountCards();
