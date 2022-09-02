@@ -9,7 +9,7 @@
     </h3>
 
     <h4 class="col-1 text-center">{{ activeDeck?.name }}</h4>
-    <h5 v-if="deckCards.length" class="col-1">Cards:{{ " "+deckCards.length }}</h5>
+    <h5 v-if="deckCards.length" class="col-1">Cards:{{ " " + deckCards.length }}</h5>
     <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
     <div class="col-12">
       <div class="row">
@@ -27,6 +27,10 @@
       </div>
     </div>
     <DeckForm />
+
+    <Modal>
+      <DeckForm />
+    </Modal>
 
 
     <!-- SECTION THE OFFCANVAS FOR THE DECKS -->
@@ -97,7 +101,7 @@ export default {
       activeDeck: computed(() => AppState.activeDeck),
       deckCards: computed(() => AppState.deckCards),
       displayCards: computed(() => {
-        let newArray =[...AppState.deckCards] 
+        let newArray = [...AppState.deckCards]
         for (let i = 0; i < newArray.length; i++) {
           const firstCard = newArray[i];
           firstCard.quantity = 1
@@ -111,7 +115,7 @@ export default {
           }
         }
         return newArray
-      } ),
+      }),
 
       async removeFromCollection() {
         try {
