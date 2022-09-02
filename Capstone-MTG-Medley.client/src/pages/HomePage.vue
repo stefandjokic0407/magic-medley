@@ -1,10 +1,10 @@
 <template>
   <div class="row justify-content-center hero-img">
     <div class="col-2 p-3">
-        <button class="btn btn-outline-dark img-text fs-5 w-100" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasLeft" aria-controls="offcanvasExample">
-            Resources
-        </button>
+      <button class="btn btn-outline-dark img-text fs-5 w-100" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasLeft" aria-controls="offcanvasExample">
+        Resources
+      </button>
     </div>
 
     <div class="col-8 text-center my-5">
@@ -12,10 +12,10 @@
     </div>
 
     <div class="col-2 p-3 text-end">
-        <button class="btn btn-outline-dark img-text fs-5 w-100" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
-            Basics
-        </button>
+      <button class="btn btn-outline-dark img-text fs-5 w-100" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
+        Basics
+      </button>
     </div>
 
     <div>
@@ -26,10 +26,20 @@
 
   <div class="offcanvas offcanvas-start offcanvas-style" tabindex="-1" id="offcanvasLeft"
     aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasLabel">Resources</h5>
+      <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"> <i
+          class="mdi mdi-close text-danger fs-2" title="Close"></i></button>
+    </div>
   </div>
 
   <div class="offcanvas offcanvas-end offcanvas-style" tabindex="-1" id="offcanvasRight"
     aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasLabel">Basics</h5>
+      <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"> <i
+          class="mdi mdi-close text-danger fs-2" title="Close"></i></button>
+    </div>
   </div>
 
 </template>
@@ -92,7 +102,7 @@ a:active {
   color: inherit;
 }
 
-img{
+img {
   height: 40em;
   width: 50em;
 }
@@ -112,14 +122,11 @@ img{
 }
 
 .offcanvas-style {
-  background: rgb(0 0 0 / 38%);
+  background: rgb(0 0 0 / 75%);
   backdrop-filter: blur(4px);
-  border: solid #8d8b8b1f;
   color: white;
-  border-radius: 8px;
-  text-shadow: 5px 5px 5px black;
-  padding: 0.5em;
-  width: 30vw;
-  height: 76vh;
+  border-radius: 3px;
+  width: 20vw;
+  height: 75vh;
 }
 </style>

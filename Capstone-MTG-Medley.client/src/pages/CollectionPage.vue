@@ -2,41 +2,43 @@
   <header class="row">
     <Navbar />
   </header>
-  <div class="">
+  <div>
     <!-- add deck component -->
     <h3 class="col-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
-      class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
+        class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
     </h3>
-   
-    <h4 class="col-1 text-center">{{activeDeck?.name}}</h4>
-    <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
 
-  </div>
-  <div>
-    <h3>My Collection</h3>
-    <div class="row mx-auto justify-content-between">
-      <div v-for="c in cards" :key="c.id" class="col-2 mx-2 my-3">
-        <CollectionCard :card="c" />
+    <h4 class="col-1 text-center">{{ activeDeck?.name }}</h4>
+    <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
+    <div v-for="c in deckCards" :key="c.id" class="col-2 mx-2 my-3">
+      <DeckCard :card="c" />
+    </div>
+    <div>
+      <h3>My Collection</h3>
+      <div class="row mx-auto justify-content-between">
+        <div v-for="c in cards" :key="c.id" class="col-2 mx-2 my-3">
+          <CollectionCard :card="c" />
+        </div>
       </div>
     </div>
-  </div>
-  <DeckForm />
-  
-  
-  <!-- SECTION THE OFFCANVAS FOR THE DECKS -->
-  <div class="col-2 p-3 text-end">
-        <button class="btn btn-outline-dark img-text deckCanvas" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
-            Your Decks
-        </button>
+    <DeckForm />
+
+
+    <!-- SECTION THE OFFCANVAS FOR THE DECKS -->
+    <div class="col-2 p-3 text-end">
+      <button class="btn btn-outline-dark img-text deckCanvas" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
+        Your Decks
+      </button>
     </div>
 
     <div class="offcanvas offcanvas-end offcanvas-style text-center" tabindex="-1" id="offcanvasRight"
-    aria-labelledby="offcanvasExampleLabel">
-    <h1>Your Decks:</h1>
-    <div v-if="decks.length" class="row">
-      <div v-for="d in decks" :key="d.id" class="col-3">
-        <Deck :deck="d" />
+      aria-labelledby="offcanvasExampleLabel">
+      <h1>Your Decks:</h1>
+      <div v-if="decks.length" class="row">
+        <div v-for="d in decks" :key="d.id" class="col-3">
+          <Deck :deck="d" />
+        </div>
       </div>
     </div>
   </div>
@@ -57,6 +59,8 @@ import CollectionCard from '../components/CollectionCard.vue';
 import DeckForm from "../components/DeckForm.vue";
 import { decksService } from "../services/DecksService.js";
 import Deck from "../components/Deck.vue";
+import { deckCardsService } from "../services/DeckCardsService.js";
+import DeckCard from "../components/DeckCard.vue";
 
 export default {
   setup() {
@@ -79,6 +83,15 @@ export default {
       }
     }
 
+    async function getDeckByDeckId() {
+      try {
+
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error')
+      }
+    }
+
     onMounted(() => {
       getAccountDecks();
       getAccountCards();
@@ -87,10 +100,11 @@ export default {
       cards: computed(() => AppState.collection),
       decks: computed(() => AppState.decks),
       activeDeck: computed(() => AppState.activeDeck),
+      deckCards: computed(() => AppState.deckCards),
 
       async removeFromCollection() {
         try {
-          
+
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
@@ -99,7 +113,7 @@ export default {
 
       async removeFromDeck() {
         try {
-          
+
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
@@ -110,13 +124,12 @@ export default {
 
     };
   },
-  components: { SearchedCards, CollectionCard, DeckForm, Deck }
+  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard }
 }
 </script>
 
 
 <style>
-
 .deckCanvas {
   position: absolute;
   right: 0px;
@@ -135,5 +148,4 @@ export default {
   width: 30vw;
   height: 100vh;
 }
-
 </style>
