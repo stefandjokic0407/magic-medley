@@ -1,17 +1,19 @@
 <template>
-
+  <div class="row align-items-center justify-content-between">
+    <button v-if="activeDeck" class="btn col-2" @click="createDeckCard(card.cardId)"><i title="add to deck"
+        class="mdi mdi-plus-circle"></i></button>
+    <p class="col-3"><i class="mdi mdi-close-thick"></i><b>{{ card.count }}</b></p>
+  </div>
   <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
-    :data-bs-target="'#collectionCardModal' + card.id" class="mt-4 shadow rotated">
+    :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 shadow rotated">
     <div v-if="card.image_uris?.normal">
       <img class="img-fluid position-relative shadow cardsBg" :src=card.image_uris?.normal>
     </div>
     <div v-else>
       <img class="img-fluid shadow cardsBg"
         src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
-        <h5><i class="mdi mdi-close-thick"></i><b>{{card.count}}</b></h5>
     </div>
-    <button v-if="activeDeck" class="btn addPosition" @click="createDeckCard(card.cardId)"><i title="add to deck"
-        class="mdi mdi-plus-circle"></i></button>
+
   </div>
   <Modal :id="'collectionCardModal' + card.id">
     <CardModal :card="card" />
@@ -88,5 +90,4 @@ export default {
   font-size: 2em;
   border: none;
 }
-
 </style>

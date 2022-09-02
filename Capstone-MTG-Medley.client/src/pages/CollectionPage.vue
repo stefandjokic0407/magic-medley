@@ -99,7 +99,11 @@ export default {
       async createDeckCard(cardId) {
         try {
           const deckId = AppState.activeDeck.id
-          await decksService.createDeckCard(cardId, deckId)
+          const newDeckCard = {}
+          newDeckCard.cardId = cardId
+          newDeckCard.deckId = deckId
+          newDeckCard.accountId = AppState.user.id
+          await decksService.createDeckCard(newDeckCard)
         } catch (error) {
           logger.log("[creating deck card]", error);
           Pop.error(error);
