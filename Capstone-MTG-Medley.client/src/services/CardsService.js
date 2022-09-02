@@ -13,6 +13,7 @@ class CardsService {
     try {
       // if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
       // console.log('this is the modified search term', searchTerm)
+      if (AppState.searchByName) { searchTerm = searchTerm }
 
       if (AppState.searchByType) { searchTerm = '+type%3A' + searchTerm }
       // logger.log('and and sav',searchTerm)

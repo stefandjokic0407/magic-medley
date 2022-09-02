@@ -3,22 +3,29 @@
     <Navbar />
   </header>
   <section class="row">
-    <div class="col-md-3 search-bar py-5">
-      <SearchFilters />
+
+    <button class="btn col-md-2 offset-md-5 d-flex align-items-center justify-content-center" type="button"
+      data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <i class="mdi mdi-chevron-double-down fs-3"></i> Search <i class="mdi mdi-chevron-double-down fs-3"></i>
+    </button>
+    <div class="col-md-12">
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <SearchFilters />
+        </div>
+      </div>
     </div>
-    <div class="col-md-9">
+    <!-- <div class="col-md-3 search-bar py-5">
+      <SearchFilters />
+    </div> -->
+    <div class="col-md-12">
       <div class="row">
         <div v-for="c in searchedCards" :key="c.id" class="col-md-2">
           <SearchedCards :card="c" />
         </div>
       </div>
-      <div class="row justify-content-center">
-        <!-- <div v-if="page > 1" class="col-3">
-          <button @click="changePage(previousPage, page - 1)" class="btn btn-outline-dark w-50">Previous</button>
-        </div> -->
-        <div v-if="nextPage" class="col-3 py-3">
-          <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-dark w-50">More Results</button>
-        </div>
+      <div v-if="nextPage" class="row justify-content-center py-3">
+        <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-dark w-50">More Results</button>
       </div>
     </div>
   </section>

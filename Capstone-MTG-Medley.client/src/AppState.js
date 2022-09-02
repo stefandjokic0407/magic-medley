@@ -19,9 +19,12 @@ export const AppState = reactive({
   deckCards: [],
   activeDeck: null,
   collection: [],
+  searchByName: true,
+  searchByType: false,
+  searchByText: false,
 
   nextPage: null,
-  previousPage: null,
+
 
 
 })
