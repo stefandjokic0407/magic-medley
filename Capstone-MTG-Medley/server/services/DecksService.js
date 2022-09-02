@@ -8,6 +8,7 @@ class DecksService {
     await deck.populate('profile', 'name picture')
     return deck
   }
+
   async getById(id) {
     const deck = await dbContext.Decks.findById(id).populate('profile', 'name picture')
     if (!deck) {
@@ -15,6 +16,7 @@ class DecksService {
     }
     return deck
   }
+  
   async getDeckCards(query = {}) {
     const deckCards = await dbContext.DeckCards.find(query).populate('card', 'name image_uris')
     return deckCards
