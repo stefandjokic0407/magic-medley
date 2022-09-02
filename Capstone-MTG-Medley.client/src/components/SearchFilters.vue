@@ -1,6 +1,6 @@
 <template>
 
-  <form @submit.prevent="searchCards()" class="row justify-content-between p-2">
+  <form @submit.prevent="searchCards()" class="row justify-content-between ms">
     <!-- SECTION Search bar with checkbox name, type, text -->
     <section class="col-12 col-md-4">
       <div class="row mt-1">
@@ -30,15 +30,8 @@
       </div>
     </section>
 
-    <!-- SECTION All Filter options collapse toggle-->
-    <button class="btn col-12 col-md-4 fs-3 d-flex align-self-center justify-content-end" type="button"
-      data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Filter Search
-      <i class="mdi mdi-chevron-down"></i>
-    </button>
-
     <!-- SECTION Buttons for Collapsable Filters -->
-    <section class="col-12 collapse" id="collapseExample">
+    <section class="col-12">
       <div class="row mt-2">
 
         <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
@@ -53,15 +46,6 @@
           data-bs-toggle="collapse" data-bs-target="#multiCollapseColor" aria-expanded="false"
           aria-controls="multiCollapseColor">Color<i class="mdi mdi-chevron-down fs-4"></i></button>
 
-        <!-- <button class="btn col-3 d-flex align-items-center justify-content-center" type="button"
-          data-bs-toggle="collapse" data-bs-target="#multiCollapseSet" aria-expanded="false"
-          aria-controls="multiCollapseSet">Set<i class="mdi mdi-chevron-down fs-4"></i></button> -->
-
-        <!-- <button class="btn col-3 d-flex align-items-center justify-content-center" type="button"
-          data-bs-toggle="collapse" data-bs-target="#multiCollapseManaCost" aria-expanded="false"
-          aria-controls="multiCollapseManaCost">Mana
-          Cost<i class="mdi mdi-chevron-down fs-4"></i></button> -->
-
         <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
           data-bs-toggle="collapse" data-bs-target="#multiCollapseConverted" aria-expanded="false"
           aria-controls="multiCollapseConverted">Converted Mana Cost<i class="mdi mdi-chevron-down fs-4"></i></button>
@@ -71,9 +55,9 @@
           aria-controls="multiCollapsePower">Power<i class="mdi mdi-chevron-down fs-4"></i>
         </button>
 
-        <button class="btn col-2" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseToughness"
-          aria-expanded="false" aria-controls="multiCollapseToughness">Toughness<i
-            class="mdi mdi-chevron-down fs-4"></i></button>
+        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
+          data-bs-toggle="collapse" data-bs-target="#multiCollapseToughness" aria-expanded="false"
+          aria-controls="multiCollapseToughness">Toughness<i class="mdi mdi-chevron-down fs-4"></i></button>
       </div>
     </section>
 
@@ -108,27 +92,31 @@
             <div class="">
 
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" @click="filter.rarity = 'c'">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                  @click="filter.rarity = 'c'">
                 <label class="form-check-label" for="exampleRadios1">
-                Common
+                  Common
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" @click="filter.rarity = 'u'">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"
+                  @click="filter.rarity = 'u'">
                 <label class="form-check-label" for="exampleRadios1">
-                Uncommon
+                  Uncommon
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" @click="filter.rarity = 'r'">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3"
+                  @click="filter.rarity = 'r'">
                 <label class="form-check-label" for="exampleRadios1">
-                Rare
+                  Rare
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" @click="filter.rarity = 'm'">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4"
+                  @click="filter.rarity = 'm'">
                 <label class="form-check-label" for="exampleRadios1">
-                Mythic Rare
+                  Mythic Rare
                 </label>
               </div>
             </div>

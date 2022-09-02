@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade" id="deck-form" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form @submit.prevent="handleSubmit" class="p-2">
