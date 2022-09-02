@@ -1,10 +1,10 @@
 <template>
 
-  <div>
-    <button class="btn add-to-deck" @click="setActiveDeck(deck.id)">
-      <div>
+  <div class="row">
+    <button class="btn" @click="setActiveDeck(deck.id)">
+      <div class="col-12">
         <p>{{ deck.name }}</p>
-        <img class="img-fluid position-relative shadow cardsBg" :src=deck.picture>
+        <img class="img-fluid shadow cardsBg" :src=deck.picture>
       </div>
     </button>
   </div>
