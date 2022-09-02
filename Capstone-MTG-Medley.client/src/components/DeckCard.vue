@@ -1,4 +1,5 @@
 <template>
+<div>
   <button @click="removeCardFromDeck()" class="btn-outline btn magicCard">Remove from Deck</button>
   <div v-if="card" class="deleteCard">
     <img class="img-fluid shadow cardsBg childElement deleteCard selectable" :src=card.card.image_uris?.small :title="card.card.name">
@@ -7,7 +8,8 @@
     <img class="img-fluid shadow cardsBg"
       src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
   </div>
-
+  <p>{{card.quantity}}</p>
+</div>
 
 </template>
 
@@ -55,8 +57,7 @@ export default {
         try {
           const yes = await Pop.confirm('Remove Card?')
           if (!yes) { return }
-          console.log('Card id', props.card.id)
-          const cardId = props.id
+          const cardId = props.card.id
           await deckCardsService.removeCard(cardId) 
         } catch (error) {
           logger.error(error)
