@@ -1,12 +1,12 @@
 <template>
 
-  <div  @click="getCardByOracle() && reset(card)"  type="button" data-bs-toggle="modal" :data-bs-target="'#cardModal' + card.id"
-    class="mt-4 shadow rotated">
-    <div class="row">
+  <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
+    :data-bs-target="'#cardModal' + card.id" class="mt-4 shadow rotated">
+    <div class="p-2">
       <div v-if="card.image_uris.normal" class="col-12 ">
         <img class="img-fluid shadow cardsBg" :src=card.image_uris.normal>
       </div>
-      <div v-else class="col-12">
+      <div v-else class="">
         <img class="img-fluid shadow cardsBg"
           src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
       </div>
@@ -62,12 +62,12 @@ export default {
   border-color: black;
 }
 
-.rotated{
+.rotated {
   background: transparent;
-  
+
 }
 
-.rotated:hover img{
+.rotated:hover img {
   transform: scale(1.1);
   transition: ease .1s;
 }
@@ -75,5 +75,4 @@ export default {
 input {
   border: black !important;
 }
-
 </style>

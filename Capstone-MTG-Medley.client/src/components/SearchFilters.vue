@@ -1,90 +1,139 @@
 <template>
-  <div class="search-form">
-    <div class="row">
-      <form @submit.prevent="searchCards()">
-        <!-- SECTION Search bar with checkbox name, type, text -->
-        <section>
-          <div class="fs-3">
-            Search By:
-          </div>
-          <div class="col-md-12 d-flex justify-content-evenly my-3">
-            <div>
-              <input checked type="checkbox" class="">
-              <label class="form-check-label"><span class="fs-5">Name</span></label>
-            </div>
-            <div>
-              <input @change="toggleType" type="checkbox" class="">
-              <label class="form-check-label"><span class="fs-5">Type</span></label>
-            </div>
-            <div>
-              <input @change="toggleText" type="checkbox" class="">
-              <label class="form-check-label"><span class="fs-5">Text</span></label>
-            </div>
-          </div>
-          <div class="input-group">
-            <input class="form-control" type="text" required v-model="query" />
-            <button class="btn btn-outline-dark" type="submit">
-              <i class="mdi mdi-magnify"></i>
-            </button>
-          </div>
-        </section>
-        <!-- TODO maybe block all the filter options until after a search is done -->
-        <!-- SECTION Color -->
-        <section>
-          <!-- TODO change from collapsable to a drop down toggled by checkbox -->
-          <div href="#collapseColor" data-bs-toggle="collapse"
-            class="no-select bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
-            Color
-          </div>
-          <div class="collapse bg-light" id="collapseColor">
-            <input type="checkbox" class="mx-2" @change="filterChange('color', 'u')">
-            <label class="form-check-label px-3">Blue</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('color', 'g')">
-            <label class="form-check-label px-3">Green</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('color', 'w')">
-            <label class="form-check-label px-3">White</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('color', 'r')">
-            <label class="form-check-label px-3">Red</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('color', 'b')">
-            <label class="form-check-label px-3">Black</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('color', 'c')">
-            <label class="form-check-label px-3">Colorless</label><br>
-          </div>
-        </section>
-        <!-- SECTION Rarity -->
-        <section>
-          <div href="#collapseRarity" data-bs-toggle="collapse"
-            class=" no-select bg-dark mt-3 fs-4 px-2 selectable rounded d-flex justify-content-between">
-            Rarity
-          </div>
-          <div class="collapse bg-light" id="collapseRarity">
-            <!-- function filterChange() will pass in the type and value of filter -->
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'c')">
-            <label class="form-check-label px-3">Common</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'u')">
-            <label class="form-check-label px-3">Uncommon</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'r')">
-            <label class="form-check-label px-3">Rare</label><br>
-            <input type="checkbox" class="mx-2" @change="filterChange('rarity', 'm')">
-            <label class="form-check-label px-3">Mythic Rare</label><br>
-          </div>
-        </section>
 
-        <!-- SECTION Mana Cost -->
-        <section></section>
 
-        <!-- SECTION cmc -->
-        <section></section>
+  <form @submit.prevent="searchCards()" class="row justify-content-around">
+    <!-- SECTION Search bar with checkbox name, type, text -->
+    <section class="col-md-3">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-around">
+          <div class="form-check form-check-inline">
+            <input @click="toggleName" checked class="form-check-input" type="radio" name="inlineRadioOptions"
+              id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">Name</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input @click="toggleType" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+              value="option2">
+            <label class="form-check-label" for="inlineRadio2">Type</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input @click="toggleText" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+              value="option3">
+            <label class="form-check-label" for="inlineRadio3">Text</label>
+          </div>
+        </div>
+        <div class="input-group col-12">
+          <input class="form-control" type="text" required v-model="query" />
+          <button class="btn btn-outline-dark" type="submit">
+            <i class="mdi mdi-magnify"></i>
+          </button>
+        </div>
+      </div>
+    </section>
 
-        <!-- SECTION Power -->
-        <section></section>
+    <!-- SECTION Rarity -->
+    <section class="col-md-2">
+      <div href="#collapseRarity" data-bs-toggle="collapse" class=" no-select selectable">
+        Rarity
+      </div>
+      <div class="collapse bg-light" id="collapseRarity">
+        <!-- function filterChange() will pass in the type and value of filter -->
+        <input type="checkbox" class="" @change="filterChange('rarity', 'c')">
+        <label class="form-check-label">Common</label><br>
+        <input type="checkbox" class="" @change="filterChange('rarity', 'u')">
+        <label class="form-check-label">Uncommon</label><br>
+        <input type="checkbox" class="" @change="filterChange('rarity', 'r')">
+        <label class="form-check-label">Rare</label><br>
+        <input type="checkbox" class="" @change="filterChange('rarity', 'm')">
+        <label class="form-check-label">Mythic Rare</label><br>
+      </div>
+    </section>
 
-        <!-- SECTION Toughness  -->
-        <section></section>
 
-      </form>
-    </div>
-  </div>
+    <!-- SECTION Color -->
+    <section class="col-md-1">
+      <div href="#collapseColor" data-bs-toggle="collapse" class="no-select selectable">
+        Color
+      </div>
+      <div class="collapse bg-light" id="collapseColor">
+        <input type="checkbox" class="" @change="filterChange('color', 'u')">
+        <label class="form-check-label">Blue</label><br>
+        <input type="checkbox" class="" @change="filterChange('color', 'g')">
+        <label class="form-check-label">Green</label><br>
+        <input type="checkbox" class="" @change="filterChange('color', 'w')">
+        <label class="form-check-label">White</label><br>
+        <input type="checkbox" class="" @change="filterChange('color', 'r')">
+        <label class="form-check-label ">Red</label><br>
+        <input type="checkbox" class="" @change="filterChange('color', 'b')">
+        <label class="form-check-label">Black</label><br>
+        <input type="checkbox" class="" @change="filterChange('color', 'c')">
+        <label class="form-check-label">Colorless</label><br>
+      </div>
+    </section>
+
+
+    <!-- SECTION Mana Cost -->
+    <section class="col-md-1">
+      <div href="#collapseManaCost" data-bs-toggle="collapse" class=" no-select selectable">
+        Mana Cost
+      </div>
+      <div class="collapse bg-light" id="collapseManaCost">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </div>
+    </section>
+
+    <!-- SECTION cmc -->
+    <section class="col-md-1">
+      <div href="#collapseConvertedMana" data-bs-toggle="collapse" class=" no-select selectable"
+        title="Converted Mana Cost">
+        Converted
+      </div>
+      <div class="collapse bg-light" id="collapseConvertedMana">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </div>
+    </section>
+
+    <!-- SECTION Power -->
+    <section class="col-md-1">
+      <div href="#collapsePower" data-bs-toggle="collapse" class=" no-select selectable">
+        Power
+      </div>
+      <div class="collapse bg-light" id="collapsePower">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </div>
+    </section>
+
+    <!-- SECTION Toughness  -->
+    <section class="col-md-1">
+      <div href="#collapseToughness" data-bs-toggle="collapse" class=" no-select selectable">
+        Toughness
+      </div>
+      <div class="collapse bg-light" id="collapseToughness">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </div>
+    </section>
+
+    <!-- SECTION Loyalty  -->
+    <section class="col-md-1">
+      <div href="#collapseLoyalty" data-bs-toggle="collapse" class=" no-select selectable">
+        Loyalty
+      </div>
+      <div class="collapse bg-light" id="collapseLoyalty">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </div>
+    </section>
+
+  </form>
 </template>
 
 <script>
@@ -134,6 +183,23 @@ export default {
         await cardsService.getCardsBySearch(query.value, filter.value)
         filter.value['color'] = filter.value['color'].split('')
         filter.value['rarity'] = filter.value['rarity'].split('')
+      },
+
+      async toggleText() {
+        AppState.searchByText = true
+        AppState.searchByName = false
+        AppState.searchByType = false
+        logger.log(AppState.searchByText)
+      },
+      async toggleType() {
+        AppState.searchByType = true
+        AppState.searchByText = false
+        AppState.searchByName = false
+      },
+      async toggleName() {
+        AppState.searchByName = true
+        AppState.searchByText = false
+        AppState.searchByType = false
       },
 
     };
