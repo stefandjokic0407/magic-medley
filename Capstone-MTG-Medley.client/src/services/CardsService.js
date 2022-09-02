@@ -20,13 +20,17 @@ class CardsService {
 
       if (AppState.searchByText) { searchTerm = '+oracle%3A' + searchTerm }
 
-      if (filterTerm.color.length > 0) { searchTerm += '+color%3D' + filterTerm.color }
+      if (filterTerm.color.length > 0) { searchTerm += '+color=' + filterTerm.color }
 
-      if (filterTerm.rarity.length > 0) { searchTerm += '+rarity%3A' + filterTerm.rarity }
+      if (filterTerm.rarity) { searchTerm += '+rarity%3A' + filterTerm.rarity }
 
       if (filterTerm.format) { searchTerm += '+legal%3A' + filterTerm.format }
 
       if (filterTerm.mana) { searchTerm += '+cmc%3D' + filterTerm.mana }
+
+      if (filterTerm.power) { searchTerm += '+pow%3D' + filterTerm.power }
+
+      if (filterTerm.toughness) { searchTerm += '+tou%3D' + filterTerm.toughness }
 
 
       console.log('AAS searchTerm', searchTerm, 'filterTerm', filterTerm);

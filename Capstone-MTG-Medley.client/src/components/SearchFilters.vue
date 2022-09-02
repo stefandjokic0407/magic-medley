@@ -1,6 +1,6 @@
 <template>
 
-  <form @submit.prevent="searchCards()" class="row justify-content-around">
+  <form @submit.prevent="searchCards()" class="row justify-content-between p-2">
     <!-- SECTION Search bar with checkbox name, type, text -->
     <section class="col-12 col-md-4">
       <div class="row mt-1">
@@ -31,7 +31,7 @@
     </section>
 
     <!-- SECTION All Filter options collapse toggle-->
-    <button class="btn col-12 col-md-4 fs-3 d-flex align-self-center justify-content-center" type="button"
+    <button class="btn col-12 col-md-4 fs-3 d-flex align-self-center justify-content-end" type="button"
       data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       Filter Search
       <i class="mdi mdi-chevron-down"></i>
@@ -106,15 +106,31 @@
           <div class="card card-body mt-1">
             <h5 class="card-title">Rarity</h5>
             <div class="">
-              <!-- function filterChange() will pass in the type and value of filter -->
-              <input type="checkbox" class="" @change="filterChange('rarity', 'c')">
-              <label class="form-check-label ps-2">Common</label><br>
-              <input type="checkbox" class="" @change="filterChange('rarity', 'u')">
-              <label class="form-check-label ps-2">Uncommon</label><br>
-              <input type="checkbox" class="" @change="filterChange('rarity', 'r')">
-              <label class="form-check-label ps-2">Rare</label><br>
-              <input type="checkbox" class="" @change="filterChange('rarity', 'm')">
-              <label class="form-check-label ps-2">Mythic Rare</label><br>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" @click="filter.rarity = 'c'">
+                <label class="form-check-label" for="exampleRadios1">
+                Common
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" @click="filter.rarity = 'u'">
+                <label class="form-check-label" for="exampleRadios1">
+                Uncommon
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" @click="filter.rarity = 'r'">
+                <label class="form-check-label" for="exampleRadios1">
+                Rare
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4" @click="filter.rarity = 'm'">
+                <label class="form-check-label" for="exampleRadios1">
+                Mythic Rare
+                </label>
+              </div>
             </div>
           </div>
         </div>
@@ -184,7 +200,7 @@
         <div class="collapse multi-collapse" id="multiCollapsePower">
           <div class="card card-body mt-1">
             <h5 class="card-title">Power</h5>
-            <input type="number" class="form-control" value="0">
+            <input v-model="filter.power" type="number" class="form-control">
           </div>
         </div>
       </section>
@@ -194,7 +210,7 @@
         <div class="collapse multi-collapse" id="multiCollapseToughness">
           <div class="card card-body mt-1">
             <h5 class="card-title">Toughness</h5>
-            <input type="number" class="form-control" value="0">
+            <input v-model="filter.toughness" type="number" class="form-control">
           </div>
         </div>
       </section>
@@ -218,9 +234,11 @@ export default {
     const query = ref('')
     let filter = ref({
       color: [],
-      rarity: [],
+      rarity: null,
       // NOTE this should prob change, overcomplicated ask andrew
       mana: null,
+      power: null,
+      toughness: null,
     })
 
 
@@ -247,11 +265,11 @@ export default {
 
       async searchCards() {
         filter.value['color'] = filter.value['color'].join('').toString();
-        filter.value['rarity'] = filter.value['rarity'].join('').toString();
+        // filter.value['rarity'] = filter.value['rarity'].join('').toString();
         console.log('filer value', filter.value);
         await cardsService.getCardsBySearch(query.value, filter.value)
         filter.value['color'] = filter.value['color'].split('')
-        filter.value['rarity'] = filter.value['rarity'].split('')
+        // filter.value['rarity'] = filter.value['rarity'].split('')
       },
 
       async toggleText() {
