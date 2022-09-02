@@ -1,4 +1,7 @@
 <template>
+  <header>
+    <Navbar />
+  </header>
   <section class="row">
     <div class="col-md-4">
       Guild information
