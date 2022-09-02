@@ -111,6 +111,23 @@ export default {
           Pop.error(error);
         }
       },
+      async removeFromCollection() {
+        try {
+          
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
+
+      async removeFromDeck() {
+        try {
+          
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
 
 
 
