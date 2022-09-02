@@ -1,5 +1,5 @@
 <template>
-  <button @click="removeCardFromDeck(card.card)" class="btn-outline btn magicCard">Remove from Deck</button>
+  <button @click="removeCardFromDeck()" class="btn-outline btn magicCard">Remove from Deck</button>
   <div v-if="card" class="deleteCard">
     <img class="img-fluid shadow cardsBg childElement deleteCard selectable" :src=card.card.image_uris?.small :title="card.card.name">
   </div>
@@ -51,11 +51,12 @@ export default {
         }
       },
 
-      async removeCardFromDeck(card) {
+      async removeCardFromDeck() {
         try {
           const yes = await Pop.confirm('Remove Card?')
           if (!yes) { return }
-          const cardId = card.id
+          console.log('Card id', props.card.id)
+          const cardId = props.id
           await deckCardsService.removeCard(cardId) 
         } catch (error) {
           logger.error(error)
