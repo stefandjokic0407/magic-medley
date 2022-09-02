@@ -35,7 +35,7 @@
         </div>
         <!-- NOTE  IF LEGAL/BANNED/RESTRICT BOXES-->
         <div class="row mx-auto my-3 legalSize">
-          <div v-if="activeCard.legalities?.standard == 'legal' " class="col-5 mx-auto">
+          <div v-if="activeCard.legalities?.standard == 'legal'" class="col-5 mx-auto">
             <div class="text-center">Standard</div>
             <div class=" bgLegal text-light text-center rounded">
               <p>LEGAL</p>

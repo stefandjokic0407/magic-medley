@@ -22,7 +22,10 @@
     </div>
   </div>
   <DeckForm />
+  
 </template>
+
+
 
 <script>
 
