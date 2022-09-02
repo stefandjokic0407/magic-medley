@@ -56,4 +56,7 @@ export default {
 .deckFont {
   font-size: x-small;
 }
+
+
+
 </style>
