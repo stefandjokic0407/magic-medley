@@ -30,9 +30,11 @@ import Pop from "../utils/Pop.js";
 
 export default {
   setup() {
-    const editable = ref({ type: '' })
+    const editable = ref({})
     return {
       editable,
+
+      
 
       async handleSubmit() {
         try {
