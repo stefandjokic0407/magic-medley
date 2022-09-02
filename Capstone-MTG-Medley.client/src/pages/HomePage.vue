@@ -26,11 +26,11 @@
 
   <div class="offcanvas offcanvas-start offcanvas-style" tabindex="-1" id="offcanvasLeft"
     aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
+    <!-- <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasLabel">Resources</h5>
       <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close"> <i
           class="mdi mdi-close text-danger fs-2" title="Close"></i></button>
-    </div>
+    </div> -->
     <div class="offcanvas-body">
       <div class="accordion" id="accordionExample">
         <div class="accordion-item">
@@ -194,5 +194,7 @@ img {
   width: 20vw;
   text-shadow: none;
   height: fit-content;
+  margin-top: 10vh;
+
 }
 </style>
