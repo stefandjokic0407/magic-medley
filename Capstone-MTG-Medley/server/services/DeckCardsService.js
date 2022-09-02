@@ -10,9 +10,9 @@ class DeckCardsService{
       throw new BadRequest('Card does not exist in that deck!')
     }
     // @ts-ignore
-    if(deck.accountId.toString() != userId){
-      throw new Forbidden('You are not authorized to make changes to this deck')
-    }
+    // if(card.accountId.toString() != userId){
+    //   throw new Forbidden('You are not authorized to make changes to this deck')
+    // }
     await card.remove()
     return 'Card has been removed from deck'
   }
