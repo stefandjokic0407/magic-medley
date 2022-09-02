@@ -32,7 +32,7 @@ class DecksService {
   async editDeck(deckId, id, deckData) {
     let deck = await this.getById(deckId)
     // @ts-ignore
-    if (deck.accountId.toString != id) {
+    if (deck.accountId.toString() != id) {
       throw new Forbidden('You cannot edit this')
     }
 
