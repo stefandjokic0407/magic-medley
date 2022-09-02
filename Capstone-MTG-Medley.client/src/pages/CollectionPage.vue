@@ -11,8 +11,8 @@
     <h4 class="col-1 text-center">{{ activeDeck?.name }}</h4>
     <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
     <div class="col-12">
-      <div class="row mx-auto">
-        <div v-for="c in deckCards" :key="c.id" class="col-2 mx-2 my-3">
+      <div class="row">
+        <div v-for="c in deckCards" :key="c.id" class="col-1 mx-1 my-3">
           <DeckCard :card="c" />
         </div>
       </div>
