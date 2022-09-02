@@ -10,15 +10,10 @@ class DecksService{
         return res.data
     }
     async createDeck(newDeck){
-
+        
     const res = await api.post('/api/decks', newDeck)
     AppState.decks = res.data
     return res.data
-    }
-
-    async createDeck(newDeckCard){
-        const res = await api.post('/api/deckCards', newDeckCard)
-
     }
 
     async getAccountDecks(accountId){
