@@ -85,9 +85,9 @@
         <div class="collapse multi-collapse" id="multiCollapseFormat">
           <div class="card card-body mt-1">
             <h5 class="card-title">Format</h5>
-            <select v-model="selected" @change="filterChange('format', selected)" class="form-select"
-              aria-label="Format select menu">
-              <option selected>Please select a format</option>
+            <select v-model="filter.format" class="form-select" aria-label="Format select menu">
+              <option selected disabled>Please select a format</option>
+              <option value="">None</option>
               <option value="standard">Standard</option>
               <option value="modern">Modern</option>
               <option value="legacy">Legacy</option>
@@ -220,7 +220,6 @@ export default {
       color: [],
       rarity: [],
       // NOTE this should prob change, overcomplicated ask andrew
-      format: [],
       mana: null,
     })
 
@@ -249,12 +248,10 @@ export default {
       async searchCards() {
         filter.value['color'] = filter.value['color'].join('').toString();
         filter.value['rarity'] = filter.value['rarity'].join('').toString();
-        filter.value['format'] = filter.value['format'].splice(1, 1, ['format']).toString();
         console.log('filer value', filter.value);
         await cardsService.getCardsBySearch(query.value, filter.value)
         filter.value['color'] = filter.value['color'].split('')
         filter.value['rarity'] = filter.value['rarity'].split('')
-        filter.value['format'] = filter.value['format'].split(' ')
       },
 
       async toggleText() {
