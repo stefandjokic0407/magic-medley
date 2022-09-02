@@ -7,7 +7,9 @@
     <h3 class="col-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
       class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
     </h3>
-    <img class="img-fluid col-1" :src="activeDeck.picture" alt="" srcset="">
+   
+    <h4 class="col-1 text-center">{{activeDeck?.name}}</h4>
+    <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
 
   </div>
   <div>
