@@ -59,8 +59,7 @@ export default {
   setup() {
     async function getAccountCards() {
       try {
-        const accountId = AppState.account.id;
-        await cardsService.getAccountCards(accountId);
+        await cardsService.getAccountCards()
       }
       catch (error) {
         logger.log("[getting all cards]", error);
@@ -69,8 +68,8 @@ export default {
     }
     async function getAccountDecks() {
       try {
-        // const accountId = AppState.account.id;
-        await decksService.getAccountDecks()
+        const accountId = AppState.account.id
+        await decksService.getAccountDecks(accountId)
       } catch (error) {
         logger.error('[getting account decks]', error);
         Pop.error(error);
@@ -78,8 +77,8 @@ export default {
     }
 
     onMounted(() => {
+      getAccountDecks();
       getAccountCards();
-      getAccountDecks()
     });
     return {
       cards: computed(() => AppState.collection),

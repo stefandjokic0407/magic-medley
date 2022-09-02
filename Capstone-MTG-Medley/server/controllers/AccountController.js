@@ -87,7 +87,7 @@ async deleteCard(req, res, next) {
 async getDecksByAccountId(req,res,next){
 try {
 const decks = await decksService.getDecksByAccountId(req.userInfo.id)
-return decks 
+return res.send(decks)
 } catch (error) {
 next(error)   
 }

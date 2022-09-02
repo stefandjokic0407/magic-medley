@@ -59,7 +59,6 @@ class CardsService {
 
   async getAccountCards() {
     const res = await api.get('account/cards')
-    console.log('Getting Account Cards', res.data)
     AppState.collection = res.data.map(c => new Card(c))
   }
 
