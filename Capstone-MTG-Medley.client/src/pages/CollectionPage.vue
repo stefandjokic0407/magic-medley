@@ -5,13 +5,9 @@
   <div class="">
     <!-- add deck component -->
     <h3 class="col-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
-        class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
+      class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
     </h3>
-    <div v-if="decks.length" class="row">
-      <div v-for="d in decks" :key="d.id" class="col-2">
-        <Deck :deck="d" />
-      </div>
-    </div>
+   
   </div>
   <div>
     <h3>My Collection</h3>
@@ -23,6 +19,24 @@
   </div>
   <DeckForm />
   
+  
+  <!-- SECTION THE OFFCANVAS FOR THE DECKS -->
+  <div class="col-2 p-3 text-end">
+        <button class="btn btn-outline-dark img-text deckCanvas" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
+            Your Decks
+        </button>
+    </div>
+
+    <div class="offcanvas offcanvas-end offcanvas-style text-center" tabindex="-1" id="offcanvasRight"
+    aria-labelledby="offcanvasExampleLabel">
+    <h1>Your Decks:</h1>
+    <div v-if="decks.length" class="row">
+      <div v-for="d in decks" :key="d.id" class="col-3">
+        <Deck :deck="d" />
+      </div>
+    </div>
+  </div>
 </template>
 
 
@@ -91,4 +105,24 @@ export default {
 
 
 <style>
+
+.deckCanvas {
+  position: absolute;
+  right: 0px;
+  top: 27px;
+
+}
+
+.offcanvas-style {
+  background: rgb(0 0 0 / 38%);
+  backdrop-filter: blur(4px);
+  border: solid #8d8b8b1f;
+  color: white;
+  border-radius: 8px;
+  text-shadow: 5px 5px 5px black;
+  padding: 0.5em;
+  width: 30vw;
+  height: 100vh;
+}
+
 </style>
