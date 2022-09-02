@@ -45,7 +45,7 @@ class DecksService {
   }
 
   async deleteDeck(deckId) {
-    const deck = await dbContext.Decks.findOne({_id: deckId})
+    const deck = await dbContext.Decks.findById(deckId)
     if (!deck) {
       throw new BadRequest('Deck does not exist')
     }
