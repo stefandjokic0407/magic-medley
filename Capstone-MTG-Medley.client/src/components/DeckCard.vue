@@ -1,6 +1,6 @@
 <template>
 
-<!-- <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
+<div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
     :data-bs-target="'#cardModal' + card.id" class="mt-4 shadow rotated">
     <div class="p-2">
       <div v-if="card" class="col-12 ">
@@ -14,7 +14,7 @@
   </div>
   <Modal :id="'cardModal' + card.id">
     <CardModal :card="card" />
-  </Modal> -->
+  </Modal>
 
 test
 
@@ -30,10 +30,11 @@ import Pop from "../utils/Pop";
 
 export default {
   props: { card: { type: Card, required: true } },
-
-
   setup(props) {
-
+    
+    function whatIs() {
+      console.log('Deck Card:', card)
+    },
     return {
       activeCard: computed(() => AppState.activeCard),
       reset() {
