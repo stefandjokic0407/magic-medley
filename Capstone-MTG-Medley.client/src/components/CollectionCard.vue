@@ -42,6 +42,7 @@ import { computed } from '@vue/reactivity';
 import { AppState } from '../AppState.js';
 import { Card } from '../models/Card.js';
 import { cardsService } from "../services/CardsService";
+import { deckCardsService } from "../services/DeckCardsService.js";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 
@@ -53,6 +54,7 @@ export default {
     return {
       cards: computed(() => AppState.collection),
       activeDeck: computed(() => AppState.activeDeck),
+      user: computed(()=> AppState.account),
       reset() {
         AppState.activeCard = props.card
         console.log('Active Card:', props.card)
@@ -65,6 +67,19 @@ export default {
         catch (error) {
           logger.error(error);
           Pop.toast(error.message, "error");
+        }
+      },
+      async createDeckCard(cardId) {
+        try {
+          const deckId = AppState.activeDeck.id
+          const DeckCard = {}
+          DeckCard.cardId = cardId
+          DeckCard.deckId = deckId
+          DeckCard.accountId = AppState.user.id
+          await deckCardsService.createDeckCard(DeckCard)
+        } catch (error) {
+          logger.log("[creating deck card]", error);
+          Pop.error(error);
         }
       },
     }
