@@ -1,10 +1,11 @@
 <template>
 
-  <form @submit.prevent="searchCards()" class="row justify-content-between ms">
-    <!-- SECTION Search bar with checkbox name, type, text -->
-    <section class="col-12 col-md-4">
-      <div class="row mt-1">
-        <div class="col-12 d-flex justify-content-around">
+  <form @submit.prevent="searchCards()" class="search-zone">
+
+    <section class="row">
+      <!-- SECTION Search bar with checkbox name, type, text -->
+      <section class="col-3 py-1">
+        <div class="d-flex flex-row justify-content-around">
           <div class="form-check form-check-inline">
             <input @click="toggleName" checked class="form-check-input selectable no-select" type="radio"
               name="inlineRadioOptions" id="inlineRadio1" value="option1">
@@ -21,101 +22,106 @@
             <label class="form-check-label selectable no-select" for="inlineRadio3">Text</label>
           </div>
         </div>
-        <div class="input-group col-12" title="Search">
-          <input class="form-control" type="text" required v-model="query" />
-          <button class="btn btn-outline-dark" type="submit">
+        <div class="input-group" title="Search">
+          <input class="form-control" placeholder="Search by Name, Type or Text..." type="text" required
+            v-model="query" />
+          <button class="btn btn-outline-light" type="submit">
             <i class="mdi mdi-magnify"></i>
           </button>
         </div>
-      </div>
-    </section>
-
-    <!-- SECTION Buttons for Collapsable Filters -->
-    <section class="col-12">
-      <div class="row mt-2">
-
-        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
-          data-bs-toggle="collapse" data-bs-target="#multiCollapseFormat" aria-expanded="false"
-          aria-controls="multiCollapseFormat">Format<i class="mdi mdi-chevron-down fs-4"></i></button>
-
-        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
-          data-bs-toggle="collapse" data-bs-target="#multiCollapseRarity" aria-expanded="false"
-          aria-controls="multiCollapseRarity">Rarity<i class="mdi mdi-chevron-down fs-4"></i></button>
-
-        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
-          data-bs-toggle="collapse" data-bs-target="#multiCollapseColor" aria-expanded="false"
-          aria-controls="multiCollapseColor">Color<i class="mdi mdi-chevron-down fs-4"></i></button>
-
-        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
-          data-bs-toggle="collapse" data-bs-target="#multiCollapseConverted" aria-expanded="false"
-          aria-controls="multiCollapseConverted">Converted Mana Cost<i class="mdi mdi-chevron-down fs-4"></i></button>
-
-        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
-          data-bs-toggle="collapse" data-bs-target="#multiCollapsePower" aria-expanded="false"
-          aria-controls="multiCollapsePower">Power<i class="mdi mdi-chevron-down fs-4"></i>
-        </button>
-
-        <button class="btn col-2 d-flex align-items-center justify-content-center" type="button"
-          data-bs-toggle="collapse" data-bs-target="#multiCollapseToughness" aria-expanded="false"
-          aria-controls="multiCollapseToughness">Toughness<i class="mdi mdi-chevron-down fs-4"></i></button>
-      </div>
-    </section>
-
-    <!-- SECTION Collapsable Filters -->
-    <section class="row justify-content-around">
-
+        <div class=" text-center no-select py-2 fs-5" type="button" data-bs-toggle="collapse"
+          data-bs-target=".multi-collapse" aria-expanded="false"
+          aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle Search Filters
+          <i class="mdi mdi-chevron-right"></i>
+        </div>
+      </section>
       <!-- SECTION Format -->
-      <section class="col-2">
+      <section class="col">
         <div class="collapse multi-collapse" id="multiCollapseFormat">
-          <div class="card card-body mt-1">
-            <h5 class="card-title">Format</h5>
-            <select v-model="filter.format" class="form-select" aria-label="Format select menu">
-              <option selected disabled>Please select a format</option>
-              <option value="">None</option>
-              <option value="standard">Standard</option>
-              <option value="modern">Modern</option>
-              <option value="legacy">Legacy</option>
-              <option value="vintage">Vintage</option>
-              <option value="pauper">Pauper</option>
-              <option value="commander">Commander</option>
-              <option value="paupercommander">Pauper Commander</option>
-            </select>
+          <div class=" mt-1">
+            <h5 class="text-center">Format</h5>
+            <div class="">
+              <div class="form-check">
+                <input @click="filter.format = ''" checked class=" form-check-input" type="radio" name="radiosFormat"
+                  id="radiosFormatAll" value="">
+                <label class="form-check-label" for="radiosFormatAll">All</label>
+              </div>
+              <div class="form-check">
+                <input @click="filter.format = 'standard'" class=" form-check-input" type="radio" name="radiosFormat"
+                  id="radiosFormatStandard" value="standard">
+                <label class="form-check-label" for="radiosFormatStandard">Standard</label>
+              </div>
+              <div class="form-check">
+                <input @click="filter.format = 'modern'" class=" form-check-input" type="radio" name="radiosFormat"
+                  id="radiosFormatModern" value="modern">
+                <label class="form-check-label" for="radiosFormatModern">Modern</label>
+              </div>
+              <div class="form-check">
+                <input @click="filter.format = 'legacy'" class=" form-check-input" type="radio" name="radiosFormat"
+                  id="radiosFormatLegacy" value="legacy">
+                <label class="form-check-label" for="radiosFormatLegacy">Legacy</label>
+              </div>
+              <div class="form-check">
+                <input @click="filter.format = 'vintage'" class=" form-check-input" type="radio" name="radiosFormat"
+                  id="radiosFormatVintage" value="vintage">
+                <label class="form-check-label" for="radiosFormatVintage">Vintage</label>
+              </div>
+              <div class="form-check">
+                <input @click="filter.format = 'pauper'" class=" form-check-input" type="radio" name="radiosFormat"
+                  id="radiosFormatPauper" value="pauper">
+                <label class="form-check-label" for="radiosFormatPauper">Pauper</label>
+              </div>
+              <div class="form-check">
+                <input @click="filter.format = 'commander'" class=" form-check-input" type="radio" name="radiosFormat"
+                  id="radiosFormatCommander" value="commander">
+                <label class="form-check-label" for="radiosFormatCommander">Commander</label>
+              </div>
+              <div class="form-check">
+                <input @click="filter.format = 'paupercommander'" class=" form-check-input" type="radio"
+                  name="radiosFormat" id="radiosFormatPauperCommander" value="paupercommander">
+                <label class="form-check-label" for="radiosFormatPauperCommander">Pauper Commander</label>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- SECTION Rarity -->
-      <section class="col-2">
+      <section class="col">
         <div class="collapse multi-collapse" id="multiCollapseRarity">
-          <div class="card card-body mt-1">
-            <h5 class="card-title">Rarity</h5>
+          <div class=" mt-1">
+            <h5 class="text-center">Rarity</h5>
             <div class="">
-
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                <input @click="filter.rarity = ''" checked class=" form-check-input" type="radio" name="radiosRarity"
+                  id="radiosRarityAll" value="">
+                <label class="form-check-label" for="radiosRarityAll">All</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityCommon" value="c"
                   @click="filter.rarity = 'c'">
-                <label class="form-check-label" for="exampleRadios1">
+                <label class="form-check-label" for="radiosRarityCommon">
                   Common
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"
+                <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityUncommon" value="u"
                   @click="filter.rarity = 'u'">
-                <label class="form-check-label" for="exampleRadios1">
+                <label class="form-check-label" for="radiosRarityUncommon">
                   Uncommon
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3"
+                <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityRare" value="r"
                   @click="filter.rarity = 'r'">
-                <label class="form-check-label" for="exampleRadios1">
+                <label class="form-check-label" for="radiosRarityRare">
                   Rare
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="option4"
+                <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityMythicRare" value="m"
                   @click="filter.rarity = 'm'">
-                <label class="form-check-label" for="exampleRadios1">
+                <label class="form-check-label" for="radiosRarityMythicRare">
                   Mythic Rare
                 </label>
               </div>
@@ -125,10 +131,10 @@
       </section>
 
       <!-- SECTION Color -->
-      <section class="col-2">
+      <section class="col">
         <div class="collapse multi-collapse" id="multiCollapseColor">
-          <div class="card card-body mt-1">
-            <h5 class="card-title">Color</h5>
+          <div class=" mt-1">
+            <h5 class="text-center">Color</h5>
             <div class="">
               <input type="checkbox" class="" @change="filterChange('color', 'u')">
               <label class="form-check-label ps-2">Blue</label><br>
@@ -148,67 +154,44 @@
         </div>
       </section>
 
-
-      <!-- SECTION Set -->
-      <!-- NOTE might want to abandon this one, ton of options -->
-      <!-- <section class="col-3">
-        <div class="collapse multi-collapse" id="multiCollapseSet">
-          <div class="card card-body mt-1">
-            <h5 class="card-title">Set</h5>
-            Some placeholder content for the second collapse component of this multi-collapse example. This panel is
-            hidden by default but revealed when the user activates the relevant trigger.
-          </div>
-        </div>
-      </section> -->
-
-      <!-- SECTION Mana Cost -->
-      <!-- NOTE redundant and difficult -->
-      <!-- <section class="col-3">
-        <div class="collapse multi-collapse" id="multiCollapseManaCost">
-          <div class="card card-body mt-1">
-            <h5 class="card-title">Mana Cost</h5>
-            Some placeholder content for the second collapse component of this multi-collapse example. This panel is
-            hidden by default but revealed when the user activates the relevant trigger.
-          </div>
-        </div>
-      </section> -->
-
-
       <!-- SECTION Converted Mana Cost -->
-      <section class="col-2">
+      <section class="col">
         <div class="collapse multi-collapse" id="multiCollapseConverted">
-          <div class="card card-body mt-1">
-            <h5 class="card-title">Converted Mana Cost</h5>
-            <input v-model="filter.mana" type="number" class="form-control" placeholder="Total mana...">
+          <div class=" mt-1">
+            <h5 class="text-center">Mana Cost</h5>
+            <input v-model="filter.mana" type="number" class="form-control" placeholder="All">
           </div>
         </div>
       </section>
 
       <!-- SECTION Power -->
-      <section class="col-2">
+      <section class="col">
         <div class="collapse multi-collapse" id="multiCollapsePower">
-          <div class="card card-body mt-1">
-            <h5 class="card-title">Power</h5>
-            <input v-model="filter.power" type="number" class="form-control">
+          <div class=" mt-1">
+            <h5 class="text-center">Power</h5>
+            <input v-model="filter.power" type="number" class="form-control" placeholder="All">
           </div>
         </div>
       </section>
 
       <!-- SECTION Toughness -->
-      <section class="col-2">
+      <section class="col">
         <div class="collapse multi-collapse" id="multiCollapseToughness">
-          <div class="card card-body mt-1">
-            <h5 class="card-title">Toughness</h5>
-            <input v-model="filter.toughness" type="number" class="form-control">
+          <div class=" mt-1">
+            <h5 class="text-center">Toughness</h5>
+            <input v-model="filter.toughness" type="number" class="form-control" placeholder="All">
           </div>
         </div>
       </section>
+
     </section>
+
   </form>
+
 </template>
 
 <script>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { AppState } from "../AppState.js";
 import { cardsService } from "../services/CardsService";
 import { logger } from "../utils/Logger";
@@ -231,9 +214,16 @@ export default {
     })
 
 
+    async function alphaSearch() {
+      const search = 'set%3Alea'
+      await cardsService.getAlphaSearch(search)
+    }
 
-
+    onMounted(() => {
+      alphaSearch()
+    });
     return {
+      alphaSearch,
       filter,
       query,
       // selected,
@@ -261,6 +251,7 @@ export default {
         // filter.value['rarity'] = filter.value['rarity'].split('')
       },
 
+
       async toggleText() {
         AppState.searchByText = true
         AppState.searchByName = false
@@ -284,8 +275,14 @@ export default {
 }
 </script>
 
-<style>
-.cs-range {
-  min-width: 100%;
+<style scoped>
+.search-zone {
+  text-shadow: 0px 0px 1px black;
+  font-weight: 700;
+  color: whitesmoke;
+  background: rgb(0 0 0 / 75%);
+  backdrop-filter: blur(4px);
+  /* border: solid #8d8b8b1f; */
+  /* border-radius: 8px; */
 }
 </style>

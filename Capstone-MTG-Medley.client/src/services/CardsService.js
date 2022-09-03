@@ -50,13 +50,10 @@ class CardsService {
 
 
   // TODO do we really need this?
-  // async searchBarGet(searchTerm) {
-  //   const res = await search.get(searchTerm)
-  //   AppState.searchedCards = res.data.data.map(c => new Card(c))
-  //   AppState.nextPage = res.data.next_page
-  //   console.log('next page', AppState.nextPage)
-  //   AppState.previousPage = res.data.previous_page
-  // }
+  async getAlphaSearch(searchTerm) {
+    const res = await search.get(baseSearch + searchTerm)
+    AppState.searchedCards = res.data.data.map(c => new Card(c))
+  }
 
   // async getRandomCard() {
   //   const res = await mtg.get('cards/random')

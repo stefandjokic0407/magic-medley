@@ -149,7 +149,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .deckCanvas {
   position: absolute;
   right: 0px;
