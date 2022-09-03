@@ -1,7 +1,7 @@
 <template>
-    <div class="row fixed-bottom footer-style justify-content-around px-5">
+    <div class="row fixed-bottom footer-style justify-content-between px-3">
         <div class="col-2 py-2 text-center">
-            <div class="text-center border-bottom border-2 text-uppercase">Account</div>
+            <div class="text-center border-bottom border-2 text-uppercase"> <b>Account</b></div>
             <div class="p-2 selectable text-uppercase no-select">
                 <Login />
             </div>
@@ -11,15 +11,8 @@
                 </router-link>
             </div>
         </div>
-
-        <div class="col-3">
-            <div class="my-5 p-2">
-                <!-- <SearchForm /> -->
-            </div>
-        </div>
-
         <div class="col-2 py-2 text-center">
-            <div class="text-center border-bottom border-2 text-uppercase">Magic Medley</div>
+            <div class="text-center border-bottom border-2 text-uppercase"><b>Magic Medley</b></div>
 
             <div class="p-2 selectable no-select">
                 <router-link :to="{ name: 'Search' }" class="text-light text-uppercase">
@@ -53,7 +46,7 @@ export default {
     color: white;
     border-radius: 8px;
     text-shadow: 0px 0px 1px black;
-    padding: 0.5em;
-    min-height: 15vh;
+    // padding: 0.5em;
+    // min-height: 15vh;
 }
 </style>

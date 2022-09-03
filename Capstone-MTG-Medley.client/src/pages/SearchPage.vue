@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="fixed-top">
     <Navbar />
   </header>
   <section class="row">
@@ -55,9 +55,5 @@ export default {
 
 
 
-<style>
-/* .search-bar {
-  background-color: beige;
-  height: 100vh;
-} */
+<style scoped>
 </style>

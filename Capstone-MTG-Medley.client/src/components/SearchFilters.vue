@@ -2,7 +2,7 @@
 
   <form @submit.prevent="searchCards()" class="search-zone">
 
-    <section class="row">
+    <section class="row m-mine">
       <!-- SECTION Search bar with checkbox name, type, text -->
       <section class="col-3 py-1">
         <div class="d-flex flex-row justify-content-around">
@@ -39,7 +39,7 @@
       <section class="col">
         <div class="collapse multi-collapse" id="multiCollapseFormat">
           <div class=" mt-1">
-            <h5 class="text-center">Format</h5>
+            <h4>Format</h4>
             <div class="">
               <div class="form-check">
                 <input @click="filter.format = ''" checked class=" form-check-input" type="radio" name="radiosFormat"
@@ -90,7 +90,7 @@
       <section class="col">
         <div class="collapse multi-collapse" id="multiCollapseRarity">
           <div class=" mt-1">
-            <h5 class="text-center">Rarity</h5>
+            <h4>Rarity</h4>
             <div class="">
               <div class="form-check">
                 <input @click="filter.rarity = ''" checked class=" form-check-input" type="radio" name="radiosRarity"
@@ -134,7 +134,7 @@
       <section class="col">
         <div class="collapse multi-collapse" id="multiCollapseColor">
           <div class=" mt-1">
-            <h5 class="text-center">Color</h5>
+            <h4>Color</h4>
             <div class="">
               <input type="checkbox" class="" @change="filterChange('color', 'u')">
               <label class="form-check-label ps-2">Blue</label><br>
@@ -158,7 +158,7 @@
       <section class="col">
         <div class="collapse multi-collapse" id="multiCollapseConverted">
           <div class=" mt-1">
-            <h5 class="text-center">Mana Cost</h5>
+            <h4 class="text-center">Mana Cost</h4>
             <input v-model="filter.mana" type="number" class="form-control" placeholder="All">
           </div>
         </div>
@@ -168,7 +168,7 @@
       <section class="col">
         <div class="collapse multi-collapse" id="multiCollapsePower">
           <div class=" mt-1">
-            <h5 class="text-center">Power</h5>
+            <h4 class="text-center">Power</h4>
             <input v-model="filter.power" type="number" class="form-control" placeholder="All">
           </div>
         </div>
@@ -178,7 +178,7 @@
       <section class="col">
         <div class="collapse multi-collapse" id="multiCollapseToughness">
           <div class=" mt-1">
-            <h5 class="text-center">Toughness</h5>
+            <h4 class="text-center">Toughness</h4>
             <input v-model="filter.toughness" type="number" class="form-control" placeholder="All">
           </div>
         </div>
@@ -277,12 +277,19 @@ export default {
 
 <style scoped>
 .search-zone {
-  text-shadow: 0px 0px 1px black;
-  font-weight: 700;
+  text-shadow: 1px 1px 3px black;
+  font-weight: 900;
   color: whitesmoke;
-  background: rgb(0 0 0 / 75%);
-  backdrop-filter: blur(4px);
+  background-image: url(https://images.ctfassets.net/s5n2t79q9icq/6rDz8lJT4NQ2DlVacH13aD/62513faa4617397b6653691497b8ed6d/mana-bg-start-2.jpeg?q=70&w=1920&h=793&fit=crop&f=center&fm=avif);
+  background-position: center;
+  background-size: cover;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
   /* border-radius: 8px; */
+}
+
+.m-mine {
+  margin-top: 10vh;
 }
 </style>
