@@ -148,9 +148,10 @@
                 <b>
                   Subtype
                 </b>
-                <p>Every card has a card type and may have one or
-                  more subtypes.
-                  These are printed on the type line.</p>
+                <p>Every card has a card type and may have one or more subtypes. These are printed on the type line.
+                  Most creatures, planeswalkers and tribal cards have at
+                  least one subtype.<br>
+                  On artifact, enchantment, instant, sorcery and land cards the subtypes are optional.</p>
               </ul>
               <p><b></b></p>
               <p></p>
@@ -174,6 +175,53 @@
                   as being Enchant World cards (which despite the "Enchant" typeline, were global enchantments and not
                   local enchantments). World enchantments have been retired for many years.</li>
               </ul>
+            </div>
+          </section>
+
+          <!-- SECTION Colors -->
+          <section class="row">
+            <div class="col-12">
+              <p class="fs-4 bg-dark rounded text-light ps-2">Colors</p>
+              <div class="row colors-bg rounded m-1">
+                <div class="col colors-text text-center">
+                  <img class="mana-symbol " src="../assets/img/mana-white.png" alt="">
+                  <p class="text-start">White gets the job done with teamwork and balance. The strongest
+                    defensive color,
+                    white uses
+                    protection spells to keep your creatures safe!
+                  </p>
+                </div>
+                <div class="col colors-text text-center">
+                  <img class="mana-symbol " src="../assets/img/mana-blue.png" alt="">
+                  <p class="text-start">
+                    Blue picks apart opponent's strategies—then crushes them. Foresight is the key to success. It's
+                    strongest when played defensively.
+                  </p>
+                </div>
+                <div class="col colors-text text-center">
+                  <img class="mana-symbol " src="../assets/img/mana-black.png" alt="">
+                  <p class="text-start">
+                    Black is where you can find spooky creatures like demons and
+                    undead. It's also where you'll trade resources in order to
+                    destroy your opposition.
+                  </p>
+                </div>
+                <div class="col colors-text text-center">
+                  <img class="mana-symbol " src="../assets/img/mana-red.png" alt="">
+                  <p class="text-start">
+                    Red wants to win fast and win now. Red is played as an aggressive color that uses power, damage, and
+                    quick-play tactics to decimate opponents.
+                  </p>
+                </div>
+                <div class="col colors-text text-center">
+                  <img class="mana-symbol " src="../assets/img/mana-green.png" alt="">
+                  <p class="text-start">
+                    Green is filled with nature's fiercest creatures: the bigger the
+                    better! Green plays with a force as unstoppable as nature itself.
+                  </p>
+                </div>
+              </div>
+
             </div>
           </section>
 
@@ -311,7 +359,7 @@
           <!-- SECTION Actions -->
           <section class="row">
 
-            <!-- SECTION  -->
+            <!-- SECTION  Tapping and Untapping-->
             <div class="col-12">
               <div class="row">
                 <div class="col-6">
@@ -340,26 +388,31 @@
                   <img class="img-fluid" src="../assets/img/serra-angel.jpg" alt="">
                 </div>
                 <div class="col-9">
+                  <p class="fs-5">Casting Spells</p>
+                  <p>To cast a spell, you must pay its mana cost (located in the upper right corner of the card) by
+                    tapping lands (or other permanents) to make the amount and Game Actions type of mana which that
+                    spell requires. For example, if you were casting Serra Angel, which costs <img class="symbol pb-1"
+                      src="../assets/img/mana-colorless3.png" alt=""><img class="symbol pb-1"
+                      src="../assets/img/mana-white.png" alt=""><img class="symbol pb-1"
+                      src="../assets/img/mana-white.png" alt="">, you could tap three
+                    basic lands of any type to pay <img class="symbol pb-1" src="../assets/img/mana-colorless3.png"
+                      alt="">
+                    plus two Plains to pay <img class="symbol pb-1" src="../assets/img/mana-white.png" alt=""><img
+                      class="symbol pb-1" src="../assets/img/mana-white.png" alt="">.
+
+                    Once a spell has been cast, one of two things happens. If the spell is an instant or a sorcery, you
+                    follow the instructions on the card, and then you put the card into your graveyard. If the spell is
+                    a creature, artifact, or enchantment, you put the card on the table in front of you. The card is now
+                    on the battlefield.
+
+                    Cards on the battlefield are called permanents to differentiate them from instants and sorceries,
+                    which are never on the battlefield.</p><br>
                 </div>
-                <!-- FIXME need to get the mana symbols -->
-                <p class="fs-5">Casting Spells</p>
-                <p>To cast a spell, you must pay its mana cost (located in the upper right corner of the card) by
-                  tapping lands (or other permanents) to make the amount and Game Actions type of mana which that
-                  spell requires. For example, if you were casting Serra Angel, which costs 3WW, you could tap three
-                  basic lands of any type to pay 3 plus two Plains to pay WW.
-
-                  Once a spell has been cast, one of two things happens. If the spell is an instant or a sorcery, you
-                  follow the instructions on the card, and then you put the card into your graveyard. If the spell is
-                  a creature, artifact, or enchantment, you put the card on the table in front of you. The card is now
-                  on the battlefield.
-
-                  Cards on the battlefield are called permanents to differentiate them from instants and sorceries,
-                  which are never on the battlefield.</p><br>
               </div>
             </section>
 
             <!-- SECTION Attacking and Blocking -->
-            <section class="col-12">
+            <section class="col-12 mt-2">
               <div class="row">
                 <div class="col-12">
                   <p class="fs-5">Attacking and Blocking</p>
@@ -426,8 +479,6 @@
               </div>
             </section>
 
-
-
           </section>
 
           <!-- SECTION Targeting-->
@@ -475,10 +526,6 @@
             <div class="col-12">
               <p class="fs-5">Responding to Spells and Abilities</p>
               <p>
-                When you cast a spell or activate an ability, it doesn't resolve right away—it goes on the stack. Spells
-                and abilities remain on the stack until both players choose not to cast any new spells or activate any
-                new abilities. Triggered abilities also go on the stack until they resolve.<br><br>
-
                 Each player has an opportunity to cast an instant spell (or activate an activated ability) in response
                 to any spell or ability that goes on the stack. If a player does decide to respond, their spell or
                 ability goes on the stack on top of what was already waiting there. When all players pass—that is,
@@ -487,6 +534,15 @@
                 next thing waiting on the stack will resolve. If the stack is empty, the current step of the turn will
                 end, and the game will proceed to the next step.
               </p>
+            </div>
+          </section>
+
+
+          <!-- SECTION Formats -->
+          <section class="row">
+            <div class="col-12">
+              <p class="fs-4 bg-dark rounded text-light ps-2">FORMATS</p>
+
             </div>
           </section>
 
@@ -512,17 +568,18 @@
           <!-- NOTE need symbols all over in here -->
           <ul class="list-unstyled">
             <li>
-              <b class="bg-dark text-light rounded px-2">TO (TAP) </b>
+              <b class="bg-dark text-light rounded px-2">
+                <img class="symbol pb-1" src="../assets/img/tap-symbol.png" alt=""> (TAP) </b>
               <p>This symbol means “tap this permanent” (turn it sideways to show that it has been used). It appears in
                 activation costs. You can't pay a cost if the card is already tapped, or if it's a creature that still
                 has summoning sickness.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">ADDITIONAL COST</b>
               <p>Some spells say they have an additional cost. To cast such a spell, you must pay both the mana cost in
                 the upper right corner of the card and its additional cost.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">AURA</b>
               <p>Aura is a subtype that appears on an enchantment that can be attached to a permanent. Each Aura has the
                 keyword “enchant” followed by what it can be attached to—for example, “enchant creature,” “enchant
@@ -531,32 +588,37 @@
                 permanent it's attached to leaves the battlefield. If the permanent leaves the battlefield, the Aura
                 card is put into your graveyard.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">BASIC LAND</b>
               <p>There are five types of basic lands: Plains, Island, Swamp, Mountain, and Forest. Any land with the
-                Plains subtype has the intrinsic ability “: Add ” (white mana). Similarly, Islands tap for (blue mana),
-                Swamps tap for (black mana), Mountains tap for (red mana), and Forests tap for (green mana). If an
+                Plains subtype has the intrinsic ability “: Add <img class="symbol pb-1"
+                  src="../assets/img/mana-white.png" alt="">” (white
+                mana). Similarly, Islands tap for <img class="symbol pb-1" src="../assets/img/mana-blue.png"
+                  alt="">(blue mana),
+                Swamps tap for <img class="symbol pb-1" src="../assets/img/mana-black.png" alt="">(black mana),
+                Mountains tap for <img class="symbol pb-1" src="../assets/img/mana-red.png" alt="">(red mana), and
+                Forests tap for <img class="symbol pb-1" src="../assets/img/mana-green.png" alt="">(green mana). If an
                 effect refers to a “basic land card,” it's referring to a card with the words “basic land” on its type
                 line (basic is a supertype). Other lands are often referred to as “nonbasic lands.”</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">COLOR</b>
               <p>The five Magic colors are white, blue, black, red, and green. If a spell or ability tells you to choose
                 a color, you must choose one of those five. A card's color is determined by its mana cost. For example,
                 a card that costs is blue, and a card that costs is both red and white.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">COLORLESS</b>
               <p>Lands and most artifacts are colorless. Colorless is not a color. If something tells you to choose a
                 color, you can't choose colorless.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">COMBAT DAMAGE</b>
               <p>Creatures deal combat damage by attacking and blocking. Each creature deals combat damage equal to its
                 power. This damage is dealt during the combat damage step. Any other kind of damage doesn't count as
                 combat damage, even if it's dealt during the combat phase or as the result of a creature's ability.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">CONTROL</b>
               <p>You control spells you cast and permanents that enter the battlefield on your side. You also control
                 abilities that come from permanents you control. Only you can make decisions for things you control. If
@@ -564,32 +626,32 @@
                 you gain control of a permanent. Most of the time, this means the card will move from your opponent's
                 side to yours.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">CONTROLLER</b>
               <p>A spell's controller is the player who cast it. A permanent's controller is the player who cast
                 it—unless another spell or ability changes who controls it.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">COST</b>
               <p>A cost is something you have to pay to take most actions. You must pay a cost to cast a spell or
                 activate an activated ability. Sometimes a spell or ability will also ask you to pay an additional cost
                 to cast or activate it. For example, in addition to its mana cost, Village Rites requires you to
                 sacrifice a creature in order to cast it. You can't cast it if you have no creature to sacrifice.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">COUNTER A SPELL OR ABILITY</b>
               <p>Countering a spell or ability causes it to have no effect. If a spell is countered, it's removed from
                 the stack and put into its owner's graveyard. Once a spell or ability starts to resolve, it's too late
                 to counter it. Lands aren't spells, so they can't be countered.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">COUNTER ON A PERMANENT</b>
               <p>Some spells and abilities tell you to put a counter on a permanent. The counter marks a change to the
                 permanent that lasts for as long as it's on the battlefield with the counter on it, or a Planeswalker's
                 loyalty. A counter usually changes a creature's power and toughness. You can use anything you want as
                 counters: many players find that glass beads and dice work best.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">DAMAGE</b>
               <p>Damage reduces a player's life total and destroys creatures. Attacking and blocking creatures deal
                 damage equal to their power. Some spells and abilities can also deal damage. Damage can be dealt only to
@@ -598,29 +660,29 @@
                 destroyed. Damage dealt beyond a creature's toughness is “excess damage.” Damage dealt to planeswalkers
                 is subtracted from the planeswalker's loyalty.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">DEATHTOUCH</b>
               <p>A keyword ability found on creatures. A creature dealt any amount of damage by a creature with
                 deathtouch is destroyed. Deathtouch has no effect on players or planeswalkers.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">DEFENDER</b>
               <p>A keyword ability found on creatures. Creatures with defender can't attack.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">DESTROY</b>
               <p>When a permanent is destroyed, you move it from the battlefield to its owner's graveyard. Creatures are
                 destroyed when they have taken damage equal to or greater than their toughness. Many spells and
                 abilities can also destroy permanents without dealing damage to them.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">DISCARD</b>
               <p>To discard, take a card from your hand and put it into your graveyard. If a spell or ability forces you
                 to discard, you get to choose which card(s) to discard unless the spell or ability says another player
                 chooses the cards or you have to discard “at random.” If you have more than seven cards in your hand as
                 your turn ends, you have to discard until you have seven.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">DOUBLE STRIKE</b>
               <p>A keyword ability found on creatures. Creatures with double strike deal their combat damage twice. When
                 you reach the combat damage step, check to see if any attacking or blocking creatures have first strike
@@ -629,7 +691,7 @@
                 damage step happens. All other attacking and blocking creatures that survived, as well as the ones with
                 double strike, deal combat damage during this second step.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">ENCHANT</b>
               <p>All Auras have this keyword ability, and it is always followed by the kind of permanent that the Aura
                 can be attached to (for example, “enchant creature” or “enchant land”). When you cast the Aura, you must
@@ -637,13 +699,13 @@
                 artifact,” “enchanted land,” and so on), it means “the creature the Aura is attached to.” See the
                 glossary entry for “Aura.”</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">ENTERS THE BATTLEFIELD</b>
               <p>Some triggered abilities start with “When [this permanent] enters the battlefield, . . .” When a
                 permanent with an ability like this is put onto the battlefield, the ability triggers right away. Some
                 abilities also trigger when certain other permanents enter the battlefield.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">EQUIPMENT</b>
               <p>Equipment is a subtype that appears on an artifact that can be attached to a creature. Most Equipment
                 cards have the activated ability “equip” followed by a cost—for example, “Equip .” An equip ability can
@@ -653,14 +715,14 @@
                 or until the creature it's attached to leaves the battlefield, or until you activate the equip ability
                 again and move the Equipment to a new creature.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">EXILE</b>
               <p>Some spells and abilities can exile permanents on the battlefield or cards in other zones. Exiled
 
                 cards are set apart from the rest of the game. You can't interact with cards in exile unless an ability
                 specifies otherwise.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">FIRST STRIKE</b>
               <p>A keyword ability found on creatures. Creatures with first strike deal all of their combat damage
                 before creatures without first strike or double strike. When you reach the combat damage step, check to
@@ -671,54 +733,54 @@
                 that, the normal combat damage step happens. All other attacking and blocking creatures that survived,
                 as well as the ones with double strike, deal combat damage during this second step.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">FLASH</b>
               <p>A keyword ability found on cards. A spell with flash can be cast any time you could cast an instant.
               </p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">FLASHBACK</b>
               <p>A keyword ability found on instants and sorceries. A spell with flashback can be cast from the
                 graveyard by paying its flashback cost. The spell's effects will happen as usual. A spell cast using
                 flashback will be exiled afterward, regardless of whether it resolves or is countered.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">FLYING</b>
               <p>A keyword ability found on creatures. A creature with flying can be blocked only by creatures with
                 flying or reach.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">GOAD</b>
               <p>A keyword action. If you goad a creature, that creature has to attack and has to attack a player other
                 than you during its controller's next combat, if able. The creature's controller still chooses who it
                 attacks. If a creature is somehow goaded by all players on the table, it must still attack, but its
                 controller may choose whomever they please.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">HASTE</b>
               <p>A keyword ability found on creatures. A creature with haste isn't affected by summoning sickness. It
                 can attack as soon as it comes under your control. You can also activate its activated abilities with in
                 the cost right away.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">HEXPROOF</b>
               <p>A keyword ability that prevents a permanent or player from being the target of spells or abilities an
                 opponent controls.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">INDESTRUCTIBLE</b>
               <p>A keyword ability found on creatures, artifacts, and other permanents. An indestructible permanent
                 can't be destroyed by damage or by effects that say “destroy,” but it can still be put into the
                 graveyard for other reasons—such as an effect that reduces its toughness to 0.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">LEAVES THE BATTLEFIELD</b>
               <p>A permanent leaves the battlefield when it moves from the battlefield zone to any other zone. It might
                 return to a player's hand from the battlefield, go to a graveyard from the battlefield, or go to some
                 other zone. If a card leaves the battlefield and later returns to the battlefield, it's like a brand-new
                 card. It doesn't “remember” anything from the last time it was on the battlefield.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">LEGENDARY</b>
               <p>Legendary is a supertype, so you'll find it written on the type line before the card type. If a player
                 controls two or more legendary permanents with the same name at the same time, that player must choose
@@ -727,35 +789,47 @@
                 two different versions of the same Planeswalker at the same time (e.g. Jace, Mirror Mage and Jace,
                 Arcane Strategist).</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">LIFELINK</b>
               <p>A keyword ability found on creatures. When a creature you control has lifelink and deals damage, you
                 simultaneously gain that much life.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">MANA</b>
               <p>The magical energy you use to pay for spells and some abilities is called mana. Most mana comes from
-                tapping lands. There are five colors of mana: (white), (blue), (black), (red), and (green). Some
-                nonbasic lands make (colorless mana), which can be spent to pay costs that don't require mana of a
+                tapping lands. There are five colors of mana: <img class="symbol pb-1"
+                  src="../assets/img/mana-white.png" alt="">(white), <img class="symbol pb-1"
+                  src="../assets/img/mana-blue.png" alt="">(blue), <img class="symbol pb-1"
+                  src="../assets/img/mana-black.png" alt="">(black), <img class="symbol pb-1"
+                  src="../assets/img/mana-red.png" alt="">(red), and <img class="symbol pb-1"
+                  src="../assets/img/mana-green.png" alt="">(green). Some
+                nonbasic lands make <img class="symbol pb-1" src="../assets/img/mana-strict-colorless.png"
+                  alt="">(colorless
+                mana),
+                which can be spent to pay costs that don't require mana of a
                 specific color. Unspent mana vanishes between turns and phases, so you can't 'save' mana from one turn
                 to use during a later turn.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">MANA ABILITY</b>
               <p>An ability that generates mana. Mana abilities can be activated abilities or triggered abilities. Mana
                 abilities don't go on the stack or wait to resolve— you simply get the mana immediately.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">MANA VALUE</b>
-              <p>The total amount of mana in a mana cost, regardless of color. For example, a card with a mana cost of
-                has a mana value of 5. A card with mana cost has a mana value of 2.</p>
+              <p>The total amount of mana in a mana cost, regardless of color. For example, a card with a mana cost
+                of <img class="symbol pb-1" src="../assets/img/mana-colorless3.png" alt=""><img class="symbol pb-1"
+                  src="../assets/img/mana-white.png" alt=""><img class="symbol pb-1" src="../assets/img/mana-black.png"
+                  alt="">
+                has a mana value of 5. A card with mana cost <img class="symbol pb-1" src="../assets/img/mana-green.png"
+                  alt=""><img class="symbol pb-1" src="../assets/img/mana-green.png" alt=""> has a mana value of 2.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">MENACE</b>
               <p>A keyword ability found on creatures. A creature with menace can't be blocked except by two or more
                 creatures.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">MULLIGAN</b>
               <p>At the beginning of a Magic game, you draw the top seven cards of your library. That's your starting
                 hand. If you don't like your starting hand for any reason, you can take a mulligan. The choice to take a
@@ -765,26 +839,26 @@
                 another mulligan. You can take a mulligan as many times as you want, but you put one card on the bottom
                 of your library for each mulligan you've taken this game.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">OPPONENT</b>
               <p>A person you're playing against is your opponent. If a card says “an opponent,” it means one of its
                 controller's opponents.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">OWNER</b>
               <p>The person who starts the game with a card in their deck is that card's owner. Even if your opponent
                 gains control of one of your permanents, you're still its owner. (If you loaned your friend a deck,
                 they're the “owner” of all the cards in it during the game.) The owner of a token is the player who
                 controlled it when it entered the battlefield.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">PERMANENT</b>
               <p>A card or token on the battlefield. Permanents can be artifacts, creatures, enchantments, or lands.
                 Once a permanent is on the battlefield, it stays there until it's destroyed, exiled, sacrificed, or
                 otherwise removed according to the game rules. You can't remove a permanent from the battlefield just
                 because you want to, even if you control it.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">PLANESWALKER</b>
               <p>Planeswalkers are formidable allies you can summon to fight alongside you. Planeswalker cards are
                 shuffled into your deck at the start of the game, just like any other card. You can cast a Planeswalker
@@ -796,23 +870,23 @@
                 player. When a Planeswalker's loyalty is reduced to zero (by either activating its abilities or taking
                 damage), it is sent to the graveyard.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">PLAYER</b>
               <p>You and your opponents are all players. If a spell or ability lets you choose a player, you can choose
                 yourself. You can't choose yourself if the spell or ability says “opponent.”</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">PUT ONTO THE BATTLEFIELD</b>
               <p>When a spell or ability tells you to put something onto the battlefield, you move that card into the
                 battlefield zone. This is different than casting it—you just put it onto the battlefield without paying
                 its costs.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">REACH</b>
               <p>A keyword ability found on creatures. A creature with reach can block a creature with flying. Note that
                 a creature with reach can be blocked by any kind of creature.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">SACRIFICE</b>
               <p>If a spell or ability tells you to sacrifice a kind of permanent, choose one of your permanents of that
                 type on the battlefield and put it into its owner's graveyard (usually your graveyard, but some spells
@@ -820,36 +894,36 @@
                 permanents you control. Sacrificing a permanent is different from destroying it. You can sacrifice a
                 permanent only if a spell or ability tells you to, or if it's part of a cost.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">SCRY</b>
               <p>A keyword action that allows a player to see the future! “Scry N” means you look at N cards from the
                 top of your library. You can put any number of those cards on the bottom of your library, then you put
                 the rest back on top of your library in any order.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">SHUFFLE</b>
               <p>Some cards will instruct you to shuffle. This is a keyword action that has you randomize the cards of
                 your library, so that no one knows the order of its contents.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">SOURCE</b>
               <p>Damage and abilities each come from a spell or permanent—the source of that damage or ability. Once an
                 ability is on the stack, removing its source doesn't stop it from resolving.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">SPELL</b>
               <p>All types of cards (except lands) are spells while you're casting them. For example, Angler Turtle is a
                 creature card. While you're casting it, it's a creature spell. When it resolves, it becomes a creature.
                 Spells can only be cast during your main phase, except for instants, which can be cast anytime.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">TOKEN</b>
               <p>Some spells and abilities can create tokens. Tokens are always permanents, and they're affected by all
                 the rules, spells, and abilities that affect permanents. If one of your tokens leaves the battlefield,
                 however, it moves to the new zone (such as your graveyard or your hand) and then immediately vanishes
                 from the game.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">TRAMPLE</b>
               <p>A keyword ability found on creatures. Trample allows a creature to deal excess combat damage to the
                 player it's attacking, even if the creature is blocked. If you're attacking with a creature that has
@@ -860,21 +934,31 @@
                 assigned to the player it's attacking. Trample does not work on Planeswalkers, unless the creature has
                 “Trample over planeswalkers”.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">VIGILANCE</b>
               <p>A keyword ability found on creatures. A creature with vigilance doesn't tap to attack. Vigilance
                 doesn't allow a tapped creature or a creature that entered the battlefield this turn to attack.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">X</b>
-              <p>When you see in a mana cost or an activation cost, you get to choose the number that stands for. For
-                example, Pull from Tomorrow is an instant that costs . Its text reads, “Draw X cards, then discard a
+              <p>When you see <img class="symbol pb-1" src="../assets/img/mana-x.png" alt=""> in a mana cost or an
+                activation cost, you get to choose the number that stands for. For
+                example, Pull from Tomorrow is an instant that costs <img class="symbol pb-1"
+                  src="../assets/img/mana-x.png" alt=""><img class="symbol pb-1" src="../assets/img/mana-blue.png"
+                  alt=""><img class="symbol pb-1" src="../assets/img/mana-blue.png" alt="">. Its text reads, “Draw X
+                cards, then discard a
                 card.” When you cast Pull from Tomorrow, you choose what number X is. If you pick one, for example, Pull
-                from Tomorrow costs , and you will draw one card, then choose and discard a card from your hand. If you
-                pick eight, Pull from Tomorrow costs , and you will draw eight cards, then choose and discard a card
+                from Tomorrow costs <img class="symbol pb-1" src="../assets/img/mana-colorless.png" alt=""><img
+                  class="symbol pb-1" src="../assets/img/mana-blue.png" alt=""><img class="symbol pb-1"
+                  src="../assets/img/mana-blue.png" alt="">, and you will
+                draw one card, then choose and discard a card from your hand. If you
+                pick eight, Pull from Tomorrow costs <img class="symbol pb-1" src="../assets/img/mana-colorless8.png"
+                  alt=""><img class="symbol pb-1" src="../assets/img/mana-blue.png" alt=""><img class="symbol pb-1"
+                  src="../assets/img/mana-blue.png" alt="">, and you will draw eight
+                cards, then choose and discard a card
                 from your hand.</p>
             </li>
-            <li>
+            <li><br>
               <b class="bg-dark text-light rounded px-2">YOU</b>
               <p>The word “you” on a spell or ability refers to the current controller of that spell or ability.</p>
             </li>
@@ -905,5 +989,30 @@ export default {
   text-shadow: 1px 1px 3px black;
   font-size: large;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.colors-bg {
+  background-image: url(https://wallpaperaccess.com/full/4541098.jpg);
+  background-position: center;
+  background-size: cover;
+  min-height: 50vh;
+  color: transparent;
+}
+
+.colors-text:hover {
+  color: whitesmoke;
+  text-shadow: 1px 1px 3px black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-top: auto;
+}
+
+.mana-symbol {
+  height: 37px;
+  width: 37px;
+  margin-top: 1em;
+}
+
+.symbol {
+  height: 1em;
 }
 </style>
