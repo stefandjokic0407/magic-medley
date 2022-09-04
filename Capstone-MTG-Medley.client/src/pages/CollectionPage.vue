@@ -5,15 +5,17 @@
   <div class="row align-items-center">
     <!-- add deck component -->
     <h3 class="col-4 col-md-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
-        class="btn text-black lighten-30 selectable text-uppercase square buttonPadding" @click="setEditable()">Create Deck</button>
+        class="btn text-black lighten-30 selectable text-uppercase square buttonPadding" @click="setEditable()">Create
+        Deck</button>
     </h3>
     <div class="col-12 col-md-1 ms-2">
-      <h4 class="m-0 p-0">{{ activeDeck?.name }}</h4>
-      <h5 v-if="deckCards.length" class="m-0 p-0">Cards:{{ " " + deckCards.length }}</h5>
-      <button class="btn btn-outline text-warning" data-bs-toggle="modal" :data-bs-target="'#deck-form'">Edit
+      <h4 class="m-0 p-0 text-center">{{ activeDeck?.name }}</h4>
+      <h5 v-if="deckCards.length" class="m-0 p-0 text-center">Cards:{{ " " + deckCards.length }}</h5>
+      <button v-if="activeDeck" class="btn btn-outline" data-bs-toggle="modal" :data-bs-target="'#deck-form'">Edit
         Deck</button>
     </div>
     <img class="img-fluid col-6 col-md-1" :src="activeDeck?.picture" alt="" :title="activeDeck?.name" srcset="">
+    <p class="col-6">{{activeDeck?.description}}</p>
     <div class="col-12">
       <div class="row">
         <div v-for="c in displayCards" :key="c.id" class="col-2 col-md-1 mx-1 my-3">
