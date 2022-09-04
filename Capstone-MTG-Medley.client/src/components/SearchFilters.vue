@@ -89,6 +89,7 @@
       </section>
 
       <!-- SECTION Color -->
+      <!-- NOTE should add options to filter, right now its just any that include -->
       <section class="col-1 collapse multi-collapse" id="multiCollapseColor">
         <div class=" mt-1">
           <h4>Color</h4>
@@ -111,6 +112,7 @@
       </section>
 
       <!-- SECTION Rarity -->
+      <!-- NOTE should maybe add options to filter, right now its just one at a time-->
       <section class="col-1 collapse multi-collapse" id="multiCollapseRarity">
         <div class=" mt-1">
           <h4>Rarity</h4>
@@ -145,7 +147,7 @@
               <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityMythicRare" value="m"
                 @click="filter.rarity = 'm'">
               <label class="form-check-label" for="radiosRarityMythicRare">
-                Mythic Rare
+                Mythic
               </label>
             </div>
           </div>
@@ -156,6 +158,7 @@
       <section class="col-5 collapse multi-collapse" id="multiCollapseMix">
 
         <!-- SECTION Converted Mana Cost, Power, Toughness -->
+        <!-- NOTE should add options to filters, right now it must be equal to number-->
         <span class="d-flex flex-row">
           <!-- SECTION Converted Mana Cost -->
           <section class="mx-2">

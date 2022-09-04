@@ -1,6 +1,6 @@
 <template>
 
-  <!-- SECTION FAQs modal -->
+  <!-- SECTION FAQs Menu modal -->
   <section class="modal fade" id="faqsModal" aria-hidden="true" aria-labelledby="faqsModalLabel" tabindex="-1">
     <div class="modal-dialog modal-sm modal-dialog-centered">
       <div class="modal-content">
@@ -183,7 +183,7 @@
             <div class="col-12">
               <p class="fs-4 bg-dark rounded text-light ps-2">Colors</p>
               <div class="row colors-bg rounded m-1">
-                <div class="col colors-text text-center">
+                <div class="col colors-text fix-margin text-center">
                   <img class="mana-symbol " src="../assets/img/mana-white.png" alt="">
                   <p class="text-start">White gets the job done with teamwork and balance. The strongest
                     defensive color,
@@ -191,14 +191,14 @@
                     protection spells to keep your creatures safe!
                   </p>
                 </div>
-                <div class="col colors-text text-center">
+                <div class="col colors-text fix-margin text-center">
                   <img class="mana-symbol " src="../assets/img/mana-blue.png" alt="">
                   <p class="text-start">
                     Blue picks apart opponent's strategies—then crushes them. Foresight is the key to success. It's
                     strongest when played defensively.
                   </p>
                 </div>
-                <div class="col colors-text text-center">
+                <div class="col colors-text fix-margin text-center">
                   <img class="mana-symbol " src="../assets/img/mana-black.png" alt="">
                   <p class="text-start">
                     Black is where you can find spooky creatures like demons and
@@ -206,14 +206,14 @@
                     destroy your opposition.
                   </p>
                 </div>
-                <div class="col colors-text text-center">
+                <div class="col colors-text fix-margin text-center">
                   <img class="mana-symbol " src="../assets/img/mana-red.png" alt="">
                   <p class="text-start">
                     Red wants to win fast and win now. Red is played as an aggressive color that uses power, damage, and
                     quick-play tactics to decimate opponents.
                   </p>
                 </div>
-                <div class="col colors-text text-center">
+                <div class="col colors-text fix-margin text-center">
                   <img class="mana-symbol " src="../assets/img/mana-green.png" alt="">
                   <p class="text-start">
                     Green is filled with nature's fiercest creatures: the bigger the
@@ -1003,6 +1003,10 @@ export default {
   color: whitesmoke;
   text-shadow: 1px 1px 3px black;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-top: auto;
+}
+
+.fix-margin {
   margin-top: auto;
 }
 
