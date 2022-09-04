@@ -92,7 +92,13 @@ class CardsService {
     AppState.activeProfile = res.data
     return res.data
   }
+  async removeCard(cardId) {
+    const res = await api.delete('account/cards/' + cardId)
+    AppState.collection = AppState.collection.filter(c => c.id != cardId)
+    return res
+  }
 }
+
 
 
 export const cardsService = new CardsService()
