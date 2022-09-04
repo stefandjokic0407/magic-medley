@@ -2,7 +2,7 @@
   <header class="fixed-top">
     <Navbar />
   </header>
-  <section class="row">
+  <section class="row bg-dark">
     <SearchFilters />
     <div class="col-md-12">
       <div class="row">

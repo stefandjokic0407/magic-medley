@@ -58,7 +58,7 @@ export default {
 <style>
 .cardsBg {
   background-image: url(https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712);
-  border-radius: 8px;
+  border-radius: 14px;
   border-color: black;
 }
 

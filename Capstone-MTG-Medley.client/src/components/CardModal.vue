@@ -20,7 +20,7 @@
             <div class=" printsBg text-dark my-1 col-2 rounded-end">
               <p class="text-start">USD</p>
             </div>
-            <div class="card-body magicCard p-0 col-12" v-for="c in oracleCards" :key="c.id">
+            <div class="card-body magicCard p-0 col-12 text-dark" v-for="c in oracleCards" :key="c.id">
               <OracleCard :oracleCard="c" />
             </div>
           </div>
@@ -218,7 +218,7 @@ export default {
         Pop.toast(error.message, "error");
       }
     }
-    
+
     // onMounted(() => getCardByOracle());
     return {
       oracleCards: computed(() => AppState.oracleCard),
@@ -270,7 +270,7 @@ p {
 }
 
 .bgLegal {
- background-color: rgb(24, 126, 24);
+  background-color: rgb(24, 126, 24);
 }
 
 .bgNotLegal {
@@ -284,5 +284,4 @@ p {
 .rotated {
   transform: scale(1.1);
 }
-
 </style>
