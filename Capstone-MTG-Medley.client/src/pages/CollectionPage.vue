@@ -5,12 +5,12 @@
   <div class="row align-items-center">
     <!-- add deck component -->
     <h3 class="col-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
-        class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">Create Deck</button>
+        class="btn text-black lighten-30 selectable text-uppercase square buttonPadding" @click="setEditable()">Create Deck</button>
     </h3>
     <div class="col-1 ms-2">
       <h4 class="m-0 p-0">{{ activeDeck?.name }}</h4>
       <h5 v-if="deckCards.length" class="m-0 p-0">Cards:{{ " " + deckCards.length }}</h5>
-      <button class="btn btn-outline text-warning" @click="" data-bs-toggle="modal" :data-bs-target="'#deck-form'">Edit
+      <button class="btn btn-outline text-warning" data-bs-toggle="modal" :data-bs-target="'#deck-form'">Edit
         Deck</button>
     </div>
     <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <DeckForm @blur="" />
+    <DeckForm />
 
     <!-- SECTION THE OFFCANVAS FOR THE DECKS -->
     <div class="col-2 p-3 text-end">
@@ -69,15 +69,7 @@ import Deck from "../components/Deck.vue";
 import DeckCard from "../components/DeckCard.vue";
 
 export default {
-  components: { DeckForm },
   setup() {
-
-    const editable = ref({})
-
-    watchEffect(() => {
-      if (!AppState.activeDeck) { return }
-      editable.value = { ...AppState.activeDeck }
-    })
 
     async function getAccountCards() {
       try {
@@ -123,6 +115,10 @@ export default {
         }
         return newArray
       }),
+
+      setEditable(){
+        AppState.activeDeck = {}
+      },
 
       async removeFromCollection() {
         try {

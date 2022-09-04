@@ -1,5 +1,5 @@
 <template>
-  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" id="deck-form" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form @submit.prevent="handleSubmit" class="p-2">
@@ -24,17 +24,21 @@
 
 <script>
 import { Modal } from "bootstrap";
-import { ref } from "vue";
+import { ref, watchEffect } from "vue";
 import { decksService } from "../services/DecksService.js";
 import Pop from "../utils/Pop.js";
+import { AppState } from '../AppState.js';
 
 export default {
   setup() {
     const editable = ref({})
+
+watchEffect(() => {
+  if (!AppState.activeDeck) { return }
+  editable.value = { ...AppState.activeDeck }
+})
     return {
       editable,
-
-      
 
       async handleSubmit() {
         try {
