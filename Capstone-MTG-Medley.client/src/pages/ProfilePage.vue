@@ -3,6 +3,8 @@
     <Navbar />
   </header>
 
+{{account}}
+
 
 </template>
 
@@ -12,6 +14,7 @@ import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../AppState";
 import { router } from "../router";
+import { profilesService } from "../services/ProfilesService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 
