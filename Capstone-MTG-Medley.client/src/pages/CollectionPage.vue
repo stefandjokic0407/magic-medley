@@ -4,19 +4,19 @@
   </header>
   <div class="row align-items-center">
     <!-- add deck component -->
-    <h3 class="col-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
+    <h3 class="col-4 col-md-12">My Decks <button data-bs-toggle="modal" data-bs-target="#deck-form"
         class="btn text-black lighten-30 selectable text-uppercase square buttonPadding" @click="setEditable()">Create Deck</button>
     </h3>
-    <div class="col-1 ms-2">
+    <div class="col-12 col-md-1 ms-2">
       <h4 class="m-0 p-0">{{ activeDeck?.name }}</h4>
       <h5 v-if="deckCards.length" class="m-0 p-0">Cards:{{ " " + deckCards.length }}</h5>
       <button class="btn btn-outline text-warning" data-bs-toggle="modal" :data-bs-target="'#deck-form'">Edit
         Deck</button>
     </div>
-    <img class="img-fluid col-1" :src="activeDeck?.picture" alt="" srcset="">
+    <img class="img-fluid col-6 col-md-1" :src="activeDeck?.picture" alt="" :title="activeDeck?.name" srcset="">
     <div class="col-12">
       <div class="row">
-        <div v-for="c in displayCards" :key="c.id" class="col-1 mx-1 my-3">
+        <div v-for="c in displayCards" :key="c.id" class="col-2 col-md-1 mx-1 my-3">
           <DeckCard :card="c" />
         </div>
       </div>
@@ -24,7 +24,7 @@
     <div>
       <h3>My Collection</h3>
       <div class="row">
-        <div v-for="c in cards" :key="c.id" class="col-2 mx-4 my-3">
+        <div v-for="c in cards" :key="c.id" class="col-4 col-md-2 my-3">
           <CollectionCard :card="c" />
         </div>
       </div>
@@ -43,7 +43,7 @@
       aria-labelledby="offcanvasExampleLabel">
       <h1>Your Decks:</h1>
       <div v-if="decks.length" class="row">
-        <div v-for="d in decks" :key="d.id" class="col-3">
+        <div v-for="d in decks" :key="d.id" class="col-12 col-md-4">
           <Deck :deck="d" />
         </div>
       </div>
@@ -145,7 +145,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .deckCanvas {
   position: absolute;
   right: 0px;
@@ -161,7 +161,7 @@ export default {
   border-radius: 8px;
   text-shadow: 5px 5px 5px black;
   padding: 0.5em;
-  width: 30vw;
+  width: 50vw;
   height: 100vh;
 }
 </style>

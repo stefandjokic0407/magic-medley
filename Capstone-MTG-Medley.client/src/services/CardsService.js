@@ -26,6 +26,8 @@ class CardsService {
 
       if (filterTerm.format) { searchTerm += '+legal%3A' + filterTerm.format }
 
+      if (filterTerm.set) { searchTerm += '+set%3A' + filterTerm.set }
+
       if (filterTerm.mana) { searchTerm += '+cmc%3D' + filterTerm.mana }
 
       if (filterTerm.power) { searchTerm += '+pow%3D' + filterTerm.power }
@@ -36,27 +38,25 @@ class CardsService {
       console.log('AAS searchTerm', searchTerm, 'filterTerm', filterTerm);
 
       const res = await search.get(baseSearch + searchTerm)
-      // if (!searchTerm) {
-      //   Pop.error('There is no card by this name')
-      //   return
-      // }
       AppState.searchedCards = res.data.data.map(c => new Card(c))
       AppState.nextPage = res.data.next_page
     } catch (error) {
-      Pop.error('No results for search ' + searchTerm)
+      if (!searchTerm) {
+        Pop.error('Too many results, please refine your search')
+      } else if (searchTerm) {
+        Pop.error('No results, please refine your search')
+
+      }
       logger.error(error)
     }
   }
 
 
   // TODO do we really need this?
-  // async searchBarGet(searchTerm) {
-  //   const res = await search.get(searchTerm)
-  //   AppState.searchedCards = res.data.data.map(c => new Card(c))
-  //   AppState.nextPage = res.data.next_page
-  //   console.log('next page', AppState.nextPage)
-  //   AppState.previousPage = res.data.previous_page
-  // }
+  async getAlphaSearch(searchTerm) {
+    const res = await search.get(baseSearch + searchTerm)
+    AppState.searchedCards = res.data.data.map(c => new Card(c))
+  }
 
   // async getRandomCard() {
   //   const res = await mtg.get('cards/random')
@@ -95,7 +95,13 @@ class CardsService {
     AppState.activeProfile = res.data
     return res.data
   }
+  async removeCard(cardId) {
+    const res = await api.delete('account/cards/' + cardId)
+    AppState.collection = AppState.collection.filter(c => c.id != cardId)
+    return res
+  }
 }
+
 
 
 export const cardsService = new CardsService()

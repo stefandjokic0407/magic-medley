@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="fixed-top">
     <Navbar />
   </header>
   <section class="row">
@@ -11,7 +11,7 @@
         </div>
       </div>
       <div v-if="nextPage" class="row justify-content-center py-3">
-        <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-dark w-50">More Results</button>
+        <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-light w-50">More Results</button>
       </div>
     </div>
   </section>
@@ -55,9 +55,5 @@ export default {
 
 
 
-<style>
-/* .search-bar {
-  background-color: beige;
-  height: 100vh;
-} */
+<style scoped>
 </style>

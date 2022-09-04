@@ -1,44 +1,64 @@
 <template>
-    <div class="row fixed-bottom footer-style justify-content-around px-5">
-        <div class="col-2 py-2 text-center">
-            <div class="text-center border-bottom border-2 text-uppercase">Account</div>
-            <div class="p-2 selectable text-uppercase no-select">
+    <div class="row fixed-bottom footer-style justify-content-between px-3 text-uppercase text-my-light no-select">
+
+        <!-- SECTION Account -->
+        <section class="col-2 py-2 text-center">
+            <div class="text-center border-bottom border-2 fs-5"> <b>Account</b></div>
+            <div class=" selectable  ">
                 <Login />
             </div>
-            <div class="p-2 selectable no-select">
-                <router-link :to="{ name: 'Collection' }" class="text-light text-uppercase">
+            <div class=" selectable ">
+                <router-link :to="{ name: 'Collection' }" class="text-my-light ">
                     My Collection
                 </router-link>
             </div>
-        </div>
+        </section>
 
-        <div class="col-3">
-            <div class="my-5 p-2">
-                <!-- <SearchForm /> -->
+        <!-- SECTION Information -->
+        <section class="col-2 py-2 text-center ">
+            <div class="text-center border-bottom border-2 fs-5">
+                <b>Information</b>
             </div>
-        </div>
+            <div class=" text-my-light selectable " data-bs-toggle="modal" data-bs-target="#faqsModal">
+                FAQs
+            </div>
+            <div class=" text-my-light selectable ">
+                Site Tour
+            </div>
+            <!-- NOTE modal is located in the contact us component -->
+            <div class=" text-my-light selectable " data-bs-toggle="modal" data-bs-target="#legalModal">
+                Legal
+            </div>
+        </section>
 
-        <div class="col-2 py-2 text-center">
-            <div class="text-center border-bottom border-2 text-uppercase">Magic Medley</div>
+        <!-- SECTION Magic Medley -->
+        <section class="col-2 py-2 text-center">
+            <div class="text-center border-bottom border-2 fs-5"><b>Magic Medley</b></div>
 
-            <div class="p-2 selectable no-select">
-                <router-link :to="{ name: 'Search' }" class="text-light text-uppercase">
+            <div class=" selectable ">
+                <router-link :to="{ name: 'Search' }" class="text-my-light ">
                     Search Cards
                 </router-link>
             </div>
-            <div class="p-2 selectable no-select">
-                <router-link :to="{ name: 'Guild' }" class="text-light selectable no-select text-uppercase">
+            <div class=" selectable ">
+                <router-link :to="{ name: 'Guild' }" class="text-my-light selectable  ">
                     Guild
                 </router-link>
             </div>
-        </div>
+            <div class=" text-my-light selectable  " data-bs-toggle="modal" data-bs-target="#contactUsModal">
+                Contact Us
+            </div>
+        </section>
+
     </div>
+    <ContactUsModal />
+    <FaqsModalGroup />
 </template>
 
 
 <script>
 export default {
-    setup() {
+    setup(){
         return {}
     }
 }
@@ -50,10 +70,16 @@ export default {
     background: rgb(0 0 0 / 38%);
     backdrop-filter: blur(4px);
     border: solid #8d8b8b1f;
-    color: white;
     border-radius: 8px;
-    text-shadow: 0px 0px 1px black;
-    padding: 0.5em;
-    min-height: 15vh;
+
+
+    // padding: 0.5em;
+    // min-height: 15vh;
+}
+
+.text-my-light {
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 </style>
