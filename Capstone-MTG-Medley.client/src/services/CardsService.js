@@ -38,14 +38,15 @@ class CardsService {
       console.log('AAS searchTerm', searchTerm, 'filterTerm', filterTerm);
 
       const res = await search.get(baseSearch + searchTerm)
-      // if (!searchTerm) {
-      //   Pop.error('There is no card by this name')
-      //   return
-      // }
       AppState.searchedCards = res.data.data.map(c => new Card(c))
       AppState.nextPage = res.data.next_page
     } catch (error) {
-      Pop.error('No results for search ' + searchTerm)
+      if (!searchTerm) {
+        Pop.error('Too many results, please refine your search')
+      } else if (searchTerm) {
+        Pop.error('No results, please refine your search')
+
+      }
       logger.error(error)
     }
   }

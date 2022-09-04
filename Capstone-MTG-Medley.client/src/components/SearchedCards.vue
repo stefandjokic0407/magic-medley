@@ -6,7 +6,7 @@
       <div v-if="card.image_uris.normal" class="col-12 ">
         <img class="img-fluid shadow cardsBg" :src=card.image_uris.normal :title="card.name">
       </div>
-      <div v-else class="">
+      <div v-else class="col-12">
         <img class="img-fluid shadow cardsBg"
           src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
       </div>

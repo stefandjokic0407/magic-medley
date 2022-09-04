@@ -2,7 +2,7 @@
   <header class="fixed-top">
     <Navbar />
   </header>
-  <section class="row bg-dark">
+  <section class="row">
     <SearchFilters />
     <div class="col-md-12">
       <div class="row">
@@ -11,7 +11,7 @@
         </div>
       </div>
       <div v-if="nextPage" class="row justify-content-center py-3">
-        <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-dark w-50">More Results</button>
+        <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-light w-50">More Results</button>
       </div>
     </div>
   </section>
