@@ -1,4 +1,7 @@
 <template>
+  <div v-if="deckCard.cardId == cards.cardId">
+    <p> Maybe? </p>
+  </div>
   <div class="row align-items-center">
     <button v-if="activeDeck" class="btn col-2 text-start" @click="createDeckCard(card.cardId)"><i title="add to deck"
         class="mdi mdi-plus-circle"></i></button>
@@ -11,7 +14,7 @@
       class="deckToolTip mt-4 col-11 shadow rotated cardCollection-image">
       <div v-if="card.image_uris?.normal">
         <img class="img-fluid position-relative shadow cardsBg" :src=card.image_uris?.normal :title="card.name">
-        <p v-if="deckCard.cardId == card?.cardId" class="tooltiptext">Tooltip text</p>
+        <!-- <p class="xsFont">{{deckCard}}</p> -->
       </div>
 
       <div v-else>
@@ -21,13 +24,12 @@
     </div>
     <button @click.prevent="removeCard" class="btn-outline btn mt-4" value="Delete" type="button">Remove from
       Collection</button>
-
   </div>
 
   <Modal :id="'collectionCardModal' + card.cardId">
     <CardModal :card="card" />
   </Modal>
-
+ 
 </template>
 <script>
 import { computed } from '@vue/reactivity';
@@ -48,6 +50,7 @@ export default {
       activeDeck: computed(() => AppState.activeDeck),
       user: computed(() => AppState.account),
       deckCard: computed(() => AppState.deckCards),
+      profileCard: computed(() => AppState.activeProfile),
       reset() {
         AppState.activeCard = props.card
         console.log('Active Card:', props.card)
@@ -91,6 +94,10 @@ export default {
 </script>
 
 <style>
+.xsFont {
+  font-size: xx-small;
+}
+
 .add-to-deck {
   position: absolute;
 }
