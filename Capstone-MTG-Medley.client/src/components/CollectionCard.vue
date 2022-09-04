@@ -2,7 +2,7 @@
   <div class="row align-items-center">
     <button v-if="activeDeck" class="btn col-2 text-start" @click="createDeckCard(card.cardId)"><i title="add to deck"
         class="mdi mdi-plus-circle"></i></button>
-    <p v-if="activeDeck" class="col-10 text-end"><i class="mdi mdi-close-thick"></i><b>{{ card.count }}</b></p>
+    <p v-if="activeDeck" class="col-10 text-end"><i class="mdi mdi-close-thick"></i><b>{{ (card.count + 1) }}</b></p>
     <p v-else class="col-6"><i class="mdi mdi-close-thick"></i><b>{{ card.count }}</b></p>
   </div>
   <div class="row ">
