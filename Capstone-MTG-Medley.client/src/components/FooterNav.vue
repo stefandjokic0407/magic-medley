@@ -79,7 +79,7 @@ export default {
 
 .text-my-light {
     color: whitesmoke;
-    text-shadow: 1px 1px 3px black;
+    text-shadow: 1px 1px 2px black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 </style>
