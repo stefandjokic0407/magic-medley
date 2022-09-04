@@ -41,7 +41,7 @@
       </button>
     </div>
 
-    <div class="offcanvas offcanvas-end offcanvas-style text-center" tabindex="-1" id="offcanvasRight"
+    <div class="offcanvas offcanvas-end offcanvas-style text-center " tabindex="-1" id="offcanvasRight"
       aria-labelledby="offcanvasExampleLabel">
       <h1>Your Decks:</h1>
       <div v-if="decks.length" class="row">
@@ -101,6 +101,7 @@ export default {
       decks: computed(() => AppState.decks),
       activeDeck: computed(() => AppState.activeDeck),
       deckCards: computed(() => AppState.deckCards),
+      activeCards: computed(() => AppState.activeProfile),
       displayCards: computed(() => {
         let newArray = [...AppState.deckCards]
         for (let i = 0; i < newArray.length; i++) {
@@ -163,7 +164,7 @@ export default {
   border-radius: 8px;
   text-shadow: 5px 5px 5px black;
   padding: 0.5em;
-  width: 50vw;
+  width: 33vw;
   height: 100vh;
 }
 </style>

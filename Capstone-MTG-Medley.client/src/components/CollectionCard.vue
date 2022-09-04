@@ -2,7 +2,7 @@
   <div class="row align-items-center">
     <button v-if="activeDeck" class="btn col-2 text-start" @click="createDeckCard(card.cardId)"><i title="add to deck"
         class="mdi mdi-plus-circle"></i></button>
-    <p v-if="activeDeck" class="col-10 text-end"><i class="mdi mdi-close-thick"></i><b>{{ (card.count + 1) }}</b></p>
+    <p v-if="activeDeck" class="col-10 text-end"><i class="mdi mdi-close-thick"></i><b>{{ (card.count) }}</b></p>
     <p v-else class="col-6"><i class="mdi mdi-close-thick"></i><b>{{ card.count }}</b></p>
   </div>
   <div class="row ">
@@ -11,7 +11,7 @@
       class="deckToolTip mt-4 col-11 shadow rotated cardCollection-image">
       <div v-if="card.image_uris?.normal">
         <img class="img-fluid position-relative shadow cardsBg" :src=card.image_uris?.normal :title="card.name">
-        <p v-if="deckCard.cardId = card.cardId" class="tooltiptext">Tooltip text</p>
+        <p v-if="deckCard.cardId == card?.cardId" class="tooltiptext">Tooltip text</p>
       </div>
 
       <div v-else>
@@ -27,22 +27,6 @@
   <Modal :id="'collectionCardModal' + card.cardId">
     <CardModal :card="card" />
   </Modal>
-
-  <!-- <div  @click="getCardByOracle() && reset(card)"  type="button" data-bs-toggle="modal" :data-bs-target="'#cardModal' + card.id"
-class="mt-4 shadow rotated">
-<div class="row">
-  <div v-if="card.image_uris.normal" class="col-12 ">
-    <img class="img-fluid shadow cardsBg" :src=card.image_uris.normal>
-  </div>
-  <div v-else class="col-12">
-    <img class="img-fluid shadow cardsBg"
-      src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
-  </div>
-</div>
-</div>
-<Modal :id="'cardModal' + card.id">
-<CardModal :card="card" />
-</Modal> -->
 
 </template>
 <script>
@@ -171,7 +155,7 @@ export default {
 
   /* Position the deckToolTip */
   position: absolute;
-  z-index: 1;
+  z-index: 1 !important;
   top: -10px;
   left: 105%;
 }
