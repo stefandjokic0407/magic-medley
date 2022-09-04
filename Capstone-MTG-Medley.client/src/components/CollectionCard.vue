@@ -6,7 +6,8 @@
   </div>
   <div class="row ">
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
-      :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-11 shadow rotated cardCollection-image">
+      :data-bs-target="'#collectionCardModal' + card.cardId" class="deckToolTip mt-4 col-11 shadow rotated cardCollection-image">
+      <p class="tooltiptext">Tooltip text</p>
       <div v-if="card.image_uris?.normal">
         <img class="img-fluid position-relative shadow cardsBg" :src=card.image_uris?.normal :title="card.name">
       </div>
@@ -20,15 +21,11 @@
       Collection</button>
       
     </div>
-    <div class="tooltip text-dark">
-      <h1>Hover over me</h1>
-      <span class="tooltiptext">Tooltip text</span>
-    </div>
-  <Modal :id="'collectionCardModal' + card.cardId">
-    <CardModal :card="card" />
-  </Modal>
-
-
+  
+    <Modal :id="'collectionCardModal' + card.cardId">
+      <CardModal :card="card" />
+    </Modal>
+  
   <!-- <div  @click="getCardByOracle() && reset(card)"  type="button" data-bs-toggle="modal" :data-bs-target="'#cardModal' + card.id"
 class="mt-4 shadow rotated">
 <div class="row">
@@ -154,29 +151,29 @@ export default {
   left: 0;
 }
 
-.tooltip {
+.deckToolTip {
   position: relative;
   display: inline-block;
   border-bottom: 1px dotted black;
 }
 
-.tooltip .tooltiptext {
+.deckToolTip .tooltiptext {
   visibility: hidden;
   width: 120px;
   background-color: black;
-  color: #fff;
+  color: rgb(255, 255, 255);
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
 
-  /* Position the tooltip */
+  /* Position the deckToolTip */
   position: absolute;
   z-index: 1;
-  top: 5px;
+  top: 20px;
   left: 105%;
 }
 
-.tooltip:hover .tooltiptext {
+.deckToolTip:hover .tooltiptext {
   visibility: visible;
 }
 
