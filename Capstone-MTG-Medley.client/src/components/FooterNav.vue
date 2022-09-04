@@ -11,6 +11,7 @@
                 </router-link>
             </div>
         </div>
+
         <div class="col-2 py-2 text-center">
             <div class="text-center border-bottom border-2 text-uppercase"><b>Magic Medley</b></div>
 
@@ -25,6 +26,7 @@
                 </router-link>
             </div>
         </div>
+
     </div>
 </template>
 

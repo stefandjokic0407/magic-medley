@@ -3,6 +3,7 @@
   <form @submit.prevent="searchCards()" class="search-zone">
 
     <section class="row m-mine">
+
       <!-- SECTION Search bar with checkbox name, type, text -->
       <section class="col-3 py-1">
         <div class="d-flex flex-row justify-content-around">
@@ -23,8 +24,7 @@
           </div>
         </div>
         <div class="input-group" title="Search">
-          <input class="form-control" placeholder="Search by Name, Type or Text..." type="text" required
-            v-model="query" />
+          <input class="form-control" placeholder="Search by Name, Type or Text..." type="text" v-model="query" />
           <button class="btn btn-outline-light" type="submit">
             <i class="mdi mdi-magnify"></i>
           </button>
@@ -32,11 +32,11 @@
         <div class=" text-center no-select py-2 fs-5" type="button" data-bs-toggle="collapse"
           data-bs-target=".multi-collapse" aria-expanded="false"
           aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle Search Filters
-          <i class="mdi mdi-chevron-right"></i>
         </div>
       </section>
+
       <!-- SECTION Format -->
-      <section class="col">
+      <section class="col-2">
         <div class="collapse multi-collapse" id="multiCollapseFormat">
           <div class=" mt-1">
             <h4>Format</h4>
@@ -86,8 +86,32 @@
         </div>
       </section>
 
+      <!-- SECTION Color -->
+      <section class="col-1">
+        <div class="collapse multi-collapse" id="multiCollapseColor">
+          <div class=" mt-1">
+            <h4>Color</h4>
+            <div class="">
+              <input type="checkbox" class="" @change="filterChange('color', 'u')">
+              <label class="form-check-label ps-2">Blue</label><br>
+              <input type="checkbox" class="" @change="filterChange('color', 'g')">
+              <label class="form-check-label ps-2">Green</label><br>
+              <input type="checkbox" class="" @change="filterChange('color', 'w')">
+              <label class="form-check-label ps-2">White</label><br>
+              <input type="checkbox" class="" @change="filterChange('color', 'r')">
+              <label class="form-check-label ps-2 ">Red</label><br>
+              <input type="checkbox" class="" @change="filterChange('color', 'b')">
+              <label class="form-check-label ps-2">Black</label><br>
+              <!-- FIXME all searches show colorless when its not selected -->
+              <input type="checkbox" class="" @change="filterChange('color', 'c')">
+              <label class="form-check-label ps-2">Colorless</label><br>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- SECTION Rarity -->
-      <section class="col">
+      <section class="col-1">
         <div class="collapse multi-collapse" id="multiCollapseRarity">
           <div class=" mt-1">
             <h4>Rarity</h4>
@@ -130,60 +154,176 @@
         </div>
       </section>
 
-      <!-- SECTION Color -->
-      <section class="col">
-        <div class="collapse multi-collapse" id="multiCollapseColor">
-          <div class=" mt-1">
-            <h4>Color</h4>
-            <div class="">
-              <input type="checkbox" class="" @change="filterChange('color', 'u')">
-              <label class="form-check-label ps-2">Blue</label><br>
-              <input type="checkbox" class="" @change="filterChange('color', 'g')">
-              <label class="form-check-label ps-2">Green</label><br>
-              <input type="checkbox" class="" @change="filterChange('color', 'w')">
-              <label class="form-check-label ps-2">White</label><br>
-              <input type="checkbox" class="" @change="filterChange('color', 'r')">
-              <label class="form-check-label ps-2 ">Red</label><br>
-              <input type="checkbox" class="" @change="filterChange('color', 'b')">
-              <label class="form-check-label ps-2">Black</label><br>
-              <!-- FIXME all searches show colorless when its not selected -->
-              <input type="checkbox" class="" @change="filterChange('color', 'c')">
-              <label class="form-check-label ps-2">Colorless</label><br>
+      <!-- SECTION Converted Mana Cost, Power, Toughness and Sets -->
+      <section class="col-5">
+        <span class="d-flex flex-row">
+
+          <!-- SECTION Converted Mana Cost -->
+          <section class="mx-2">
+            <div class="collapse multi-collapse" id="multiCollapseConverted">
+              <div class=" mt-1">
+                <h4 class="text-center">Mana Cost</h4>
+                <input v-model="filter.mana" type="number" class="form-control" placeholder="All">
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION Power -->
+          <section class="mx-2">
+            <div class="collapse multi-collapse" id="multiCollapsePower">
+              <div class=" mt-1">
+                <h4 class="text-center">Power</h4>
+                <input v-model="filter.power" type="number" class="form-control" placeholder="All">
+              </div>
+            </div>
+          </section>
+
+          <!-- SECTION Toughness -->
+          <section class="mx-2">
+            <div class="collapse multi-collapse" id="multiCollapseToughness">
+              <div class=" mt-1">
+                <h4 class="text-center">Toughness</h4>
+                <input v-model="filter.toughness" type="number" class="form-control" placeholder="All">
+              </div>
+            </div>
+          </section>
+        </span>
+
+        <!-- SECTION Set -->
+        <section class="mx-2 text-center">
+          <div class="collapse multi-collapse" id="multiCollapseSet">
+            <div class="mt-1">
+              <h4>Set</h4>
+              <select v-model="filter.set" class="form-select" aria-label="Format select menu">
+                <option value="">All</option>
+                <option disabled class=""></option>
+                <option disabled class="bg-dark text-light">Expansions</option>
+                <!-- next set -->
+                <!-- <option value="bro">The Brothers' War</option> -->
+                <option value="dmu">Dominaria United</option>
+                <option value="snc">Streets of New Capenna</option>
+                <option value="neo">Kamigawa: Neon Dynasty</option>
+                <option value="mid">Innistrad: Midnight Hunt</option>
+                <option value="afr">Adventures in the Forgotten Realms</option>
+                <option value="stx">Strixhaven: School of Mages</option>
+                <option value="khm">Kaldheim</option>
+                <option value="znr">Zendikar Rising</option>
+                <option value="iko">Ikoria: Lair of the Behemoths</option>
+                <option value="thb">Theros Beyond Death</option>
+                <option value="eld">Throne of Eldraine</option>
+                <option value="war">War of the Sparks</option>
+                <option value="rna">Ravnica Allegiance</option>
+                <option value="grn">Guilds of Ravnica</option>
+                <option value="dom">Dominaria</option>
+                <option value="rix">Rivals of Ixalan</option>
+                <option value="xln">Ixalan</option>
+                <option value="hou">Hour of Devastation</option>
+                <option value="akh">Amonkhet</option>
+                <option value="aer">Aether Revolt</option>
+                <option value="kld">Kaladesh</option>
+                <option value="emn">Eldritch Moon</option>
+                <option value="soi">Shadows over Innistrad</option>
+                <option value="ogw">Oath of the Gatewatch</option>
+                <option value="bfz">Battle for Zendikar</option>
+                <option value="dtk">Dragons of Tarkir</option>
+                <option value="frf">Fate Reforged</option>
+                <option value="ktk">Khans of Tarkir</option>
+                <option value="jou">Journey into Nyx</option>
+                <option value="bng">Born of the gods</option>
+                <option value="ths">Theros</option>
+                <option value="dgm">Dragon's Maze</option>
+                <option value="gtc">Gatecrash</option>
+                <option value="rtr">Return to Ravnica</option>
+                <option value="avr">Avacyn Restored</option>
+                <option value="dka">Dark Ascension</option>
+                <option value="isd">Innistrad</option>
+                <option value="nph">New Phyrexia</option>
+                <option value="mbs">Mirrodin Besieged</option>
+                <option value="som">Scars of Mirrodin</option>
+                <option value="roe">Rise of the Eldrazi</option>
+                <option value="wwk">Worldwake</option>
+                <option value="zen">Zendikar</option>
+                <option value="arb">Alara Reborn</option>
+                <option value="con">Conflux</option>
+                <option value="ala">Shards of Alara</option>
+                <option value="eve">Eventide</option>
+                <option value="shm">Shadowmoor</option>
+                <option value="mor">Morningtide</option>
+                <option value="lrw">Lorwyn</option>
+                <option value="fut">Future Sight</option>
+                <option value="plc">Planar Chaos</option>
+                <option value="tsp">Time Spiral</option>
+                <option value="tsb">Time Spiral Timeshifted</option>
+                <option value="csp">Coldsnap</option>
+                <option value="dis">Dissension</option>
+                <option value="gpt">Guildpact</option>
+                <option value="rav">Ravnica: City of Guilds</option>
+                <option value="sok">Saviors of Kamigawa</option>
+                <option value="bok">Betrayers of Kamigawa</option>
+                <option value="chk">Champions of Kamigawa</option>
+                <option value="5dn">Fifth Dawn</option>
+                <option value="dst">Darksteel</option>
+                <option value="mrd">Mirrodin</option>
+                <option value="scg">Scourge</option>
+                <option value="lgn">Legions</option>
+                <option value="ons">Onslaught</option>
+                <option value="jud">Judgement</option>
+                <option value="tor">Torment</option>
+                <option value="ody">Odyssey</option>
+                <option value="apc">Apocalypse</option>
+                <option value="pls">Planeshift</option>
+                <option value="inv">Invasion</option>
+                <option value="pcy">Prophecy</option>
+                <option value="nem">Nemesis</option>
+                <option value="mmq">Mercadian Masques</option>
+                <option value="uds">Urza's Destiny</option>
+                <option value="ulg">Urza's Legacy</option>
+                <option value="usg">Urza's Saga</option>
+                <option value="exo">Exodus</option>
+                <option value="sth">Stronghold</option>
+                <option value="tmp">Tempest</option>
+                <option value="wth">Weatherlight</option>
+                <option value="vis">Visions</option>
+                <option value="mir">Mirage</option>
+                <option value="all">Alliaces</option>
+                <option value="hml">Homelands</option>
+                <option value="ice">Ice Age</option>
+                <option value="fem">Fallen Empires</option>
+                <option value="drk">The Dark</option>
+                <option value="leg">Legends</option>
+                <option value="atq">Antiquities</option>
+                <option value="arn">Arabian Nights</option>
+                <option disabled class=""></option>
+                <option disabled class="bg-dark text-light">Core Sets</option>
+                <option value="m21">Magic 2021</option>
+                <option value="m20">Magic 2020</option>
+                <option value="m19">Magic 2019</option>
+                <option value="ori">Magic Origins</option>
+                <option value="m15">Magic 2015</option>
+                <option value="m14">Magic 2014</option>
+                <option value="m13">Magic 2013</option>
+                <option value="m12">Magic 2012</option>
+                <option value="m11">Magic 2011</option>
+                <option value="m10">Magic 2010</option>
+                <option value="10e">Tenth Edition</option>
+                <option value="9ed">Ninth Edition</option>
+                <option value="8ed">Eighth Edition</option>
+                <option value="7ed">Seventh Edition</option>
+                <option value="6ed">Classic Sixth Edition</option>
+                <option value="5ed">Fifth Edition</option>
+                <option value="4bb">Fourth Edition Foreign Black Border</option>
+                <option value="4ed">Fourth Edition</option>
+                <option value="sum">Summer Magic/ Edgar</option>
+                <option value="3ed">Revised Edition</option>
+                <option value="fbb">Foreign Black Border</option>
+                <option value="2ed">Unlimited Edition</option>
+                <option value="leb">Limited Edition Beta</option>
+                <option value="lea">Limited Edition Alpha</option>
+              </select>
             </div>
           </div>
-        </div>
+        </section>
       </section>
-
-      <!-- SECTION Converted Mana Cost -->
-      <section class="col">
-        <div class="collapse multi-collapse" id="multiCollapseConverted">
-          <div class=" mt-1">
-            <h4 class="text-center">Mana Cost</h4>
-            <input v-model="filter.mana" type="number" class="form-control" placeholder="All">
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION Power -->
-      <section class="col">
-        <div class="collapse multi-collapse" id="multiCollapsePower">
-          <div class=" mt-1">
-            <h4 class="text-center">Power</h4>
-            <input v-model="filter.power" type="number" class="form-control" placeholder="All">
-          </div>
-        </div>
-      </section>
-
-      <!-- SECTION Toughness -->
-      <section class="col">
-        <div class="collapse multi-collapse" id="multiCollapseToughness">
-          <div class=" mt-1">
-            <h4 class="text-center">Toughness</h4>
-            <input v-model="filter.toughness" type="number" class="form-control" placeholder="All">
-          </div>
-        </div>
-      </section>
-
     </section>
 
   </form>
@@ -207,10 +347,10 @@ export default {
     let filter = ref({
       color: [],
       rarity: null,
-      // NOTE this should prob change, overcomplicated ask andrew
       mana: null,
       power: null,
       toughness: null,
+      set: null
     })
 
 
@@ -226,7 +366,7 @@ export default {
       alphaSearch,
       filter,
       query,
-      // selected,
+
 
 
       async filterChange(type, val) {
@@ -287,6 +427,10 @@ export default {
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
   /* border-radius: 8px; */
+}
+
+.set-input {
+  width: max-content !important;
 }
 
 .m-mine {

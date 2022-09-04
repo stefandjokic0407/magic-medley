@@ -26,6 +26,8 @@ class CardsService {
 
       if (filterTerm.format) { searchTerm += '+legal%3A' + filterTerm.format }
 
+      if (filterTerm.set) { searchTerm += '+set%3A' + filterTerm.set }
+
       if (filterTerm.mana) { searchTerm += '+cmc%3D' + filterTerm.mana }
 
       if (filterTerm.power) { searchTerm += '+pow%3D' + filterTerm.power }
