@@ -4,7 +4,7 @@ export class Card {
     this.artist = data.artist || ""
     this.cmc = data.cmc || null
     this.colors = data.colors || []
-    this.count = data.count || null
+    this.count = data.count || 1
     this.flavor_text = data.flavor_text || ""
     this.cardId = data.id || ""
     this.accountId = data.accountId 

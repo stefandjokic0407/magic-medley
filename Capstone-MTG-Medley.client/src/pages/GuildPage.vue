@@ -4,11 +4,14 @@
   </header>
   <section class="row">
     <div class="col-md-4">
-      Guild information
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d23118.78595558883!2d-116.30494195831875!3d43.58887719597092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smagic%20the%20gathering!5e0!3m2!1sen!2sus!4v1662323201059!5m2!1sen!2sus"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <div class="col-md-3 offset-md-5 d-flex flex-column">
       <p class="p-0">
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseChat"
+        <button class="btn btn-outline my-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseChat"
           aria-expanded="false" aria-controls="collapseChat">
           Chat with your guild
         </button>
@@ -23,8 +26,8 @@
             <div><b>Guild User1</b>: This is the guild I'm in</div>
             <div><b>Guild User2</b>: I'm also in this guild</div>
           </section>
-          <form id="form" @submit="handleSubmit()">
-            <input v-model="query" type="text" placeholder="Send Message" />
+          <form id="form" @submit.prevent="sendMessage()">
+            <input v-model="message" type="text" placeholder="Send Message" />
             <button>Send</button>
           </form>
 
@@ -39,45 +42,56 @@ import { computed } from '@vue/reactivity';
 import { io } from 'socket.io-client';
 import { AppState } from '../AppState';
 import { onMounted, ref } from 'vue';
+import { logger } from '../utils/Logger';
+import { accountService } from '../services/AccountService';
 
 export default {
 
   setup() {
-    const query = ref('')
+    const message = ref('')
 
     const user = AppState.account
 
-    function sendMessage() {
+    // function sendMessage() {
 
-      // const socket = io();
+    //   // const socket = io();
 
-      // socket.on('count', function (data) {
-      //   document.getElementById('user-count').innerHTML = data
-      //   console.log(data);
-      // })
+    //   // socket.on('count', function (data) {
+    //   //   document.getElementById('user-count').innerHTML = data
+    //   //   console.log(data);
+    //   // })
 
-      // socket.on('message', function (data) {
-      //   document.getElementById('chat').append('<div><b>' + data.user + '</b>: ' + data.message + '</div>');
-      // });
-    }
+    //   // socket.on('message', function (data) {
+    //   //   document.getElementById('chat').append('<div><b>' + data.user + '</b>: ' + data.message + '</div>');
+    //   // });
+    // }
 
-    onMounted(() => {
-      sendMessage()
-    })
+    // onMounted(() => {
+    //   sendMessage()
+    // })
     return {
-      query,
+      message,
       user: computed(() => AppState.account),
 
-      handleSubmit() {
-        const socket = io()
-        let message = query.value
-        socket.emit('message', {
-          user: user || 'Anonymous',
-          message: message
-        });
-        console.log(message);
-        message = ref('')
+      async sendMessage(){
+        try {
+          await accountService.sendMessage(message)
+        } catch (error) {
+          logger.error('[sending message]', error)
+          Pop.error(error)
+        }
       }
+
+      // handleSubmit() {
+      //   const socket = io()
+      //   let message = query.value
+      //   socket.emit('message', {
+      //     user: user || 'Anonymous',
+      //     message: message
+      //   });
+      //   console.log(message);
+      //   message = ref('')
+      // }
 
 
     }

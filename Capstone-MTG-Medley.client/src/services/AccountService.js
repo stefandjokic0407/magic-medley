@@ -12,7 +12,12 @@ class AccountService {
       logger.error('HAVE YOU STARTED YOUR SERVER YET???', err)
     }
   }
-  
+
+  async sendMessage(message) {
+    const res = await api.post('/guild', message)
+    AppState.message.unshift(res.data)
+  }
+
   async edit(accountData) {
     const res = await api.put('/account', accountData)
     AppState.account = new Account(res.data)
