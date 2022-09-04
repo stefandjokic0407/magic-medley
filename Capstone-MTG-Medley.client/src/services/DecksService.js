@@ -27,6 +27,13 @@ class DecksService {
     return res.data;
   }
 
+  async editDeck(deckData){
+    const res = await api.put(`/api/decks/${deckData.id}`, deckData)
+    const index = AppState.decks.findIndex(d => d.id == deckData.id)
+    AppState.decks.splice(index, 1, res.data)
+    // AppState.activeDeck = {}
+  }
+
   async setActiveDeck(deckId) {
     const res = await this.getDeckById(deckId);
     AppState.activeDeck = res;
