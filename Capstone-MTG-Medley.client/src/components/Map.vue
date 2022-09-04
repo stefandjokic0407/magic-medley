@@ -2,7 +2,7 @@
 
 
 <div class="row py-2">
-    <div class="col-12"><input type="text" placeholder="Enter Zipcode"></div>
+    <div class="col-8"><input id="input" type="text" placeholder="Enter Zipcode"></div>
 </div>
 <div class="row">
     <div class="col-12">
@@ -20,7 +20,9 @@
 <script>
 export default {
 setup() {
-  return {}
+  return {
+
+  }
 }
 }
 </script>
