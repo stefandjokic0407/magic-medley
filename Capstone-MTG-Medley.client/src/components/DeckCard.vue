@@ -9,7 +9,30 @@
             <img class="img-fluid shadow cardsBg"
                 src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
         </div>
-        <p>{{ card.quantity }}</p>
+    </div>
+    <!-- NOTE CARD QUANTITY -->
+    <!-- <p>{{ card.quantity }}</p> -->
+    <div v-if="card.quantity == 1">
+        <p class="text-center"><span class="mdi mdi-checkbox-blank-circle"></span><span
+                class="mdi mdi-checkbox-blank-circle-outline"></span><span
+                class="mdi mdi-checkbox-blank-circle-outline"></span><span
+                class="mdi mdi-checkbox-blank-circle-outline"></span></p>
+    </div>
+    <div v-if="card.quantity == 2">
+        <p class="text-center"><span class="mdi mdi-checkbox-blank-circle"></span><span
+                class="mdi mdi-checkbox-blank-circle"></span><span
+                class="mdi mdi-checkbox-blank-circle-outline"></span><span
+                class="mdi mdi-checkbox-blank-circle-outline"></span></p>
+    </div>
+    <div v-if="card.quantity == 3">
+        <p class="text-center"><span class="mdi mdi-checkbox-blank-circle"></span><span
+                class="mdi mdi-checkbox-blank-circle"></span><span class="mdi mdi-checkbox-blank-circle"></span><span
+                class="mdi mdi-checkbox-blank-circle-outline"></span></p>
+    </div>
+    <div v-if="card.quantity >= 4">
+        <p class="text-center"><span class="mdi mdi-checkbox-blank-circle"></span><span
+                class="mdi mdi-checkbox-blank-circle"></span><span class="mdi mdi-checkbox-blank-circle"></span><span
+                class="mdi mdi-checkbox-blank-circle"></span></p>
     </div>
 </template>
 
@@ -93,5 +116,9 @@ export default {
 <style>
 .deleteCard:hover img {
     opacity: 50;
+}
+
+.quantityBorder {
+    border: solid 1px black
 }
 </style>

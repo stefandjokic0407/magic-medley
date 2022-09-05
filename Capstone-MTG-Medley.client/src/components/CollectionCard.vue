@@ -1,12 +1,10 @@
 <template>
   <div v-if="deckCard.cardId == cards.cardId">
-  
+
   </div>
   <div class="row align-items-center">
     <button v-if="activeDeck" class="btn col-2 text-start" @click="createDeckCard(card.cardId)"><i title="add to deck"
         class="mdi mdi-plus-circle"></i></button>
-    <p v-if="activeDeck" class="col-10 text-end"><i class="mdi mdi-close-thick"></i><b>{{ (card.count) }}</b></p>
-    <p v-else class="col-6"><i class="mdi mdi-close-thick"></i><b>{{ card.count }}</b></p>
   </div>
   <div class="row align-items-center justify-content-center">
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
@@ -21,7 +19,12 @@
         <img class="img-fluid shadow cardsBg"
           src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
       </div>
+      <div class="cardCount">
+        <p class="col-12"><i class="mdi mdi-close-thick"></i><b>{{ card.count }}</b></p>
+      </div>
     </div>
+    <p v-if="activeDeck" class="col-10 text-end cardCount"><i class="mdi mdi-close-thick"></i><b>{{ (card.count) }}</b>
+    </p>
     <button @click.prevent="removeCard" class="btn-outline btn mt-4 xsFont" value="Delete" type="button">Remove from
       Collection</button>
   </div>
@@ -29,7 +32,7 @@
   <Modal :id="'collectionCardModal' + card.cardId">
     <CardModal :card="card" />
   </Modal>
- 
+
 </template>
 <script>
 import { computed } from '@vue/reactivity';
@@ -169,5 +172,16 @@ export default {
 
 .deckToolTip:hover .tooltiptext {
   visibility: visible;
+}
+
+.cardCount {
+  z-index: 1;
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+  background-color: rgba(0, 0, 0, 0.601);
+  color: white;
+  border-radius: 5%;
+  width: 50px;
 }
 </style>
