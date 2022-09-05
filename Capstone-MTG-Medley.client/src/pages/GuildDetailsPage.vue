@@ -18,7 +18,6 @@
       <h1>{{ activeGuild.name }}</h1>
       <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
     </div>
-
     <div class="col-md-12 d-flex">
       <div v-for="m in members" :key="m.id">
         <Member :member="m" />
