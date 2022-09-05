@@ -41,11 +41,11 @@
       </button>
     </div>
 
-    <div class="offcanvas offcanvas-end offcanvas-style text-center " tabindex="-1" id="offcanvasRight"
+    <div class="offcanvas offcanvas-end offcanvas-style text-center" tabindex="-1" id="offcanvasRight"
       aria-labelledby="offcanvasExampleLabel">
-      <h1>Your Decks:</h1>
+      <img src="src/assets/img/fancy banner.png" alt="">
       <div v-if="decks.length" class="row">
-        <div v-for="d in decks" :key="d.id" class="col-12 col-md-4">
+        <div v-for="d in decks" :key="d.id" class="col-12 col-md-12">
           <Deck :deck="d" />
         </div>
       </div>
@@ -150,10 +150,9 @@ export default {
 
 <style scoped>
 .deckCanvas {
-  position: absolute;
+  position: fixed;
   right: 0px;
   top: 70px;
-
 }
 
 .offcanvas-style {
@@ -164,7 +163,12 @@ export default {
   border-radius: 8px;
   text-shadow: 5px 5px 5px black;
   padding: 0.5em;
-  width: 33vw;
+  width: 20vw;
   height: 100vh;
+}
+
+.myDeckSize {
+  max-height: 10VH;
+  max-width: 80VW;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div v-if="deckCard.cardId == cards.cardId">
-    <p> Maybe? </p>
+  
   </div>
   <div class="row align-items-center">
     <button v-if="activeDeck" class="btn col-2 text-start" @click="createDeckCard(card.cardId)"><i title="add to deck"
@@ -8,10 +8,10 @@
     <p v-if="activeDeck" class="col-10 text-end"><i class="mdi mdi-close-thick"></i><b>{{ (card.count) }}</b></p>
     <p v-else class="col-6"><i class="mdi mdi-close-thick"></i><b>{{ card.count }}</b></p>
   </div>
-  <div class="row ">
+  <div class="row align-items-center justify-content-center">
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
       :data-bs-target="'#collectionCardModal' + card.cardId"
-      class="deckToolTip mt-4 col-11 shadow rotated cardCollection-image">
+      class="mt-4 col-10 px-0  shadow rotated cardCollection-image">
       <div v-if="card.image_uris?.normal">
         <img class="img-fluid position-relative shadow cardsBg" :src=card.image_uris?.normal :title="card.name">
         <!-- <p class="xsFont">{{deckCard}}</p> -->
@@ -22,7 +22,7 @@
           src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
       </div>
     </div>
-    <button @click.prevent="removeCard" class="btn-outline btn mt-4" value="Delete" type="button">Remove from
+    <button @click.prevent="removeCard" class="btn-outline btn mt-4 xsFont" value="Delete" type="button">Remove from
       Collection</button>
   </div>
 
@@ -95,7 +95,7 @@ export default {
 
 <style>
 .xsFont {
-  font-size: xx-small;
+  font-size: x-small;
 }
 
 .add-to-deck {

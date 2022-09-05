@@ -2,9 +2,9 @@
 
   <div class="row mx-1">
     <button class="noBorder btn p-0" @click="setActiveDeck(deck.id)">
-      <div class="col-12 rotated text-light ">
+      <div class="col-12 rotated text-light">
         <h6 class="">{{ deck.name }}</h6>
-        <img v-if="deck.picture" class="img-fluid " :src=deck.picture :title="deck.name">
+        <img v-if="deck.picture" class="img-fluid deckImg" :src=deck.picture :title="deck.name">
         <!-- NOTE INPUT BUTTON FOR DELETING DECK -->
         <img v-if="!deck.picture" :title="deck.name" class="img-fluid shadow cardsBg"
           src='https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712'>
@@ -112,4 +112,13 @@ export default {
 .noBorder {
   border: none;
 }
+
+.deckImg {
+  display: block;
+  max-width: 85VW;
+  max-height: 8VH;
+  width: auto;
+  height: auto;
+}
+
 </style>

@@ -10,7 +10,8 @@ class DecksService {
   }
 
   async getById(id) {
-    const deck = await dbContext.Decks.findById(id).populate('profile', 'name picture')
+    const deck = await dbContext.Decks.findById(id)
+    .populate('profile', 'name picture')
     if (!deck) {
       throw new BadRequest('Invalid Deck')
     }
