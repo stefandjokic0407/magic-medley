@@ -151,7 +151,7 @@
               <div class="accordion mt-2" id="accordionExample">
 
                 <!-- SECTION Standard -->
-                <div class="accordion-item">
+                <section class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse"
                       data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -160,7 +160,7 @@
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                    <div class="accordion-body limit-size">
                       <ul class="list-unstyled d-flex justify-content-around">
                         <li class="text-center" title="Deck Size"><img class="symbol-icon"
                             src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
@@ -196,10 +196,72 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
+
+                <!-- SECTION Commander -->
+                <section class="accordion-item">
+                  <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                      Commander
+                    </button>
+                  </h2>
+                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body limit-size">
+                      <ul class="list-unstyled d-flex justify-content-around">
+                        <li class="text-center" title="Deck Size"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
+                            alt=""> <br>100</li>
+                        <li class="text-center" title="Number of Players"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/3SAnh2ZE3pFlo13l0Jqb7B/550886a1c3166d17f1d50daaca5edc87/icon-players.svg"
+                            alt=""><br>3-5</li>
+                        <li class="text-center" title="Game Duration"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/4pIveHFO9lhMRQ7pdHZZmq/f71d0f9dccaaeacf309f098a63d42695/icon-duration.svg"
+                            alt=""><br>120 min</li>
+                      </ul>
+                      <p>
+                        The Commander format is all about picking your hero and building a deck around them. In this
+                        casual, multiplayer format, you choose a legendary creature to serve as your commander and build
+                        the rest of your deck around their color identity and unique abilities.<br>
+
+                        Players are only allowed
+                        one of each card in their deck, with the exception of basic lands, but they can use cards from
+                        throughout Magic's history.<br>
+
+                        Each player starts with 40 life, rather then 20, and places their commander face-up in their
+                        command zone.<br><br>
+
+                        COLOR IDENTITY<br>
+                        A card's color identity can come from any part of that card, including its casting cost and any
+                        mana symbols in its text. Every card in your Commander deck must only use mana symbols that also
+                        appear on your commander. Colorless cards are allowed as well.<br><br>
+
+                        COMMAND ZONE<br>
+                        This is where your commander resides during the game when they are not in play. At the start of
+                        the game, each player puts their commander face up into the command zone. A commander can be
+                        cast from the command zone for its normal costs, plus an additional two mana for each previous
+                        time it's been cast from the command zone this game. If your commander would be put into your
+                        library, hand, graveyard or exile from anywhere, you may return it to your command zone
+                        instead.<br><br>
+
+                        COMMANDER DAMAGE<br>
+                        A player that's been dealt 21 or more combat damage by the same commander over the course of the
+                        game loses the game. The commander is tracked across zone changes for this purpose (for example,
+                        if one player takes control of another player's commander, any damage that commander already
+                        dealt is still counted).<br><br>
+
+                        PLAY FREE-FOR-ALL MULTIPLAYER<br>
+                        If you're playing a game of Commander with three or more people, you play against each other in
+                        a free-for-all multiplayer format.<br>
+
+                      </p>
+                    </div>
+                  </div>
+                </section>
 
                 <!-- SECTION Modern -->
-                <div class="accordion-item">
+                <section class="accordion-item">
                   <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                       data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -208,7 +270,7 @@
                   </h2>
                   <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                     data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                    <div class="accordion-body limit-size">
                       <ul class="list-unstyled d-flex justify-content-around">
                         <li class="text-center" title="Deck Size"><img class="symbol-icon"
                             src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
@@ -315,10 +377,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
 
                 <!-- SECTION Legacy -->
-                <div class="accordion-item">
+                <section class="accordion-item">
                   <h2 class="accordion-header" id="headingThree">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                       data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -327,7 +389,7 @@
                   </h2>
                   <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                     data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                    <div class="accordion-body limit-size">
                       <ul class="list-unstyled d-flex justify-content-around">
                         <li class="text-center" title="Deck Size"><img class="symbol-icon"
                             src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
@@ -345,28 +407,12 @@
                         <br>
 
                       </p>
-                      <button class="btn btn-outline-dark d-flex my-2" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Legal sets
-                      </button>
-                      <div class="collapse" id="collapseExample">
-                        <ul>
-                          <li>Streets of New Capenna</li>
-                          <li>Kamigawa: Neon Dynasty</li>
-                          <li>Innistrad: Crimson Vow</li>
-                          <li>Innistrad: Midnight Hunt</li>
-                          <li>Adventures in the Forgotten Realms</li>
-                          <li>Strixhaven</li>
-                          <li>Kaldheim</li>
-                          <li>Zendikar Rising</li>
-                        </ul>
-                      </div>
                     </div>
                   </div>
-                </div>
+                </section>
 
                 <!-- SECTION Vintage -->
-                <div class="accordion-item">
+                <section class="accordion-item">
                   <h2 class="accordion-header" id="headingFour">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                       data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -375,7 +421,7 @@
                   </h2>
                   <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                     data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
+                    <div class="accordion-body limit-size">
                       <ul class="list-unstyled d-flex justify-content-around">
                         <li class="text-center" title="Deck Size"><img class="symbol-icon"
                             src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
@@ -395,10 +441,10 @@
                       </p>
                     </div>
                   </div>
-                </div>
+                </section>
 
                 <!-- SECTION Pauper -->
-                <div class="accordion-item">
+                <section class="accordion-item">
                   <h2 class="accordion-header" id="headingFive">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                       data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
@@ -407,95 +453,24 @@
                   </h2>
                   <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                     data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <ul class="list-unstyled d-flex justify-content-around">
-                        <li class="text-center" title="Deck Size"><img class="symbol-icon"
-                            src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
-                            alt=""> <br><span title="Main">60</span><span title="Sideboard">(15)</span></li>
-                        <li class="text-center" title="Number of Players"><img class="symbol-icon"
-                            src="https://images.ctfassets.net/s5n2t79q9icq/3SAnh2ZE3pFlo13l0Jqb7B/550886a1c3166d17f1d50daaca5edc87/icon-players.svg"
-                            alt=""><br>2</li>
-                        <li class="text-center" title="Game Duration"><img class="symbol-icon"
-                            src="https://images.ctfassets.net/s5n2t79q9icq/4pIveHFO9lhMRQ7pdHZZmq/f71d0f9dccaaeacf309f098a63d42695/icon-duration.svg"
-                            alt=""><br>20 min</li>
-                      </ul>
+                    <div class="accordion-body limit-size">
                       <p>
-                        In this Magic format, all cards must have
-                        been released at common rarity in a Magic set or product. Common promo cards are only legal if
-                        the card meets that qualification.<br>
+
+                        This format is unique in that it can be combined with another format, most often Commander, to
+                        create a deck that is both competitive and inexpensive.<br>
+
+                        All cards must have been released at common rarity in a Magic set or product. Common promo cards
+                        are only legal if the card meets that qualification.<br>
 
                         If a common version of a particular card was ever released in a Magic: The Gathering paper
                         product or Magic: The Gathering Online, any version of that card is legal in this format. This
-                        includes land cards that were printed with both a common set symbol and the L rarity code.<br>
-
-                        This format is unique in that it can be combined with any other to create a deck that is both
-                        competitive and inexpensive.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- SECTION Commander -->
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingSix">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                      Commander
-                    </button>
-                  </h2>
-                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
-                    data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <ul class="list-unstyled d-flex justify-content-around">
-                        <li class="text-center" title="Deck Size"><img class="symbol-icon"
-                            src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
-                            alt=""> <br>100</li>
-                        <li class="text-center" title="Number of Players"><img class="symbol-icon"
-                            src="https://images.ctfassets.net/s5n2t79q9icq/3SAnh2ZE3pFlo13l0Jqb7B/550886a1c3166d17f1d50daaca5edc87/icon-players.svg"
-                            alt=""><br>3-5</li>
-                        <li class="text-center" title="Game Duration"><img class="symbol-icon"
-                            src="https://images.ctfassets.net/s5n2t79q9icq/4pIveHFO9lhMRQ7pdHZZmq/f71d0f9dccaaeacf309f098a63d42695/icon-duration.svg"
-                            alt=""><br>120 min</li>
-                      </ul>
-                      <p>
-                        The Commander format is all about picking your hero and building a deck around them. In this
-                        casual, multiplayer format, you choose a legendary creature to serve as your commander and build
-                        the rest of your deck around their color identity and unique abilities.<br>
-
-                        Players are only allowed
-                        one of each card in their deck, with the exception of basic lands, but they can use cards from
-                        throughout Magic's history.<br>
-
-                        Each player starts with 40 life, rather then 20, and places their commander face-up in their
-                        command zone.<br>
-
-                        <!-- COLOR IDENTITY
-                        A card's color identity can come from any part of that card, including its casting cost and any
-                        mana symbols in its text. Every card in your Commander deck must only use mana symbols that also
-                        appear on your commander. Colorless cards are allowed as well.<br>
-
-                        COMMAND ZONE
-                        This is where your commander resides during the game when they are not in play. At the start of
-                        the game, each player puts their commander face up into the command zone. A commander can be
-                        cast from the command zone for its normal costs, plus an additional two mana for each previous
-                        time it's been cast from the command zone this game. If your commander would be put into your
-                        library, hand, graveyard or exile from anywhere, you may return it to your command zone
-                        instead.<br>
-
-                        COMMANDER DAMAGE
-                        A player that's been dealt 21 or more combat damage by the same commander over the course of the
-                        game loses the game. The commander is tracked across zone changes for this purpose (for example,
-                        if one player takes control of another player's commander, any damage that commander already
-                        dealt is still counted).<br>
-
-                        PLAY FREE-FOR-ALL MULTIPLAYER
-                        If you're playing a game of Commander with three or more people, you play against each other in
-                        a free-for-all multiplayer format.<br> -->
+                        includes land cards that were printed with both a common set symbol and the L rarity code.
 
                       </p>
                     </div>
                   </div>
-                </div>
+                </section>
+
               </div>
             </div>
             <div class="col-8">
@@ -1378,10 +1353,10 @@ export default {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.set-list {
-  max-height: 10em;
-  overflow-y: scroll;
-}
+// .set-list {
+//   max-height: 10em;
+//   overflow-y: scroll;
+// }
 
 .colors-bg {
   background-image: url(https://wallpaperaccess.com/full/4541098.jpg);
@@ -1414,5 +1389,10 @@ export default {
 
 .symbol-icon {
   height: 3em;
+}
+
+.limit-size {
+  overflow-y: scroll;
+  max-height: 28vh;
 }
 </style>
