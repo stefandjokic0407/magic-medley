@@ -79,11 +79,6 @@
                 id="radiosFormatCommander" value="commander">
               <label class="form-check-label" for="radiosFormatCommander">Commander</label>
             </div>
-            <div class="form-check">
-              <input @click="filter.format = 'paupercommander'" class=" form-check-input" type="radio"
-                name="radiosFormat" id="radiosFormatPauperCommander" value="paupercommander">
-              <label class="form-check-label" for="radiosFormatPauperCommander">Pauper Commander</label>
-            </div>
           </div>
         </div>
       </section>

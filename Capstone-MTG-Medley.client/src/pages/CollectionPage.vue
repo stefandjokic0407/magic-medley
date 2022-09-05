@@ -136,6 +136,7 @@ export default {
       getAccountDecks();
       getAccountCards();
     });
+
     return {
       cards: computed(() => AppState.collection),
       decks: computed(() => AppState.decks),

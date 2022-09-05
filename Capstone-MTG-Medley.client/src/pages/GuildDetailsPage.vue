@@ -471,8 +471,8 @@
     <Map />
   </div>
   <footer class="fixed-bottom">
-    <div class="row justify-content-end">
-      <div class="col-md-3">
+    <div class="row">
+      <div class="col-md-3 offset-md-8">
         <GuildChat />
       </div>
     </div>
