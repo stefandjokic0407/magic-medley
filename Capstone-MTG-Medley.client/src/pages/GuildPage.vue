@@ -4,32 +4,29 @@
   </header>
   <section class="row">
     <div class="col-md-4">
-      <Map/>
+      <Map />
     </div>
-    <div class="col-md-3 offset-md-5 d-flex flex-column">
-      <p class="p-0">
-        <button class="btn btn-outline my-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseChat"
-          aria-expanded="false" aria-controls="collapseChat">
-          Chat with your guild
-        </button>
-      </p>
-      <div class="collapse" id="collapseChat">
-        <div class="card card-body my-3">
-          <div>
-            <h1>GUILD NAME</h1>
-            <div><b>Guild Members Currently Online:</b><span class="p-2" id="user-count">0</span></div>
+    <div class="col-md-12 text-center">
+      <div class="row justify-content-between mt-4">
+        <div class="col-md-3">
+          <button class="btn fs-3" title="Guild Faqs" data-bs-target="#guildfaq-modal" data-bs-toggle="modal">
+            GUILD FAQS
+          </button>
+          <GuildFaq />
+        </div>
+        <div class="col-md-3">
+          <div class="text-end">
+            <button class="btn" title="Create Guild" data-bs-toggle="modal" data-bs-target="#guild-modal">
+              <i class="mdi mdi-plus fs-3"></i>
+              <span class="fs-5">CREATE GUILD</span>
+            </button>
+            <GuildForm />
           </div>
-          <section class="my-3" id="chat">
-            <div><b>Guild User1</b>: This is the guild I'm in</div>
-            <div><b>Guild User2</b>: I'm also in this guild</div>
-          </section>
-          <form id="form" @submit.prevent="sendMessage()">
-            <input v-model="message" type="text" placeholder="Send Message" />
-            <button>Send</button>
-          </form>
-
         </div>
       </div>
+    </div>
+    <div class="col-md-2" v-for="g in guilds" :key="g.id">
+      <GuildCard :guild="g" />
     </div>
   </section>
 </template>
@@ -41,6 +38,11 @@ import { AppState } from '../AppState';
 import { onMounted, ref } from 'vue';
 import { logger } from '../utils/Logger';
 import { accountService } from '../services/AccountService';
+import { guildsService } from '../services/GuildsService';
+import GuildCard from '../components/GuildCard.vue';
+import GuildFaq from '../components/GuildFaq.vue';
+import GuildForm from '../components/GuildForm.vue';
+import Pop from '../utils/Pop';
 
 export default {
 
@@ -63,21 +65,33 @@ export default {
     //   // });
     // }
 
-    // onMounted(() => {
-    //   sendMessage()
-    // })
+    async function getGuilds() {
+      try {
+        await guildsService.getGuilds()
+      } catch (error) {
+        logger.error('getting guilds', error)
+        Pop.error(error)
+      }
+    }
+
+    onMounted(() => {
+      // sendMessage()
+      getGuilds()
+    })
     return {
       message,
       user: computed(() => AppState.account),
+      message: computed(() => AppState.messages),
+      guilds: computed(() => AppState.guilds),
 
-      async sendMessage(){
-        try {
-          await accountService.sendMessage(message)
-        } catch (error) {
-          logger.error('[sending message]', error)
-          Pop.error(error)
-        }
-      }
+      // async sendMessage() {
+      //   try {
+      //     await accountService.sendMessage(message)
+      //   } catch (error) {
+      //     logger.error('[sending message]', error)
+      //     Pop.error(error)
+      //   }
+      // }
 
       // handleSubmit() {
       //   const socket = io()
@@ -92,7 +106,8 @@ export default {
 
 
     }
-  }
+  },
+  components: { GuildForm, GuildCard, GuildFaq }
 }
 </script>
 

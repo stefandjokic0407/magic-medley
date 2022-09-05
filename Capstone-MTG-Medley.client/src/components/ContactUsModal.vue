@@ -48,14 +48,14 @@
               <span>
                 Max
               </span>
-              <!-- <span>
-                <a href="">
+              <span>
+                <a href="https://www.linkedin.com/in/maxball-/">
                   <i class="mdi mdi-linkedin selectable px-1"></i>
                 </a>
-                <a href="">
+                <a href="https://github.com/Max-Ball">
                   <i class="mdi mdi-github selectable"></i>
                 </a>
-              </span> -->
+              </span>
             </li>
             <li class="d-flex justify-content-between">
               <span>
@@ -137,7 +137,7 @@
 
 <script>
 export default {
-  setup(){
+  setup() {
     return {}
   }
 }

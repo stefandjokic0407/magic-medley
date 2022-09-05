@@ -113,13 +113,408 @@
               popular mechanics
               have been omitted.</em></p>
 
+
+          <!-- SECTION Formats -->
+          <section class="row">
+            <div class="col-12">
+              <p class="fs-4 bg-dark rounded text-light ps-2 mb-2">PLAY FORMATS</p>
+            </div>
+            <div class="col-12">
+              <p>
+                A format limits the cards available to you for play within your deck. MtG officially recognizes 21
+                different formats but we will only be covering the 7 major options that use a prebuilt deck.<br>
+                A deck consists of all the cards available to you in a game. Some formats allow a side board consisting
+                of additional cards that can be swapped out with cards in your main deck between rounds of a match. Some
+                cards even allow you to add sideboard into your deck mid-game.<br>
+
+                Unless otherwise stated, you start the game at 20 life and all cards in you main deck are shuffled,
+                creating your library, and you draw 7. At this point you choose to accept your hand or mulligan
+                .<br>
+
+                All formats limit the count of any individual card and, with the exception of basic lands (Plains,
+                Island, Swamp, Mountain, Forest, and Wastes), your
+                combined deck and sideboard usually may not contain more than four of any individual card.<br>
+
+                Most formats are designed for 2 players, but casual games of any format may have more. During
+                multiplayer gameplay, a player may choose to attack any other player, regardless of their position on
+                the table, and can also choose to attack multiple different players during their attack phase.
+                Permanents, spells, and abilities can also target any player around the table (as long as they
+                don't explicitly say they must be used on "you").<br>
+
+                Many of the
+                other formats require you to build a deck at the start of play to use for that event. For more
+                information on formats, please visit the official site <a
+                  href="https://magic.wizards.com/en/formats">here</a>.
+              </p>
+            </div>
+            <div class="col-4">
+              <div class="accordion mt-2" id="accordionExample">
+
+                <!-- SECTION Standard -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Standard
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul class="list-unstyled d-flex justify-content-around">
+                        <li class="text-center" title="Deck Size"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
+                            alt=""> <br><span title="Main">60</span><span title="Sideboard">(15)</span></li>
+                        <li class="text-center" title="Number of Players"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/3SAnh2ZE3pFlo13l0Jqb7B/550886a1c3166d17f1d50daaca5edc87/icon-players.svg"
+                            alt=""><br>2</li>
+                        <li class="text-center" title="Game Duration"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/4pIveHFO9lhMRQ7pdHZZmq/f71d0f9dccaaeacf309f098a63d42695/icon-duration.svg"
+                            alt=""><br>20 min</li>
+                      </ul>
+                      <p>These are one-on-one games with 60 card minimums for the main deck (up to 15 card
+                        sideboard).<br> Standard is a dynamic format where you build decks and play using cards in your
+                        collection
+                        from
+                        recently released Magic sets.
+                      </p>
+                      <button class="btn btn-outline-dark d-flex my-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Legal sets
+                      </button>
+                      <div class="collapse" id="collapseExample">
+                        <ul class="set-list">
+                          <li>Streets of New Capenna</li>
+                          <li>Kamigawa: Neon Dynasty</li>
+                          <li>Innistrad: Crimson Vow</li>
+                          <li>Innistrad: Midnight Hunt</li>
+                          <li>Adventures in the Forgotten Realms</li>
+                          <li>Strixhaven</li>
+                          <li>Kaldheim</li>
+                          <li>Zendikar Rising</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SECTION Modern -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Modern
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul class="list-unstyled d-flex justify-content-around">
+                        <li class="text-center" title="Deck Size"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
+                            alt=""> <br><span title="Main">60</span><span title="Sideboard">(15)</span></li>
+                        <li class="text-center" title="Number of Players"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/3SAnh2ZE3pFlo13l0Jqb7B/550886a1c3166d17f1d50daaca5edc87/icon-players.svg"
+                            alt=""><br>2</li>
+                        <li class="text-center" title="Game Duration"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/4pIveHFO9lhMRQ7pdHZZmq/f71d0f9dccaaeacf309f098a63d42695/icon-duration.svg"
+                            alt=""><br>20 min</li>
+                      </ul>
+                      <p>These are one-on-one games with 60 card minimums for the main deck (up to 15 card
+                        sideboard).<br>
+                        This
+                        format
+                        includes powerful cards and strategies from the
+                        last two decades of Magic.
+                      </p>
+                      <button class="btn btn-outline-dark d-flex my-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Legal sets
+                      </button>
+                      <div class="collapse" id="collapseExample">
+                        <ul class="set-list">
+                          <li>Streets of New Capenna</li>
+                          <li>Kamigawa: Neon Dynasty</li>
+                          <li>Innistrad: Crimson Vow</li>
+                          <li>Innistrad: Midnight Hunt</li>
+                          <li>Adventures in the Forgotten Realms</li>
+                          <li>Modern Horizons 2</li>
+                          <li>Strixhaven</li>
+                          <li>Kaldheim</li>
+                          <li>Zendikar Rising</li>
+                          <li>Core 2021</li>
+                          <li>Ikoria: Lair of Behemoths</li>
+                          <li>Theros Beyond Death</li>
+                          <li>Throne of Eldraine</li>
+                          <li>Core Set 2020</li>
+                          <li>Modern Horizons</li>
+                          <li>War of the Spark</li>
+                          <li>Ravnica Allegiance</li>
+                          <li>Guilds of Ravnica</li>
+                          <li>Core Set 2019</li>
+                          <li>Dominaria</li>
+                          <li>Rivals of Ixalan</li>
+                          <li>Ixalan</li>
+                          <li>Hour of Devastation</li>
+                          <li>Amonkhet</li>
+                          <li>Aether Revolt</li>
+                          <li>Kaladesh</li>
+                          <li>Eldritch Moon</li>
+                          <li>Shadows over Innistrad</li>
+                          <li>Oath of the Gatewatch</li>
+                          <li>Battle for Zendikar</li>
+                          <li>Magic Origins</li>
+                          <li>Dragons of Tarkir</li>
+                          <li>Fate Reforged</li>
+                          <li>Khans of Tarkir</li>
+                          <li>Magic 2015</li>
+                          <li>Journey into Nyx</li>
+                          <li>Born of the Gods</li>
+                          <li>Theros</li>
+                          <li>Magic 2014</li>
+                          <li>Dragon's Maze</li>
+                          <li>Gatecrash</li>
+                          <li>Return to Ravnica</li>
+                          <li>Magic 2013</li>
+                          <li>Avacyn Restored</li>
+                          <li>Dark Ascension</li>
+                          <li>Innistrad</li>
+                          <li>Magic 2012</li>
+                          <li>New Phyrexia</li>
+                          <li>Mirrodin Besieged</li>
+                          <li>Scars of Mirrodin</li>
+                          <li>Magic 2011</li>
+                          <li>Rise of the Eldrazi</li>
+                          <li>Worldwake</li>
+                          <li>Zendikar</li>
+                          <li>Magic 2010</li>
+                          <li>Alara Reborn</li>
+                          <li>Conflux</li>
+                          <li>Shards of Alara</li>
+                          <li>Eventide</li>
+                          <li>Shadowmoor</li>
+                          <li>Morningtide</li>
+                          <li>Lorwyn</li>
+                          <li>Tenth Edition</li>
+                          <li>Future Sight</li>
+                          <li>Planar Chaos</li>
+                          <li>Time Spiral</li>
+                          <li>Coldsnap</li>
+                          <li>Dissension</li>
+                          <li>Guildpact</li>
+                          <li>Ravnica: City of Guilds</li>
+                          <li>Ninth Edition</li>
+                          <li>Saviors of Kamigawa</li>
+                          <li>Eighth Edition</li>
+                          <li>Betrayers of Kamigawa</li>
+                          <li>Champions of Kamigawa</li>
+                          <li>Fifth Dawn</li>
+                          <li>Darksteel</li>
+                          <li>Mirrodin</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SECTION Legacy -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Legacy
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul class="list-unstyled d-flex justify-content-around">
+                        <li class="text-center" title="Deck Size"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
+                            alt=""> <br><span title="Main">60</span><span title="Sideboard">(15)</span></li>
+                        <li class="text-center" title="Number of Players"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/3SAnh2ZE3pFlo13l0Jqb7B/550886a1c3166d17f1d50daaca5edc87/icon-players.svg"
+                            alt=""><br>2</li>
+                        <li class="text-center" title="Game Duration"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/4pIveHFO9lhMRQ7pdHZZmq/f71d0f9dccaaeacf309f098a63d42695/icon-duration.svg"
+                            alt=""><br>20 min</li>
+                      </ul>
+                      <p>
+                        Legacy does not rotate and allows cards to be played from <b>all</b> Magic
+                        sets (with the exception of those from the banned card list).
+                        <br>
+
+                      </p>
+                      <button class="btn btn-outline-dark d-flex my-2" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Legal sets
+                      </button>
+                      <div class="collapse" id="collapseExample">
+                        <ul>
+                          <li>Streets of New Capenna</li>
+                          <li>Kamigawa: Neon Dynasty</li>
+                          <li>Innistrad: Crimson Vow</li>
+                          <li>Innistrad: Midnight Hunt</li>
+                          <li>Adventures in the Forgotten Realms</li>
+                          <li>Strixhaven</li>
+                          <li>Kaldheim</li>
+                          <li>Zendikar Rising</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SECTION Vintage -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      Vintage
+                    </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul class="list-unstyled d-flex justify-content-around">
+                        <li class="text-center" title="Deck Size"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
+                            alt=""> <br><span title="Main">60</span><span title="Sideboard">(15)</span></li>
+                        <li class="text-center" title="Number of Players"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/3SAnh2ZE3pFlo13l0Jqb7B/550886a1c3166d17f1d50daaca5edc87/icon-players.svg"
+                            alt=""><br>2</li>
+                        <li class="text-center" title="Game Duration"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/4pIveHFO9lhMRQ7pdHZZmq/f71d0f9dccaaeacf309f098a63d42695/icon-duration.svg"
+                            alt=""><br>20 min</li>
+                      </ul>
+                      <p>
+                        This format allows for cards to be played from all Magic card sets and includes cards from
+                        expansions and special sets (with the exception of cards on the banned list)! This format holds
+                        a restricted list which limits the use of a card to a single copy allowed either in the
+                        sideboard or in the main deck.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SECTION Pauper -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      Pauper
+                    </button>
+                  </h2>
+                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul class="list-unstyled d-flex justify-content-around">
+                        <li class="text-center" title="Deck Size"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
+                            alt=""> <br><span title="Main">60</span><span title="Sideboard">(15)</span></li>
+                        <li class="text-center" title="Number of Players"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/3SAnh2ZE3pFlo13l0Jqb7B/550886a1c3166d17f1d50daaca5edc87/icon-players.svg"
+                            alt=""><br>2</li>
+                        <li class="text-center" title="Game Duration"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/4pIveHFO9lhMRQ7pdHZZmq/f71d0f9dccaaeacf309f098a63d42695/icon-duration.svg"
+                            alt=""><br>20 min</li>
+                      </ul>
+                      <p>
+                        In this Magic format, all cards must have
+                        been released at common rarity in a Magic set or product. Common promo cards are only legal if
+                        the card meets that qualification.<br>
+
+                        If a common version of a particular card was ever released in a Magic: The Gathering paper
+                        product or Magic: The Gathering Online, any version of that card is legal in this format. This
+                        includes land cards that were printed with both a common set symbol and the L rarity code.<br>
+
+                        This format is unique in that it can be combined with any other to create a deck that is both
+                        competitive and inexpensive.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- SECTION Commander -->
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                      Commander
+                    </button>
+                  </h2>
+                  <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ul class="list-unstyled d-flex justify-content-around">
+                        <li class="text-center" title="Deck Size"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/1A5vv0aemIJashQ2vzqTvW/c1735cd99ba334762b07fd47d6e483ec/icon-deck.svg"
+                            alt=""> <br>100</li>
+                        <li class="text-center" title="Number of Players"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/3SAnh2ZE3pFlo13l0Jqb7B/550886a1c3166d17f1d50daaca5edc87/icon-players.svg"
+                            alt=""><br>3-5</li>
+                        <li class="text-center" title="Game Duration"><img class="symbol-icon"
+                            src="https://images.ctfassets.net/s5n2t79q9icq/4pIveHFO9lhMRQ7pdHZZmq/f71d0f9dccaaeacf309f098a63d42695/icon-duration.svg"
+                            alt=""><br>120 min</li>
+                      </ul>
+                      <p>
+                        The Commander format is all about picking your hero and building a deck around them. In this
+                        casual, multiplayer format, you choose a legendary creature to serve as your commander and build
+                        the rest of your deck around their color identity and unique abilities.<br>
+
+                        Players are only allowed
+                        one of each card in their deck, with the exception of basic lands, but they can use cards from
+                        throughout Magic's history.<br>
+
+                        Each player starts with 40 life, rather then 20, and places their commander face-up in their
+                        command zone.<br>
+
+                        <!-- COLOR IDENTITY
+                        A card's color identity can come from any part of that card, including its casting cost and any
+                        mana symbols in its text. Every card in your Commander deck must only use mana symbols that also
+                        appear on your commander. Colorless cards are allowed as well.<br>
+
+                        COMMAND ZONE
+                        This is where your commander resides during the game when they are not in play. At the start of
+                        the game, each player puts their commander face up into the command zone. A commander can be
+                        cast from the command zone for its normal costs, plus an additional two mana for each previous
+                        time it's been cast from the command zone this game. If your commander would be put into your
+                        library, hand, graveyard or exile from anywhere, you may return it to your command zone
+                        instead.<br>
+
+                        COMMANDER DAMAGE
+                        A player that's been dealt 21 or more combat damage by the same commander over the course of the
+                        game loses the game. The commander is tracked across zone changes for this purpose (for example,
+                        if one player takes control of another player's commander, any damage that commander already
+                        dealt is still counted).<br>
+
+                        PLAY FREE-FOR-ALL MULTIPLAYER
+                        If you're playing a game of Commander with three or more people, you play against each other in
+                        a free-for-all multiplayer format.<br> -->
+
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-8">
+              <img class="img-fluid"
+                src="https://images.ctfassets.net/s5n2t79q9icq/4NbFQcbtJSSxWE0GwE7XrS/2795d8165774acbd0a44dbe34c9f0ec2/playing-cards-img.png"
+                alt="">
+            </div>
+          </section>
+
+
           <!-- SECTION Card explanation -->
           <section class="row">
+            <div class="col-12 mt-2">
+              <p class="fs-4 bg-dark rounded text-light ps-2 text-center">HOW TO READ A CARD</p>
+            </div>
             <div class="col-md-8">
               <img class="img-fluid" src="../assets/img/creaturecardanatomy.jpg" alt="">
             </div>
             <div class="col-md-4">
-              <p class="fs-4 bg-dark rounded text-light ps-2 text-center">HOW TO READ A CARD</p>
               <p>Standard Magic cards typically have one or more of either the permanent types land, creature, artifact,
                 enchantment, and planeswalker, or of the non-permanent spell types instant and sorcery.
 
@@ -537,14 +932,6 @@
             </div>
           </section>
 
-
-          <!-- SECTION Formats -->
-          <section class="row">
-            <div class="col-12">
-              <p class="fs-4 bg-dark rounded text-light ps-2">FORMATS</p>
-
-            </div>
-          </section>
 
         </div>
       </div>
@@ -973,7 +1360,7 @@
 
 <script>
 export default {
-  setup(){
+  setup() {
     return {}
   }
 }
@@ -989,6 +1376,11 @@ export default {
   text-shadow: 1px 1px 3px black;
   font-size: large;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.set-list {
+  max-height: 10em;
+  overflow-y: scroll;
 }
 
 .colors-bg {
@@ -1018,5 +1410,9 @@ export default {
 
 .symbol {
   height: 1em;
+}
+
+.symbol-icon {
+  height: 3em;
 }
 </style>

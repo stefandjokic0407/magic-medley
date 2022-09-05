@@ -4,6 +4,9 @@ import { CardSchema } from '../models/Card.js';
 import { DeckSchema } from '../models/Deck.js';
 import { DeckCardSchema } from '../models/DeckCard.js';
 import { ValueSchema } from '../models/Value'
+import { MessageSchema } from '../models/Message';
+import { GuildSchema } from '../models/Guild';
+import { MembersSchema } from '../models/Member';
 
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
@@ -13,6 +16,10 @@ class DbContext {
   Cards = mongoose.model('Card', CardSchema);
 
   DeckCards = mongoose.model('DeckCard', DeckCardSchema);
+
+  Messages = mongoose.model('Message', MessageSchema);
+  Guilds = mongoose.model('Guild', GuildSchema);
+  Members = mongoose.model('Member', MembersSchema)
 
 }
 

@@ -2,9 +2,9 @@
   <header class="fixed-top">
     <Navbar />
   </header>
-  <section class="row bg-dark">
+  <section class="row">
     <SearchFilters />
-    <div class="col-md-12">
+    <div class="col-md-12 bg-search">
       <div class="row">
         <div v-for="c in searchedCards" :key="c.id" class="col-md-2">
           <SearchedCards :card="c" />
@@ -51,9 +51,13 @@ export default {
   },
   components: { SearchFilters, SearchForm, SearchedCards }
 };
+
 </script>
 
 
 
-<style scoped>
+<style lang="scss" scoped>
+.bg-search {
+  background-color: rgba(6, 19, 32, 255);
+}
 </style>
