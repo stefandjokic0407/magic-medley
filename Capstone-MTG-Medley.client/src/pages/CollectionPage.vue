@@ -8,11 +8,14 @@
         class="btn text-black lighten-30 selectable text-uppercase square buttonPadding" @click="setEditable()">Create
         Deck</button>
     </h3>
-    <div class="col-12 col-md-1 ms-2">
-      <h4 class="m-0 p-0 text-center">{{ activeDeck?.name }}</h4>
-      <h5 v-if="deckCards.length" class="m-0 p-0 text-center">Cards:{{ " " + deckCards.length }}</h5>
-      <button v-if="activeDeck" class="btn btn-outline" data-bs-toggle="modal" :data-bs-target="'#deck-form'">Edit
-        Deck</button>
+    <div class="col-12 col-md-2 ms-2">
+      <div class="row">
+        <h4 class="m-0 p-0 text-center col-12 my-2">{{ activeDeck?.name }}</h4>
+        <h5 v-if="deckCards.length" class="m-0 p-0 text-center col-12">Cards:{{ " " + deckCards.length }}</h5>
+        <button v-if="activeDeck" class="btn btn-outline col-6 mx-auto" data-bs-toggle="modal" :data-bs-target="'#deck-form'">Edit
+          Deck</button>
+        <button v-if="activeDeck" class="btn btn-outline col-6 mx-auto" data-bs-toggle="modal" :data-bs-target="'#deck-form'">Delete</button>
+      </div>
     </div>
     <img class="img-fluid col-6 col-md-1" :src="activeDeck?.picture" alt="" :title="activeDeck?.name" srcset="">
     <p class="col-6">{{activeDeck?.description}}</p>
@@ -36,16 +39,18 @@
     <!-- SECTION THE OFFCANVAS FOR THE DECKS -->
     <div class="col-2 p-3 text-end">
       <button class="btn btn-outline-dark img-text deckCanvas" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight" aria-controls="offcanvasExample">
+        data-bs-target="#offcanvasRight" aria-controls="offcanvasExample" data-bs-scroll="true">
         Your Decks
       </button>
     </div>
 
-    <div class="offcanvas offcanvas-end offcanvas-style text-center" tabindex="-1" id="offcanvasRight"
-      aria-labelledby="offcanvasExampleLabel">
-      <img src="src/assets/img/fancy banner.png" alt="">
+    <div class="offcanvas offcanvas-end offcanvas-style text-center offCanvasBorder" tabindex="1" id="offcanvasRight"
+      aria-labelledby="offcanvasExampleLabel" data-bs-scroll="true">
+      <div class="col-12">
+        <img class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
+      </div>
       <div v-if="decks.length" class="row">
-        <div v-for="d in decks" :key="d.id" class="col-12 col-md-12">
+        <div v-for="d in decks" :key="d.id" class="col-12 col-md-10 mx-auto my-2">
           <Deck :deck="d" />
         </div>
       </div>
@@ -170,5 +175,9 @@ export default {
 .myDeckSize {
   max-height: 10VH;
   max-width: 80VW;
+}
+
+.offCanvasBorder {
+  border: solid black 10px
 }
 </style>

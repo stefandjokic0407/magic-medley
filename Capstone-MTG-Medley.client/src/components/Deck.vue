@@ -1,20 +1,25 @@
 <template>
 
-  <div class="row mx-1">
+  <div class="row align-items-end">
     <button class="noBorder btn p-0" @click="setActiveDeck(deck.id)">
       <div class="col-12 rotated text-light">
-        <h6 class="">{{ deck.name }}</h6>
-        <img v-if="deck.picture" class="img-fluid deckImg" :src=deck.picture :title="deck.name">
+        <div v-if="deck.picture" class="deckImg d-flex align-items-end">
+          <h5 class="deckText text-start mb-0">{{ deck.name }}</h5>
+          <!-- <button @click="deleteDeck" class="btn btn-outline-light mx-0 mt-3">
+        <p>Delete</p>
+      </button> -->
+        </div>
+
         <!-- NOTE INPUT BUTTON FOR DELETING DECK -->
         <img v-if="!deck.picture" :title="deck.name" class="img-fluid shadow cardsBg"
           src='https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712'>
       </div>
     </button>
-    <div class="col-12">
+    <!-- <div class="col-12">
       <button @click="deleteDeck" class="btn btn-outline-light mx-0 mt-3">
         <p>Delete</p>
       </button>
-    </div>
+    </div> -->
   </div>
 
 
@@ -38,6 +43,7 @@ export default {
       decks: computed(() => AppState.decks),
       activeDeck: computed(() => AppState.activeDeck),
       deckCards: computed(() => AppState.deckCards),
+      cover: computed(() => `url(${props.deck.picture})`),
 
       async setActiveDeck(deckId) {
         try {
@@ -114,11 +120,26 @@ export default {
 }
 
 .deckImg {
-  display: block;
-  max-width: 85VW;
-  max-height: 8VH;
-  width: auto;
-  height: auto;
+  height: 7.5VH;
+  background-image: v-bind(cover) !important;
+  background-color: cover;
+  background-position: center;
+  border: 2px solid black;
+  outline: 3px solid rgba(255, 255, 255, 0.44);
 }
 
+.deckText {
+  -webkit-text-stroke: .5px black;
+   color: white;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+
+.deckHeight {
+  height: 10VH;
+}
 </style>
