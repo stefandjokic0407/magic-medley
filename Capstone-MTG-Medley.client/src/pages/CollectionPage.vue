@@ -50,7 +50,7 @@
     <div>
       <h3>My Collection</h3>
       <div class="row">
-        <div v-for="c in cards" :key="c.id" class="col-4 col-md-2 mx-2 my-3">
+        <div v-for="c in cards" :key="c.id" class="col-4 col-md-2  my-3">
           <CollectionCard :card="c" />
         </div>
       </div>
