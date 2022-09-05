@@ -29,6 +29,13 @@ const routes = [
     beforeEnter: authSettled
   },
   {
+    path: '/guild/:guildId',
+    name: 'GuildDetails',
+    component: loadPage('GuildDetailsPage'),
+    beforeEnter: authGuard
+
+  },
+  {
     path: '/profile',
     name: 'Profile',
     component: loadPage('ProfilePage'),

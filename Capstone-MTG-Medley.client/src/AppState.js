@@ -25,6 +25,14 @@ export const AppState = reactive({
 
   nextPage: null,
 
+  guilds: [],
+
+  activeGuild: {},
+
+  messages: [],
+
+  members: []
+
 
 
 })
