@@ -6,7 +6,7 @@
     <!-- add deck component -->
     <!-- <h3 class="col-4 col-md-12">My Deck
     </h3> -->
-    <div class="col-12 col-md-2 ms-2">
+    <div v-if="activeDeck" class="col-12 col-md-2 ms-2">
       <div v-if="activeDeck" class="row">
         <h4 class="m-0 p-0 text-center col-12 my-2">{{ activeDeck?.name }}</h4>
         <h5 v-if="deckCards.length" class="m-0 p-0 text-center col-12">Cards:{{ " " + deckCards.length }}</h5>
@@ -17,8 +17,10 @@
           :data-bs-target="'#deck-form'">Delete</button>
       </div>
     </div>
-    <img class="img-fluid col-6 col-md-1" :src="activeDeck?.picture" alt="" :title="activeDeck?.name" srcset="">
-    <p class="col-6">{{ activeDeck?.description }}</p>
+    <div v-if="activeDeck" class="col-6 col-md-1">
+      <img class="img-fluid" :src="activeDeck?.picture" alt="" :title="activeDeck?.name" srcset="">
+      <p class="col-6">{{ activeDeck?.description }}</p>
+    </div>
     <div class="col-12">
       <div class="row">
 

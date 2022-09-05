@@ -9,12 +9,14 @@
       :data-bs-target="'#collectionCardModal' + card.cardId"
       class="mt-4 col-10 px-0  shadow rotated cardCollection-image">
       <div v-if="card.image_uris?.normal">
-        <img class="img-fluid position-relative shadow cardsBg" :class="deckCard.find(d => d.cardId == card.cardId) ? 'card-border' : '' " :src=card.image_uris?.normal :title="card.name">
+        <img class="img-fluid position-relative shadow cardsBg"
+          :class="deckCard?.find(d => d.cardId == card.cardId) ? 'card-border' : ''" :src=card.image_uris?.normal
+          :title="card.name">
         <!-- <p class="xsFont">{{deckCard}}</p> -->
       </div>
 
       <div v-else>
-        <img class="img-fluid shadow cardsBg" 
+        <img class="img-fluid shadow cardsBg"
           src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
       </div>
       <div class="cardCount">
@@ -173,7 +175,7 @@ export default {
   left: 105%;
 }
 
-.card-border{
+.card-border {
   border: 3px solid whitesmoke;
 }
 
