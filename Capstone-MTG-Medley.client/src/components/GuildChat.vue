@@ -1,24 +1,25 @@
 <template>
   <div>
-    <button class="btn btn-outline m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseChat"
-      aria-expanded="false" aria-controls="collapseChat">
-      Chat with other {{ activeGuild.name }} members
-    </button>
-    <div class="collapse" id="collapseChat">
-      <div class="card card-body mb-3">
-        <div>
-          <h3>{{ activeGuild.name }}</h3>
-          <div><b>Guild Members Currently Online:</b><span class="p-2" id="user-count">0</span></div>
-        </div>
-        <section v-for="m in messages" :key="m.id">
-          <MessageBody :message="m" />
-        </section>
-        <form id="form" @submit.prevent="sendMessage()">
-          <div class="input-group">
-            <input v-model="editable.body" type="text" placeholder="Send Message" />
-            <button>Send</button>
+    <div class="accordion px-3" id="accordionChat">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button p-2 chat-color d-flex flex-column" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <h3 class="m-0">{{ activeGuild.name }}</h3>
+            <div><b>Members Online:</b><span class="p-2" id="user-count">0</span></div>
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+          data-bs-parent="#accordionChat">
+          <div class="accordion-body p-3 cs-height chat">
+            <div v-for="m in messages" :key="m.id">
+              <MessageBody :message="m" />
+            </div>
           </div>
-        </form>
+          <form class="px-2 chat-color" id="form" @submit.prevent="sendMessage()">
+            <input class="rounded-pill my-2 px-3" v-model="editable.body" type="text" placeholder="Send Message" />
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -76,5 +77,31 @@ export default {
 
 
 
-<style>
+<style scoped>
+input {
+  width: 100%;
+}
+
+.cs-btn {
+  border-radius: 50%;
+}
+
+.chat {
+  background-color: #242526;
+  height: 50vh;
+  overflow-y: scroll;
+  color: rgb(215, 215, 215);
+  position: relative;
+}
+
+.chat-color {
+  background-color: #242526 !important;
+  color: rgb(215, 215, 215) !important;
+}
+
+.cs-header {
+  border-bottom: none;
+  border-top-left-radius: 5% !important;
+  border-top-right-radius: 5% !important;
+}
 </style>
