@@ -120,23 +120,25 @@ export default {
 }
 
 .deckImg {
-  height: 7.5VH;
+
+  aspect-ratio: 4 / 1;
   background-image: v-bind(cover) !important;
-  background-color: cover;
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border: 2px solid black;
   outline: 3px solid rgba(255, 255, 255, 0.44);
 }
 
 .deckText {
   -webkit-text-stroke: .5px black;
-   color: white;
-   text-shadow:
-       3px 3px 0 #000,
-     -1px -1px 0 #000,  
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-       1px 1px 0 #000;
+  color: white;
+  text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .deckHeight {
