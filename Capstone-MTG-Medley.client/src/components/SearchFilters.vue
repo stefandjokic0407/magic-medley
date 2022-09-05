@@ -416,9 +416,6 @@ export default {
   background-position: center;
   background-size: cover;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  /* backdrop-filter: blur(4px); */
-  /* border: solid #8d8b8b1f; */
-  /* border-radius: 8px; */
 }
 
 .filter-btn {

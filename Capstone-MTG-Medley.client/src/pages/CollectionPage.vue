@@ -88,18 +88,18 @@
 
 <script>
 
-import { computed } from '@vue/reactivity';
-import { onMounted, ref, watchEffect } from 'vue';
-import { AppState } from '../AppState.js';
-import { cardsService } from '../services/CardsService.js';
-import { logger } from '../utils/Logger.js';
-import Pop from '../utils/Pop.js';
-import SearchedCards from '../components/SearchedCards.vue';
 import CollectionCard from '../components/CollectionCard.vue';
-import DeckForm from "../components/DeckForm.vue";
+import SearchedCards from '../components/SearchedCards.vue';
+import { cardsService } from '../services/CardsService.js';
 import { decksService } from "../services/DecksService.js";
-import Deck from "../components/Deck.vue";
+import { onMounted, ref, watchEffect } from 'vue';
+import DeckForm from "../components/DeckForm.vue";
 import DeckCard from "../components/DeckCard.vue";
+import { logger } from '../utils/Logger.js';
+import { computed } from '@vue/reactivity';
+import Deck from "../components/Deck.vue";
+import { AppState } from '../AppState.js';
+import Pop from '../utils/Pop.js';
 
 export default {
   setup() {
@@ -127,6 +127,7 @@ export default {
       getAccountDecks();
       getAccountCards();
     });
+    
     return {
       cards: computed(() => AppState.collection),
       decks: computed(() => AppState.decks),
