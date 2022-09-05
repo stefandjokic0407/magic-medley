@@ -42,7 +42,7 @@
         </div> -->
 
 
-        <div v-for="c in displayCards" :key="c.id" class="col-2 col-md-1 mx-1 my-3">
+        <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-2 col-md-1 mx-1 my-3">
           <DeckCard :card="c" />
         </div>
       </div>
@@ -65,12 +65,20 @@
       </button>
     </div>
 
-    <div class="offcanvas offcanvas-end offcanvas-style text-center offCanvasBorder" tabindex="1" id="offcanvasRight"
-      aria-labelledby="offcanvasExampleLabel" data-bs-scroll="true">
+    <div class="offcanvas offcanvas-end offcanvas-style text-center offCanvasBorder pt-2" tabindex="1"
+      id="offcanvasRight" aria-labelledby="offcanvasExampleLabel" data-bs-scroll="true">
       <div class="col-12">
-        <img class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
+        <div class="row">
+          <div @click.prevent="noActive" v-if="activeDeck" class="d-flex align-items-end deckImg col-11 mx-auto">
+            <h5 class="deckText text-start mb-0">{{ activeDeck.name }}</h5>
+          </div>
+          <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12">
+            <DeckCardCanvas :card="c" />
+          </div>
+        </div>
+        <img v-if="!activeDeck" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
       </div>
-      <div v-if="decks.length" class="row">
+      <div v-if="decks.length && !activeDeck" class="row">
         <div v-for="d in decks" :key="d.id" class="col-12 col-md-10 mx-auto my-2">
           <Deck :deck="d" />
         </div>
@@ -100,6 +108,7 @@ import DeckForm from "../components/DeckForm.vue";
 import { decksService } from "../services/DecksService.js";
 import Deck from "../components/Deck.vue";
 import DeckCard from "../components/DeckCard.vue";
+import DeckCardCanvas from "../components/DeckCardCanvas.vue";
 
 export default {
   setup() {
@@ -132,6 +141,7 @@ export default {
       decks: computed(() => AppState.decks),
       activeDeck: computed(() => AppState.activeDeck),
       deckCards: computed(() => AppState.deckCards),
+      cover: computed(() => `url(${AppState.activeDeck?.picture})`),
       activeCards: computed(() => AppState.activeProfile),
       displayCards: computed(() => {
         let newArray = [...AppState.deckCards]
@@ -172,9 +182,13 @@ export default {
         }
       },
 
+      noActive() {
+        AppState.activeDeck = null
+      }
+
     };
   },
-  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard }
+  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
 }
 </script>
 
@@ -205,5 +219,16 @@ export default {
 
 .offCanvasBorder {
   border: solid black 10px
+}
+
+.deckImg {
+
+  aspect-ratio: 4 / 1;
+  background-image: v-bind(cover) !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid black;
+  outline: 3px solid rgba(255, 255, 255, 0.44);
 }
 </style>

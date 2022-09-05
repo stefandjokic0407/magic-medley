@@ -1,7 +1,5 @@
 <template>
-  <div v-if="deckCard.cardId == cards.cardId">
 
-  </div>
   <div class="row align-items-center">
     <button v-if="activeDeck" class="btn col-2 text-start" @click="createDeckCard(card.cardId)"><i title="add to deck"
         class="mdi mdi-plus-circle"></i></button>
@@ -20,10 +18,15 @@
           src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
       </div>
       <div class="cardCount">
-        <p class="col-12"><i class="mdi mdi-close-thick"></i><b>{{ card.count }}</b></p>
+        <p class="col-12 mx-2 mt-1"><i class="mdi mdi-card-multiple-outline"></i>&nbsp<b> {{
+            card.count
+        }}</b></p>
       </div>
     </div>
-    <p v-if="activeDeck" class="col-10 text-end cardCount"><i class="mdi mdi-close-thick"></i><b>{{ (card.count) }}</b>
+    <p v-if="activeDeck" class="col-10 text-end cardCount"><i class="mdi mdi-card-multiple-outline"></i>&nbsp
+      &nbsp<b>{{
+          (card.count)
+      }}</b>
     </p>
     <button @click.prevent="removeCard" class="btn-outline btn mt-4 xsFont" value="Delete" type="button">Remove from
       Collection</button>
@@ -52,7 +55,7 @@ export default {
       cards: computed(() => AppState.collection),
       activeDeck: computed(() => AppState.activeDeck),
       user: computed(() => AppState.account),
-      deckCard: computed(() => AppState.deckCards),
+      deckCard: computed(() => AppState.deckCards.find(c => deckCard.cardId == props.cardId)),
       profileCard: computed(() => AppState.activeProfile),
       reset() {
         AppState.activeCard = props.card
@@ -177,11 +180,13 @@ export default {
 .cardCount {
   z-index: 1;
   position: absolute;
-  bottom: 10px;
-  left: 15px;
+  bottom: 5px;
+  left: 10px;
   background-color: rgba(0, 0, 0, 0.601);
   color: white;
   border-radius: 5%;
   width: 50px;
+  height: 30px;
+  border: solid rgba(255, 255, 255, 0.435) 1px;
 }
 </style>
