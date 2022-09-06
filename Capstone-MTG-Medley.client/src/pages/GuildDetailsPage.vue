@@ -4,16 +4,19 @@
   </header>
   <!-- Gruul Clans Page -->
   <div v-if="activeGuild.name == 'Gruul Clans'" class="row gruul">
-    <div class="col-md-4 d-flex my-2">
-      <div v-for="m in members" :key="m.id">
-        <Member :member="m" />
+    <div class="col-md-4 my-2">
+      <h4>Guild Members</h4>
+      <div class="d-flex my-2">
+        <div v-for="m in members" :key="m.id">
+          <Member :member="m" />
+        </div>
       </div>
     </div>
     <div class="col-md-4 text-center">
       <h1>{{ activeGuild.name }}</h1>
       <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
     </div>
-    <div class="col-md-4 text-end">
+    <div class="col-md-4 text-end my-2">
       <button v-if="isMember == false" class="btn" @click="joinGuild()">
         <i class="mdi mdi-plus fs-3"></i>
         <span class="fs-5">JOIN GUILD</span>
@@ -30,7 +33,7 @@
           {{ activeGuild.name }} Background
         </h4>
         <!-- Gruul Clans Background -->
-        <div class="card bg-dark p-3 mb-3 elevation-4">
+        <div class="card gruul-bg p-3 mb-3 elevation-4">
           <br>
           Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble guild
           charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
@@ -469,7 +472,7 @@
   <!-- CHAT -->
   <footer class="fixed-bottom">
     <div class="row">
-      <div class="col-md-3 offset-md-8">
+      <div class="col-md-3 offset-md-9">
         <GuildChat />
       </div>
     </div>
@@ -574,6 +577,15 @@ export default {
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
   /* border-radius: 8px; */
+}
+
+.gruul-bg {
+  background-color: green;
+}
+
+.btn {
+  text-shadow: 1px 1px 3px black;
+  color: whitesmoke;
 }
 
 .simic {
