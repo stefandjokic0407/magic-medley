@@ -4,9 +4,9 @@
     <button v-if="activeDeck" class="btn col-2 text-start addCard" @click="createDeckCard(card.cardId)"><i
         title="add to deck" class="mdi mdi-plus-circle "></i></button>
   </div>
-  <div class="row align-items-center selectable justify-content-center mx-1">
+  <div class="row align-items-center justify-content-center mx-1">
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
-      :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 shadow cardCollection-image">
+      :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
       <div v-if="card.image_uris?.normal">
         <img class="img-fluid position-relative shadow cardsBg"
           :class="deckCard?.find(d => d.cardId == card.cardId) ? 'card-border' : ''" :src=card.image_uris?.normal
@@ -79,7 +79,7 @@ export default {
           DeckCard.cardId = cardId
           DeckCard.deckId = deckId
           DeckCard.accountId = AppState.user.id
-          if()
+          // if ()
           await deckCardsService.createDeckCard(DeckCard)
         } catch (error) {
           logger.log("[creating deck card]", error);
@@ -185,9 +185,9 @@ export default {
 
 .cardCount {
   z-index: 1;
-  position: absolute;
-  bottom: 60px;
-  left: 10px;
+  position: relative;
+  bottom: 35px;
+  left: 8px;
   background-color: rgba(0, 0, 0, 0.601);
   color: white;
   border-radius: 10%;
@@ -202,5 +202,6 @@ export default {
   top: 45px;
   left: 0px;
   color: rgb(0, 0, 0);
+  border: none;
 }
 </style>

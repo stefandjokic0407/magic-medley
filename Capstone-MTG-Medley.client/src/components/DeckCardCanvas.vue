@@ -66,7 +66,7 @@ export default {
     // })
     return {
       activeCard: computed(() => AppState.activeCard),
-      cover: computed(() => `url(${props.card.card.image_uris.art_crop})`),
+      cover: computed(() => `url(${props.card.card?.image_uris.art_crop})`),
       deckCard: computed(() => AppState.deckCards),
       reset() {
         AppState.activeCard = props.card;

@@ -3,7 +3,7 @@
     <Navbar />
   </header>
 
-{{account}}
+  {{account}}
 
 
 </template>
@@ -29,7 +29,8 @@ export default {
 
     async function getProfileById() {
       try {
-        await profilesService.getProfileById(route.params.profileId)
+        console.log()
+        await profilesService.getProfileById(AppState.account.id)
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'error')

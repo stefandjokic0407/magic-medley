@@ -1,13 +1,12 @@
-import { AppState } from "../AppState"
-import { api } from "./AxiosService"
+import { AppState } from "../AppState";
+import { api } from "./AxiosService";
 
 class ProfilesService {
-
   async getProfileById(profileId) {
-    const res = await api.get(`api/profiles/${profileId}`)
-    AppState.activeProfile = new Profile(res.data)
+    const res = await api.get(`api/profiles/${profileId}`);
+    // AppState.activeProfile = new Profile(res.data)
+    return res;
   }
-
 }
 
-export const profilesService = new ProfilesService()
+export const profilesService = new ProfilesService();
