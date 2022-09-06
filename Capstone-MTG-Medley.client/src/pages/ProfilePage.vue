@@ -3,7 +3,11 @@
     <Navbar />
   </header>
 
+<<<<<<< HEAD
   {{ account }}
+=======
+  {{account}}
+>>>>>>> 9998b04489e7661f264ff3c06b1c92fbe25d0e50
 
 
 </template>
@@ -18,37 +22,37 @@ import { profilesService } from "../services/ProfilesService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 
-
 export default {
-
-
-
   setup() {
-
-    const route = useRoute()
+    const route = useRoute();
 
     async function getProfileById() {
       try {
-        await profilesService.getProfileById(route.params.profileId)
+        console.log()
+        await profilesService.getProfileById(AppState.account.id)
       } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, 'error')
-        router.push({ name: 'Home' })
+        logger.error(error);
+        Pop.toast(error.message, "error");
+        router.push({ name: "Home" });
       }
     }
 
     onMounted(() => {
       getProfileById();
-    })
+    });
 
     return {
       account: computed(() => AppState.account),
-      profile: computed(() => AppState.activeProfile)
+      profile: computed(() => AppState.activeProfile),
     };
-
-  }
-}
+  },
+};
 </script>
 
+<<<<<<< HEAD
 <style scoped lang="scss">
 </style>
+=======
+<style>
+</style>
+>>>>>>> 9998b04489e7661f264ff3c06b1c92fbe25d0e50
