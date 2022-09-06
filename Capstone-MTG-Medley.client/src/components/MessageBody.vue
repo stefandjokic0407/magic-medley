@@ -1,17 +1,17 @@
 <template>
   <div v-if="message.creatorId == account.id" class="row justify-content-end">
-    <div class="col-md-8 offset-md-2 rounded user-message my-1">
+    <div class="col-8 offset-md-2 rounded user-message my-1">
       <span>
         {{ message.body }}
       </span>
     </div>
   </div>
   <div v-else class="row justify-content-start">
-    <div class="col-md-2">
+    <div class="col-1 col-md-2">
       <img class="profile-pic" :src="message.creator.picture" alt="profile-picture" :title="message.creator.name"
         height="20" width="20">
     </div>
-    <div class="col-md-8 my-1 rounded member-message">
+    <div class="col-8 my-1 rounded member-message">
       {{ message.body }}
     </div>
   </div>

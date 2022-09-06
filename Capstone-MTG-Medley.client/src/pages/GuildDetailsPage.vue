@@ -4,7 +4,7 @@
   </header>
   <!-- Gruul Clans Page -->
   <div v-if="activeGuild.name == 'Gruul Clans'" class="row gruul">
-    <div class="col-md-4 my-2">
+    <div class="col-md-3 my-2">
       <h4>Guild Members</h4>
       <div class="d-flex my-2">
         <div v-for="m in members" :key="m.id">
@@ -12,14 +12,14 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 text-center mt-3">
+    <div class="col-md-6 text-center mt-3">
       <h1><img src="../assets/img/mana-red.png" alt="" height="50" width="50">
         <span class="p-5">{{ activeGuild.name }}</span><img src="../assets/img/mana-green.png" alt="" height="50"
           width="50">
       </h1>
       <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
     </div>
-    <div class="col-md-4 text-end my-2">
+    <div class="col-md-3 text-end my-2">
       <button v-if="isMember == false" class="btn" @click="joinGuild()">
         <i class="mdi mdi-plus fs-3"></i>
         <span class="fs-5">JOIN GUILD</span>
