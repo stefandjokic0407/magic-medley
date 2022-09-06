@@ -110,12 +110,12 @@
 <script>
 export default {
   props: {
-    guild: {type: Object, required: true}
+    guild: { type: Object, required: true }
   },
 
-setup() {
-  return {};
-},
+  setup() {
+    return {};
+  },
 };
 </script>
 
