@@ -1,6 +1,6 @@
 <template>
   <!-- <button @click="removeCardFromDeck()" class="btn-outline btn xsFont">Remove from Deck</button> -->
-  <div class="row my-2" :title="card.card.name">
+  <div class="row my-2" :title="card.card?.name">
     <div v-if="card" class="col-11 mx-auto deckCardCanvas d-flex align-items-end justify-content-between">
       <!-- <img class="img-fluid shadow cardsBg childElement deleteCard" :src=card.card?.image_uris?.small
         :title="card.card?.name"> -->
@@ -78,7 +78,7 @@ export default {
           await cardsService.getCardByOracle(props.card.oracle_id);
         }
         catch (error) {
-          logger.error(error);
+          logger.error('[Getting Card By Oracle]', error);
           Pop.toast(error.message, "error");
         }
       },
@@ -93,7 +93,7 @@ export default {
           await deckCardsService.removeCard(cardId);
         }
         catch (error) {
-          logger.error(error);
+          logger.error('[Removing Card From Deck:]', error);
           Pop.toast(error.message, "error");
         }
       }

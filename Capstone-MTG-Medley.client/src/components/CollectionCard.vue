@@ -29,7 +29,8 @@
           (card.count)
       }}</b>
     </p> -->
-    <button @click.prevent="removeCard" class="btn-outline btn mt-4 xsFont" value="Delete" type="button">Remove from
+    <button @click.prevent="removeCard() && getAccountCards()" class="btn-outline btn mt-4 xsFont" value="Delete"
+      type="button">Remove from
       Collection</button>
   </div>
 
@@ -95,7 +96,16 @@ export default {
           logger.error('[Removing Card from Collection]', error)
           Pop.toast(error.message, 'error')
         }
-      }
+      },
+      async getAccountCards() {
+        try {
+          await cardsService.getAccountCards()
+        }
+        catch (error) {
+          logger.log("[getting all cards]", error);
+          Pop.error(error);
+        }
+      },
     }
   }
 }
