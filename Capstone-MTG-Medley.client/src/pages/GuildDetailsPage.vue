@@ -27,13 +27,10 @@
     <section class="col-md-5">
       <div>
         <h4>
-          <span class="selectable" data-bs-toggle="collapse" data-bs-target="#collapseBackground" aria-expanded="false"
-            aria-controls="collapseBackground">
-            {{ activeGuild.name }} Background
-          </span>
+          {{ activeGuild.name }} Background
         </h4>
         <!-- Gruul Clans Background -->
-        <div class="collapse card bg-dark p-3 mb-3" id="collapseBackground">
+        <div class="card bg-dark p-3 mb-3 elevation-4">
           <br>
           Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble guild
           charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
