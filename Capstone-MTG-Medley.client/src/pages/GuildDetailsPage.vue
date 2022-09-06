@@ -580,7 +580,13 @@ export default {
 }
 
 .gruul-bg {
-  background-color: green;
+  background: rgb(196, 211, 202);
+  background: linear-gradient(191deg, rgba(196, 211, 202, 1) 24%, rgba(235, 159, 130, 1) 100%);
+  backdrop-filter: blur(10px);
+  text-shadow: 2px 2px 2px rgb(31, 29, 29);
+  color: #f2e9e4 !important;
+  width: 100%;
+  border: none;
 }
 
 .btn {
