@@ -94,17 +94,19 @@ input {
   position: relative;
 }
 
-.chat::-webkit-scrollbar {
-  width: 1em;
+.accordion-item {
+  border-color: #3e4042 !important;
 }
 
-.chat::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+
+.chat::-webkit-scrollbar {
+  width: 5px;
+  margin-right: 10em;
 }
 
 .chat::-webkit-scrollbar-thumb {
   background-color: darkgrey;
-  outline: 1px solid slategrey;
+  border-radius: 5px;
 }
 
 .chat-color {
