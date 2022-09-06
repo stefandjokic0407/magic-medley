@@ -1,7 +1,7 @@
 <template>
   <span class="navbar-text">
     <button
-      class="btn selectable text-uppercase my-2 my-lg-0"
+      class="btn selectable text-uppercase text-light my-2 my-lg-0"
       @click="login"
       v-if="!user.isAuthenticated"
     >
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div
-        class="dropdown-menu p-0 list-group w-100"
+        class="drop-down-style dropdown-menu p-0 list-group w-100"
         aria-labelledby="authDropdown"
       >
         <router-link :to="{ name: 'Account' }">
@@ -88,5 +88,10 @@ export default {
 
 .hoverable {
   cursor: pointer;
+}
+
+.drop-down-style {
+  color: white;
+  text-shadow: none;
 }
 </style>
