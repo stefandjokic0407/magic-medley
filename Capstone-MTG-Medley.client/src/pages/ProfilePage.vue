@@ -26,7 +26,7 @@
     <!-- SECTION Profile Decks -->
     <div class="row"></div>
 
-    <!-- SECTION Profile Guilds -->
+    <!-- SECTION Profile Guild -->
     <div class="row"></div>
   </section>
 </template>
