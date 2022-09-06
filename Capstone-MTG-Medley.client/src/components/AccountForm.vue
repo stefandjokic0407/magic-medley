@@ -1,22 +1,22 @@
 <template>
 
-<form class="card account-form font bg-dark" @submit.prevent="handleSubmit">
+  <form class="card account-form font bg-dark" @submit.prevent="handleSubmit">
     <div class="card-body text-start">
       <div>
         <label for="name">Name:</label>
-        <input type="text" class="form-control" v-model="editable.name" >
+        <input type="text" class="form-control" v-model="editable.name">
       </div>
       <div>
         <label for="picture">Picture:</label>
-        <input type="url" class="form-control" v-model="editable.picture"  placeholder="picture">
+        <input type="url" class="form-control" v-model="editable.picture" placeholder="picture">
       </div>
       <div>
         <label for="coverImg">Cover Image:</label>
-        <input type="url" class="form-control" v-model="editable.coverImg"  placeholder="Cover Image">
+        <input type="url" class="form-control" v-model="editable.coverImg" placeholder="Cover Image">
       </div>
       <div>
         <label for="email">Email:</label>
-        <input type="text" class="form-control" v-model="editable.email" >
+        <input type="text" class="form-control" v-model="editable.email">
       </div>
       <div>
         <button type="submit" class="btn btn-outline text-light w-100 mt-2">Save</button>
@@ -39,32 +39,31 @@ export default {
 
 
 
-setup() {
+  setup() {
 
-const editable = ref({})
+    const editable = ref({})
 
-watchEffect(() => {
-  if (!AppState.account) { return }
-  editable.value = {...AppState.account}
-})
+    watchEffect(() => {
+      if (!AppState.account) { return }
+      editable.value = { ...AppState.account }
+    })
 
-  return {
-    editable,
-    // account: computed(() => AppState.account),
-    async handleSubmit() {
-      try {
-        await accountService.edit(editable.value)
-      } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, 'error')
+    return {
+      editable,
+      // account: computed(() => AppState.account),
+      async handleSubmit() {
+        try {
+          await accountService.edit(editable.value)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
       }
-    }
-  };
+    };
 
   }
 }
 </script>
 
-<style> 
-
+<style scoped lang="scss">
 </style>

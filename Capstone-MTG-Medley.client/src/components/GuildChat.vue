@@ -77,7 +77,7 @@ export default {
 
 
 
-<style scoped>
+<style scoped lang="scss">
 input {
   width: 100%;
 }
@@ -92,6 +92,19 @@ input {
   overflow-y: scroll;
   color: rgb(215, 215, 215);
   position: relative;
+}
+
+.chat::-webkit-scrollbar {
+  width: 1em;
+}
+
+.chat::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.chat::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 
 .chat-color {

@@ -25,30 +25,30 @@ import FooterNav from "../components/FooterNav.vue";
 
 
 export default {
-setup() {
+  setup() {
 
-// async function getSymbols() {
-//   try {
-//     await symbolsService.getSymbols();
-//   }
-//   catch (error) {
-//     logger.error(error);
-//     Pop.toast(error.message, "error");
-//   }
-// }
-onMounted(() => {
-// getSymbols();
-});
-return {
-card: computed(() => AppState.card),
-searchedCards: computed(() => AppState.searchedCards),
-};
-},
-components: { SearchedCards, FooterNav }
+    // async function getSymbols() {
+    //   try {
+    //     await symbolsService.getSymbols();
+    //   }
+    //   catch (error) {
+    //     logger.error(error);
+    //     Pop.toast(error.message, "error");
+    //   }
+    // }
+    onMounted(() => {
+      // getSymbols();
+    });
+    return {
+      card: computed(() => AppState.card),
+      searchedCards: computed(() => AppState.searchedCards),
+    };
+  },
+  components: { SearchedCards, FooterNav }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 a {
   text-decoration: none;
   color: inherit;

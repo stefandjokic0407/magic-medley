@@ -3,9 +3,16 @@
     <Navbar />
   </header>
 
-{{account}}
-
-
+  <section>
+    <div class="row">
+      <div class="profile-details rounded text-dark elevation-2">
+        <img class="img-fluid profile-img" :src="profile.picture" alt="" />
+        <div class="px-2">
+          <p>{{ profile.name }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -15,40 +22,40 @@ import { useRoute } from "vue-router";
 import { AppState } from "../AppState";
 import { router } from "../router";
 import { profilesService } from "../services/ProfilesService";
-import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 
-
 export default {
-
-
-
   setup() {
-
-    const route = useRoute()
+    const route = useRoute();
 
     async function getProfileById() {
       try {
-        await profilesService.getProfileById(route.params.profileId)
+        await profilesService.getProfileById(route.params.profileId);
       } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, 'error')
-        router.push({ name: 'Home' })
+        Pop.error("[Getting profile by Id]", error);
+        router.push({ name: "Home" });
       }
     }
 
     onMounted(() => {
       getProfileById();
-    })
+    });
 
     return {
+      route,
       account: computed(() => AppState.account),
-      profile: computed(() => AppState.activeProfile)
+      profile: computed(() => AppState.activeProfile),
     };
-
-  }
-}
+  },
+};
 </script>
 
-<style>
+<style scoped lang="scss">
+.profile-img {
+  height: 7rem;
+  width: 7rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: #b6d369 solid 2px;
+}
 </style>

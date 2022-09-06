@@ -4,7 +4,16 @@
   </header>
   <!-- Gruul Clans Page -->
   <div v-if="activeGuild.name == 'Gruul Clans'" class="row gruul">
-    <div class="col-md-12 text-end">
+    <div class="col-md-4 d-flex my-2">
+      <div v-for="m in members" :key="m.id">
+        <Member :member="m" />
+      </div>
+    </div>
+    <div class="col-md-4 text-center">
+      <h1>{{ activeGuild.name }}</h1>
+      <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
+    </div>
+    <div class="col-md-4 text-end">
       <button v-if="isMember == false" class="btn" @click="joinGuild()">
         <i class="mdi mdi-plus fs-3"></i>
         <span class="fs-5">JOIN GUILD</span>
@@ -14,26 +23,14 @@
         <span class="fs-5">Remove From Guild</span>
       </button>
     </div>
-    <div class="col-md-12 text-center">
-      <h1>{{ activeGuild.name }}</h1>
-      <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
-    </div>
-    <div class="col-md-12 d-flex">
-      <div v-for="m in members" :key="m.id">
-        <Member :member="m" />
-      </div>
-    </div>
     <!-- GUILD INFO -->
     <section class="col-md-5">
       <div>
         <h4>
-          <span class="selectable" data-bs-toggle="collapse" data-bs-target="#collapseBackground" aria-expanded="false"
-            aria-controls="collapseBackground">
-            {{ activeGuild.name }} Background
-          </span>
+          {{ activeGuild.name }} Background
         </h4>
         <!-- Gruul Clans Background -->
-        <div class="collapse card bg-dark p-3 my-5" id="collapseBackground">
+        <div class="card bg-dark p-3 mb-3 elevation-4">
           <br>
           Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble guild
           charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
@@ -47,6 +44,9 @@
           "cobble roaches".
         </div>
       </div>
+    </section>
+    <section>
+      <Map />
     </section>
   </div>
   <!-- Simic Combine Page -->
@@ -467,9 +467,6 @@
     </section>
   </div>
   <!-- CHAT -->
-  <div>
-    <Map />
-  </div>
   <footer class="fixed-bottom">
     <div class="row">
       <div class="col-md-3 offset-md-8">
@@ -561,7 +558,7 @@ export default {
 
 
 
-<style>
+<style scoped lang="scss">
 .profile-pic {
   border-radius: 50%;
 }
@@ -572,6 +569,7 @@ export default {
   background-image: url(../assets/img/mtg-guilds/Gruul-Guildgate.jpg);
   background-position: 50% 35%;
   background-size: cover;
+  height: 100vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */

@@ -1,12 +1,12 @@
 <template>
   <form @submit.prevent="searchCardsTwo">
-  <div class="input-group">
-    <input class="form-control" type="text" required v-model="query" />
-    <button class="btn btn-outline-dark" type="submit">
-      <i class="mdi mdi-magnify"></i>
-    </button>
-  </div>
-</form>
+    <div class="input-group">
+      <input class="form-control" type="text" required v-model="query" />
+      <button class="btn btn-outline-dark" type="submit">
+        <i class="mdi mdi-magnify"></i>
+      </button>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -38,7 +38,7 @@ export default {
       async searchCardsTwo() {
         try {
           await cardsService.searchBarGet(query.value)
-          router.push({ name: 'Search'})
+          router.push({ name: 'Search' })
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
@@ -50,9 +50,9 @@ export default {
 }
 </script>
 
-<style>
- input {
-   outline: black !important;
-   border: black;
- }
+<style scoped lang="scss">
+input {
+  outline: black !important;
+  border: black;
+}
 </style>

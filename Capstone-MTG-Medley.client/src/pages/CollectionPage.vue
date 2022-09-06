@@ -1,5 +1,5 @@
 <template>
-  <header class="row">
+  <header class="row sticky-top">
     <Navbar />
   </header>
   <div class="row">
@@ -221,7 +221,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style scoped lang="scss">
 .deckCanvas {
   position: fixed;
   right: 0px;
@@ -233,7 +233,9 @@ export default {
   backdrop-filter: blur(4px);
   border: solid 5px rgba(0, 0, 0, 0.43);
   /* color: white; */
-  height: 100VH;
+  height: 90VH;
+  position: fixed;
+  right: 0;
 }
 
 .myDeckSize {
@@ -246,7 +248,6 @@ export default {
 }
 
 .deckImg {
-
   aspect-ratio: 4 / 1;
   background-image: v-bind(cover) !important;
   background-position: center;

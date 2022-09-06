@@ -10,9 +10,9 @@ class CardsService {
 
   // NOTE this is connected to the search bar and works
   async getCardsBySearch(searchTerm, filterTerm) {
-    let manaTerm = ''
-    let powerTerm = ''
-    let toughnessTerm = ''
+    let manaTerm = null
+    let powerTerm = null
+    let toughnessTerm = null
     try {
       // if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
       // console.log('this is the modified search term', searchTerm)

@@ -431,7 +431,6 @@ filter.value['color'] = filter.value['color'].split('')
 // filter.value['rarity'] = filter.value['rarity'].split('')
 },
 
-
 async toggleText() {
 AppState.searchByText = true
 AppState.searchByName = false

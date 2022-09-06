@@ -3,9 +3,6 @@
     <Navbar />
   </header>
   <section class="row">
-    <div class="col-md-4">
-      <Map />
-    </div>
     <div class="col-md-12 text-center">
       <div class="row justify-content-between mt-4">
         <div class="col-md-3">
@@ -14,7 +11,7 @@
           </button>
           <GuildFaq />
         </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
           <div class="text-end">
             <button class="btn" title="Create Guild" data-bs-toggle="modal" data-bs-target="#guild-modal">
               <i class="mdi mdi-plus fs-3"></i>
@@ -22,12 +19,18 @@
             </button>
             <GuildForm />
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
+
     <div class="col-md-2" v-for="g in guilds" :key="g.id">
       <GuildCard :guild="g" />
     </div>
+
+
+
+
+
   </section>
 </template>
 

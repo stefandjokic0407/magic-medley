@@ -1,4 +1,4 @@
-import { reactive } from 'vue'
+import { reactive } from "vue";
 
 // NOTE AppState is a reactive object to contain app level data
 export const AppState = reactive({
@@ -7,8 +7,10 @@ export const AppState = reactive({
   account: {},
   /**@type {import('./models/Card.js').Card} */
   card: {},
-  /**@type {import('./models/Card.js').Card} */
-  activeProfile: null,
+  /**@type {import('./models/Profile.js').Profile[]} */
+  profiles: [],
+  /**@type {import('./models/Profile.js').Profile} */
+  activeProfile: {},
   /**@type {import('./models/Card.js').Card} */
   searchedCards: [],
   /**@type {import('./models/Card.js').Card} */
@@ -37,7 +39,6 @@ export const AppState = reactive({
   toughnessEqual: false,
   toughnessGreater: false,
 
-
   nextPage: null,
 
   guilds: [],
@@ -46,8 +47,5 @@ export const AppState = reactive({
 
   messages: [],
 
-  members: []
-
-
-
-})
+  members: [],
+});

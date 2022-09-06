@@ -23,14 +23,14 @@
 <script>
 export default {
 
-setup() {
+  setup() {
 
-  return {};
-},
+    return {};
+  },
 };
 </script>
 
 
 
-<style>
+<style scoped lang="scss">
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg  bg-light px-3 mx-0 my-0 py-0">
+  <nav class="navbar navbar-expand-lg  bg-light px-3 mx-0 my-0 py-0 navHeight">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center" title="Home">
         <img alt="logo" src="../assets/img/FullLogo_Transparent_NoBuffer.png" height="55" />
@@ -49,7 +49,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 a:hover {
   text-decoration: none;
 }
@@ -68,5 +68,9 @@ a:hover {
   padding-bottom: 21px;
   border-bottom: none;
   border-top: none;
+}
+
+.navHeight {
+  height: 10VH;
 }
 </style>

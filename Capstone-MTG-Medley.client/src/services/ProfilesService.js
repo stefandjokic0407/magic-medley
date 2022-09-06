@@ -1,13 +1,14 @@
-import { AppState } from "../AppState"
-import { api } from "./AxiosService"
+import { AppState } from "../AppState";
+import { Profile } from "../models/Profile.js";
+import { logger } from "../utils/Logger.js";
+import { api } from "./AxiosService";
 
 class ProfilesService {
-
   async getProfileById(profileId) {
-    const res = await api.get(`api/profiles/${profileId}`)
-    AppState.activeProfile = new Profile(res.data)
+    const res = await api.get(`api/profiles/${profileId}`);
+    logger.log("what is a profile", res.data);
+    AppState.activeProfile = new Profile(res.data);
   }
-
 }
 
-export const profilesService = new ProfilesService()
+export const profilesService = new ProfilesService();
