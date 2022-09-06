@@ -1,6 +1,6 @@
 <template>
 
-  <!-- SECTION FAQs Menu modal -->
+  <!-- SECTION Modal--FAQs Menu -->
   <section class="modal fade" id="faqsModal" aria-hidden="true" aria-labelledby="faqsModalLabel" tabindex="-1">
     <div class="modal-dialog modal-sm modal-dialog-centered">
       <div class="modal-content">
@@ -26,7 +26,7 @@
     </div>
   </section>
 
-  <!-- SECTION What is MtG modal -->
+  <!-- SECTION Modal--What is MtG -->
   <section class="modal fade" id="mtgExplainedModalToggle" aria-hidden="true" aria-labelledby="mtgExplainedModalToggle"
     tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered ">
@@ -71,7 +71,7 @@
     </div>
   </section>
 
-  <!-- SECTION What is Magic Medley modal -->
+  <!-- SECTION Modal--What is Magic Medley -->
   <section class="modal fade" id="magicMedleyModalToggle" aria-hidden="true" aria-labelledby="magicMedleyModalToggle"
     tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
@@ -95,7 +95,7 @@
     </div>
   </section>
 
-  <!-- SECTION How to play modal -->
+  <!-- SECTION Modal--How to play -->
   <section class="modal fade" id="howToPlayModalToggle" aria-hidden="true" aria-labelledby="howToPlayModalToggle"
     tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
@@ -434,7 +434,8 @@
                             alt=""><br>20 min</li>
                       </ul>
                       <p>
-                        This format allows for cards to be played from all Magic card sets and includes cards from
+                        This format allows for cards to be played from <b>all</b> Magic card sets and includes cards
+                        from
                         expansions and special sets (with the exception of cards on the banned list)! This format holds
                         a restricted list which limits the use of a card to a single copy allowed either in the
                         sideboard or in the main deck.
@@ -913,7 +914,7 @@
     </div>
   </section>
 
-  <!-- SECTION Glossary -->
+  <!-- SECTION Modal--Glossary -->
   <section class="modal fade" id="glossaryModalToggle" aria-hidden="true" aria-labelledby="glossaryModalToggle"
     tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
@@ -1335,9 +1336,9 @@
 
 <script>
 export default {
-  setup() {
-    return {}
-  }
+setup() {
+return {}
+}
 }
 </script>
 
@@ -1352,11 +1353,6 @@ export default {
   font-size: large;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
-// .set-list {
-//   max-height: 10em;
-//   overflow-y: scroll;
-// }
 
 .colors-bg {
   background-image: url(https://wallpaperaccess.com/full/4541098.jpg);
