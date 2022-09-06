@@ -31,10 +31,10 @@ export default {
   setup() {
     const editable = ref({})
 
-watchEffect(() => {
-  if (!AppState.activeDeck) { return }
-  editable.value = { ...AppState.activeDeck }
-})
+    watchEffect(() => {
+      if (!AppState.activeDeck) { return }
+      editable.value = { ...AppState.activeDeck }
+    })
     return {
       editable,
 
@@ -43,12 +43,13 @@ watchEffect(() => {
           if (editable.value.id) {
             await decksService.editDeck(editable.value)
             Pop.success('Deck Edited!')
-            } else {
-              await decksService.createDeck(editable.value)
-              Pop.success('Deck Created Successfully!')
-              Modal.getOrCreateInstance(document.getElementById('deck-form')).hide()
-              }
-            } catch (error) {
+          } else {
+            await decksService.createDeck(editable.value)
+            Pop.success('Deck Created Successfully!')
+            Modal.getOrCreateInstance(document.getElementById('deck-form')).hide()
+          }
+          AppState.activeDeck = null
+        } catch (error) {
           Pop.error(error)
         }
       },

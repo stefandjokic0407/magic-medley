@@ -2,7 +2,7 @@
   <header class="row sticky-top">
     <Navbar />
   </header>
-  <div class="row">
+  <div class="row collectionPageBg">
     <div class="col-10 px-0">
       <div class="row align-items-center">
         <!-- add deck component -->
@@ -89,10 +89,10 @@
         </div>
         <div class="row fixed-bottom mx-auto">
           <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable && getDecks">Create
+            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable">Create
             Deck</button>
           <button v-if="activeDeck" class="btn deckText selectable text-uppercase square col-12"
-            @click="deleteDeck && getDecks()">Delete</button>
+            @click="deleteDeck">Delete</button>
         </div>
       </div>
     </div>
@@ -177,24 +177,6 @@ export default {
         AppState.activeDeck = {}
       },
 
-      async removeFromCollection() {
-        try {
-
-        } catch (error) {
-          logger.error(error)
-          Pop.toast(error.message, 'error')
-        }
-      },
-
-      async removeFromDeck() {
-        try {
-
-        } catch (error) {
-          logger.error(error)
-          Pop.toast(error.message, 'error')
-        }
-      },
-
       noActive() {
         AppState.activeDeck = null
       },
@@ -208,7 +190,7 @@ export default {
           const deckId = AppState.activeDeck.id
           console.log('Deck Id:', deckId)
           await decksService.deleteDeck(deckId)
-          await AppState.activeDeck == null
+          AppState.activeDeck = null
         } catch (error) {
           logger.error('[Deleting Deck]', error)
           Pop.toast(error.message, 'error')
@@ -231,8 +213,7 @@ export default {
           logger.error('[Getting Decks]', error)
           Pop.toast(error.message, 'error')
         }
-      }
-
+      },
     };
   },
   components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
@@ -274,5 +255,11 @@ export default {
   background-size: cover;
   border: 2px solid black;
   outline: 3px solid #d4af37c3;
+}
+
+.collectionPageBg {
+  background-image: url('https://img.freepik.com/premium-photo/abstract-background-beige-brown-grunge-material-old-paper_213524-129.jpg?w=2000');
+  background-size: cover;
+  background-position: center;
 }
 </style>
