@@ -6,7 +6,7 @@
   <section>
     <!-- SECTION Profile Details -->
     <div class="row cover-img">
-      <div class="profile-details text-dark">
+      <div class="profile-details text-light">
         <img class="img-fluid profile-img" :src="profile.picture" alt="" />
         <div class="px-2">
           <p>{{ profile.name }}</p>
@@ -61,7 +61,13 @@ export default {
       route,
       account: computed(() => AppState.account),
       profile: computed(() => AppState.activeProfile),
-      cover: computed(() => `url(${AppState.activeProfile?.coverImg})`),
+      cover: computed(
+        () =>
+          `url(${
+            AppState.activeProfile?.coverImg ||
+            "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"
+          })`
+      ),
     };
   },
 };
@@ -69,7 +75,7 @@ export default {
 
 <style scoped lang="scss">
 .cover-img {
-  height: 300px;
+  height: 500px;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
