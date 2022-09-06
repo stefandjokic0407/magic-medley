@@ -1,32 +1,20 @@
 <template>
-    <div class="row">
-        <div class="col-md-8 d-flex flex-column align-items-start">
-            <input class="my-3" id="input" type="text" placeholder="Enter Zipcode">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d23118.78595558883!2d-116.30494195831875!3d43.58887719597092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smagic%20the%20gathering!5e0!3m2!1sen!2sus!4v1662323201059!5m2!1sen!2sus"
-                width="" height="" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-
-        </div>
-    </div>
-
-
-
-
+    <GoogleMap api-key="AIzaSyA7Lu464b19aRFfGS2r0C11tIMdzYUPs6c" style="width: 100%; height: 500px" :center="center"
+        :zoom="15">
+        <Marker :options="{ position: center }" />
+    </GoogleMap>
 </template>
-<script>
-export default {
-    setup() {
-        return {
 
-        }
-    }
-}
+<script>
+import { defineComponent } from 'vue'
+import { GoogleMap, Marker } from 'vue3-google-map'
+
+export default defineComponent({
+    components: { GoogleMap, Marker },
+    setup() {
+        const center = { lat: 40.689247, lng: -74.044502 }
+
+        return { center }
+    },
+})
 </script>
-<style scoped lang="scss">
-iframe {
-    min-width: 40vw;
-    min-height: 40vh;
-}
-</style>

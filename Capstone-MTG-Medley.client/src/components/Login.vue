@@ -1,11 +1,20 @@
 <template>
   <span class="navbar-text">
-    <button class="btn selectable  text-uppercase my-2 my-lg-0" @click="login" v-if="!user.isAuthenticated">
+    <button
+      class="btn selectable text-uppercase text-light my-2 my-lg-0"
+      @click="login"
+      v-if="!user.isAuthenticated"
+    >
       Login
     </button>
 
     <div class="dropdown my-2 my-lg-0" v-else>
-      <div class="dropdown-toggle selectable" data-bs-toggle="dropdown" aria-expanded="false" id="authDropdown">
+      <div
+        class="dropdown-toggle selectable"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        id="authDropdown"
+      >
         <div v-if="account.picture || user.picture">
           <!-- <img
             :src="account.picture || user.picture"
@@ -16,21 +25,33 @@
           <span class="">{{ account.name }}</span>
         </div>
       </div>
-      <div class="dropdown-menu p-0 list-group w-100" aria-labelledby="authDropdown">
+      <div
+        class="drop-down-style dropdown-menu p-0 list-group w-100"
+        aria-labelledby="authDropdown"
+      >
         <router-link :to="{ name: 'Account' }">
           <div class="list-group-item list-group-item-action hoverable">
             Manage Account
           </div>
         </router-link>
-        <div class="list-group-item list-group-item-action hoverable text-danger" @click="logout">
+
+        <router-link :to="{ name: 'Profile', params: { profileId: user?.id } }">
+          <div class="list-group-item list-group-item-action hoverable">
+            Go To Profile
+          </div>
+        </router-link>
+
+        <div
+          class="list-group-item list-group-item-action hoverable text-danger"
+          @click="logout"
+        >
           <i class="mdi mdi-logout"></i>
-          logout
+          Logout
         </div>
       </div>
     </div>
   </span>
 </template>
-
 
 <script>
 import { computed } from "@vue/reactivity";
@@ -41,6 +62,7 @@ export default {
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
+      profile: computed(() => AppState.activeProfile),
       async login() {
         AuthService.loginWithPopup();
       },
@@ -51,7 +73,6 @@ export default {
   },
 };
 </script>
-
 
 <style lang="scss" scoped>
 .dropdown-menu {
@@ -67,5 +88,10 @@ export default {
 
 .hoverable {
   cursor: pointer;
+}
+
+.drop-down-style {
+  color: white;
+  text-shadow: none;
 }
 </style>
