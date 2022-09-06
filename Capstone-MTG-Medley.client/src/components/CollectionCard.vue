@@ -20,7 +20,7 @@
       </div>
       <div class="cardCount">
         <p class="col-12 mx-2 mt-1"><i class="mdi mdi-card-multiple-outline"></i>&nbsp<b> {{
-            card.count
+        card.count
         }}</b></p>
       </div>
     </div>

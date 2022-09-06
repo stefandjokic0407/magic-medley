@@ -240,7 +240,7 @@ export default {
 
 .myDeckSize {
   max-height: 10VH;
-  max-width: 80VW;
+  max-width: 100VW;
 }
 
 .offCanvasBorder {
