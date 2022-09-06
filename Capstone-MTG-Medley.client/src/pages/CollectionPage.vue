@@ -89,10 +89,10 @@
         </div>
         <div class="row fixed-bottom mx-auto">
           <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable()">Create
+            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable && getDecks">Create
             Deck</button>
           <button v-if="activeDeck" class="btn deckText selectable text-uppercase square col-12"
-            @click="deleteDeck()">Delete</button>
+            @click="deleteDeck && getDecks()">Delete</button>
         </div>
       </div>
     </div>
@@ -146,6 +146,7 @@ export default {
     onMounted(() => {
       getAccountDecks();
       getAccountCards();
+      // debugger
     });
 
     return {
@@ -213,6 +214,24 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
+      async getAccountCards() {
+        try {
+          await cardsService.getAccountCards()
+        }
+        catch (error) {
+          logger.log("[getting all cards]", error);
+          Pop.error(error);
+        }
+      },
+      async getDecks() {
+        try {
+          const accountId = AppState.account.id
+          await decksService.getAccountDecks(accountId)
+        } catch (error) {
+          logger.error('[Getting Decks]', error)
+          Pop.toast(error.message, 'error')
+        }
+      }
 
     };
   },

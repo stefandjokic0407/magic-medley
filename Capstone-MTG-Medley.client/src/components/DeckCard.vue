@@ -113,7 +113,7 @@ export default {
 
 </script>
 
-<style scoped lang="scss">
+<style>
 .deleteCard:hover img {
     opacity: 50;
 }

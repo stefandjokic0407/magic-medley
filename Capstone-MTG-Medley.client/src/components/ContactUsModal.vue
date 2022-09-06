@@ -74,14 +74,14 @@
             </li>
             <li class="d-flex justify-content-between">
               <span> Chris </span>
-              <!-- <span>
-                <a href="">
+              <span>
+                <a href="www.linkedin.com/in/Christopher-Hildebrandt">
                   <i class="mdi mdi-linkedin selectable px-1"></i>
                 </a>
-                <a href="">
+                <a href="https://github.com/chris-hildebrandt">
                   <i class="mdi mdi-github selectable"></i>
                 </a>
-              </span> -->
+              </span>
             </li>
             <li class="d-flex justify-content-between">
               <span> Andrew </span>
