@@ -48,4 +48,8 @@ export default {
 .member-message {
   background-color: #3e4042;
 }
+
+.profile-pic {
+  border-radius: 50%;
+}
 </style>
