@@ -158,7 +158,7 @@
                       Standard
                     </button>
                   </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body limit-size">
                       <ul class="list-unstyled d-flex justify-content-around">
