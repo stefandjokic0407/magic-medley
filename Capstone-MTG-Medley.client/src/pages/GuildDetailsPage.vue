@@ -503,10 +503,12 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import Member from '../components/Member.vue';
 import GuildChat from '../components/GuildChat.vue';
+import { useRouter } from 'vue-router';
 
 export default {
   setup() {
     const route = useRoute();
+    const router = useRouter();
     async function getGuildById() {
       try {
         await guildsService.getGuildById(route.params.guildId);
@@ -548,7 +550,7 @@ export default {
             accountId: AppState.account.id
           };
           await membersService.joinGuild(newMember);
-          Pop.toast(`You've joined the ${AppState.activeGuild.name} Guild`);
+          Pop.success(`You've joined the ${AppState.activeGuild.name} Guild`);
         }
         catch (error) {
           logger.error("[joining guild]", error);
@@ -560,6 +562,8 @@ export default {
         try {
           const removedMember = AppState.members.find(m => m.accountId == AppState.account.id)
           await membersService.removeFromGuild(removedMember.id)
+
+          router.push({ name: 'Guild' })
         } catch (error) {
           logger.error('[removing from guild]', error);
           Pop.error(error)
