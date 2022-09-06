@@ -729,17 +729,19 @@
 
           <!-- SECTION Actions -->
           <section class="row">
-
+            <div class="col-12">
+              <p class=" fs-4 bg-dark rounded text-light ps-2">GAME ACTIONS</p>
+            </div>
             <!-- SECTION  Tapping and Untapping-->
             <div class="col-12">
               <div class="row">
                 <div class="col-6">
-                  <p class=" fs-4 bg-dark rounded text-light ps-2">GAME ACTIONS</p>
                   <p class="fs-5">Tapping and untapping</p>
-                  <!-- FIXME need the untap symbol -->
                   <p>To tap a card is to turn it sideways to show that it has been used for the turn. You do this when
                     you use a land to make mana, when you attack with a creature, or when you activate an ability that
-                    has the symbol as part of its cost ( means "tap this permanent"). When a permanent is tapped, you
+                    has the <img class="symbol pb-1" src="../assets/img/tap-symbol.png" alt=""> symbol as part of its
+                    cost (<img class="symbol pb-1" src="../assets/img/tap-symbol.png" alt=""> means "tap this
+                    permanent"). When a permanent is tapped, you
                     can't tap it again until it's been untapped (turned back upright). As your turn begins, untap your
                     tapped cards so you can use them again.</p>
 
@@ -747,7 +749,6 @@
                 <div class="col-6">
                   <img class="img-fluid" src="https://media.wizards.com/2018/mtg_portal/castingex.png" alt="">
                 </div>
-
               </div>
             </div>
 
