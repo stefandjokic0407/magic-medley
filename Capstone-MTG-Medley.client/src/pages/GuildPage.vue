@@ -46,10 +46,13 @@ import GuildCard from '../components/GuildCard.vue';
 import GuildFaq from '../components/GuildFaq.vue';
 import GuildForm from '../components/GuildForm.vue';
 import Pop from '../utils/Pop';
+import { useRouter } from 'vue-router';
+
 
 export default {
 
   setup() {
+    const router = useRouter()
     const message = ref('')
 
     const user = AppState.account
@@ -77,15 +80,30 @@ export default {
       }
     }
 
+    async function changePage(){
+      const member = AppState.members.find(m => m.accountId == AppState.account.id)
+      if(member){
+      router.push({name: 'GuildDetails', params: {guildId: member.guildId}})}
+      else {return}
+      }
+      
+
     onMounted(() => {
       // sendMessage()
       getGuilds()
+      changePage()
     })
     return {
       message,
       user: computed(() => AppState.account),
       message: computed(() => AppState.messages),
       guilds: computed(() => AppState.guilds),
+      isMember: computed(() => {
+        if (AppState.members.find(m => m.accountId == AppState.account.id)) {
+          return true
+        }
+        return
+      }),
 
       // async sendMessage() {
       //   try {
