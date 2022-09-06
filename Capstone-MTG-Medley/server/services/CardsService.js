@@ -1,3 +1,4 @@
+import { Logger } from "sass";
 import { dbContext } from "../db/DbContext.js";
 import { BadRequest } from "../utils/Errors.js";
 
@@ -44,18 +45,20 @@ class CardsService {
   }
 
   async deleteCard(cardId) {
-    const card = await dbContext.Cards.findById(cardId);
-    if (!card) {
+    const collectionCard = await this.getCardById(cardId);
+    // await dbContext.Cards.findOne({ id: body.id,});
+
+    if (!collectionCard) {
       throw new BadRequest("that card does not exist");
     }
     // @ts-ignore
-    if (card.count > 0) {
+    if (collectionCard.count > 0) {
       // @ts-ignore
-      card.count--;
-      card.save();
+      collectionCard.count--;
+      collectionCard.save();
     }
-    card.remove();
-    return `${card.name} has been removed from your collection`;
+    collectionCard.remove();
+    return `${collectionCard.name} has been removed from your collection`;
   }
 }
 
