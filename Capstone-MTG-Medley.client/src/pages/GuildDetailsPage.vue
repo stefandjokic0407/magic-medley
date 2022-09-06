@@ -571,10 +571,6 @@ export default {
 
 
 <style scoped lang="scss">
-.profile-pic {
-  border-radius: 50%;
-}
-
 .gruul {
   text-shadow: 1px 1px 3px black;
   color: whitesmoke;
@@ -589,7 +585,7 @@ export default {
 }
 
 .gruul-bg {
-  background: rgba(196, 211, 202, 0.5);
+  background: rgba(235, 159, 130, 0.6);
   backdrop-filter: blur(5px);
   color: #f0f0f0 !important;
   width: 100%;
@@ -597,13 +593,13 @@ export default {
 }
 
 .outer-border {
-  border: 2px solid #EB9F82;
+  border: 2px solid #C4D3CA;
   border-radius: 5px;
   padding: 6px;
 }
 
 .mid-border {
-  border: 6px solid #EB9F82;
+  border: 6px solid #C4D3CA;
   border-radius: 5px;
   padding: 6px;
   margin: auto;
@@ -611,7 +607,7 @@ export default {
 
 .inner-border {
   position: relative;
-  border: 2px solid #EB9F82;
+  border: 2px solid #C4D3CA;
   border-radius: 5px;
   margin: auto;
 }
