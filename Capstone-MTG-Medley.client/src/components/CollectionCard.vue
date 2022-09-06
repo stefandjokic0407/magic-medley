@@ -101,7 +101,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 .xsFont {
   font-size: x-small;
 }

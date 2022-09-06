@@ -244,7 +244,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped lang="scss">
 .cardOverflow {
   overflow-y: scroll;
   max-height: 30.5vh;

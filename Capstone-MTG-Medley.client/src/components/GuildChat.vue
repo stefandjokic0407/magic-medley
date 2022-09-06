@@ -77,7 +77,7 @@ export default {
 
 
 
-<style scoped>
+<style scoped lang="scss">
 input {
   width: 100%;
 }

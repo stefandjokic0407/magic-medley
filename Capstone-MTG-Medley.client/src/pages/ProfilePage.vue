@@ -3,7 +3,7 @@
     <Navbar />
   </header>
 
-{{account}}
+  {{ account }}
 
 
 </template>
@@ -50,5 +50,5 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 </style>

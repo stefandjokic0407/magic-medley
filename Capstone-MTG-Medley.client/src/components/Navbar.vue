@@ -49,7 +49,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 a:hover {
   text-decoration: none;
 }

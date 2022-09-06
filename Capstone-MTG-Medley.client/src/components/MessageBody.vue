@@ -40,7 +40,7 @@ export default {
 
 
 
-<style scoped>
+<style scoped lang="scss">
 .user-message {
   background-color: #0084ff;
 }

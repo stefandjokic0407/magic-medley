@@ -221,7 +221,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style scoped lang="scss">
 .deckCanvas {
   position: fixed;
   right: 0px;
