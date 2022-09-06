@@ -5,7 +5,7 @@
 
   <section>
     <!-- SECTION Profile Details -->
-    <div class="row">
+    <div class="row cover-img">
       <div class="profile-details text-dark">
         <img class="img-fluid profile-img" :src="profile.picture" alt="" />
         <div class="px-2">
@@ -61,12 +61,24 @@ export default {
       route,
       account: computed(() => AppState.account),
       profile: computed(() => AppState.activeProfile),
+      cover: computed(() => `url(${AppState.activeProfile?.coverImg})`),
     };
   },
 };
 </script>
 
 <style scoped lang="scss">
+.cover-img {
+  height: 300px;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  display: grid;
+  place-content: center;
+  color: aliceblue;
+  background-image: v-bind(cover);
+}
+
 .profile-img {
   height: 7rem;
   width: 7rem;
