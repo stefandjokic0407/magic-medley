@@ -73,12 +73,12 @@
       </button>
     </div> -->
     <div class="col-2 myDecksSideBar px-0">
-      <div class="row">
+      <div class="row mx-auto">
         <div @click.prevent="noActive" v-if="activeDeck"
-          class="d-flex align-items-end deckImg col-10 mx-auto mt-1 selectable">
+          class="d-flex align-items-end deckImg col-11 mx-auto mt-1 selectable">
           <h5 class="deckText text-start mb-0">{{ activeDeck.name }}</h5>
         </div>
-        <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-11 mx-auto">
+        <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto">
           <DeckCardCanvas :card="c" />
         </div>
         <img v-if="!activeDeck" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
