@@ -182,7 +182,7 @@
         </div>
         <!-- NOTE MAKE SURE TO ADD AN ADD TO ACCOUNT BUTTON -->
         <div class="col-5 mx-auto py-0 my-0">
-          <button @click.prevent="createCard(activeCard)" class="btn">
+          <button @click.prevent="createCard(activeCard) && getAccountCards()" class="btn">
             <p class="my-0">Add To Collection</p>
           </button>
         </div>
@@ -219,6 +219,8 @@ export default {
       }
     }
 
+
+
     // onMounted(() => getCardByOracle());
     return {
       oracleCards: computed(() => AppState.oracleCard),
@@ -234,7 +236,16 @@ export default {
           logger.error(error)
           Pop.toast(error.message, 'error')
         }
-      }
+      },
+      async getAccountCards() {
+        try {
+          await cardsService.getAccountCards()
+        }
+        catch (error) {
+          logger.log("[getting all cards]", error);
+          Pop.error(error);
+        }
+      },
     };
 
   },
