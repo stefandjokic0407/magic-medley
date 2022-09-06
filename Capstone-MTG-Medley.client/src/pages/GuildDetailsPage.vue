@@ -485,7 +485,7 @@
   <!-- CHAT -->
   <footer class="fixed-bottom">
     <div class="row">
-      <div class="col-md-3 offset-md-8">
+      <div class="col-md-3 offset-md-7">
         <GuildChat />
       </div>
     </div>
