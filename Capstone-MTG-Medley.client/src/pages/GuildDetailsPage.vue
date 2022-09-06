@@ -3,7 +3,7 @@
     <Navbar />
   </header>
   <!-- Gruul Clans Page -->
-  <div v-if="activeGuild.name == 'Gruul Clans'" class="row gruul">
+  <div v-if="activeGuild.name == 'Gruul Clans'" class="row gruul p-3">
     <div class="col-md-4 my-2">
       <h4>Guild Members</h4>
       <div class="d-flex my-2">
@@ -52,8 +52,12 @@
 
       </div>
     </section>
-    <section>
-      <Map />
+    <section class="col-md-12">
+      <div class="row">
+        <div class="col-md-5">
+          <Map />
+        </div>
+      </div>
     </section>
   </div>
   <!-- Simic Combine Page -->
