@@ -26,7 +26,7 @@
     </div>
   </section>
 
-  <!-- SECTION Modal--What is MtG -->
+  <!-- SECTION Modal What is MtG -->
   <section class="modal fade" id="mtgExplainedModalToggle" aria-hidden="true" aria-labelledby="mtgExplainedModalToggle"
     tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered ">
@@ -1337,9 +1337,9 @@
 
 <script>
 export default {
-setup() {
-return {}
-}
+  setup() {
+    return {}
+  }
 }
 </script>
 
