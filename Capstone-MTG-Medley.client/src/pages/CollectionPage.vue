@@ -233,12 +233,12 @@ export default {
   backdrop-filter: blur(4px);
   border: solid 5px rgba(0, 0, 0, 0.43);
   /* color: white; */
-  height: 90VH;
+  height: 100VH;
 }
 
 .myDeckSize {
   max-height: 10VH;
-  max-width: 80VW;
+  max-width: 100VW;
 }
 
 .offCanvasBorder {
