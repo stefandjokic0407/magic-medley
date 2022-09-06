@@ -123,6 +123,7 @@ class CardsService {
   async removeCard(cardId) {
     const res = await api.delete('account/cards/' + cardId)
     AppState.collection = AppState.collection.filter(c => c.id != cardId)
+    
     return res
   }
 }
