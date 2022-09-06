@@ -8,7 +8,7 @@
     <div class="row cover-img">
       <div class="profile-details text-light">
         <img class="img-fluid profile-img" :src="profile.picture" alt="" />
-        <div class="px-2">
+        <div class="glass-card rounded p-3 my-3">
           <p>{{ profile.name }}</p>
           <p>{{ profile.email }}</p>
         </div>
@@ -86,10 +86,18 @@ export default {
 }
 
 .profile-img {
-  height: 7rem;
-  width: 7rem;
+  height: 10rem;
+  width: 10rem;
   object-fit: cover;
   border-radius: 50%;
   border: #b6d369 solid 2px;
+}
+
+.glass-card {
+  background: rgba(202, 181, 181, 0.4);
+  backdrop-filter: blur(1px);
+  text-shadow: 2px 2px 2px rgb(31, 29, 29);
+  color: #f2e9e4 !important;
+  width: 100%;
 }
 </style>
