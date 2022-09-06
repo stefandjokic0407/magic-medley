@@ -9,7 +9,7 @@
       <div class="profile-details text-light">
         <img class="img-fluid profile-img" :src="profile.picture" alt="" />
         <div class="glass-card rounded p-3 my-3">
-          <p>{{ profile.name }}</p>
+          <h3>{{ profile.name }}</h3>
           <p>{{ profile.email }}</p>
         </div>
       </div>
@@ -26,7 +26,7 @@
     <!-- SECTION Profile Decks -->
     <div class="row"></div>
 
-    <!-- SECTION Profile Guilds -->
+    <!-- SECTION Profile Guild -->
     <div class="row"></div>
   </section>
 </template>
