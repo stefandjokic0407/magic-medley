@@ -17,7 +17,7 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { onMounted, popScopeId } from "vue";
+import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../AppState";
 import { router } from "../router";

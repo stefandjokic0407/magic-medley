@@ -1,4 +1,5 @@
 import { AppState } from "../AppState";
+import { Profile } from "../models/Profile.js";
 import { logger } from "../utils/Logger.js";
 import { api } from "./AxiosService";
 
