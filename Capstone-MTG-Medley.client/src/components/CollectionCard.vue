@@ -1,29 +1,32 @@
 <template>
-
-  <div class="row align-items-center">
-    <button v-if="activeDeck" class="btn col-2 text-start addCard" @click="createDeckCard(card.cardId)"><i
-        title="add to deck" class="mdi mdi-plus-circle "></i></button>
-  </div>
-  <div class="row align-items-center justify-content-center mx-1">
+  <div class="row align-items-center justify-content-center mx-1 position-relative">
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
       :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
       <div v-if="card.image_uris?.normal">
-        <img class="img-fluid position-relative shadow cardsBg"
-          :class="deckCard?.find(d => d.cardId == card.cardId) ? 'card-border' : ''" :src=card.image_uris?.normal
-          :title="card.name">
-        <!-- <p class="xsFont">{{deckCard}}</p> -->
+          <img class="img-fluid shadow cardsBg"
+            :class="!activeDeck || deckCard?.find(d => d.cardId == card.cardId) ? '' : 'card-in-deck'"
+            :src=card.image_uris?.normal :title="card.name">
+          <!-- <p class="xsFont">{{deckCard}}</p> -->
       </div>
 
       <div v-else>
         <img class="img-fluid shadow cardsBg"
           src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
       </div>
+
+        <i v-if="activeDeck" @click="createDeckCard(card.cardId)" title="add to deck"
+          class="btn mdi mdi-plus-circle mdi-36px add-button"></i>
+
+        <i v-if="activeDeck && deckCard?.find(d => d.cardId == card.cardId)" title="remove from deck" @click="removeDeckCard(card.cardId)"
+          class="mdi mdi-minus-circle mdi-36px remove-button btn remove-from-deck"></i>
+
       <div class="cardCount">
-        <p class="col-12 mx-2 mt-1"><i class="mdi mdi-card-multiple-outline"></i>&nbsp<b> {{
+        <p class=" mx-2 mb-1"><i class="mdi mdi-card-multiple-outline"></i>&nbsp<b> {{
         card.count
         }}</b></p>
       </div>
     </div>
+
     <!-- <p v-if="activeDeck" class="col-10 text-end cardCount"><i class="mdi mdi-card-multiple-outline"></i>&nbsp
       &nbsp<b>{{
           (card.count)
@@ -75,6 +78,8 @@ export default {
       },
       async createDeckCard(cardId) {
         try {
+          event.stopPropagation()
+          event.stopImmediatePropagation()
           const deckId = AppState.activeDeck.id
           const DeckCard = {}
           DeckCard.cardId = cardId
@@ -85,6 +90,15 @@ export default {
         } catch (error) {
           logger.log("[creating deck card]", error);
           Pop.error(error);
+        }
+      },
+      async removeDeckCard() {
+        try {
+          let cardId = props.card.cardId
+          await deckCardsService.removeCard(cardId)
+        } catch (error) {
+          logger.error('[Removing Card from Collection]', error)
+          Pop.toast(error.message, 'error')
         }
       },
       async removeCard() {
@@ -116,51 +130,20 @@ export default {
   font-size: x-small;
 }
 
-.add-to-deck {
+.remove-button {
   position: absolute;
+  color: goldenrod;
+  left: 200px;
+  bottom: 100px;
+}
+
+.remove-button:hover {
+  color: whitesmoke;
+  transition: 0.3s;
 }
 
 .position-relative {
   position: relative;
-}
-
-.addPosition {
-  position: absolute;
-  right: 180px;
-  top: -32px;
-  border-radius: 50%;
-  color: rgba(43, 0, 255, 0.649);
-  font-size: 2em;
-  border: none;
-}
-
-.collectionCard-image {
-  position: relative;
-  float: left;
-  margin: 5px;
-}
-
-.collectionCard-image:hover img {
-  opacity: 0.5;
-}
-
-.collectionCard-image:hover input {
-  display: block;
-}
-
-.collectionCard-image input {
-  position: absolute;
-  display: none;
-}
-
-.collectionCard-image input.update {
-  top: 0;
-  left: 0;
-}
-
-.collectionCard-image input.delete {
-  top: 0;
-  left: 0;
 }
 
 .deckToolTip {
@@ -169,24 +152,21 @@ export default {
   border-bottom: 1px dotted black;
 }
 
-.deckToolTip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: rgb(255, 255, 255);
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  /* Position the deckToolTip */
+.add-button {
   position: absolute;
-  z-index: 1 !important;
-  top: -10px;
-  left: 105%;
+  color: goldenrod;
+  left: 200px;
+  top: 15px;
 }
 
-.card-border {
-  border: 3px solid whitesmoke;
+.add-button:hover {
+  color: whitesmoke;
+  transition: 0.3s;
+}
+
+.card-in-deck {
+  // outline: 5px solid rgb(155, 200, 232);
+  opacity: .5;
 }
 
 .deckToolTip:hover .tooltiptext {
@@ -195,7 +175,6 @@ export default {
 
 .cardCount {
   z-index: 1;
-  position: relative;
   bottom: 35px;
   left: 8px;
   background-color: rgba(0, 0, 0, 0.601);
@@ -206,12 +185,12 @@ export default {
   border: solid rgba(255, 255, 255, 0.435) 1px;
 }
 
-.addCard {
-  z-index: 1;
-  position: relative;
-  top: 45px;
-  left: 0px;
-  color: rgb(0, 0, 0);
-  border: none;
-}
+// .addCard {
+//   z-index: 1;
+//   position: relative;
+//   top: 45px;
+//   left: 0px;
+//   color: rgb(0, 0, 0);
+//   border: none;
+// }
 </style>
