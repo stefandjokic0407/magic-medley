@@ -12,10 +12,10 @@
           <button class="btn btn-outline-dark border-0" data-bs-target="#mtgExplainedModalToggle"
             data-bs-toggle="modal">What is Magic
             the Gathering?</button>
-          <button class="btn btn-outline-dark border-0" data-bs-target="#magicMedleyModalToggle"
+          <!-- <button class="btn btn-outline-dark border-0" data-bs-target="#magicMedleyModalToggle"
             data-bs-toggle="modal">Why build
             Magic
-            Medley?</button>
+            Medley?</button> -->
           <button class="btn btn-outline-dark border-0" data-bs-target="#howToPlayModalToggle"
             data-bs-toggle="modal">How to
             play</button>
@@ -71,8 +71,8 @@
     </div>
   </section>
 
-  <!-- SECTION Modal--What is Magic Medley -->
-  <section class="modal fade" id="magicMedleyModalToggle" aria-hidden="true" aria-labelledby="magicMedleyModalToggle"
+  <!-- SECTION Modal--Why build Magic Medley -->
+  <!-- <section class="modal fade" id="magicMedleyModalToggle" aria-hidden="true" aria-labelledby="magicMedleyModalToggle"
     tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- SECTION Modal--How to play -->
   <section class="modal fade" id="howToPlayModalToggle" aria-hidden="true" aria-labelledby="howToPlayModalToggle"
@@ -1332,7 +1332,6 @@
   </section>
 
 </template>
-
 
 <script>
 export default {

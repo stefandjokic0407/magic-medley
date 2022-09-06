@@ -51,4 +51,8 @@ export default {
 };
 </script>
 
+<<<<<<< HEAD
 <style scoped lang="scss"></style>
+=======
+<style></style>
+>>>>>>> 9998b04489e7661f264ff3c06b1c92fbe25d0e50
