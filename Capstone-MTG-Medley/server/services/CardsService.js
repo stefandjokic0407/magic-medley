@@ -1,4 +1,3 @@
-import { Logger } from "sass";
 import { dbContext } from "../db/DbContext.js";
 import { BadRequest } from "../utils/Errors.js";
 
@@ -17,7 +16,7 @@ class CardsService {
   }
   async createCard(body) {
     const collectionCard = await dbContext.Cards.findOne({
-      oracle_id: body.oracle_id,
+      oracle_id: body.oracle_id, accountId: body.accountId
     });
 
     if (!collectionCard) {
@@ -55,9 +54,10 @@ class CardsService {
     if (collectionCard.count > 0) {
       // @ts-ignore
       collectionCard.count--;
-      collectionCard.save();
+      await collectionCard.save();
+    } else {
+      await collectionCard.remove();
     }
-    collectionCard.remove();
     return `${collectionCard.name} has been removed from your collection`;
   }
 }
