@@ -80,6 +80,7 @@ export default {
           DeckCard.cardId = cardId
           DeckCard.deckId = deckId
           DeckCard.accountId = AppState.user.id
+          if()
           await deckCardsService.createDeckCard(DeckCard)
         } catch (error) {
           logger.log("[creating deck card]", error);
