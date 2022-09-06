@@ -12,10 +12,10 @@
           <button class="btn btn-outline-dark border-0" data-bs-target="#mtgExplainedModalToggle"
             data-bs-toggle="modal">What is Magic
             the Gathering?</button>
-          <button class="btn btn-outline-dark border-0" data-bs-target="#magicMedleyModalToggle"
+          <!-- <button class="btn btn-outline-dark border-0" data-bs-target="#magicMedleyModalToggle"
             data-bs-toggle="modal">Why build
             Magic
-            Medley?</button>
+            Medley?</button> -->
           <button class="btn btn-outline-dark border-0" data-bs-target="#howToPlayModalToggle"
             data-bs-toggle="modal">How to
             play</button>
@@ -1332,7 +1332,6 @@
   </section>
 
 </template>
-
 
 <script>
 export default {
