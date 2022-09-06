@@ -7,7 +7,7 @@
       <img class="img-fluid" :src="account.coverImg">
     </div>
     <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded profile-pic" :src="account.picture" alt="" />
+    <img class="profile-pic" :src="account.picture" alt="" width="100" height="100" />
     <p>{{ account.email }}</p>
   </div>
 
