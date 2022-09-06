@@ -33,7 +33,7 @@
           {{ activeGuild.name }} Background
         </h4>
         <!-- Gruul Clans Background -->
-        <div class="card bg-dark p-3 mb-3 elevation-4">
+        <div class="card gruul-bg p-3 mb-3 elevation-4">
           <br>
           Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble guild
           charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
@@ -577,6 +577,10 @@ export default {
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
   /* border-radius: 8px; */
+}
+
+.gruul-bg {
+  background-color: green;
 }
 
 .btn {
