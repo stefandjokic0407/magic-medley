@@ -1,3 +1,4 @@
+import { Logger } from "sass";
 import { dbContext } from "../db/DbContext.js";
 import { BadRequest } from "../utils/Errors.js";
 
@@ -43,10 +44,9 @@ class CardsService {
     return card;
   }
 
-  async deleteCard(body) {
-    const collectionCard = await dbContext.Cards.findOne({
-      id: body.id,
-    });
+  async deleteCard(cardId) {
+    const collectionCard = await this.getCardById(cardId);
+    // await dbContext.Cards.findOne({ id: body.id,});
 
     if (!collectionCard) {
       throw new BadRequest("that card does not exist");
