@@ -33,7 +33,7 @@
           </span>
         </h4>
         <!-- Gruul Clans Background -->
-        <div class="collapse card bg-dark p-3 mb-5" id="collapseBackground">
+        <div class="collapse card bg-dark p-3 mb-3" id="collapseBackground">
           <br>
           Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble guild
           charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
@@ -47,6 +47,9 @@
           "cobble roaches".
         </div>
       </div>
+    </section>
+    <section>
+      <Map />
     </section>
   </div>
   <!-- Simic Combine Page -->
@@ -467,9 +470,6 @@
     </section>
   </div>
   <!-- CHAT -->
-  <div>
-    <Map />
-  </div>
   <footer class="fixed-bottom">
     <div class="row">
       <div class="col-md-3 offset-md-8">
@@ -572,6 +572,7 @@ export default {
   background-image: url(../assets/img/mtg-guilds/Gruul-Guildgate.jpg);
   background-position: 50% 35%;
   background-size: cover;
+  height: 100vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
