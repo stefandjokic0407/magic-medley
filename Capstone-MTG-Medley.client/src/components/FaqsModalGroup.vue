@@ -874,11 +874,13 @@
 
           <!-- SECTION Stack-->
           <section class="row">
+            <div class="col-12">
+              <p class="fs-4 bg-dark rounded text-light ps-2">THE STACK</p>
+            </div>
             <div class="col-4">
               <img class="img-fluid" src="https://media.wizards.com/2018/mtg_portal/stackimg.png" alt="">
             </div>
             <div class="col-8">
-              <p class="fs-4 bg-dark rounded text-light ps-2">THE STACK</p>
               <p>When you cast a spell or activate an ability, it doesn't resolve right away—it goes on the stack.
                 Spells and abilities remain on the stack until both players choose not to cast any new spells or
                 activate any new abilities. Triggered abilities also go on the stack until they resolve.<br><br>
