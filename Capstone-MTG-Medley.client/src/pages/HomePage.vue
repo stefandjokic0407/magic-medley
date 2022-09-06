@@ -1,7 +1,7 @@
 <template>
 
   <div class="row justify-content-center hero-img">
-    <div class="col-12 text-center my-5">
+    <div class="col-12 text-center">
       <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="">
     </div>
     <div>
@@ -25,26 +25,26 @@ import FooterNav from "../components/FooterNav.vue";
 
 
 export default {
-  setup() {
+setup() {
 
-    // async function getSymbols() {
-    //   try {
-    //     await symbolsService.getSymbols();
-    //   }
-    //   catch (error) {
-    //     logger.error(error);
-    //     Pop.toast(error.message, "error");
-    //   }
-    // }
-    onMounted(() => {
-      // getSymbols();
-    });
-    return {
-      card: computed(() => AppState.card),
-      searchedCards: computed(() => AppState.searchedCards),
-    };
-  },
-  components: { SearchedCards, FooterNav }
+// async function getSymbols() {
+//   try {
+//     await symbolsService.getSymbols();
+//   }
+//   catch (error) {
+//     logger.error(error);
+//     Pop.toast(error.message, "error");
+//   }
+// }
+onMounted(() => {
+// getSymbols();
+});
+return {
+card: computed(() => AppState.card),
+searchedCards: computed(() => AppState.searchedCards),
+};
+},
+components: { SearchedCards, FooterNav }
 }
 </script>
 

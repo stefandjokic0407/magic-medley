@@ -10,6 +10,9 @@ class CardsService {
 
   // NOTE this is connected to the search bar and works
   async getCardsBySearch(searchTerm, filterTerm) {
+    let manaTerm = ''
+    let powerTerm = ''
+    let toughnessTerm = ''
     try {
       // if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
       // console.log('this is the modified search term', searchTerm)
@@ -28,11 +31,33 @@ class CardsService {
 
       if (filterTerm.set) { searchTerm += '+set%3A' + filterTerm.set }
 
-      if (filterTerm.mana) { searchTerm += '+cmc%3D' + filterTerm.mana }
+      if (AppState.manaEqual) {
+        manaTerm = '+cmc%3D'
+      } else if (AppState.manaLesser) {
+        manaTerm = '+cmc%3d<'
+      } else if (AppState.manaGreater) {
+        manaTerm = '+cmc%3d>'
+      }
+      if (filterTerm.mana) { searchTerm += manaTerm + filterTerm.mana }
 
-      if (filterTerm.power) { searchTerm += '+pow%3D' + filterTerm.power }
+      if (AppState.powerEqual) {
+        powerTerm = '+pow%3D'
+      } else if (AppState.powerLesser) {
+        powerTerm = '+pow%3d<'
+      } else if (AppState.powerGreater) {
+        powerTerm = '+pow%3d>'
+      }
 
-      if (filterTerm.toughness) { searchTerm += '+tou%3D' + filterTerm.toughness }
+      if (filterTerm.power) { searchTerm += powerTerm + filterTerm.power }
+
+      if (AppState.toughnessEqual) {
+        toughnessTerm = '+tou%3D'
+      } else if (AppState.toughnessLesser) {
+        toughnessTerm = '+tou%3d<'
+      } else if (AppState.toughnessGreater) {
+        toughnessTerm = '+tou%3d>'
+      }
+      if (filterTerm.toughness) { searchTerm += toughnessTerm + filterTerm.toughness }
 
 
       console.log('AAS searchTerm', searchTerm, 'filterTerm', filterTerm);

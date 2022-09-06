@@ -9,17 +9,17 @@
         <div class="d-flex flex-row justify-content-around">
           <div class="form-check form-check-inline">
             <input @click="toggleName" checked class="form-check-input selectable no-select" type="radio"
-              name="inlineRadioOptions" id="inlineRadio1" value="option1">
+              name="inlineRadioSearch" id="inlineRadio1" value="option1">
             <label class="form-check-label  selectable no-select" for="inlineRadio1">Name</label>
           </div>
           <div class="form-check form-check-inline">
             <input @click="toggleType" class="form-check-input selectable no-select" type="radio"
-              name="inlineRadioOptions" id="inlineRadio2" value="option2">
+              name="inlineRadioSearch" id="inlineRadio2" value="option2">
             <label class="form-check-label selectable no-select" for="inlineRadio2">Type</label>
           </div>
           <div class="form-check form-check-inline">
             <input @click="toggleText" class="form-check-input selectable no-select" type="radio"
-              name="inlineRadioOptions" id="inlineRadio3" value="option3">
+              name="inlineRadioSearch" id="inlineRadio3" value="option3">
             <label class="form-check-label selectable no-select" for="inlineRadio3">Text</label>
           </div>
         </div>
@@ -155,10 +155,28 @@
         <!-- SECTION Converted Mana Cost, Power, Toughness -->
         <!-- NOTE should add options to filters, right now it must be equal to number-->
         <span class="d-flex flex-row">
+
           <!-- SECTION Converted Mana Cost -->
           <section class="mx-2">
             <div class=" mt-1">
               <h4 class="text-center">Mana Cost</h4>
+              <div class="d-flex flex-row justify-content-around">
+                <div class="form-check form-check-inline">
+                  <input @click="toggleManaLesser" checked class="form-check-input selectable no-select" type="radio"
+                    name="inlineRadioMana" id="inlineRadio1" value="option1" title="Less then or equal to">
+                  <label class="form-check-label  selectable no-select" for="inlineRadio1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input @click="toggleManaEqual" class="form-check-input selectable no-select" type="radio"
+                    name="inlineRadioMana" id="inlineRadio2" value="option2" title="Equal to">
+                  <label class="form-check-label selectable no-select" for="inlineRadio2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input @click="toggleManaGreater" class="form-check-input selectable no-select" type="radio"
+                    name="inlineRadioMana" id="inlineRadio3" value="option3" title="Greater then or equal to">
+                  <label class="form-check-label selectable no-select" for="inlineRadio3"></label>
+                </div>
+              </div>
               <input v-model="filter.mana" type="number" class="form-control" placeholder="All">
             </div>
           </section>
@@ -167,6 +185,23 @@
           <section class="mx-2">
             <div class=" mt-1">
               <h4 class="text-center">Power</h4>
+              <div class="d-flex flex-row justify-content-around">
+                <div class="form-check form-check-inline">
+                  <input @click="togglePowerLesser" checked class="form-check-input selectable no-select" type="radio"
+                    name="inlineRadioPower" id="inlineRadio1" value="option1" title="Less then or equal to">
+                  <label class="form-check-label  selectable no-select" for="inlineRadio1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input @click="togglePowerEqual" class="form-check-input selectable no-select" type="radio"
+                    name="inlineRadioPower" id="inlineRadio2" value="option2" title="Equal to">
+                  <label class="form-check-label selectable no-select" for="inlineRadio2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input @click="togglePowerGreater" class="form-check-input selectable no-select" type="radio"
+                    name="inlineRadioPower" id="inlineRadio3" value="option3" title="Greater then or equal to">
+                  <label class="form-check-label selectable no-select" for="inlineRadio3"></label>
+                </div>
+              </div>
               <input v-model="filter.power" type="number" class="form-control" placeholder="All">
             </div>
           </section>
@@ -175,6 +210,24 @@
           <section class="mx-2">
             <div class=" mt-1">
               <h4 class="text-center">Toughness</h4>
+              <div class="d-flex flex-row justify-content-around">
+                <div class="form-check form-check-inline">
+                  <input @click="toggleToughnessLesser" checked class="form-check-input selectable no-select"
+                    type="radio" name="inlineRadioToughness" id="inlineRadio1" value="option1"
+                    title="Less then or equal to">
+                  <label class="form-check-label  selectable no-select" for="inlineRadio1"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input @click="toggleToughnessEqual" class="form-check-input selectable no-select" type="radio"
+                    name="inlineRadioToughness" id="inlineRadio2" value="option2" title="Equal to">
+                  <label class="form-check-label selectable no-select" for="inlineRadio2"></label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input @click="toggleToughnessGreater" class="form-check-input selectable no-select" type="radio"
+                    name="inlineRadioToughness" id="inlineRadio3" value="option3" title="Greater then or equal to">
+                  <label class="form-check-label selectable no-select" for="inlineRadio3"></label>
+                </div>
+              </div>
               <input v-model="filter.toughness" type="number" class="form-control" placeholder="All">
             </div>
           </section>
@@ -332,73 +385,127 @@ export default {
 
 
 
-  setup() {
-    const query = ref('')
-    let filter = ref({
-      color: [],
-      rarity: null,
-      mana: null,
-      power: null,
-      toughness: null,
-      set: null
-    })
+setup() {
+const query = ref('')
+let filter = ref({
+color: [],
+rarity: null,
+mana: null,
+power: null,
+toughness: null,
+set: null
+})
 
 
-    async function alphaSearch() {
-      const search = 'set%3Alea'
-      await cardsService.getAlphaSearch(search)
-    }
+async function alphaSearch() {
+const search = 'set%3Alea'
+await cardsService.getAlphaSearch(search)
+}
 
-    onMounted(() => {
-      alphaSearch()
-    });
-    return {
-      filter,
-      query,
+onMounted(() => {
+alphaSearch()
+});
+return {
+filter,
+query,
 
-      async filterChange(type, val) {
-        try {
-          if (filter.value[type].includes(val)) {
-            filter.value[type] = filter.value[type].filter(v => v != val)
-          } else {
-            filter.value[type].push(val)
-          }
-        } catch (error) {
-          logger.error(error)
-          Pop.error('[filtering]', error)
-        }
-      },
+async filterChange(type, val) {
+try {
+if (filter.value[type].includes(val)) {
+filter.value[type] = filter.value[type].filter(v => v != val)
+} else {
+filter.value[type].push(val)
+}
+} catch (error) {
+logger.error(error)
+Pop.error('[filtering]', error)
+}
+},
 
-      async searchCards() {
-        filter.value['color'] = filter.value['color'].join('').toString();
-        // filter.value['rarity'] = filter.value['rarity'].join('').toString();
-        console.log('filer value', filter.value);
-        await cardsService.getCardsBySearch(query.value, filter.value)
-        filter.value['color'] = filter.value['color'].split('')
-        // filter.value['rarity'] = filter.value['rarity'].split('')
-      },
+async searchCards() {
+filter.value['color'] = filter.value['color'].join('').toString();
+// filter.value['rarity'] = filter.value['rarity'].join('').toString();
+console.log('filer value', filter.value);
+await cardsService.getCardsBySearch(query.value, filter.value)
+filter.value['color'] = filter.value['color'].split('')
+// filter.value['rarity'] = filter.value['rarity'].split('')
+},
 
 
-      async toggleText() {
-        AppState.searchByText = true
-        AppState.searchByName = false
-        AppState.searchByType = false
-        logger.log(AppState.searchByText)
-      },
-      async toggleType() {
-        AppState.searchByType = true
-        AppState.searchByText = false
-        AppState.searchByName = false
-      },
-      async toggleName() {
-        AppState.searchByName = true
-        AppState.searchByText = false
-        AppState.searchByType = false
-      },
+async toggleText() {
+AppState.searchByText = true
+AppState.searchByName = false
+AppState.searchByType = false
+},
+async toggleType() {
+AppState.searchByType = true
+AppState.searchByText = false
+AppState.searchByName = false
+},
+async toggleName() {
+AppState.searchByName = true
+AppState.searchByText = false
+AppState.searchByType = false
+},
 
-    };
+async toggleManaEqual() {
+AppState.manaEqual = true
+AppState.manaLesser = false
+AppState.manaGreater = false
+},
 
-  }
+async toggleManaLesser() {
+AppState.manaLesser = true
+AppState.manaEqual = false
+AppState.manaGreater = false
+},
+
+async toggleManaGreater() {
+AppState.manaGreater = true
+AppState.manaEqual = false
+AppState.manaLesser = false
+},
+
+async togglePowerEqual() {
+AppState.powerEqual = true
+AppState.powerLesser = false
+AppState.powerGreater = false
+},
+
+async togglePowerLesser() {
+AppState.powerLesser = true
+AppState.powerEqual = false
+AppState.powerGreater = false
+},
+
+async togglePowerGreater() {
+AppState.powerGreater = true
+AppState.powerEqual = false
+AppState.powerLesser = false
+},
+
+async toggleToughnessEqual() {
+AppState.toughnessEqual = true
+AppState.toughnessLesser = false
+AppState.toughnessGreater = false
+},
+
+async toggleToughnessLesser() {
+AppState.toughnessLesser = true
+AppState.toughnessEqual = false
+AppState.toughnessGreater = false
+},
+
+async toggleToughnessGreater() {
+AppState.toughnessGreater = true
+AppState.toughnessEqual = false
+AppState.toughnessLesser = false
+},
+
+
+};
+
+}
 }
 </script>
 

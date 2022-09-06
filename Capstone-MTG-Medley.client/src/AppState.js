@@ -19,9 +19,24 @@ export const AppState = reactive({
   deckCards: [],
   activeDeck: null,
   collection: [],
+
+  // filter toggles
   searchByName: true,
   searchByType: false,
   searchByText: false,
+
+  manaLesser: true,
+  manaEqual: false,
+  manaGreater: false,
+
+  powerLesser: true,
+  powerEqual: false,
+  powerGreater: false,
+
+  toughnessLesser: true,
+  toughnessEqual: false,
+  toughnessGreater: false,
+
 
   nextPage: null,
 

@@ -1,13 +1,12 @@
 <template>
 
   <div class="row align-items-center">
-    <button v-if="activeDeck" class="btn col-2 text-start" @click="createDeckCard(card.cardId)"><i title="add to deck"
-        class="mdi mdi-plus-circle"></i></button>
+    <button v-if="activeDeck" class="btn col-2 text-start addCard" @click="createDeckCard(card.cardId)"><i
+        title="add to deck" class="mdi mdi-plus-circle "></i></button>
   </div>
-  <div class="row align-items-center justify-content-center">
+  <div class="row align-items-center selectable justify-content-center mx-1">
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
-      :data-bs-target="'#collectionCardModal' + card.cardId"
-      class="mt-4 col-10 px-0  shadow rotated cardCollection-image">
+      :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 shadow cardCollection-image">
       <div v-if="card.image_uris?.normal">
         <img class="img-fluid position-relative shadow cardsBg"
           :class="deckCard?.find(d => d.cardId == card.cardId) ? 'card-border' : ''" :src=card.image_uris?.normal
@@ -25,11 +24,11 @@
         }}</b></p>
       </div>
     </div>
-    <p v-if="activeDeck" class="col-10 text-end cardCount"><i class="mdi mdi-card-multiple-outline"></i>&nbsp
+    <!-- <p v-if="activeDeck" class="col-10 text-end cardCount"><i class="mdi mdi-card-multiple-outline"></i>&nbsp
       &nbsp<b>{{
           (card.count)
       }}</b>
-    </p>
+    </p> -->
     <button @click.prevent="removeCard" class="btn-outline btn mt-4 xsFont" value="Delete" type="button">Remove from
       Collection</button>
   </div>
@@ -187,13 +186,21 @@ export default {
 .cardCount {
   z-index: 1;
   position: absolute;
-  bottom: 5px;
+  bottom: 60px;
   left: 10px;
   background-color: rgba(0, 0, 0, 0.601);
   color: white;
-  border-radius: 5%;
+  border-radius: 10%;
   width: 50px;
   height: 30px;
   border: solid rgba(255, 255, 255, 0.435) 1px;
+}
+
+.addCard {
+  z-index: 1;
+  position: relative;
+  top: 45px;
+  left: 0px;
+  color: rgb(0, 0, 0);
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="row fixed-bottom footer-style justify-content-between px-3 text-uppercase text-my-light no-select">
+    <div class="row fixed-bottom footer-style justify-content-between text-uppercase text-my-light no-select">
 
         <!-- SECTION Account -->
         <section class="col-2 py-2 text-center">
@@ -58,9 +58,9 @@
 
 <script>
 export default {
-    setup(){
-        return {}
-    }
+setup() {
+return {}
+}
 }
 </script>
 

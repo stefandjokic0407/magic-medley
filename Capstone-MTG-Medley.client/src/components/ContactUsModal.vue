@@ -61,14 +61,14 @@
               <span>
                 Jonathon
               </span>
-              <!-- <span>
-                <a href="">
+              <span>
+                <a href="https://www.linkedin.com/in/jonathon-mcnamara/">
                   <i class="mdi mdi-linkedin selectable px-1"></i>
                 </a>
-                <a href="">
+                <a href="https://github.com/JonathonMcNamara">
                   <i class="mdi mdi-github selectable"></i>
                 </a>
-              </span> -->
+              </span>
             </li>
             <li class="d-flex justify-content-between">
               <span>
