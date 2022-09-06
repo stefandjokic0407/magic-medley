@@ -6,7 +6,7 @@
   <section>
     <div class="row">
       <div class="profile-details rounded text-dark elevation-2">
-        <img src="" alt="" />
+        <img class="img-fluid profile-img" :src="profile.picture" alt="" />
         <div class="px-2">
           <p>{{ profile.name }}</p>
         </div>
@@ -17,12 +17,11 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { onMounted, popScopeId } from "vue";
+import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../AppState";
 import { router } from "../router";
 import { profilesService } from "../services/ProfilesService";
-import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 
 export default {
@@ -51,4 +50,12 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.profile-img {
+  height: 7rem;
+  width: 7rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: #b6d369 solid 2px;
+}
+</style>
