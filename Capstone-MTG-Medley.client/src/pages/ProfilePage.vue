@@ -4,14 +4,30 @@
   </header>
 
   <section>
+    <!-- SECTION Profile Details -->
     <div class="row">
-      <div class="profile-details rounded text-dark elevation-2">
+      <div class="profile-details text-dark">
         <img class="img-fluid profile-img" :src="profile.picture" alt="" />
         <div class="px-2">
           <p>{{ profile.name }}</p>
+          <p>{{ profile.email }}</p>
         </div>
       </div>
     </div>
+
+    <div class="row my-2" v-if="profile.id == account.id">
+      <div class="col-12">
+        <router-link class="btn square btn-warning" :to="{ name: 'Account' }"
+          >Edit Account
+        </router-link>
+      </div>
+    </div>
+
+    <!-- SECTION Profile Decks -->
+    <div class="row"></div>
+
+    <!-- SECTION Profile Guilds -->
+    <div class="row"></div>
   </section>
 </template>
 
