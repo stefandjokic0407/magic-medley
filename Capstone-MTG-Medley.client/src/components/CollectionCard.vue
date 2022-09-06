@@ -57,7 +57,7 @@ export default {
       cards: computed(() => AppState.collection),
       activeDeck: computed(() => AppState.activeDeck),
       user: computed(() => AppState.account),
-      deckCard: computed(() => AppState.deckCards.find(c => deckCard.cardId == props.cardId)),
+      deckCard: computed(() => AppState.deckCards),
       profileCard: computed(() => AppState.activeProfile),
       reset() {
         AppState.activeCard = props.card

@@ -1,13 +1,19 @@
 <template>
   <!-- <button @click="removeCardFromDeck()" class="btn-outline btn xsFont">Remove from Deck</button> -->
   <div class="row my-2" :title="card.card.name">
-    <div v-if="card" class="deleteCard col-11 mx-auto deckCardCanvas d-flex align-items-end">
+    <div v-if="card" class="deleteCard col-11 mx-auto deckCardCanvas d-flex align-items-end justify-content-between">
       <!-- <img class="img-fluid shadow cardsBg childElement deleteCard" :src=card.card?.image_uris?.small
         :title="card.card?.name"> -->
-
-      <p class="deckText text-start mb-0">{{ card.card.name }}</p>
-      <h6 class="deckText mb-0 text-end">{{ card.quantity }}</h6>
-
+      <div class="col-12">
+        <div class="row align-items-end justify-content-between">
+          <div class="col-8 ">
+            <p class="deckText text-start mb-0">{{ card.card.name }}</p>
+          </div>
+          <div class="col-1 mx-3 my-2">
+            <h5 class="deckText my-1">{{ card.quantity }}</h5>
+          </div>
+        </div>
+      </div>
     </div>
     <div v-else>
       <img class="img-fluid shadow cardsBg deckCardCanvas"
@@ -138,5 +144,12 @@ export default {
   outline: 2px solid rgba(255, 255, 255, 0.44);
   margin: 0;
   padding: 0;
+}
+
+.countDiv {
+  background-color: rgba(0, 0, 0, 0.546);
+  border-radius: 50%;
+  height: 2em;
+  width: auto;
 }
 </style>

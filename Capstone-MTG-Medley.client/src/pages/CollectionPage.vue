@@ -17,9 +17,11 @@
           :data-bs-target="'#deck-form'">Delete</button>
       </div>
     </div>
-    <div v-if="activeDeck" class="col-6 col-md-1">
-      <img class="img-fluid" :src="activeDeck?.picture" alt="" :title="activeDeck?.name" srcset="">
-      <p class="col-6">{{ activeDeck?.description }}</p>
+    <div v-if="activeDeck" class="col-12 col-md-4">
+      <div class="row">
+        <img class="img-fluid col-3" :src="activeDeck?.picture" alt="" :title="activeDeck?.name" srcset="">
+        <p class="col-9">{{ activeDeck?.description }}</p>
+      </div>
     </div>
     <div class="col-12">
       <div class="row">
