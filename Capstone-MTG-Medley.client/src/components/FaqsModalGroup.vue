@@ -71,8 +71,8 @@
     </div>
   </section>
 
-  <!-- SECTION Modal--What is Magic Medley -->
-  <section class="modal fade" id="magicMedleyModalToggle" aria-hidden="true" aria-labelledby="magicMedleyModalToggle"
+  <!-- SECTION Modal--Why build Magic Medley -->
+  <!-- <section class="modal fade" id="magicMedleyModalToggle" aria-hidden="true" aria-labelledby="magicMedleyModalToggle"
     tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- SECTION Modal--How to play -->
   <section class="modal fade" id="howToPlayModalToggle" aria-hidden="true" aria-labelledby="howToPlayModalToggle"
