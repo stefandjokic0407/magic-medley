@@ -33,18 +33,27 @@
           {{ activeGuild.name }} Background
         </h4>
         <!-- Gruul Clans Background -->
-        <div class="card gruul-bg p-3 mb-3 elevation-4">
-          <br>
-          Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble guild
-          charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
-          Civilization and the other nine guilds, however, overran every wild place on the plane. This changed the
-          Gruul.
-          <br>
-          <br>
-          The Gruul decentralized, lacking any sort of real leadership. The guild became nothing but a loose
-          affiliation of clans. Exploited and ignored, they started to take any reason to cause chaos, any reason to
-          destroy a symbol of civilization. Most Gruul hold contempt for those outside the Clans, referring to them as
-          "cobble roaches".
+        <div class="card p-0 gruul-bg mb-3 elevation-4">
+          <div class="outer-border">
+            <div class="mid-border">
+              <div class="inner-border p-3">
+                Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble
+                guild
+                charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
+                Civilization and the other nine guilds, however, overran every wild place on the plane. This changed the
+                Gruul.
+                <br>
+                <br>
+                The Gruul decentralized, lacking any sort of real leadership. The guild became nothing but a loose
+                affiliation of clans. Exploited and ignored, they started to take any reason to cause chaos, any reason
+                to
+                destroy a symbol of civilization. Most Gruul hold contempt for those outside the Clans, referring to
+                them
+                as
+                "cobble roaches".
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -580,13 +589,31 @@ export default {
 }
 
 .gruul-bg {
-  background: rgb(196, 211, 202);
-  background: linear-gradient(191deg, rgba(196, 211, 202, 1) 24%, rgba(235, 159, 130, 1) 100%);
-  backdrop-filter: blur(10px);
-  text-shadow: 2px 2px 2px rgb(31, 29, 29);
-  color: #f2e9e4 !important;
+  background: rgba(196, 211, 202, 0.5);
+  backdrop-filter: blur(5px);
+  color: #f0f0f0 !important;
   width: 100%;
   border: none;
+}
+
+.outer-border {
+  border: 2px solid #EB9F82;
+  border-radius: 5px;
+  padding: 6px;
+}
+
+.mid-border {
+  border: 6px solid #EB9F82;
+  border-radius: 5px;
+  padding: 6px;
+  margin: auto;
+}
+
+.inner-border {
+  position: relative;
+  border: 2px solid #EB9F82;
+  border-radius: 5px;
+  margin: auto;
 }
 
 .btn {
