@@ -73,7 +73,8 @@
       id="offcanvasRight" aria-labelledby="offcanvasExampleLabel" data-bs-scroll="true">
       <div class="col-12">
         <div class="row">
-          <div @click.prevent="noActive" v-if="activeDeck" class="d-flex align-items-end deckImg col-11 mx-auto">
+          <div @click.prevent="noActive" v-if="activeDeck"
+            class="d-flex align-items-end deckImg col-11 mx-auto selectable">
             <h5 class="deckText text-start mb-0">{{ activeDeck.name }}</h5>
           </div>
           <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12">
@@ -88,9 +89,12 @@
         </div>
       </div>
       <div class="row fixed-bottom">
-        <button data-bs-toggle="modal" data-bs-target="#deck-form"
-          class="btn deckText selectable text-uppercase square col-11 mx-auto" @click="setEditable()">Create
+        <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
+          class="btn deckText selectable text-uppercase square col-11 mx-auto" @click.prevent="setEditable()">Create
           Deck</button>
+        <button v-if="activeDeck" class="btn deckText selectable text-uppercase square col-11 mx-auto"
+          @click="deleteDeck()">Delete</button>
+
       </div>
     </div>
   </div>
@@ -189,7 +193,23 @@ export default {
 
       noActive() {
         AppState.activeDeck = null
-      }
+      },
+
+      async deleteDeck() {
+        try {
+          const yes = await Pop.confirm("Remove Deck?");
+          if (!yes) {
+            return;
+          }
+          const deckId = AppState.activeDeck.id
+          console.log('Deck Id:', deckId)
+          await decksService.deleteDeck(deckId)
+          await AppState.activeDeck == null
+        } catch (error) {
+          logger.error('[Deleting Deck]', error)
+          Pop.toast(error.message, 'error')
+        }
+      },
 
     };
   },
@@ -234,6 +254,6 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid black;
-  outline: 3px solid rgba(255, 255, 255, 0.44);
+  outline: 3px solid #d4af37c3;
 }
 </style>
