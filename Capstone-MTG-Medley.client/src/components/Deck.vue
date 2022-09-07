@@ -5,6 +5,7 @@
       <div class="col-12 rotated text-light">
         <div v-if="deck.picture" class="deckImg d-flex align-items-end">
           <h5 class="deckText text-start mb-0">{{ deck.name }}</h5>
+          <p v-if="activeDeck" class="m-0 p-0 text-center col-12">Cards:{{ " " + deckCards.length }}</p>
           <!-- <button @click="deleteDeck" class="btn btn-outline-light mx-0 mt-3">
         <p>Delete</p>
       </button> -->

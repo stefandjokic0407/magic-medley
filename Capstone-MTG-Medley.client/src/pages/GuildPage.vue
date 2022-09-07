@@ -193,10 +193,9 @@ export default {
 
       scrollLeft() {
         let content = document.querySelector(".guild-cards-container");
-        scrollPosition.value -= 500;
-        // if (scrollPosition.value <= 500) {
-        //   return;
-        // }
+        if (scrollPosition.value > 100) {
+          scrollPosition.value -= 500;
+        }
         content.scrollTo({
           left: scrollPosition.value,
           behavior: "smooth",
@@ -205,10 +204,9 @@ export default {
 
       scrollRight() {
         let content = document.querySelector(".guild-cards-container");
-        scrollPosition.value += 500;
-        // if (scrollPosition.value == 1500) {
-        //   return;
-        // }
+        if (scrollPosition.value < 1501) {
+          scrollPosition.value += 500;
+        }
         content.scrollTo({
           left: scrollPosition.value,
           behavior: "smooth",
@@ -238,6 +236,7 @@ button:hover {
   scroll-snap-type: x mandatory;
   max-width: 100vw;
   overflow-x: scroll;
+
   > div {
     scroll-snap-align: start;
     scroll-snap-stop: always;
