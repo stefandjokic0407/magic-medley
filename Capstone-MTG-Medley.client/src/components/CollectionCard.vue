@@ -3,10 +3,10 @@
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
       :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
       <div v-if="card.image_uris?.normal">
-          <img class="img-fluid shadow cardsBg"
-            :class="!activeDeck || deckCard?.find(d => d.cardId == card.cardId) ? '' : 'card-in-deck'"
-            :src=card.image_uris?.normal :title="card.name">
-          <!-- <p class="xsFont">{{deckCard}}</p> -->
+        <img class="img-fluid shadow cardsBg"
+          :class="!activeDeck || deckCard?.find(d => d.cardId == card.cardId) ? '' : 'card-in-deck'"
+          :src=card.image_uris?.normal :title="card.name">
+        <!-- <p class="xsFont">{{deckCard}}</p> -->
       </div>
 
       <div v-else>
@@ -14,11 +14,12 @@
           src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
       </div>
 
-        <i v-if="activeDeck" @click="createDeckCard(card.cardId)" title="add to deck"
-          class="btn mdi mdi-plus-circle mdi-36px add-button"></i>
+      <i v-if="activeDeck" @click="createDeckCard(card.cardId)" title="add to deck"
+        class="btn mdi mdi-plus-circle mdi-36px add-button"></i>
 
-        <i v-if="activeDeck && deckCard?.find(d => d.cardId == card.cardId)" title="remove from deck" @click="removeDeckCard(card.cardId)"
-          class="mdi mdi-minus-circle mdi-36px remove-button btn remove-from-deck"></i>
+      <i v-if="activeDeck && deckCard?.find(d => d.cardId == card.cardId)" title="remove from deck"
+        @click="removeCardFromDeck(card.cardId)"
+        class="mdi mdi-minus-circle mdi-36px remove-button btn remove-from-deck"></i>
 
       <div class="cardCount">
         <p class=" mx-2 mb-1"><i class="mdi mdi-card-multiple-outline"></i>&nbsp<b> {{
@@ -92,13 +93,18 @@ export default {
           Pop.error(error);
         }
       },
-      async removeDeckCard() {
+      async removeCardFromDeck() {
         try {
-          let cardId = props.card.cardId
-          await deckCardsService.removeCard(cardId)
-        } catch (error) {
-          logger.error('[Removing Card from Collection]', error)
-          Pop.toast(error.message, 'error')
+          const yes = await Pop.confirm("Remove Card?");
+          if (!yes) {
+            return;
+          }
+          const cardId = props.deckcard.id;
+          await deckCardsService.removeCard(cardId);
+        }
+        catch (error) {
+          logger.error(error);
+          Pop.toast(error.message, "error");
         }
       },
       async removeCard() {
