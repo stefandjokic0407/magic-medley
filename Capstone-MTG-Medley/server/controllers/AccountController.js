@@ -88,7 +88,7 @@ export class AccountController extends BaseController {
   }
   async deleteCardEverywhere(req, res, next) {
     try {
-      const response = await cardsService.deleteCardEverywhere(
+      const response = await cardsService.deleteCardsEverywhere(
         req.params.cardId
       );
       return res.send(response);
@@ -99,7 +99,7 @@ export class AccountController extends BaseController {
 
   async getDecksByAccountId(req, res, next) {
     try {
-      const decks = await decksService.getDecksByAccountId(req.body);
+      const decks = await decksService.getDecksByAccountId(req.userInfo.id);
       return res.send(decks);
     } catch (error) {
       next(error);
