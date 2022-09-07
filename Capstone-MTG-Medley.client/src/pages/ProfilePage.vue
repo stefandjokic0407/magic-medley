@@ -44,6 +44,7 @@ export default {
   setup() {
     const route = useRoute();
 
+    // NOTE this function is getting your profile using the Id, it takes in a users profileId
     async function getProfileById() {
       try {
         await profilesService.getProfileById(route.params.profileId);
