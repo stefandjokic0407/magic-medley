@@ -11,6 +11,7 @@
         <div class="glass-card rounded p-3 my-3">
           <h3>{{ profile.name }}</h3>
           <p>{{ profile.email }}</p>
+          <button class="btn" @click="getProfileDecks">get decks</button>
         </div>
       </div>
     </div>
@@ -20,7 +21,6 @@
         <router-link class="btn square btn-warning" :to="{ name: 'Account' }"
           >Edit Account
         </router-link>
-        <button class="btn" @click="getProfileDecks">get decks</button>
       </div>
     </div>
 
@@ -67,18 +67,18 @@ export default {
                 router.push({ name: "Home" });
             }
         }
-        // async function getProfileDecks() {
-        //     try {
-        //         await decksService.getAccountDecks(route.params.profileId);
-        //         console.log(route.params.profileId)
-        //     }
-        //     catch (error) {
-        //         Pop.error("[getting profile decks]", error);
-        //     }
-        // }
+        async function getProfileDecks() {
+            try {
+                await decksService.getAccountDecks(route.params.profileId);
+                console.log(route.params.profileId)
+            }
+            catch (error) {
+                Pop.error("[getting profile decks]", error);
+            }
+        }
         onMounted(() => {
             getProfileById();
-            // getProfileDecks();
+            getProfileDecks();
         });
         return {
             route,
@@ -94,15 +94,6 @@ export default {
                     Pop.error('[setting active deck]', error)
                   }
                 },
-                async getProfileDecks() {
-            try {
-                await decksService.getAccountDecks(route.params.profileId);
-                console.log(route.params.profileId)
-            }
-            catch (error) {
-                Pop.error("[getting profile decks]", error);
-            }
-        }
         };
     },
     components: { DeckModal, Modal }
