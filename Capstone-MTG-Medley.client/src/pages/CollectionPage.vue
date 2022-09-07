@@ -277,6 +277,7 @@ export default {
   background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
   background-repeat: none;
   min-height: 100%;
+  overflow-y: auto;
   min-width: 1024px;
 
   /* Set up proportionate scaling */
