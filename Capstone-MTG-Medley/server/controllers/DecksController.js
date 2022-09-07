@@ -63,6 +63,18 @@ export class DecksController extends BaseController {
         }
     }
 
+    async addRating(req, res, next) {
+        try {
+            // the body should be an object with a value {value: 5}
+            let rating = req.body
+            rating.creatorId = req.userInfo.id
+            let deck = await decksService.addRating(req.params.deckId, rating)
+            return res.send(deck)
+        } catch (error) {
+            next(error)
+        }
+    }
+
     async deleteDeck(req, res, next) {
         try {
             const response = await decksService.deleteDeck(req.params.id)
