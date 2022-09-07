@@ -8,7 +8,7 @@
             <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
               <div class="row mx-auto">
                 <div class="col-12">
-                  <h1 class="bannerFontSize text-center deckText">{{activeDeck.name}}</h1>
+                  <h1 class="bannerFontSize text-center deckText">{{activeDeck?.name}}</h1>
                 </div>
               </div>
             </div>
@@ -60,9 +60,8 @@ export default {
 
     async function setActiveDeck(){
       try {
-      const deckId = route.params.deckId
-      await decksService.setActiveDeck(deckId)
-      // await deckCardsService.getDeckCards(deckId)
+      await decksService.setActiveDeck(route.params.deckId)
+      await deckCardsService.getDeckCards(route.params.deckId)
       } catch (error) {
       console.log(error)
       Pop.error('[setting active deck]', error)
