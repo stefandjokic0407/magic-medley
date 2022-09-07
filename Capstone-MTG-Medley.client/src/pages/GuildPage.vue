@@ -38,16 +38,8 @@
           </button>
           <GuildFaq /> -->
 
-          <button
-            class="btn btn-light fs-3"
-            type="button"
-            title="Guild Faqs"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-            @click="scrollDown"
-          >
+          <button class="btn btn-light fs-3" type="button" title="Guild Faqs" data-bs-toggle="collapse"
+            data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" @click="scrollDown">
             Guild FAQ's
           </button>
         </div>
@@ -55,21 +47,10 @@
           <div class="card card-body m-2">
             <h3 class="text-start">Choose Your Guild</h3>
             <div class="d-flex flex-column align-items-center">
-              <img
-                class="img-fluid"
-                src="https://imgur.com/ONxZ8bm.png"
-                alt="guild-img"
-                title="guild-img"
-                height="400px"
-                width="400px"
-                id="faqs"
-              />
-              <img
-                class="img-fluid"
-                src="https://i.pinimg.com/originals/19/8d/b5/198db572ea3cb88445e5f284f3c7aa0a.jpg"
-                alt="guild-desc-img"
-                title="guild-desc-img"
-              />
+              <img class="img-fluid" src="https://imgur.com/ONxZ8bm.png" alt="guild-img" title="guild-img"
+                height="400px" width="400px" id="faqs" />
+              <img class="img-fluid" src="https://i.pinimg.com/originals/19/8d/b5/198db572ea3cb88445e5f284f3c7aa0a.jpg"
+                alt="guild-desc-img" title="guild-desc-img" />
             </div>
           </div>
         </div>
@@ -193,10 +174,9 @@ export default {
 
       scrollLeft() {
         let content = document.querySelector(".guild-cards-container");
-        scrollPosition.value -= 500;
-        // if (scrollPosition.value <= 500) {
-        //   return;
-        // }
+        if (scrollPosition.value > 100) {
+          scrollPosition.value -= 500;
+        }
         content.scrollTo({
           left: scrollPosition.value,
           behavior: "smooth",
@@ -205,10 +185,9 @@ export default {
 
       scrollRight() {
         let content = document.querySelector(".guild-cards-container");
-        scrollPosition.value += 500;
-        // if (scrollPosition.value == 1500) {
-        //   return;
-        // }
+        if (scrollPosition.value < 1100) {
+          scrollPosition.value += 500;
+        }
         content.scrollTo({
           left: scrollPosition.value,
           behavior: "smooth",
@@ -238,7 +217,8 @@ button:hover {
   scroll-snap-type: x mandatory;
   max-width: 100vw;
   overflow-x: scroll;
-  > div {
+
+  >div {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
