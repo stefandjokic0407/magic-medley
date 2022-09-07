@@ -82,11 +82,10 @@
     </div> -->
     <div class="d-none d-md-block col-md-2 myDecksSideBar px-0">
       <div class="row mx-auto">
-        <div @click.prevent="noActive" v-if="activeDeck"
-          class="d-flex align-items-end deckImg col-11 mx-auto mt-1 selectable">
+        <div @click.prevent="noActive" v-if="activeDeck" class="deckImg col-11 mx-auto mt-1 selectable">
           <div class="row">
-            <h5 class="deckText text-start mb-0 col-8">{{ activeDeck.name }}</h5>
-            <p v-if="activeDeck" class="col-4 deckText">Cards:{{ " " + deckCards.length }}</p>
+            <h5 class="deckText mb-0 col-12">{{ activeDeck.name }}</h5>
+            <p v-if="activeDeck" class="col-12 deckText">Cards:{{ " " + deckCards.length }}</p>
           </div>
         </div>
         <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto position-relative">
@@ -275,6 +274,17 @@ export default {
   background-color: #faea9b;
   background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
   background-repeat: none;
+  min-height: 100%;
+  min-width: 1080px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
 
   // background-size: cover;
   // background-position: center;
