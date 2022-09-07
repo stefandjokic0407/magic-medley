@@ -84,7 +84,10 @@
       <div class="row mx-auto">
         <div @click.prevent="noActive" v-if="activeDeck"
           class="d-flex align-items-end deckImg col-11 mx-auto mt-1 selectable">
-          <h5 class="deckText text-start mb-0">{{ activeDeck.name }}</h5>
+          <div class="row">
+            <h5 class="deckText text-start mb-0 col-8">{{ activeDeck.name }}</h5>
+            <p v-if="activeDeck" class="col-4 deckText">Cards:{{ " " + deckCards.length }}</p>
+          </div>
         </div>
         <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto position-relative">
           <DeckCardCanvas :card="c" />

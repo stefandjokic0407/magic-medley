@@ -99,7 +99,7 @@ export class AccountController extends BaseController {
 
   async getDecksByAccountId(req, res, next) {
     try {
-      const decks = await decksService.getDecksByAccountId(req.userInfo.id);
+      const decks = await decksService.getDecksByAccountId(req.body);
       return res.send(decks);
     } catch (error) {
       next(error);
