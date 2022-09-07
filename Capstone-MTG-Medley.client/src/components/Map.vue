@@ -1,5 +1,5 @@
 <template>
-    <div class="col-5 map-box">
+    <div class="col-12 map-box">
         <div class="input-group mb-2" title="Search">
             <input class="form-control" placeholder="Please enter a location..." type="text" v-model="location" />
             <button class="btn btn-outline-light" type="submit">Search</button>
@@ -20,7 +20,10 @@ export default defineComponent({
     setup() {
         const center = { lat: 43.606630, lng: -116.285810 }
 
-        return { center }
+        return {
+            center,
+            location
+        }
     },
 })
 </script>
