@@ -2,7 +2,7 @@
   <header class="row sticky-top">
     <Navbar />
   </header>
-  <div class="row collectionPageBg">
+  <div class="row collectionPageBg collectionPageViewHeight">
     <div class="col-10 px-0">
       <div class="row align-items-center">
         <!-- add deck component -->
@@ -28,7 +28,7 @@
         <div class="col-12">
           <div class="row">
 
-            <!-- SECTION CAROUSEL FOR DECK CARDS// DIDN'T THINK IT LOOKED GOOD BUT COMMENTED IT OUT FOR NOW -->
+            <!-- SECTION CAROUSEL FOR DECK CARDS// DIDN'T THINK IT LOOKED GOOD BUT COMMENTED IT OUT FOR NOW  -->
             <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div v-for="c in displayCards" :key="c.id" class="carousel-item active">
@@ -54,7 +54,15 @@
           </div>
         </div>
         <div>
-          <h3>My Collection</h3>
+          <div class="row ">
+            <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
+              <div class="row mx-auto">
+                <div class="col-12">
+                  <h1 class="bannerFontSize text-center deckText">My Collection</h1>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row">
             <div v-for="c in cards" :key="c.id" class="col-4 col-md-2">
               <CollectionCard :card="c" />
@@ -78,21 +86,21 @@
           class="d-flex align-items-end deckImg col-11 mx-auto mt-1 selectable">
           <h5 class="deckText text-start mb-0">{{ activeDeck.name }}</h5>
         </div>
-        <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto">
+        <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto position-relative">
           <DeckCardCanvas :card="c" />
         </div>
         <img v-if="!activeDeck" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
         <div v-if="decks.length && !activeDeck" class="row mx-auto">
-          <div v-for="d in decks" :key="d.id" class="col-12 col-md-10 mx-auto my-2">
+          <div v-for="d in decks" :key="d.id" class="col-12 col-md-12 mx-auto my-2">
             <Deck :deck="d" />
           </div>
         </div>
         <div class="row fixed-bottom mx-auto">
           <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable">Create
+            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable">Create Deck</button>
+          <button v-if="activeDeck" class="deckText btn btn-outline selectable col-12"
+            @click.prevent="deleteDeck">Delete
             Deck</button>
-          <button v-if="activeDeck" class="btn deckText selectable text-uppercase square col-12"
-            @click="deleteDeck">Delete</button>
         </div>
       </div>
     </div>
@@ -217,7 +225,7 @@ export default {
     };
   },
   components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
-}
+};
 </script>
 
 
@@ -261,5 +269,33 @@ export default {
   background-image: url('https://img.freepik.com/premium-photo/abstract-background-beige-brown-grunge-material-old-paper_213524-129.jpg?w=2000');
   background-size: cover;
   background-position: center;
+}
+
+.collectionPageViewHeight {
+  height: 100%;
+}
+
+.myCollectionsBanner {
+  background-image: url(src/assets/img/CollectionsBanner.png);
+  background-position: center;
+  background-size: cover;
+  height: 20VH;
+  font-family: MagicMedieval;
+}
+
+.bannerFontSize {
+  font-size: 4vw;
+  padding-bottom: 5.7%;
+}
+
+.deckText {
+  -webkit-text-stroke: .5px black;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 </style>
