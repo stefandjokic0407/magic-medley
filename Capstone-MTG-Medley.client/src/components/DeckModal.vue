@@ -34,7 +34,7 @@ import Pop from '../utils/Pop.js';
 
 export default {
     props: { deck: { type: Object, required: true, } },
-    setup() {
+    setup(props) {
         return {
             activeDeck: computed(() => AppState.activeDeck),
         }

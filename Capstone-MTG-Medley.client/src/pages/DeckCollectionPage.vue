@@ -40,28 +40,29 @@ import { decksService } from '../services/DecksService.js';
 import { computed } from '@vue/reactivity';
 import { onMounted, ref, watchEffect, } from 'vue';
 import { AppState } from '../AppState.js';
-import { cardsService } from '../services/CardsService.js';
-import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
+import { deckCardsService } from '../services/DeckCardsService.js';
 
 
 export default {
   setup() {
     const route = useRoute()
-    async function getAccountCards() {
-      try {
-        await cardsService.getAccountCards()
-      }
-      catch (error) {
-        logger.log("[getting all cards]", error);
-        Pop.error(error);
-      }
-    }
+
+    // async function getDeckCards(deckId) {
+    //   try {
+    //   await deckCardsService.getDeckCards(deckId)
+    //   }
+    //   catch (error) {
+    //   Pop.error(error);
+    //   console.log(error)
+    //   }
+    // }
 
     async function setActiveDeck(){
       try {
       const deckId = route.params.deckId
       await decksService.setActiveDeck(deckId)
+      // await deckCardsService.getDeckCards(deckId)
       } catch (error) {
       console.log(error)
       Pop.error('[setting active deck]', error)
@@ -70,8 +71,7 @@ export default {
 
 
     onMounted(() => {
-      getAccountCards();
-      setActiveDeck()
+      setActiveDeck();
     });
 
     return {
