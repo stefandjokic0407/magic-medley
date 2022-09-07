@@ -1,5 +1,5 @@
 <template>
-    <GMapMap :center="center" :zoom="10" map-type-id="terrain" style="width: 100vw; height: 20rem">
+    <GMapMap :center="center" :zoom="10" map-type-id="terrain" style="width: 100%; height: 500px">
         <GMapCluster :zoomOnClick="true">
             <GMapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true"
                 :draggable="true" @click="center = m.position" />
@@ -48,6 +48,6 @@ export default {
 
 
 
-<style>
+<style scoped lang="scss">
 
 </style>
