@@ -5,6 +5,8 @@
       <!-- <img class="img-fluid shadow cardsBg childElement deleteCard" :src=card.card?.image_uris?.small
         :title="card.card?.name"> -->
       <div class="col-12">
+        <div class="selectable minusButton" @click="removeCardFromDeck"><i class="mdi  mdi-minus-circle-outline"></i>
+        </div>
         <div class="row align-items-center justify-content-between">
           <div class="col-8 ">
             <h5 class="deckText text-start mb-0">{{ card.card.name }}</h5>
@@ -42,7 +44,7 @@
   <div v-if="card.quantity >= 4">
       <p class="text-center"><span class="mdi mdi-checkbox-blank-circle"></span><span
               class="mdi mdi-checkbox-blank-circle"></span><span class="mdi mdi-checkbox-blank-circle"></span><span
-              class="mdi mdi-checkbox-blank-circle"></span></p>
+cle"></span></p>
   </div> -->
 </template>
 
@@ -63,7 +65,20 @@ export default {
   setup(props) {
     // onMounted(() => {
     //   mounted();
-    // })
+    // }
+    // NOTE TRYING TO FIGURE OUT MOUSEOVER ISSUE
+    //   var removeButton = new Vue({
+    //   el: '#removeButton',
+
+    //   data: {
+    //     removeButton: false
+    //   },
+    //   methods: {
+    //     removeButton: function() {
+    //       this.removehover = !this.removehover;
+    //     }
+    //   }
+    // });
     return {
       activeCard: computed(() => AppState.activeCard),
       cover: computed(() => `url(${props.card.card?.image_uris.art_crop})`),
@@ -151,5 +166,20 @@ export default {
   border-radius: 50%;
   height: 2em;
   width: auto;
+}
+
+.minusButton {
+  position: absolute;
+  left: 70%;
+  top: 5%;
+  font-size: 2.5em;
+  -webkit-text-stroke: .5px black;
+  color: white;
+  text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 </style>

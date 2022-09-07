@@ -2,7 +2,7 @@
   <header class="row sticky-top">
     <Navbar />
   </header>
-  <div class="row collectionPageBg">
+  <div class="row collectionPageBg collectionPageViewHeight">
     <div class="col-10 px-0">
       <div class="row align-items-center">
         <!-- add deck component -->
@@ -78,7 +78,7 @@
           class="d-flex align-items-end deckImg col-11 mx-auto mt-1 selectable">
           <h5 class="deckText text-start mb-0">{{ activeDeck.name }}</h5>
         </div>
-        <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto">
+        <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto position-relative">
           <DeckCardCanvas :card="c" />
         </div>
         <img v-if="!activeDeck" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
@@ -91,8 +91,6 @@
           <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
             class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable">Create
             Deck</button>
-          <button v-if="activeDeck" class="btn deckText selectable text-uppercase square col-12"
-            @click="deleteDeck">Delete</button>
         </div>
       </div>
     </div>
@@ -216,7 +214,7 @@ export default {
       },
     };
   },
-  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
+  nents: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
 }
 </script>
 
@@ -261,5 +259,9 @@ export default {
   background-image: url('https://img.freepik.com/premium-photo/abstract-background-beige-brown-grunge-material-old-paper_213524-129.jpg?w=2000');
   background-size: cover;
   background-position: center;
+}
+
+.collectionPageViewHeight {
+  height: 100vh;
 }
 </style>
