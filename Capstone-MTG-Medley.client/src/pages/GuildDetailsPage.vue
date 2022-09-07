@@ -23,7 +23,7 @@
       </button>
       <button v-else class="btn" @click="removeFromGuild()">
         <i class="mdi mdi-minus fs-3"></i>
-        <span class="fs-5">Remove From Guild</span>
+        <span class="fs-5">Leave Guild</span>
       </button>
     </div>
     <!-- GUILD INFO -->
@@ -72,6 +72,9 @@
       <div class="row">
         <div class="col-md-5 offset-md-1 mb-3">
           <Map />
+        </div>
+        <div class="col-md-3">
+          <GuildChat />
         </div>
       </div>
     </section>
@@ -486,20 +489,16 @@
           Senate functions as the government of Ravnica and creates Ravnican laws.<br>
           <br>
           The Azorius are said to act through inaction.
-          The Azorius Senate works alongside the Boros Legion and Selesnya Conclave to see to the enforcement of the
-          law, and the Orzhov Syndicate to see to the provision of advocates and lawmages for
-          accusers/claimants/complainants/plaintiffs and defendants.
+          e to see to the enforcement of the
+          dvocates and lawmages for
+
         </div>
       </div>
     </section>
   </div>
   <!-- CHAT -->
   <footer class="fixed-bottom">
-    <div class="row">
-      <div class="col-md-3 offset-md-9">
-        <GuildChat />
-      </div>
-    </div>
+
   </footer>
 </template>
 
@@ -563,14 +562,14 @@ export default {
         }
         catch (error) {
           logger.error("[joining guild]", error);
-          Pop.error(error);
+          (error);
         }
       },
 
       async removeFromGuild() {
         try {
-          const removedMember = AppState.members.find(m => m.accountId == AppState.account.id)
-          await membersService.removeFromGuild(removedMember.id)
+          Member = AppState.members.find(m => m.accountId == AppState.account.id)
+          sService.removeFromGuild(removedMember.id)
         } catch (error) {
           logger.error('[removing from guild]', error);
           Pop.error(error)
@@ -608,6 +607,10 @@ export default {
   backdrop-filter: blur(5px);
   color: #f0f0f0 !important;
   border: none;
+}
+
+.btn:hover {
+  border: none !important;
 }
 
 .glass-card {
