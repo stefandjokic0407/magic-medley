@@ -4,6 +4,8 @@ import { audience, clientId, domain } from '../env'
 import { router } from '../router'
 import { accountService } from './AccountService'
 import { api } from './AxiosService'
+import { cardsService } from "./CardsService.js"
+import { decksService } from "./DecksService.js"
 import { socketService } from './SocketService'
 
 export const AuthService = initialize({
@@ -26,6 +28,8 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   AppState.user = AuthService.user
   await accountService.getAccount()
   socketService.authenticate(AuthService.bearer)
+  await cardsService.getAccountCards()
+  await decksService.getAccountDecks(AppState.account.id)
   // NOTE if there is something you want to do once the user is authenticated, place that here
 })
 

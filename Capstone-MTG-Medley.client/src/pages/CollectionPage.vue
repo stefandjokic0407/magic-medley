@@ -1,8 +1,9 @@
 <template>
-  <header class="row sticky-top">
-    <Navbar />
-  </header>
+
   <div class="row collectionPageBg collectionPageViewHeight">
+    <div class="col-1">
+      <CollectionPageNavbar />
+    </div>
     <div class="col-10 px-0">
       <div class="row align-items-center">
         <!-- add deck component -->
@@ -53,9 +54,9 @@
             </div> -->
           </div>
         </div>
-        <div>
+        <div class="col-9 mx-auto">
           <div class="row ">
-            <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
+            <div class="myCollectionsBanner mx-auto col-12 col-lg-10 align-items-center d-flex mt-4">
               <div class="row mx-auto">
                 <div class="col-12">
                   <h1 class="bannerFontSize text-center deckText">My Collection</h1>
@@ -80,7 +81,7 @@
         Your Decks
       </button>
     </div> -->
-    <div class="d-none d-md-block col-md-2 myDecksSideBar px-0">
+    <div v-if="decks" class="d-none d-md-block col-md-2 myDecksSideBar px-0">
       <div class="row mx-auto">
         <div @click.prevent="noActive" v-if="activeDeck" class="deckImg col-11 mx-auto mt-1 selectable">
           <div class="row">
@@ -98,7 +99,7 @@
           </div>
         </div>
         <div class="col-12">
-          <div class="row fixed-bottom mx-auto">
+          <div class="row fixed-bottom mx-auto position-relative">
             <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
               class="btn btn-outline deckText selectable square col-12" @click.prevent="setEditable">CREATE</button>
             <button v-if="activeDeck" class="deckText btn btn-outline square col-6" @click.prevent="deleteDeck">DELETE
@@ -133,32 +134,33 @@ import { decksService } from "../services/DecksService.js";
 import Deck from "../components/Deck.vue";
 import DeckCard from "../components/DeckCard.vue";
 import DeckCardCanvas from "../components/DeckCardCanvas.vue";
+import CollectionPageNavbar from "../components/CollectionPageNavbar.vue";
 
 export default {
   setup() {
 
-    async function getAccountCards() {
-      try {
-        await cardsService.getAccountCards()
-      }
-      catch (error) {
-        logger.log("[getting all cards]", error);
-        Pop.error(error);
-      }
-    }
-    async function getAccountDecks() {
-      try {
-        const accountId = AppState.account.id
-        await decksService.getAccountDecks(accountId)
-      } catch (error) {
-        logger.error('[getting account decks]', error);
-        Pop.error(error);
-      }
-    }
+    // async function getAccountCards() {
+    //   try {
+    //     await cardsService.getAccountCards()
+    //   }
+    //   catch (error) {
+    //     logger.log("[getting all cards]", error);
+    //     Pop.error(error);
+    //   }
+    // }
+    // async function getAccountDecks() {
+    //   try {
+    //     const accountId = AppState.account.id
+    //     await decksService.getAccountDecks(accountId)
+    //   } catch (error) {
+    //     logger.error('[getting account decks]', error);
+    //     Pop.error(error);
+    //   }
+    // }
 
     onMounted(() => {
-      getAccountDecks();
-      getAccountCards();
+      // getAccountDecks();
+      // getAccountCards();
     });
 
     return {
@@ -228,7 +230,7 @@ export default {
       },
     };
   },
-  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
+  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas, CollectionPageNavbar }
 };
 </script>
 
@@ -245,7 +247,7 @@ export default {
   backdrop-filter: blur(4px);
   border: solid 5px rgba(0, 0, 0, 0.43);
   /* color: white; */
-  height: 90VH;
+  height: 100VH;
   position: fixed;
   right: 0;
   overflow-y: auto;
@@ -272,10 +274,12 @@ export default {
 
 .collectionPageBg {
   background-color: #faea9b;
-  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  background-image: url("https://giffiles.alphacoders.com/134/134977.gif");
   background-repeat: none;
   min-height: 100%;
-  min-width: 1080px;
+  overflow-y: auto;
+  min-width: 1024px;
+  background-size: cover;
 
   /* Set up proportionate scaling */
   width: 100%;
@@ -285,9 +289,6 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-
-  // background-size: cover;
-  // background-position: center;
 }
 
 .collectionPageViewHeight {
@@ -298,7 +299,8 @@ export default {
   background-image: url(src/assets/img/CollectionsBanner.png);
   background-position: center;
   background-size: cover;
-  height: 20VH;
+  height: 100%;
+  width: auto;
   font-family: MagicMedieval;
 }
 
