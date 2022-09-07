@@ -73,11 +73,14 @@
         <div class="col-md-5 offset-md-1 mb-3">
           <Map />
         </div>
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
           <GuildChat />
-        </div>
+        </div> -->
       </div>
     </section>
+    <footer class="fixed-bottom">
+      <!-- NOTE trying to the guildchat to the footer -->
+    </footer>
   </div>
   <!-- Simic Combine Page -->
   <div v-if="activeGuild.name == 'Simic Combine'" class="row simic">
