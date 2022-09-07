@@ -38,7 +38,7 @@
     <!-- SECTION Profile Guild -->
     <div class="row"></div>
   </section>
-  <DeckModal id="deckModal"/>
+  <DeckModal/>
 </template>
 
 <script>

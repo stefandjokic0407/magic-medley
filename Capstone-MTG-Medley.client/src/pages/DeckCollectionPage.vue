@@ -8,7 +8,7 @@
             <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
               <div class="row mx-auto">
                 <div class="col-12">
-                  <h1 class="bannerFontSize text-center deckText">The Deck</h1>
+                  <h1 class="bannerFontSize text-center deckText">{{activeDeck.name}}</h1>
                 </div>
               </div>
             </div>
@@ -35,23 +35,19 @@
 
 <script>
 
+import { useRoute } from 'vue-router';
+import { decksService } from '../services/DecksService.js';
 import { computed } from '@vue/reactivity';
-import { onMounted, ref, watchEffect } from 'vue';
+import { onMounted, ref, watchEffect, } from 'vue';
 import { AppState } from '../AppState.js';
 import { cardsService } from '../services/CardsService.js';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
-import SearchedCards from '../components/SearchedCards.vue';
-import CollectionCard from '../components/CollectionCard.vue';
-import DeckForm from "../components/DeckForm.vue";
-import { decksService } from "../services/DecksService.js";
-import Deck from "../components/Deck.vue";
-import DeckCard from "../components/DeckCard.vue";
-import DeckCardCanvas from "../components/DeckCardCanvas.vue";
+
 
 export default {
   setup() {
-
+    const route = useRoute()
     async function getAccountCards() {
       try {
         await cardsService.getAccountCards()
@@ -62,9 +58,20 @@ export default {
       }
     }
 
+    async function setActiveDeck(){
+      try {
+      const deckId = route.params.deckId
+      await decksService.setActiveDeck(deckId)
+      } catch (error) {
+      console.log(error)
+      Pop.error('[setting active deck]', error)
+      }
+      }
+
 
     onMounted(() => {
       getAccountCards();
+      setActiveDeck()
     });
 
     return {

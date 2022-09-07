@@ -157,7 +157,6 @@ export default {
     onMounted(() => {
       getAccountDecks();
       getAccountCards();
-      // debugger
     });
 
     return {
