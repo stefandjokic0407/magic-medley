@@ -80,7 +80,7 @@
         Your Decks
       </button>
     </div> -->
-    <div class="col-2 myDecksSideBar px-0">
+    <div class="d-none d-md-block col-md-2 myDecksSideBar px-0">
       <div class="row mx-auto">
         <div @click.prevent="noActive" v-if="activeDeck"
           class="d-flex align-items-end deckImg col-11 mx-auto mt-1 selectable">
@@ -95,12 +95,15 @@
             <Deck :deck="d" />
           </div>
         </div>
-        <div class="row fixed-bottom mx-auto">
-          <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable">Create Deck</button>
-          <button v-if="activeDeck" class="deckText btn btn-outline selectable col-12"
-            @click.prevent="deleteDeck">Delete
-            Deck</button>
+        <div class="col-12">
+          <div class="row fixed-bottom mx-auto">
+            <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
+              class="btn btn-outline deckText selectable square col-12" @click.prevent="setEditable">CREATE</button>
+            <button v-if="activeDeck" class="deckText btn btn-outline square col-6" @click.prevent="deleteDeck">DELETE
+            </button>
+            <button v-if="activeDeck" class="deckText btn btn-outline square col-6"
+              @click.prevent="deleteDeck">EDIT</button>
+          </div>
         </div>
       </div>
     </div>
@@ -266,9 +269,11 @@ export default {
 }
 
 .collectionPageBg {
-  background-image: url('https://img.freepik.com/premium-photo/abstract-background-beige-brown-grunge-material-old-paper_213524-129.jpg?w=2000');
-  background-size: cover;
-  background-position: center;
+  background-color: #0b2423;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+
+  // background-size: cover;
+  // background-position: center;
 }
 
 .collectionPageViewHeight {

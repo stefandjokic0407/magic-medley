@@ -11,12 +11,15 @@ class CardsService {
       "account",
       "name picture"
     );
-    // if(!card) { throw new BadRequest('invalid Card')}
+    if (!card) {
+      throw new BadRequest("invalid Card");
+    }
     return card;
   }
   async createCard(body) {
     const collectionCard = await dbContext.Cards.findOne({
-      oracle_id: body.oracle_id, accountId: body.accountId
+      oracle_id: body.oracle_id,
+      accountId: body.accountId,
     });
 
     if (!collectionCard) {
@@ -46,19 +49,34 @@ class CardsService {
   async deleteCard(cardId) {
     const collectionCard = await this.getCardById(cardId);
     // await dbContext.Cards.findOne({ id: body.id,});
+    collectionCard.count--;
 
-    if (!collectionCard) {
-      throw new BadRequest("that card does not exist");
-    }
     // @ts-ignore
     if (collectionCard.count > 0) {
       // @ts-ignore
-      collectionCard.count--;
       await collectionCard.save();
+      return { action: "none", data: collectionCard };
     } else {
-      await collectionCard.remove();
+      let deckCards = await dbContext.DeckCards.find({ cardId }).populate(
+        "deck",
+        "name"
+      );
+      if (deckCards.length == 0) {
+        await collectionCard.remove();
+        return {
+          action: "none",
+          data: `${collectionCard.name} was removed from collection`,
+        };
+      } else {
+        return { action: "confirm-delete", data: deckCards };
+      }
     }
-    return `${collectionCard.name} has been removed from your collection`;
+  }
+
+  async deleteCardEverywhere(cardId) {
+    await dbContext.DeckCards.deleteMany({ cardId });
+    await dbContext.Cards.findByIdAndDelete(cardId);
+    return "Removed Cards from Everywhere";
   }
 }
 
