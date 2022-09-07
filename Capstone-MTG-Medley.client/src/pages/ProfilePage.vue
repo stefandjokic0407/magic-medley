@@ -24,11 +24,20 @@
     </div>
 
     <!-- SECTION Profile Decks -->
-    <div class="row"></div>
+
+    <div class="row align-items-center justify-content-center mx-1 position-relative" v-for="d in decks" :key="d.id">
+        <div @click="setActiveDeck" type="button" data-bs-toggle="modal"
+            :data-bs-target="'#deckModal'" class="mt-4 col-12 px-0">
+            <div v-if="d?.picture">
+              <img class="img-fluid borderRadius shadow cardsBg" :src=d?.picture :title="d?.name">
+            </div>
+        </div>
+    </div>
 
     <!-- SECTION Profile Guild -->
     <div class="row"></div>
   </section>
+  <DeckModal/>
 </template>
 
 <script>
@@ -37,11 +46,13 @@ import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../AppState";
 import { router } from "../router";
+import { decksService } from "../services/DecksService.js";
 import { profilesService } from "../services/ProfilesService";
 import Pop from "../utils/Pop";
 
 export default {
   setup() {
+    
     const route = useRoute();
 
     // NOTE this function is getting your profile using the Id, it takes in a users profileId
@@ -54,14 +65,24 @@ export default {
       }
     }
 
+    async function getProfileDecks() {
+      try {
+        await decksService.getAccountDecks(route.params.profileId)
+      } catch (error) {
+        Pop.error('[getting profile decks]', error)
+      } 
+    }
+
     onMounted(() => {
       getProfileById();
+      getProfileDecks();
     });
 
     return {
       route,
       account: computed(() => AppState.account),
       profile: computed(() => AppState.activeProfile),
+      decks: computed(() => AppState.decks),
       cover: computed(
         () =>
           `url(${

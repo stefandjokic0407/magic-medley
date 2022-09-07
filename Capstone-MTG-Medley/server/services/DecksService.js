@@ -24,7 +24,7 @@ class DecksService {
   }
   async getAllDecks(query = {}) {
     const decks = await dbContext.Decks.find(query).populate('profile', 'name picture')
-    return decks
+    return decks 
   }
 
   async getDecksByAccountId(accountId) {
@@ -43,6 +43,20 @@ class DecksService {
     deck.description = deckData.description || deck.description
     deck.picture = deckData.picture || deck.picture
 
+    await deck.save()
+    return deck
+  }
+// add a rating to a deckId rating array
+  async addRating(deckId, rating){
+    // get the deck by its id
+    const deck = await this.getById(deckId)
+    // check if user has already voted
+    let oldRating = deck.rating.find(d=>d.creatorId == rating.creatorId)
+    if(oldRating){
+      oldRating.value = rating.value
+    } else {
+      deck.rating.push(rating)
+    }
     await deck.save()
     return deck
   }
