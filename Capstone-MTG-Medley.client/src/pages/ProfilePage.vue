@@ -25,12 +25,12 @@
 
     <!-- SECTION Profile Decks -->
 
-    <div class="row align-items-center justify-content-center mx-1 position-relative deck-container" v-for="d in decks" :key="d.id">
-        <div @click="setActiveDeck" type="button" data-bs-toggle="modal"
-            :data-bs-target="'#deckModal'" class="mt-4 col px-0">
+    <div class="row align-items-center justify-content-center mx-1 deck-container" v-for="d in decks" :key="d.id">
+        <div @click="setActiveDeck(d.id)" type="button" data-bs-toggle="modal"
+            :data-bs-target="'#deckModal'" class="mt-4 col-3 px-0">
             <div v-if="d?.picture">
               <h5>{{d?.name}}</h5>
-              <img class="img-fluid borderRadius shadow cardsBg" :src=d?.picture :title="d?.name">
+              <img class="img-fluid shadow card-border" :src=d?.picture :title="d?.name">
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
     <!-- SECTION Profile Guild -->
     <div class="row"></div>
   </section>
-  <DeckModal/>
+  <DeckModal />
 </template>
 
 <script>
@@ -51,6 +51,7 @@ import { decksService } from "../services/DecksService.js";
 import { profilesService } from "../services/ProfilesService";
 import Pop from "../utils/Pop";
 import DeckModal from "../components/DeckModal.vue";
+import Modal from "../components/Modal.vue";
 
 export default {
     setup() {
@@ -84,9 +85,16 @@ export default {
             decks: computed(() => AppState.decks),
             cover: computed(() => `url(${AppState.activeProfile?.coverImg ||
                 "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"})`),
+                async setActiveDeck(deckId){
+                  try {
+                    await decksService.setActiveDeck(deckId)
+                  } catch (error) {
+                    Pop.error('[setting active deck]', error)
+                  }
+                }
         };
     },
-    components: { DeckModal }
+    components: { DeckModal, Modal }
 };
 </script>
 
@@ -127,5 +135,10 @@ export default {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
+}
+
+.card-border {
+    border-radius: 5%;
+    border: 3px solid darkslategray
 }
 </style>
