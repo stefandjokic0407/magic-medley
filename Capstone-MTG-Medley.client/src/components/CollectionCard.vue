@@ -62,7 +62,6 @@ import Pop from "../utils/Pop";
 export default {
   props: { card: { type: Card, required: true } },
 
-
   setup(props) {
     return {
       cards: computed(() => AppState.collection),
