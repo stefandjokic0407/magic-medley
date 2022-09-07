@@ -80,7 +80,7 @@ export default {
       }
     }
 
-    async function changePage(){
+      async function changePage(){
       const member = AppState.members.find(m => m.accountId == AppState.account.id)
       if(member){
       router.push({name: 'GuildDetails', params: {guildId: member.guildId}})}
