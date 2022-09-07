@@ -1,5 +1,5 @@
 <template>
-    <div @blur="reset()" class="card" style="max-width: 1100px;">
+    <div id="deckModal" @blur="reset()" class="card" style="max-width: 1100px;">
       <div class="row g-0">
         <!-- SECTION MODALS ACTIVE CARD PHOTO -->
         <div v-if="activeDeck" class="col-md-6">
