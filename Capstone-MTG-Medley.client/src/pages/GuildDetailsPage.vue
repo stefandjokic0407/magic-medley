@@ -569,8 +569,8 @@ export default {
 
       async removeFromGuild() {
         try {
-          Member = AppState.members.find(m => m.accountId == AppState.account.id)
-          sService.removeFromGuild(removedMember.id)
+          const removedMember = AppState.members.find(m => m.accountId == AppState.account.id)
+          await membersService.removeFromGuild(removedMember.id)
         } catch (error) {
           logger.error('[removing from guild]', error);
           Pop.error(error)
