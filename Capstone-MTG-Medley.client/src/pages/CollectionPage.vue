@@ -273,9 +273,13 @@ export default {
 }
 
 .collectionPageBg {
-  background-color: #faea9b;
-  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
-  background-repeat: none;
+  // background-color: #faea9b;
+  background-image: url("https://img.freepik.com/premium-photo/abstract-grunge-background-fine-art-background-beige-brown-old-paper-parchment_213524-151.jpg?w=1380");
+  // https://img.freepik.com/premium-photo/abstract-grunge-background-fine-art-background-beige-brown-old-paper-parchment_213524-151.jpg?w=1380
+  // https://wallpaperaccess.com/full/2796668.jpg
+  // https://www.ncwlibraries.org/wp-content/uploads/dragons_blog.jpg
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100%;
   min-width: 1024px;
 
