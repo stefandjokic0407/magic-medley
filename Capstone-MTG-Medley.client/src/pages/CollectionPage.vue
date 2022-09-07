@@ -1,8 +1,9 @@
 <template>
-  <header class="row sticky-top">
-    <Navbar />
-  </header>
+
   <div class="row collectionPageBg collectionPageViewHeight">
+    <div class="col-1">
+      <CollectionPageNavbar />
+    </div>
     <div class="col-10 px-0">
       <div class="row align-items-center">
         <!-- add deck component -->
@@ -53,7 +54,7 @@
             </div> -->
           </div>
         </div>
-        <div>
+        <div class="col-9 mx-auto">
           <div class="row ">
             <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
               <div class="row mx-auto">
@@ -133,6 +134,7 @@ import { decksService } from "../services/DecksService.js";
 import Deck from "../components/Deck.vue";
 import DeckCard from "../components/DeckCard.vue";
 import DeckCardCanvas from "../components/DeckCardCanvas.vue";
+import CollectionPageNavbar from "../components/CollectionPageNavbar.vue";
 
 export default {
   setup() {
@@ -149,7 +151,7 @@ export default {
     async function getAccountDecks() {
       try {
         const accountId = AppState.account.id
-        await decksService.getAccountDecks(accountId)
+        await decksService?.getAccountDecks(accountId)
       } catch (error) {
         logger.error('[getting account decks]', error);
         Pop.error(error);
@@ -228,7 +230,7 @@ export default {
       },
     };
   },
-  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
+  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas, CollectionPageNavbar }
 };
 </script>
 
@@ -245,7 +247,7 @@ export default {
   backdrop-filter: blur(4px);
   border: solid 5px rgba(0, 0, 0, 0.43);
   /* color: white; */
-  height: 90VH;
+  height: 100VH;
   position: fixed;
   right: 0;
   overflow-y: auto;
@@ -275,7 +277,7 @@ export default {
   background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
   background-repeat: none;
   min-height: 100%;
-  min-width: 1080px;
+  min-width: 1024px;
 
   /* Set up proportionate scaling */
   width: 100%;
@@ -285,9 +287,6 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-
-  // background-size: cover;
-  // background-position: center;
 }
 
 .collectionPageViewHeight {
