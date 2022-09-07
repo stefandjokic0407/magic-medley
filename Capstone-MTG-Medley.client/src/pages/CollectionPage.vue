@@ -100,7 +100,7 @@
         <div class="col-12">
           <div class="row fixed-bottom mx-auto">
             <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-              class="btn btn-outline deckText selectable square col-12">CREATE</button>
+              class="btn btn-outline deckText selectable square col-12" @click.prevent="setEditable">CREATE</button>
             <button v-if="activeDeck" class="deckText btn btn-outline square col-6" @click.prevent="deleteDeck">DELETE
             </button>
             <button v-if="activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
@@ -274,6 +274,17 @@ export default {
   background-color: #faea9b;
   background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
   background-repeat: none;
+  min-height: 100%;
+  min-width: 1080px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
 
   // background-size: cover;
   // background-position: center;
