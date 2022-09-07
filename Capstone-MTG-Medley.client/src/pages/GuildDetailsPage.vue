@@ -27,38 +27,53 @@
       </button>
     </div>
     <!-- GUILD INFO -->
-    <section class="col-md-5">
-      <div>
-        <h4>
-          {{ activeGuild.name }} Background
-        </h4>
-        <!-- Gruul Clans Background -->
-        <div class="card p-0 gruul-bg mb-3 elevation-4">
-          <div class="outer-border">
-            <div class="mid-border">
-              <div class="inner-border p-3">
-                Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble
-                guild
-                charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
-                Civilization and the other nine guilds, however, overran every wild place on the plane. This changed the
-                Gruul.
-                <br>
-                <br>
-                The Gruul decentralized, lacking any sort of real leadership. The guild became nothing but a loose
-                affiliation of clans. Exploited and ignored, they started to take any reason to cause chaos, any reason
-                to
-                destroy a symbol of civilization. Most Gruul hold contempt for those outside the Clans, referring to
-                them
-                as
-                "cobble roaches".
+    <section class="col-md-12">
+      <div class="row align-items-center">
+        <section class="col-md-5 offset-md-1">
+          <!-- Gruul Clans Background -->
+          <div class="card p-3 gruul-bg mb-3 elevation-4">
+            <h4>
+              {{ activeGuild.name }} Background
+            </h4>
+            Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble
+            guild
+            charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
+            Civilization and the other nine guilds, however, overran every wild place on the plane. This changed the
+            Gruul.
+            <br>
+            <br>
+            The Gruul decentralized, lacking any sort of real leadership. The guild became nothing but a loose
+            affiliation of clans. Exploited and ignored, they started to take any reason to cause chaos, any reason
+            to
+            destroy a symbol of civilization. Most Gruul hold contempt for those outside the Clans, referring to
+            them
+            as
+            "cobble roaches".
+          </div>
+        </section>
+        <section class="col-md-2 offset-md-1">
+          <div class="card mb-3 border-none">
+            <img class="gruul-deck rounded elevation-4"
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7c1a7ee8-ee25-4224-b5bf-ec4d43489c77/dartqc3-2bccbd58-4c87-4111-9ab1-21b3dc8abb84.jpg/v1/fill/w_670,h_1192,q_70,strp/gruul_clans_smartphone_wallpaper_1080p_by_locix_ita_dartqc3-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTkyMCIsInBhdGgiOiJcL2ZcLzdjMWE3ZWU4LWVlMjUtNDIyNC1iNWJmLWVjNGQ0MzQ4OWM3N1wvZGFydHFjMy0yYmNjYmQ1OC00Yzg3LTQxMTEtOWFiMS0yMWIzZGM4YWJiODQuanBnIiwid2lkdGgiOiI8PTEwODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.41brHS-Ebvlvh99GHE39I6whtvmt9xa2ijpa_GKu4rg"
+              alt="Gruul Deck" title="Gruul Deck">
+            <div class="card-img-overlay p-0">
+              <div class="glass-card fs-3 text-dark text-center rounded-top p-1">
+                {{ activeGuild.name }} Starter Deck
               </div>
             </div>
           </div>
-        </div>
+          <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
+            <img :src="oracleCard.image_uris.small" alt="">
+          </div> -->
+        </section>
       </div>
     </section>
-    <section>
-      <Map />
+    <section class="col-md-12">
+      <div class="row">
+        <div class="col-md-5 offset-md-1 mb-3">
+          <Map />
+        </div>
+      </div>
     </section>
   </div>
   <!-- Simic Combine Page -->
@@ -592,22 +607,22 @@ export default {
   background: rgba(196, 211, 202, 0.5);
   backdrop-filter: blur(5px);
   color: #f0f0f0 !important;
-  width: 100%;
   border: none;
 }
 
-.outer-border {
-  border: 2px solid #EB9F82;
-  border-radius: 5px;
-  padding: 6px;
+.glass-card {
+  background: rgba(202, 181, 181, 0.4);
+  backdrop-filter: blur(1px);
+  text-shadow: 2px 2px 2px rgb(31, 29, 29);
+  color: #f2e9e4 !important;
+  width: 100%;
 }
 
-.mid-border {
-  border: 6px solid #EB9F82;
-  border-radius: 5px;
-  padding: 6px;
-  margin: auto;
+.gruul-deck {
+  background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7c1a7ee8-ee25-4224-b5bf-ec4d43489c77/dartqbg-57fdc724-abf7-44f7-9786-57a86ee09733.jpg/v1/fill/w_1024,h_1821,q_75,strp/izzet_league_smartphone_wallpaper_1080p_by_locix_ita_dartqbg-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTgyMSIsInBhdGgiOiJcL2ZcLzdjMWE3ZWU4LWVlMjUtNDIyNC1iNWJmLWVjNGQ0MzQ4OWM3N1wvZGFydHFiZy01N2ZkYzcyNC1hYmY3LTQ0ZjctOTc4Ni01N2E4NmVlMDk3MzMuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.cBa4aKec7aWtUlz7FHBKpsAQVmFf9tkpnqNoh15uEi8);
+  background-size: cover;
 }
+
 
 .inner-border {
   position: relative;
