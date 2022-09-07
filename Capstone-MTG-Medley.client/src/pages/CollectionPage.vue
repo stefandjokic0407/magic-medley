@@ -28,7 +28,7 @@
         <div class="col-12">
           <div class="row">
 
-            <!-- SECTION CAROUSEL FOR DECK CARDS// DIDN'T THINK IT LOOKED GOOD BUT COMMENTED IT OUT FOR NOW -->
+            <!-- SECTION CAROUSEL FOR DECK CARDS// DIDN'T THINK IT LOOKED GOOD BUT COMMENTED IT OUT FOR NOW  -->
             <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div v-for="c in displayCards" :key="c.id" class="carousel-item active">
@@ -54,7 +54,15 @@
           </div>
         </div>
         <div>
-          <h3>My Collection</h3>
+          <div class="row ">
+            <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex">
+              <div class="row mx-auto">
+                <div class="col-12">
+                  <h1 class="bannerFontSize text-center deckText">My Collection</h1>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row">
             <div v-for="c in cards" :key="c.id" class="col-4 col-md-2">
               <CollectionCard :card="c" />
@@ -89,8 +97,7 @@
         </div>
         <div class="row fixed-bottom mx-auto">
           <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable">Create
-            Deck</button>
+            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable">Create Deck</button>
         </div>
       </div>
     </div>
@@ -214,8 +221,8 @@ export default {
       },
     };
   },
-  nents: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
-}
+  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
+};
 </script>
 
 
@@ -262,6 +269,30 @@ export default {
 }
 
 .collectionPageViewHeight {
-  height: 100vh;
+  height: 100%;
+}
+
+.myCollectionsBanner {
+  background-image: url(src/assets/img/CollectionsBanner.png);
+  background-position: center;
+  background-size: cover;
+  height: 20VH;
+  font-family: MagicMedieval;
+}
+
+.bannerFontSize {
+  font-size: 4vw;
+  padding-bottom: 1.5%;
+}
+
+.deckText {
+  -webkit-text-stroke: .5px black;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 </style>
