@@ -281,6 +281,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100%;
+  overflow-y: auto;
   min-width: 1024px;
 
   /* Set up proportionate scaling */
