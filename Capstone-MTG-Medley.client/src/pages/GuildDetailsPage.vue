@@ -4,7 +4,7 @@
   </header>
   <!-- Gruul Clans Page -->
   <div v-if="activeGuild.name == 'Gruul Clans'" class="row gruul">
-    <div class="col-md-3 my-2">
+    <div class="col-md-4 my-2">
       <h4>Guild Members</h4>
       <div class="d-flex my-2">
         <div v-for="m in members" :key="m.id">
@@ -12,14 +12,11 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6 text-center mt-3">
-      <h1><img src="../assets/img/mana-red.png" alt="" height="50" width="50">
-        <span class="p-5">{{ activeGuild.name }}</span><img src="../assets/img/mana-green.png" alt="" height="50"
-          width="50">
-      </h1>
+    <div class="col-md-4 text-center">
+      <h1>{{ activeGuild.name }}</h1>
       <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
     </div>
-    <div class="col-md-3 text-end my-2">
+    <div class="col-md-4 text-end my-2">
       <button v-if="isMember == false" class="btn" @click="joinGuild()">
         <i class="mdi mdi-plus fs-3"></i>
         <span class="fs-5">JOIN GUILD</span>
@@ -30,39 +27,38 @@
       </button>
     </div>
     <!-- GUILD INFO -->
-    <section class="col-md-5 offset-md-1">
-      <!-- Gruul Clans Background -->
-      <div class="card p-3 gruul-bg mb-3 elevation-4">
+    <section class="col-md-5">
+      <div>
         <h4>
           {{ activeGuild.name }} Background
         </h4>
-        Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble
-        guild
-        charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
-        Civilization and the other nine guilds, however, overran every wild place on the plane. This changed the
-        Gruul.
-        <br>
-        <br>
-        The Gruul decentralized, lacking any sort of real leadership. The guild became nothing but a loose
-        affiliation of clans. Exploited and ignored, they started to take any reason to cause chaos, any reason
-        to
-        destroy a symbol of civilization. Most Gruul hold contempt for those outside the Clans, referring to
-        them
-        as
-        "cobble roaches".
-      </div>
-    </section>
-    <section class="col-md-5">
-      <div>
-
-      </div>
-    </section>
-    <section class="col-md-12">
-      <div class="row">
-        <div class="col-md-5 offset-md-1 mb-3">
-          <Map />
+        <!-- Gruul Clans Background -->
+        <div class="card p-0 gruul-bg mb-3 elevation-4">
+          <div class="outer-border">
+            <div class="mid-border">
+              <div class="inner-border p-3">
+                Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble
+                guild
+                charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
+                Civilization and the other nine guilds, however, overran every wild place on the plane. This changed the
+                Gruul.
+                <br>
+                <br>
+                The Gruul decentralized, lacking any sort of real leadership. The guild became nothing but a loose
+                affiliation of clans. Exploited and ignored, they started to take any reason to cause chaos, any reason
+                to
+                destroy a symbol of civilization. Most Gruul hold contempt for those outside the Clans, referring to
+                them
+                as
+                "cobble roaches".
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
+    <section>
+      <Map />
     </section>
   </div>
   <!-- Simic Combine Page -->
@@ -485,7 +481,7 @@
   <!-- CHAT -->
   <footer class="fixed-bottom">
     <div class="row">
-      <div class="col-md-3 offset-md-7">
+      <div class="col-md-3 offset-md-9">
         <GuildChat />
       </div>
     </div>
@@ -503,12 +499,10 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import Member from '../components/Member.vue';
 import GuildChat from '../components/GuildChat.vue';
-import { useRouter } from 'vue-router';
 
 export default {
   setup() {
     const route = useRoute();
-    const router = useRouter();
     async function getGuildById() {
       try {
         await guildsService.getGuildById(route.params.guildId);
@@ -550,7 +544,7 @@ export default {
             accountId: AppState.account.id
           };
           await membersService.joinGuild(newMember);
-          Pop.success(`You've joined the ${AppState.activeGuild.name} Guild`);
+          Pop.toast(`You've joined the ${AppState.activeGuild.name} Guild`);
         }
         catch (error) {
           logger.error("[joining guild]", error);
@@ -562,8 +556,6 @@ export default {
         try {
           const removedMember = AppState.members.find(m => m.accountId == AppState.account.id)
           await membersService.removeFromGuild(removedMember.id)
-
-          router.push({ name: 'Guild' })
         } catch (error) {
           logger.error('[removing from guild]', error);
           Pop.error(error)
@@ -579,13 +571,17 @@ export default {
 
 
 <style scoped lang="scss">
+.profile-pic {
+  border-radius: 50%;
+}
+
 .gruul {
   text-shadow: 1px 1px 3px black;
   color: whitesmoke;
   background-image: url(../assets/img/mtg-guilds/Gruul-Guildgate.jpg);
   background-position: 50% 35%;
   background-size: cover;
-  min-height: 100vh;
+  height: 100vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
@@ -593,14 +589,32 @@ export default {
 }
 
 .gruul-bg {
-  background: rgba(196, 211, 202, .4);
+  background: rgba(196, 211, 202, 0.5);
   backdrop-filter: blur(5px);
   color: #f0f0f0 !important;
   width: 100%;
   border: none;
 }
 
+.outer-border {
+  border: 2px solid #EB9F82;
+  border-radius: 5px;
+  padding: 6px;
+}
 
+.mid-border {
+  border: 6px solid #EB9F82;
+  border-radius: 5px;
+  padding: 6px;
+  margin: auto;
+}
+
+.inner-border {
+  position: relative;
+  border: 2px solid #EB9F82;
+  border-radius: 5px;
+  margin: auto;
+}
 
 .btn {
   text-shadow: 1px 1px 3px black;
