@@ -21,7 +21,7 @@ export const AppState = reactive({
   deckCards: [],
   activeDeck: null,
   collection: [],
-  location: '',
+  currentLocation: '',
   // filter toggles
   searchByName: true,
   searchByType: false,
