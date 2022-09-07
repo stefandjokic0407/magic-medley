@@ -99,7 +99,7 @@ export default {
       },
       async removeCardFromDeck() {
         try {
-          console.log(" Id", props.card.card.image_uris);
+          console.log(" Id", props.card);
           // const yes = await Pop.confirm("Remove Card?");
           // if (!yes) {
           //   return;

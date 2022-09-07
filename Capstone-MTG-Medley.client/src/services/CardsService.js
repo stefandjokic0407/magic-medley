@@ -3,6 +3,7 @@ import { logger } from "../utils/Logger";
 import { Card } from "../models/Card.js";
 import { api, mtg, search } from "./AxiosService";
 import Pop from "../utils/Pop.js";
+import { popScopeId } from "vue";
 
 const baseSearch = "search?as=grid&order=name&q=";
 
@@ -77,6 +78,7 @@ class CardsService {
       if (filterTerm.toughness) {
         searchTerm += toughnessTerm + filterTerm.toughness;
       }
+      console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
 
       console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
 
