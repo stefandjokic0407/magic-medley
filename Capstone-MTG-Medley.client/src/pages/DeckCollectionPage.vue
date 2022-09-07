@@ -4,20 +4,18 @@
   </header>
   <div class="row collectionPageBg collectionPageViewHeight">
     <div class="col-10 px-0">
-      <div class="row align-items-center">
-        <div>
-          <div class="row ">
+          <div class="row align-items-center ">
             <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
               <div class="row mx-auto">
                 <div class="col-12">
-                  <h1 class="bannerFontSize text-center deckText">{{activeDeck.name}}</h1>
+                  <h1 class="bannerFontSize text-center deckText">The Deck</h1>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
 
 
     <!-- SECTION THE OFFCANVAS FOR THE DECKS -->
@@ -30,7 +28,6 @@
 
 
 
-  </div>
 
 </template>
 
