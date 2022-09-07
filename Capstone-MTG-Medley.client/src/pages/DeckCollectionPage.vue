@@ -5,27 +5,6 @@
   <div class="row collectionPageBg collectionPageViewHeight">
     <div class="col-10 px-0">
       <div class="row align-items-center">
-        <!-- add deck component -->
-        <!-- <h3 class="col-4 col-md-12">My Deck
-        </h3> -->
-        <!-- <div v-if="activeDeck" class="col-12 col-md-2 ms-2">
-          <div v-if="activeDeck" class="row">
-            <h4 class="m-0 p-0 text-center col-12 my-2">{{ activeDeck?.name }}</h4>
-            <h5 v-if="deckCards.length" class="m-0 p-0 text-center col-12">Cards:{{ " " + deckCards.length }}</h5>
-            <button v-if="activeDeck" class="btn btn-outline col-6 mx-auto" data-bs-toggle="modal"
-              :data-bs-target="'#deck-form'">Edit
-              Deck</button>
-            <button v-if="activeDeck" class="btn btn-outline col-6 mx-auto" data-bs-toggle="modal"
-              :data-bs-target="'#deck-form'">Delete</button>
-          </div>
-        </div> -->
-        <!-- <div v-if="activeDeck" class="col-12 col-md-4">
-          <div class="row">
-            <img class="img-fluid col-3" :src="activeDeck?.picture" alt="" :title="activeDeck?.name" srcset="">
-            <p class="col-9">{{ activeDeck?.description }}</p>
-          </div>
-        </div> -->
-
         <div>
           <div class="row ">
             <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
@@ -34,11 +13,6 @@
                   <h1 class="bannerFontSize text-center deckText">{{activeDeck.name}}</h1>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="c in cards" :key="c.id" class="col-4 col-md-2">
-              <CollectionCard :card="c" />
             </div>
           </div>
         </div>
@@ -53,35 +27,11 @@
         Your Decks
       </button>
     </div> -->
-    <div class="col-2 myDecksSideBar px-0">
-      <div class="row mx-auto">
-        <div @click.prevent="noActive" v-if="activeDeck"
-          class="d-flex align-items-end deckImg col-11 mx-auto mt-1 selectable">
-          <h5 class="deckText text-start mb-0">{{ activeDeck.name }}</h5>
-        </div>
-        <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto position-relative">
-          <DeckCardCanvas :card="c" />
-        </div>
-        <img v-if="!activeDeck" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
-        <div v-if="decks.length && !activeDeck" class="row mx-auto">
-          <div v-for="d in decks" :key="d.id" class="col-12 col-md-12 mx-auto my-2">
-            <Deck :deck="d" />
-          </div>
-        </div>
-        <div class="row fixed-bottom mx-auto">
-          <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable">Create Deck</button>
-          <button v-if="activeDeck" class="deckText btn btn-outline selectable col-12"
-            @click.prevent="deleteDeck">Delete
-            Deck</button>
-        </div>
-      </div>
-    </div>
+
+
+
   </div>
 
-
-
-  <DeckForm />
 </template>
 
 
@@ -128,8 +78,7 @@ export default {
       activeCards: computed(() => AppState.activeProfile),
 
     };
-  },
-  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
+  }
 };
 </script>
 
