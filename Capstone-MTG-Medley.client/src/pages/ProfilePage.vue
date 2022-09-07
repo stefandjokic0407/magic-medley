@@ -20,6 +20,7 @@
         <router-link class="btn square btn-warning" :to="{ name: 'Account' }"
           >Edit Account
         </router-link>
+        <button class="btn" @click="getProfileDecks">get decks</button>
       </div>
     </div>
 
@@ -66,18 +67,18 @@ export default {
                 router.push({ name: "Home" });
             }
         }
-        async function getProfileDecks() {
-            try {
-                await decksService.getAccountDecks(route.params.profileId);
-                console.log(route.params.profileId)
-            }
-            catch (error) {
-                Pop.error("[getting profile decks]", error);
-            }
-        }
+        // async function getProfileDecks() {
+        //     try {
+        //         await decksService.getAccountDecks(route.params.profileId);
+        //         console.log(route.params.profileId)
+        //     }
+        //     catch (error) {
+        //         Pop.error("[getting profile decks]", error);
+        //     }
+        // }
         onMounted(() => {
             getProfileById();
-            getProfileDecks();
+            // getProfileDecks();
         });
         return {
             route,
@@ -92,7 +93,16 @@ export default {
                   } catch (error) {
                     Pop.error('[setting active deck]', error)
                   }
-                }
+                },
+                async getProfileDecks() {
+            try {
+                await decksService.getAccountDecks(route.params.profileId);
+                console.log(route.params.profileId)
+            }
+            catch (error) {
+                Pop.error("[getting profile decks]", error);
+            }
+        }
         };
     },
     components: { DeckModal, Modal }
