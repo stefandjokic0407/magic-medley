@@ -114,20 +114,10 @@ export default {
         Pop.error(error);
       }
     }
-    async function getAccountDecks() {
-      try {
-        const accountId = AppState.account.id
-        await decksService.getAccountDecks(accountId)
-      } catch (error) {
-        logger.error('[getting account decks]', error);
-        Pop.error(error);
-      }
-    }
+
 
     onMounted(() => {
-      getAccountDecks();
       getAccountCards();
-      // debugger
     });
 
     return {
@@ -137,19 +127,6 @@ export default {
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
       activeCards: computed(() => AppState.activeProfile),
 
-
-
-
-
-      async getDecks() {
-        try {
-          const accountId = AppState.account.id
-          await decksService.getAccountDecks(accountId)
-        } catch (error) {
-          logger.error('[Getting Decks]', error)
-          Pop.toast(error.message, 'error')
-        }
-      },
     };
   },
   components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
