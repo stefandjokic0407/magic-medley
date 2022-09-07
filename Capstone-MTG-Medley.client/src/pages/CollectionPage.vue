@@ -82,9 +82,11 @@
     </div> -->
     <div class="d-none d-md-block col-md-2 myDecksSideBar px-0">
       <div class="row mx-auto">
-        <div @click.prevent="noActive" v-if="activeDeck"
-          class="d-flex align-items-end deckImg col-11 mx-auto mt-1 selectable">
-          <h5 class="deckText text-start mb-0">{{ activeDeck.name }}</h5>
+        <div @click.prevent="noActive" v-if="activeDeck" class="deckImg col-11 mx-auto mt-1 selectable">
+          <div class="row">
+            <h5 class="deckText mb-0 col-12">{{ activeDeck.name }}</h5>
+            <p v-if="activeDeck" class="col-12 deckText">Cards:{{ " " + deckCards.length }}</p>
+          </div>
         </div>
         <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto position-relative">
           <DeckCardCanvas :card="c" />
@@ -98,11 +100,11 @@
         <div class="col-12">
           <div class="row fixed-bottom mx-auto">
             <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-              class="btn btn-outline deckText selectable square col-12" @click.prevent="setEditable">CREATE</button>
+              class="btn btn-outline deckText selectable square col-12">CREATE</button>
             <button v-if="activeDeck" class="deckText btn btn-outline square col-6" @click.prevent="deleteDeck">DELETE
             </button>
-            <button v-if="activeDeck" class="deckText btn btn-outline square col-6"
-              @click.prevent="deleteDeck">EDIT</button>
+            <button v-if="activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
+              class="deckText btn btn-outline square col-6">EDIT</button>
           </div>
         </div>
       </div>
@@ -157,7 +159,6 @@ export default {
     onMounted(() => {
       getAccountDecks();
       getAccountCards();
-      // debugger
     });
 
     return {
@@ -247,6 +248,7 @@ export default {
   height: 90VH;
   position: fixed;
   right: 0;
+  overflow-y: auto;
 }
 
 .myDeckSize {
@@ -269,8 +271,9 @@ export default {
 }
 
 .collectionPageBg {
-  background-color: #0b2423;
-  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  background-color: #faea9b;
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  background-repeat: none;
 
   // background-size: cover;
   // background-position: center;

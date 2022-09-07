@@ -4,9 +4,9 @@
   </header>
 
   <!-- NOTE x-Scrollable guild cards with snap -->
-  <section class="row align-items-center">
+  <section class="row align-items-center wrapper">
     <div class="col-1">
-      <button class="btn btn-light">
+      <button class="btn btn-light" @click="scrollLeft">
         <i class="fs-1 mdi mdi-chevron-left"></i>
       </button>
     </div>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="col-1">
-      <button class="btn btn-light">
+      <button class="btn btn-light" @click="scrollRight">
         <i class="fs-1 mdi mdi-chevron-right"></i>
       </button>
     </div>
@@ -104,6 +104,7 @@ import { useRouter } from "vue-router";
 
 export default {
   setup() {
+    const scrollPosition = ref(0);
     const router = useRouter();
     const message = ref("");
 
@@ -189,6 +190,28 @@ export default {
           window.scrollTo(0, 750);
         }, 100);
       },
+
+      scrollLeft() {
+        let content = document.querySelector(".guild-cards-container");
+        if (scrollPosition.value > 100) {
+          scrollPosition.value -= 500;
+        }
+        content.scrollTo({
+          left: scrollPosition.value,
+          behavior: "smooth",
+        });
+      },
+
+      scrollRight() {
+        let content = document.querySelector(".guild-cards-container");
+        if (scrollPosition.value < 1501) {
+          scrollPosition.value += 500;
+        }
+        content.scrollTo({
+          left: scrollPosition.value,
+          behavior: "smooth",
+        });
+      },
     };
   },
   components: { GuildForm, GuildCard, GuildFaq },
@@ -213,6 +236,7 @@ button:hover {
   scroll-snap-type: x mandatory;
   max-width: 100vw;
   overflow-x: scroll;
+
   > div {
     scroll-snap-align: start;
     scroll-snap-stop: always;

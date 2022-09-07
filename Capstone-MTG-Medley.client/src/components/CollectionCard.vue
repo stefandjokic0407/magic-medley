@@ -117,9 +117,9 @@ export default {
       async removeCard() {
         try {
           let cardId = props.card.cardId
-
+          let cardName = props.card.name
           console.log('Removed Card Id:', cardId)
-          await cardsService.removeCard(cardId, props.card.name)
+          await cardsService.removeCard(cardId, cardName)
         } catch (error) {
           logger.error('[Removing Card from Collection]', error)
           Pop.toast(error.message, 'error')

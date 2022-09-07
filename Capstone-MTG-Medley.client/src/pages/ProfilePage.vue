@@ -25,9 +25,9 @@
 
     <!-- SECTION Profile Decks -->
 
-    <div class="row align-items-center justify-content-center mx-1 deck-container" v-for="d in decks" :key="d.id">
-        <div @click="setActiveDeck(d.id)" type="button" data-bs-toggle="modal"
-            data-bs-target="#deckModal" class="mt-4 col-3 px-0">
+    <div class="row align-items-center justify-content-center mx-1 deck-container">
+        <div v-for="d in decks" :key="d.id" @click="setActiveDeck(d.id)" type="button" data-bs-toggle="modal"
+            data-bs-target="#deckModal" class="mt-4 col-3 px-4">
             <div v-if="d?.picture">
               <h5>{{d?.name}}</h5>
               <img class="img-fluid shadow card-border" :src=d?.picture :title="d?.name">
@@ -38,7 +38,7 @@
     <!-- SECTION Profile Guild -->
     <div class="row"></div>
   </section>
-  <DeckModal id="deckModal"/>
+  <DeckModal/>
 </template>
 
 <script>
@@ -69,6 +69,7 @@ export default {
         async function getProfileDecks() {
             try {
                 await decksService.getAccountDecks(route.params.profileId);
+                console.log(route.params.profileId)
             }
             catch (error) {
                 Pop.error("[getting profile decks]", error);

@@ -4,20 +4,18 @@
   </header>
   <div class="row collectionPageBg collectionPageViewHeight">
     <div class="col-10 px-0">
-      <div class="row align-items-center">
-        <div>
-          <div class="row ">
+          <div class="row align-items-center ">
             <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
               <div class="row mx-auto">
                 <div class="col-12">
-                  <h1 class="bannerFontSize text-center deckText">{{activeDeck.name}}</h1>
+                  <h1 class="bannerFontSize text-center deckText">{{activeDeck?.name}}</h1>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
 
 
     <!-- SECTION THE OFFCANVAS FOR THE DECKS -->
@@ -30,7 +28,6 @@
 
 
 
-  </div>
 
 </template>
 
@@ -38,36 +35,42 @@
 
 <script>
 
+import { useRoute } from 'vue-router';
+import { decksService } from '../services/DecksService.js';
 import { computed } from '@vue/reactivity';
-import { onMounted, ref, watchEffect } from 'vue';
+import { onMounted, ref, watchEffect, } from 'vue';
 import { AppState } from '../AppState.js';
-import { cardsService } from '../services/CardsService.js';
-import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
-import SearchedCards from '../components/SearchedCards.vue';
-import CollectionCard from '../components/CollectionCard.vue';
-import DeckForm from "../components/DeckForm.vue";
-import { decksService } from "../services/DecksService.js";
-import Deck from "../components/Deck.vue";
-import DeckCard from "../components/DeckCard.vue";
-import DeckCardCanvas from "../components/DeckCardCanvas.vue";
+import { deckCardsService } from '../services/DeckCardsService.js';
+
 
 export default {
   setup() {
+    const route = useRoute()
 
-    async function getAccountCards() {
+    // async function getDeckCards(deckId) {
+    //   try {
+    //   await deckCardsService.getDeckCards(deckId)
+    //   }
+    //   catch (error) {
+    //   Pop.error(error);
+    //   console.log(error)
+    //   }
+    // }
+
+    async function setActiveDeck(){
       try {
-        await cardsService.getAccountCards()
+      await decksService.setActiveDeck(route.params.deckId)
+      await deckCardsService.getDeckCards(route.params.deckId)
+      } catch (error) {
+      console.log(error)
+      Pop.error('[setting active deck]', error)
       }
-      catch (error) {
-        logger.log("[getting all cards]", error);
-        Pop.error(error);
       }
-    }
 
 
     onMounted(() => {
-      getAccountCards();
+      setActiveDeck();
     });
 
     return {
