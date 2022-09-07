@@ -513,6 +513,7 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import Member from '../components/Member.vue';
 import GuildChat from '../components/GuildChat.vue';
+import Map from '../components/Map.vue';
 
 export default {
   setup() {
@@ -578,7 +579,7 @@ export default {
 
     };
   },
-  components: { Member, GuildChat }
+  components: { Member, GuildChat, Map }
 };
 </script>
 
