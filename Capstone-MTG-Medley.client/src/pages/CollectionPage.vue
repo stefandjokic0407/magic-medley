@@ -56,7 +56,7 @@
         </div>
         <div class="col-9 mx-auto">
           <div class="row ">
-            <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
+            <div class="myCollectionsBanner mx-auto col-12 col-lg-10 align-items-center d-flex mt-4">
               <div class="row mx-auto">
                 <div class="col-12">
                   <h1 class="bannerFontSize text-center deckText">My Collection</h1>
@@ -99,7 +99,7 @@
           </div>
         </div>
         <div class="col-12">
-          <div class="row fixed-bottom mx-auto">
+          <div class="row fixed-bottom mx-auto position-relative">
             <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
               class="btn btn-outline deckText selectable square col-12" @click.prevent="setEditable">CREATE</button>
             <button v-if="activeDeck" class="deckText btn btn-outline square col-6" @click.prevent="deleteDeck">DELETE
@@ -274,11 +274,12 @@ export default {
 
 .collectionPageBg {
   background-color: #faea9b;
-  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  background-image: url("https://giffiles.alphacoders.com/134/134977.gif");
   background-repeat: none;
   min-height: 100%;
   overflow-y: auto;
   min-width: 1024px;
+  background-size: cover;
 
   /* Set up proportionate scaling */
   width: 100%;
@@ -298,7 +299,8 @@ export default {
   background-image: url(src/assets/img/CollectionsBanner.png);
   background-position: center;
   background-size: cover;
-  height: 20VH;
+  height: 100%;
+  width: auto;
   font-family: MagicMedieval;
 }
 
