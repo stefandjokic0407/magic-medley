@@ -7,10 +7,10 @@ export class DecksController extends BaseController {
     constructor() {
         super('api/decks')
         this.router
-            .get('/:id/deckcards', this.getDeckCards)
             .get('', this.getAllDecks)
+            .get('/:id/deckcards', this.getDeckCards)
             .get('/:id', this.getDeckById)
-            .get("/:accountId", this.getDecksByAccountId)
+            .get("/profile/:accountId", this.getDecksByAccountId)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createDeck)
             .put('/:id', this.editDeck)
@@ -19,8 +19,8 @@ export class DecksController extends BaseController {
 
     async getDecksByAccountId(req, res, next) {
         try {
-            console.log(req.body);
-            const decks = await decksService.getDecksByAccountId(req.body);
+            console.log(req.params.accountId);
+            const decks = await decksService.getDecksByAccountId(req.params.accountId);
             return res.send(decks);
         } catch (error) {
             next(error);

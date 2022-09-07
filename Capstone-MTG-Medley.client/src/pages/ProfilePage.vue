@@ -11,6 +11,7 @@
         <div class="glass-card rounded p-3 my-3">
           <h3>{{ profile.name }}</h3>
           <p>{{ profile.email }}</p>
+          <button class="btn" @click="getProfileDecks">get decks</button>
         </div>
       </div>
     </div>
@@ -92,7 +93,7 @@ export default {
                   } catch (error) {
                     Pop.error('[setting active deck]', error)
                   }
-                }
+                },
         };
     },
     components: { DeckModal, Modal }
