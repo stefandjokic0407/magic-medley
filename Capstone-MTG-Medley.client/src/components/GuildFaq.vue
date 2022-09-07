@@ -1,5 +1,6 @@
 <template>
-  <div class="modal modal-lg fade" id="guildfaq-modal" tabindex="-1" aria-labelledby="guildfaq-modal"
+  <!-- NOTE we shouldn't need this anymore -->
+  <!-- <div class="modal modal-lg fade" id="guildfaq-modal" tabindex="-1" aria-labelledby="guildfaq-modal"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
@@ -15,22 +16,15 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
-
-
 
 <script>
 export default {
-
   setup() {
-
     return {};
   },
 };
 </script>
 
-
-
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>
