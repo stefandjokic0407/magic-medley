@@ -88,7 +88,7 @@ export class AccountController extends BaseController {
   }
   async deleteCardEverywhere(req, res, next) {
     try {
-      const response = await cardsService.deleteCardsEverywhere(
+      const response = await cardsService.deleteCardEverywhere(
         req.params.cardId
       );
       return res.send(response);
