@@ -62,7 +62,7 @@ export default {
       try {
       const deckId = route.params.deckId
       await decksService.setActiveDeck(deckId)
-      await deckCardsService.getDeckCards(deckId)
+      // await deckCardsService.getDeckCards(deckId)
       } catch (error) {
       console.log(error)
       Pop.error('[setting active deck]', error)
