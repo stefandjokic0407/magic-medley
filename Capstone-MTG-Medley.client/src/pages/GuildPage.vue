@@ -5,7 +5,7 @@
 
   <!-- NOTE x-Scrollable guild cards with snap -->
   <section class="row guild-cards-container">
-    <div class="col-md-4 my-4" v-for="g in guilds" :key="g.id">
+    <div class="col-md-3 my-4" v-for="g in guilds" :key="g.id">
       <GuildCard :guild="g" />
     </div>
   </section>
@@ -32,6 +32,7 @@
             data-bs-target="#collapseExample"
             aria-expanded="false"
             aria-controls="collapseExample"
+            @click="scrollDown"
           >
             Guild FAQ's
           </button>
@@ -47,6 +48,7 @@
                 title="guild-img"
                 height="400px"
                 width="400px"
+                id="faqs"
               />
               <img
                 class="img-fluid"
@@ -166,6 +168,13 @@ export default {
       //   console.log(message);
       //   message = ref('')
       // }
+
+      scrollDown() {
+        // document.getElementById("faqs").scrollIntoView({ block: "end" });
+        setTimeout(() => {
+          window.scrollTo(0, 750);
+        }, 100);
+      },
     };
   },
   components: { GuildForm, GuildCard, GuildFaq },

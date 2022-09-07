@@ -175,9 +175,9 @@ export default {
 }
 
 .guild-img {
-  max-height: 600px;
-  // max-height: 400px;
-  // max-width: 250px;
+  // max-height: 600px;
+  height: 60vh;
+  max-width: 20vw;
   border-radius: 5px;
   filter: drop-shadow(3px 3px 3px black);
 }
@@ -185,5 +185,10 @@ export default {
 .card:hover {
   cursor: pointer;
   scale: 1.04 1.09;
+}
+
+.card {
+  height: 60vh;
+  max-width: 20vw;
 }
 </style>
