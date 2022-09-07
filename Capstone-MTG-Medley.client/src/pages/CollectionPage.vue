@@ -80,7 +80,7 @@
         Your Decks
       </button>
     </div> -->
-    <div class="d-none d-md-block col-md-2 myDecksSideBar px-0">
+    <div v-if="decks" class="d-none d-md-block col-md-2 myDecksSideBar px-0">
       <div class="row mx-auto">
         <div @click.prevent="noActive" v-if="activeDeck" class="deckImg col-11 mx-auto mt-1 selectable">
           <div class="row">
@@ -137,28 +137,28 @@ import DeckCardCanvas from "../components/DeckCardCanvas.vue";
 export default {
   setup() {
 
-    async function getAccountCards() {
-      try {
-        await cardsService.getAccountCards()
-      }
-      catch (error) {
-        logger.log("[getting all cards]", error);
-        Pop.error(error);
-      }
-    }
-    async function getAccountDecks() {
-      try {
-        const accountId = AppState.account.id
-        await decksService.getAccountDecks(accountId)
-      } catch (error) {
-        logger.error('[getting account decks]', error);
-        Pop.error(error);
-      }
-    }
+    // async function getAccountCards() {
+    //   try {
+    //     await cardsService.getAccountCards()
+    //   }
+    //   catch (error) {
+    //     logger.log("[getting all cards]", error);
+    //     Pop.error(error);
+    //   }
+    // }
+    // async function getAccountDecks() {
+    //   try {
+    //     const accountId = AppState.account.id
+    //     await decksService.getAccountDecks(accountId)
+    //   } catch (error) {
+    //     logger.error('[getting account decks]', error);
+    //     Pop.error(error);
+    //   }
+    // }
 
     onMounted(() => {
-      getAccountDecks();
-      getAccountCards();
+      // getAccountDecks();
+      // getAccountCards();
     });
 
     return {
