@@ -8,6 +8,9 @@ export const DeckSchema = new Schema(
     // cardIds: { type: Array},
     description: { type: String, maxlength: 5000},
     accountId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
+    likeIds: { type: Array },
+    likes: { type: Array },
+    rating: { type: Array },
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
