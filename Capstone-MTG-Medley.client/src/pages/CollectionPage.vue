@@ -98,6 +98,9 @@
         <div class="row fixed-bottom mx-auto">
           <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
             class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable">Create Deck</button>
+          <button v-if="activeDeck" class="deckText btn btn-outline selectable col-12"
+            @click.prevent="deleteDeck">Delete
+            Deck</button>
         </div>
       </div>
     </div>
