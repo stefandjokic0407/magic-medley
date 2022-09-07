@@ -55,7 +55,7 @@
         </div>
         <div>
           <div class="row ">
-            <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex">
+            <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
               <div class="row mx-auto">
                 <div class="col-12">
                   <h1 class="bannerFontSize text-center deckText">My Collection</h1>
@@ -91,7 +91,7 @@
         </div>
         <img v-if="!activeDeck" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
         <div v-if="decks.length && !activeDeck" class="row mx-auto">
-          <div v-for="d in decks" :key="d.id" class="col-12 col-md-10 mx-auto my-2">
+          <div v-for="d in decks" :key="d.id" class="col-12 col-md-12 mx-auto my-2">
             <Deck :deck="d" />
           </div>
         </div>
@@ -285,7 +285,7 @@ export default {
 
 .bannerFontSize {
   font-size: 4vw;
-  padding-bottom: 1.5%;
+  padding-bottom: 5.7%;
 }
 
 .deckText {
