@@ -102,7 +102,7 @@
             <button v-if="activeDeck" class="deckText btn btn-outline square col-6" @click.prevent="deleteDeck">DELETE
             </button>
             <button v-if="activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-              class="deckText btn btn-outline square col-6" @click.prevent="setEditable">EDIT</button>
+              class="deckText btn btn-outline square col-6">EDIT</button>
           </div>
         </div>
       </div>
@@ -247,6 +247,7 @@ export default {
   height: 90VH;
   position: fixed;
   right: 0;
+  overflow-y: auto;
 }
 
 .myDeckSize {
