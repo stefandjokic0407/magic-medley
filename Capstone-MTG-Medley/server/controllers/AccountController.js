@@ -14,7 +14,6 @@ export class AccountController extends BaseController {
       .put("", this.edit)
       .get("/cards", this.getAllAccountCards)
       .get("/cards/:cardId", this.getCardById)
-      .get("/decks/:id", this.getDecksByAccountId)
       .post("/cards", this.createCard)
       .put("/cards/:cardId", this.updateCard)
       .delete("/cards/:cardId/deleteall", this.deleteCardEverywhere)
@@ -88,7 +87,7 @@ export class AccountController extends BaseController {
   }
   async deleteCardEverywhere(req, res, next) {
     try {
-      const response = await cardsService.deleteCardsEverywhere(
+      const response = await cardsService.deleteCardEverywhere(
         req.params.cardId
       );
       return res.send(response);
@@ -97,14 +96,6 @@ export class AccountController extends BaseController {
     }
   }
 
-  async getDecksByAccountId(req, res, next) {
-    try {
-      const decks = await decksService.getDecksByAccountId(req.userInfo.id);
-      return res.send(decks);
-    } catch (error) {
-      next(error);
-    }
-  }
 
   async getAccountGuildMemberships(req, res, next) {
     try {

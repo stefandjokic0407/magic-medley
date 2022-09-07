@@ -49,6 +49,7 @@ class CardsService {
   async deleteCard(cardId) {
     const collectionCard = await this.getCardById(cardId);
     // await dbContext.Cards.findOne({ id: body.id,});
+    // @ts-ignore
     collectionCard.count--;
 
     // @ts-ignore
