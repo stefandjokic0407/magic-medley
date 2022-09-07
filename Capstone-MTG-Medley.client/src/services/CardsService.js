@@ -143,9 +143,22 @@ class CardsService {
     AppState.activeProfile = res.data;
     return res.data;
   }
-  async removeCard(cardId) {
+  async removeCard(cardId, cardName) {
     const res = await api.delete("account/cards/" + cardId);
-    AppState.collection = AppState.collection.filter((c) => c.id != cardId);
+    switch (res.data.action) {
+      case "none":
+        break;
+      case "confirm-delete":
+        if (await Pop.confirm("Deleting this card will delete all cards.")) {
+          const res = await api.delete(
+            "account/cards/" + cardId + "/deleteall"
+          );
+          logger.log(res.data);
+          AppState.collection = AppState.collection.filter(
+            (c) => c.name != cardName
+          );
+        }
+    }
 
     return res;
   }

@@ -1,36 +1,76 @@
 <template>
     <div class="col-12 map-box">
         <div @submit.prevent="setLocation" class="input-group mb-2" title="Search">
-            <input id="autocomplete" class="form-control" placeholder="Please enter a location..." type="text"
-                v-model="currentLocation" />
+            <input id="autocomplete" class="form-control" placeholder="Please enter a location..." type="text" />
             <button class="btn btn-outline-light" type="submit">Search</button>
         </div>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d282374.8085682811!2d-121.6250911878813!3d38.56072249748669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smagic%20the%20gathering%20gamestore!5e0!3m2!1sen!2sus!4v1662576976114!5m2!1sen!2sus"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d282374.8085682811!2d-121.6250911878813!3d38.56072249748669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1smagic%20the%20gathering%20gamestore!5e0!3m2!1sen!2sus!4v1662576976114!5m2!1sen!2sus"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-style" id="map">
+
+        </div>
     </div>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import { GoogleMap, Marker } from 'vue3-google-map'
+import { defineComponent, onMounted, ref } from 'vue'
 import { mapsService } from "../services/MapsService";
 
 export default defineComponent({
-    components: { GoogleMap, Marker },
     setup() {
         const center = { lat: 43.606630, lng: -116.285810 }
         let currentLocation = ref('')
         let autocomplete
+
+        // function renderMap = () => {
+        //     loadScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Lu464b19aRFfGS2r0C11tIMdzYUPs6c&libraries=places&callback=initMap&v=weekly")
+        // }
+
+        // async function initMap() {
+        //     // The location of Uluru
+        //     const uluru = { lat: -25.344, lng: 131.031 };
+        //     // The map, centered at Uluru
+        //     const map = new google.maps.Map(
+        //         document.getElementById("map").innerHTML,
+        //         {
+        //             zoom: 4,
+        //             center: uluru,
+        //         }
+        //     );
+
+        //     // The marker, positioned at Uluru
+        //     const marker = new google.maps.Marker({
+        //         position: uluru,
+        //         map: map,
+        //     });
+        // }
+
+        // onMounted(() => {
+        //     initMap()
+        // })
+        onMounted(() => {
+            this.renderMap()
+        })
         return {
             center,
-            currentLocation,
-            autocomplete,
+
+
+            async initMap() {
+                // The location of Uluru
+                const uluru = { lat: -25.344, lng: 131.031 };
+                // The map, centered at Uluru
+                const map = await new google.maps.Map(
+                    document.getElementById("map").innerHTML,
+                    {
+                        zoom: 4,
+                        center: uluru,
+                    }
+                );
+                // The marker, positioned at Uluru
+                const marker = new google.maps.Marker({
+                    position: uluru,
+                    map: map,
+                });
+            },
+
 
             async initAutocomplete() {
                 try {
@@ -68,5 +108,9 @@ export default defineComponent({
     padding: .5em;
     border-radius: 5px;
     text-shadow: none;
+}
+
+.map-style {
+    height: 50vh;
 }
 </style>

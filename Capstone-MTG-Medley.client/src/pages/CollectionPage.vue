@@ -101,8 +101,8 @@
               class="btn btn-outline deckText selectable square col-12" @click.prevent="setEditable">CREATE</button>
             <button v-if="activeDeck" class="deckText btn btn-outline square col-6" @click.prevent="deleteDeck">DELETE
             </button>
-            <button v-if="activeDeck" class="deckText btn btn-outline square col-6"
-              @click.prevent="deleteDeck">EDIT</button>
+            <button v-if="activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
+              class="deckText btn btn-outline square col-6">EDIT</button>
           </div>
         </div>
       </div>
@@ -157,7 +157,6 @@ export default {
     onMounted(() => {
       getAccountDecks();
       getAccountCards();
-      // debugger
     });
 
     return {
@@ -247,6 +246,7 @@ export default {
   height: 90VH;
   position: fixed;
   right: 0;
+  overflow-y: auto;
 }
 
 .myDeckSize {
@@ -269,8 +269,9 @@ export default {
 }
 
 .collectionPageBg {
-  background-color: #0b2423;
-  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  background-color: #faea9b;
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  background-repeat: none;
 
   // background-size: cover;
   // background-position: center;
