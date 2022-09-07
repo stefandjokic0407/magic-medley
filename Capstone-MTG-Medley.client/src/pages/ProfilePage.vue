@@ -25,9 +25,9 @@
 
     <!-- SECTION Profile Decks -->
 
-    <div class="row align-items-center justify-content-center mx-1 position-relative" v-for="d in decks" :key="d.id">
+    <div class="row align-items-center justify-content-center mx-1 position-relative deck-container" v-for="d in decks" :key="d.id">
         <div @click="setActiveDeck" type="button" data-bs-toggle="modal"
-            :data-bs-target="'#deckModal'" class="mt-4 col-12 px-0">
+            :data-bs-target="'#deckModal'" class="mt-4 col px-0">
             <div v-if="d?.picture">
               <h5>{{d?.name}}</h5>
               <img class="img-fluid borderRadius shadow cardsBg" :src=d?.picture :title="d?.name">
@@ -116,5 +116,16 @@ export default {
   text-shadow: 2px 2px 2px rgb(31, 29, 29);
   color: #f2e9e4 !important;
   width: 100%;
+}
+
+.deck-container {
+  flex-wrap: nowrap;
+  scroll-snap-type: x mandatory;
+  max-width: 100vw;
+  overflow-x: scroll;
+  > div {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }
 </style>
