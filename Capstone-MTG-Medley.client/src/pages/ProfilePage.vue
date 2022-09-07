@@ -26,10 +26,10 @@
     <!-- SECTION Profile Decks -->
 
     <div class="row align-items-center justify-content-center mx-1 position-relative" v-for="d in decks" :key="d.id">
-        <div :deck="d" @click="setActiveDeck" type="button" data-bs-toggle="modal"
+        <div @click="setActiveDeck" type="button" data-bs-toggle="modal"
             :data-bs-target="'#deckModal'" class="mt-4 col-12 px-0">
-            <div v-if="deck.picture">
-              <img class="img-fluid borderRadius shadow cardsBg" :src=deck.picture :title="deck.name">
+            <div v-if="d?.picture">
+              <img class="img-fluid borderRadius shadow cardsBg" :src=d?.picture :title="d?.name">
             </div>
         </div>
     </div>
@@ -37,6 +37,7 @@
     <!-- SECTION Profile Guild -->
     <div class="row"></div>
   </section>
+  <DeckModal/>
 </template>
 
 <script>
@@ -50,7 +51,6 @@ import { profilesService } from "../services/ProfilesService";
 import Pop from "../utils/Pop";
 
 export default {
-  // props: { deck: { type: Object, required: true } },
   setup() {
     
     const route = useRoute();
