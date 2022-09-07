@@ -4,8 +4,12 @@
   </header>
 
   <!-- NOTE x-Scrollable guild cards with snap -->
-  <section class="row">
-    <div class="col-1"><i class="fs-1 mdi mdi-chevron-left"></i></div>
+  <section class="row align-items-center">
+    <div class="col-1">
+      <button class="btn btn-light">
+        <i class="fs-1 mdi mdi-chevron-left"></i>
+      </button>
+    </div>
     <div class="col-10">
       <div class="row guild-cards-container">
         <div class="col-md-3 my-4" v-for="g in guilds" :key="g.id">
@@ -13,7 +17,11 @@
         </div>
       </div>
     </div>
-    <div class="col-1"><i class="fs-1 mdi mdi-chevron-right"></i></div>
+    <div class="col-1">
+      <button class="btn btn-light">
+        <i class="fs-1 mdi mdi-chevron-right"></i>
+      </button>
+    </div>
   </section>
 
   <section class="row">
@@ -31,7 +39,7 @@
           <GuildFaq /> -->
 
           <button
-            class="btn fs-3"
+            class="btn btn-light fs-3"
             type="button"
             title="Guild Faqs"
             data-bs-toggle="collapse"
