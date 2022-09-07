@@ -24,11 +24,21 @@
     </div>
 
     <!-- SECTION Profile Decks -->
-    <div class="row"></div>
+
+    <div class="row align-items-center justify-content-center mx-1 position-relative deck-container" v-for="d in decks" :key="d.id">
+        <div @click="setActiveDeck" type="button" data-bs-toggle="modal"
+            :data-bs-target="'#deckModal'" class="mt-4 col px-0">
+            <div v-if="d?.picture">
+              <h5>{{d?.name}}</h5>
+              <img class="img-fluid borderRadius shadow cardsBg" :src=d?.picture :title="d?.name">
+            </div>
+        </div>
+    </div>
 
     <!-- SECTION Profile Guild -->
     <div class="row"></div>
   </section>
+  <DeckModal/>
 </template>
 
 <script>
@@ -37,40 +47,46 @@ import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../AppState";
 import { router } from "../router";
+import { decksService } from "../services/DecksService.js";
 import { profilesService } from "../services/ProfilesService";
 import Pop from "../utils/Pop";
+import DeckModal from "../components/DeckModal.vue";
 
 export default {
-  setup() {
-    const route = useRoute();
-
-    // NOTE this function is getting your profile using the Id, it takes in a users profileId
-    async function getProfileById() {
-      try {
-        await profilesService.getProfileById(route.params.profileId);
-      } catch (error) {
-        Pop.error("[Getting profile by Id]", error);
-        router.push({ name: "Home" });
-      }
-    }
-
-    onMounted(() => {
-      getProfileById();
-    });
-
-    return {
-      route,
-      account: computed(() => AppState.account),
-      profile: computed(() => AppState.activeProfile),
-      cover: computed(
-        () =>
-          `url(${
-            AppState.activeProfile?.coverImg ||
-            "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"
-          })`
-      ),
-    };
-  },
+    setup() {
+        const route = useRoute();
+        // NOTE this function is getting your profile using the Id, it takes in a users profileId
+        async function getProfileById() {
+            try {
+                await profilesService.getProfileById(route.params.profileId);
+            }
+            catch (error) {
+                Pop.error("[Getting profile by Id]", error);
+                router.push({ name: "Home" });
+            }
+        }
+        async function getProfileDecks() {
+            try {
+                await decksService.getAccountDecks(route.params.profileId);
+            }
+            catch (error) {
+                Pop.error("[getting profile decks]", error);
+            }
+        }
+        onMounted(() => {
+            getProfileById();
+            getProfileDecks();
+        });
+        return {
+            route,
+            account: computed(() => AppState.account),
+            profile: computed(() => AppState.activeProfile),
+            decks: computed(() => AppState.decks),
+            cover: computed(() => `url(${AppState.activeProfile?.coverImg ||
+                "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"})`),
+        };
+    },
+    components: { DeckModal }
 };
 </script>
 
@@ -100,5 +116,16 @@ export default {
   text-shadow: 2px 2px 2px rgb(31, 29, 29);
   color: #f2e9e4 !important;
   width: 100%;
+}
+
+.deck-container {
+  flex-wrap: nowrap;
+  scroll-snap-type: x mandatory;
+  max-width: 100vw;
+  overflow-x: scroll;
+  > div {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }
 </style>

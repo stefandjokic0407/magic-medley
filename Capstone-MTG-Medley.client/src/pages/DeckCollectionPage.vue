@@ -25,40 +25,13 @@
             <p class="col-9">{{ activeDeck?.description }}</p>
           </div>
         </div> -->
-        <div class="col-12">
-          <div class="row">
 
-            <!-- SECTION CAROUSEL FOR DECK CARDS// DIDN'T THINK IT LOOKED GOOD BUT COMMENTED IT OUT FOR NOW  -->
-            <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div v-for="c in displayCards" :key="c.id" class="carousel-item active">
-              <DeckCard :card="c" />
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div> -->
-
-            <!-- 
-            <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-2 col-md-1 mx-1 my-3">
-              <DeckCard :card="c" />
-            </div> -->
-          </div>
-        </div>
         <div>
           <div class="row ">
             <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
               <div class="row mx-auto">
                 <div class="col-12">
-                  <h1 class="bannerFontSize text-center deckText">My Collection</h1>
+                  <h1 class="bannerFontSize text-center deckText">{{activeDeck.name}}</h1>
                 </div>
               </div>
             </div>
@@ -80,7 +53,7 @@
         Your Decks
       </button>
     </div> -->
-    <div class="d-none d-md-block col-md-2 myDecksSideBar px-0">
+    <div class="col-2 myDecksSideBar px-0">
       <div class="row mx-auto">
         <div @click.prevent="noActive" v-if="activeDeck"
           class="d-flex align-items-end deckImg col-11 mx-auto mt-1 selectable">
@@ -95,15 +68,12 @@
             <Deck :deck="d" />
           </div>
         </div>
-        <div class="col-12">
-          <div class="row fixed-bottom mx-auto">
-            <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-              class="btn btn-outline deckText selectable square col-12" @click.prevent="setEditable">CREATE</button>
-            <button v-if="activeDeck" class="deckText btn btn-outline square col-6" @click.prevent="deleteDeck">DELETE
-            </button>
-            <button v-if="activeDeck" class="deckText btn btn-outline square col-6"
-              @click.prevent="deleteDeck">EDIT</button>
-          </div>
+        <div class="row fixed-bottom mx-auto">
+          <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
+            class="btn btn-outline deckText selectable  col-12" @click.prevent="setEditable">Create Deck</button>
+          <button v-if="activeDeck" class="deckText btn btn-outline selectable col-12"
+            @click.prevent="deleteDeck">Delete
+            Deck</button>
         </div>
       </div>
     </div>
@@ -144,87 +114,19 @@ export default {
         Pop.error(error);
       }
     }
-    async function getAccountDecks() {
-      try {
-        const accountId = AppState.account.id
-        await decksService.getAccountDecks(accountId)
-      } catch (error) {
-        logger.error('[getting account decks]', error);
-        Pop.error(error);
-      }
-    }
+
 
     onMounted(() => {
-      getAccountDecks();
       getAccountCards();
-      // debugger
     });
 
     return {
-      cards: computed(() => AppState.collection),
       decks: computed(() => AppState.decks),
       activeDeck: computed(() => AppState.activeDeck),
       deckCards: computed(() => AppState.deckCards),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
       activeCards: computed(() => AppState.activeProfile),
-      displayCards: computed(() => {
-        let newArray = [...AppState.deckCards]
-        for (let i = 0; i < newArray.length; i++) {
-          const firstCard = newArray[i];
-          firstCard.quantity = 1
-          for (let j = i + 1; j < newArray.length; j++) {
-            const secondCard = newArray[j];
-            if (firstCard.cardId == secondCard.cardId) {
-              firstCard.quantity++
-              newArray.splice(j, 1)
-              j--
-            }
-          }
-        }
-        return newArray
-      }),
 
-      setEditable() {
-        AppState.activeDeck = {}
-      },
-
-      noActive() {
-        AppState.activeDeck = null
-      },
-
-      async deleteDeck() {
-        try {
-          const yes = await Pop.confirm("Remove Deck?");
-          if (!yes) {
-            return;
-          }
-          const deckId = AppState.activeDeck.id
-          console.log('Deck Id:', deckId)
-          await decksService.deleteDeck(deckId)
-          AppState.activeDeck = null
-        } catch (error) {
-          logger.error('[Deleting Deck]', error)
-          Pop.toast(error.message, 'error')
-        }
-      },
-      async getAccountCards() {
-        try {
-          await cardsService.getAccountCards()
-        }
-        catch (error) {
-          logger.log("[getting all cards]", error);
-          Pop.error(error);
-        }
-      },
-      async getDecks() {
-        try {
-          const accountId = AppState.account.id
-          await decksService.getAccountDecks(accountId)
-        } catch (error) {
-          logger.error('[Getting Decks]', error)
-          Pop.toast(error.message, 'error')
-        }
-      },
     };
   },
   components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas }
@@ -269,11 +171,9 @@ export default {
 }
 
 .collectionPageBg {
-  background-color: #0b2423;
-  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
-
-  // background-size: cover;
-  // background-position: center;
+  background-image: url('https://img.freepik.com/premium-photo/abstract-background-beige-brown-grunge-material-old-paper_213524-129.jpg?w=2000');
+  background-size: cover;
+  background-position: center;
 }
 
 .collectionPageViewHeight {

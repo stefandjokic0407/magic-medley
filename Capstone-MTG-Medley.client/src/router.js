@@ -46,6 +46,12 @@ const routes = [
     component: loadPage("AccountPage"),
     beforeEnter: authGuard,
   },
+  {
+    path: "/:deckId",
+    name: "DeckDetails",
+    component: loadPage("DeckCollectionPage"),
+    beforeEnter: authGuard,
+  },
 ];
 
 export const router = createRouter({

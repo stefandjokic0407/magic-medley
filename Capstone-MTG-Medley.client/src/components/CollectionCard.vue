@@ -62,7 +62,6 @@ import Pop from "../utils/Pop";
 export default {
   props: { card: { type: Card, required: true } },
 
-
   setup(props) {
     return {
       cards: computed(() => AppState.collection),
@@ -106,7 +105,8 @@ export default {
           if (!yes) {
             return;
           }
-          const cardId = props.deckcard.id;
+          // NOTE this prop      VVVV     was misspelled as deckcard.id 
+          const cardId = props.deckCard.id;
           await deckCardsService.removeCard(cardId);
         }
         catch (error) {
@@ -117,8 +117,9 @@ export default {
       async removeCard() {
         try {
           let cardId = props.card.cardId
+
           console.log('Removed Card Id:', cardId)
-          await cardsService.removeCard(cardId)
+          await cardsService.removeCard(cardId, props.card.name)
         } catch (error) {
           logger.error('[Removing Card from Collection]', error)
           Pop.toast(error.message, 'error')

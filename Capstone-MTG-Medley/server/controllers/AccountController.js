@@ -2,7 +2,7 @@ import { Auth0Provider } from "@bcwdev/auth0provider";
 import { accountService } from "../services/AccountService";
 import { cardsService } from "../services/CardsService.js";
 import { decksService } from "../services/DecksService.js";
-import { membersService } from '../services/MembersService'
+import { membersService } from "../services/MembersService";
 import BaseController from "../utils/BaseController";
 
 export class AccountController extends BaseController {
@@ -17,8 +17,9 @@ export class AccountController extends BaseController {
       .get("/decks/:id", this.getDecksByAccountId)
       .post("/cards", this.createCard)
       .put("/cards/:cardId", this.updateCard)
+      .delete("/cards/:cardId/deleteall", this.deleteCardEverywhere)
       .delete("/cards/:cardId", this.deleteCard)
-      .get('/members', this.getAccountGuildMemberships);
+      .get("/members", this.getAccountGuildMemberships);
   }
 
   async getUserAccount(req, res, next) {
@@ -85,6 +86,16 @@ export class AccountController extends BaseController {
       next(error);
     }
   }
+  async deleteCardEverywhere(req, res, next) {
+    try {
+      const response = await cardsService.deleteCardEverywhere(
+        req.params.cardId
+      );
+      return res.send(response);
+    } catch (error) {
+      next(error);
+    }
+  }
 
   async getDecksByAccountId(req, res, next) {
     try {
@@ -97,10 +108,12 @@ export class AccountController extends BaseController {
 
   async getAccountGuildMemberships(req, res, next) {
     try {
-      const memberships = await membersService.getAccountGuildMemberships(req.userInfo.id)
-      return res.send(memberships)
+      const memberships = await membersService.getAccountGuildMemberships(
+        req.userInfo.id
+      );
+      return res.send(memberships);
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 }
