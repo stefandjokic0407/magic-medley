@@ -12,11 +12,8 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 text-center mt-3">
-      <h1><img src="../assets/img/mana-red.png" alt="" height="50" width="50">
-        <span class="p-5">{{ activeGuild.name }}</span><img src="../assets/img/mana-green.png" alt="" height="50"
-          width="50">
-      </h1>
+    <div class="col-md-4 text-center">
+      <h1>{{ activeGuild.name }}</h1>
       <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
     </div>
     <div class="col-md-4 text-end my-2">
@@ -30,31 +27,45 @@
       </button>
     </div>
     <!-- GUILD INFO -->
-    <section class="col-md-5 offset-md-1">
-      <!-- Gruul Clans Background -->
-      <div class="card p-3 gruul-bg mb-3 elevation-4">
-        <h4>
-          {{ activeGuild.name }} Background
-        </h4>
-        Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble
-        guild
-        charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
-        Civilization and the other nine guilds, however, overran every wild place on the plane. This changed the
-        Gruul.
-        <br>
-        <br>
-        The Gruul decentralized, lacking any sort of real leadership. The guild became nothing but a loose
-        affiliation of clans. Exploited and ignored, they started to take any reason to cause chaos, any reason
-        to
-        destroy a symbol of civilization. Most Gruul hold contempt for those outside the Clans, referring to
-        them
-        as
-        "cobble roaches".
-      </div>
-    </section>
-    <section class="col-md-5">
-      <div>
-
+    <section class="col-md-12">
+      <div class="row align-items-center">
+        <section class="col-md-5 offset-md-1">
+          <!-- Gruul Clans Background -->
+          <div class="card p-3 gruul-bg mb-3 elevation-4">
+            <h4>
+              {{ activeGuild.name }} Background
+            </h4>
+            Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble
+            guild
+            charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
+            Civilization and the other nine guilds, however, overran every wild place on the plane. This changed the
+            Gruul.
+            <br>
+            <br>
+            The Gruul decentralized, lacking any sort of real leadership. The guild became nothing but a loose
+            affiliation of clans. Exploited and ignored, they started to take any reason to cause chaos, any reason
+            to
+            destroy a symbol of civilization. Most Gruul hold contempt for those outside the Clans, referring to
+            them
+            as
+            "cobble roaches".
+          </div>
+        </section>
+        <section class="col-md-2 offset-md-1">
+          <div class="card mb-3 border-none">
+            <img class="gruul-deck rounded elevation-4"
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7c1a7ee8-ee25-4224-b5bf-ec4d43489c77/dartqc3-2bccbd58-4c87-4111-9ab1-21b3dc8abb84.jpg/v1/fill/w_670,h_1192,q_70,strp/gruul_clans_smartphone_wallpaper_1080p_by_locix_ita_dartqc3-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTkyMCIsInBhdGgiOiJcL2ZcLzdjMWE3ZWU4LWVlMjUtNDIyNC1iNWJmLWVjNGQ0MzQ4OWM3N1wvZGFydHFjMy0yYmNjYmQ1OC00Yzg3LTQxMTEtOWFiMS0yMWIzZGM4YWJiODQuanBnIiwid2lkdGgiOiI8PTEwODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.41brHS-Ebvlvh99GHE39I6whtvmt9xa2ijpa_GKu4rg"
+              alt="Gruul Deck" title="Gruul Deck">
+            <div class="card-img-overlay p-0">
+              <div class="glass-card fs-3 text-dark text-center rounded-top p-1">
+                {{ activeGuild.name }} Starter Deck
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
+            <img :src="oracleCard.image_uris.small" alt="">
+          </div> -->
+        </section>
       </div>
     </section>
     <section class="col-md-12">
@@ -485,7 +496,7 @@
   <!-- CHAT -->
   <footer class="fixed-bottom">
     <div class="row">
-      <div class="col-md-3 offset-md-8">
+      <div class="col-md-3 offset-md-9">
         <GuildChat />
       </div>
     </div>
@@ -503,12 +514,10 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import Member from '../components/Member.vue';
 import GuildChat from '../components/GuildChat.vue';
-import { useRouter } from 'vue-router';
 
 export default {
   setup() {
     const route = useRoute();
-    const router = useRouter();
     async function getGuildById() {
       try {
         await guildsService.getGuildById(route.params.guildId);
@@ -550,7 +559,7 @@ export default {
             accountId: AppState.account.id
           };
           await membersService.joinGuild(newMember);
-          Pop.success(`You've joined the ${AppState.activeGuild.name} Guild`);
+          Pop.toast(`You've joined the ${AppState.activeGuild.name} Guild`);
         }
         catch (error) {
           logger.error("[joining guild]", error);
@@ -562,8 +571,6 @@ export default {
         try {
           const removedMember = AppState.members.find(m => m.accountId == AppState.account.id)
           await membersService.removeFromGuild(removedMember.id)
-
-          router.push({ name: 'Guild' })
         } catch (error) {
           logger.error('[removing from guild]', error);
           Pop.error(error)
@@ -579,13 +586,17 @@ export default {
 
 
 <style scoped lang="scss">
+.profile-pic {
+  border-radius: 50%;
+}
+
 .gruul {
   text-shadow: 1px 1px 3px black;
   color: whitesmoke;
   background-image: url(../assets/img/mtg-guilds/Gruul-Guildgate.jpg);
   background-position: 50% 35%;
   background-size: cover;
-  min-height: 100vh;
+  height: 100vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
@@ -593,14 +604,32 @@ export default {
 }
 
 .gruul-bg {
-  background: rgba(196, 211, 202, .4);
+  background: rgba(196, 211, 202, 0.5);
   backdrop-filter: blur(5px);
   color: #f0f0f0 !important;
-  width: 100%;
   border: none;
 }
 
+.glass-card {
+  background: rgba(202, 181, 181, 0.4);
+  backdrop-filter: blur(1px);
+  text-shadow: 2px 2px 2px rgb(31, 29, 29);
+  color: #f2e9e4 !important;
+  width: 100%;
+}
 
+.gruul-deck {
+  background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7c1a7ee8-ee25-4224-b5bf-ec4d43489c77/dartqbg-57fdc724-abf7-44f7-9786-57a86ee09733.jpg/v1/fill/w_1024,h_1821,q_75,strp/izzet_league_smartphone_wallpaper_1080p_by_locix_ita_dartqbg-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTgyMSIsInBhdGgiOiJcL2ZcLzdjMWE3ZWU4LWVlMjUtNDIyNC1iNWJmLWVjNGQ0MzQ4OWM3N1wvZGFydHFiZy01N2ZkYzcyNC1hYmY3LTQ0ZjctOTc4Ni01N2E4NmVlMDk3MzMuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.cBa4aKec7aWtUlz7FHBKpsAQVmFf9tkpnqNoh15uEi8);
+  background-size: cover;
+}
+
+
+.inner-border {
+  position: relative;
+  border: 2px solid #EB9F82;
+  border-radius: 5px;
+  margin: auto;
+}
 
 .btn {
   text-shadow: 1px 1px 3px black;

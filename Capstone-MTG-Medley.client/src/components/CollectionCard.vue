@@ -1,12 +1,18 @@
+<!-- <draggable
+v-model="myArray" 
+group="people" 
+@start="drag=true" 
+@end="drag=false" 
+item-key="id"> -->
 <template>
   <div class="row align-items-center justify-content-center mx-1 position-relative">
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
       :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
       <div v-if="card.image_uris?.normal">
-          <img class="img-fluid shadow cardsBg"
-            :class="!activeDeck || deckCard?.find(d => d.cardId == card.cardId) ? '' : 'card-in-deck'"
-            :src=card.image_uris?.normal :title="card.name">
-          <!-- <p class="xsFont">{{deckCard}}</p> -->
+        <img class="img-fluid borderRadius shadow cardsBg"
+          :class="!activeDeck || deckCard?.find(d => d.cardId == card.cardId) ? '' : 'card-in-deck'"
+          :src=card.image_uris?.normal :title="card.name">
+        <!-- <p class="xsFont">{{deckCard}}</p> -->
       </div>
 
       <div v-else>
@@ -14,11 +20,10 @@
           src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
       </div>
 
-        <i v-if="activeDeck" @click="createDeckCard(card.cardId)" title="add to deck"
-          class="btn mdi mdi-plus-circle mdi-36px add-button"></i>
 
-        <i v-if="activeDeck && deckCard?.find(d => d.cardId == card.cardId)" title="remove from deck" @click="removeDeckCard(card.cardId)"
-          class="mdi mdi-minus-circle mdi-36px remove-button btn remove-from-deck"></i>
+      <!-- <i v-if="activeDeck && deckCard?.find(d => d.cardId == card.cardId)" title="remove from deck"
+        @click="removeCardFromDeck(card.cardId)"
+        class="mdi mdi-minus-circle mdi-36px remove-button btn remove-from-deck"></i> -->
 
       <div class="cardCount">
         <p class=" mx-2 mb-1"><i class="mdi mdi-card-multiple-outline"></i>&nbsp<b> {{
@@ -26,6 +31,8 @@
         }}</b></p>
       </div>
     </div>
+    <i v-if="activeDeck" @click="createDeckCard(card.cardId)" title="Add to Deck"
+      class="deckText  mdi mdi-plus-circle mdi add-button"></i>
 
     <!-- <p v-if="activeDeck" class="col-10 text-end cardCount"><i class="mdi mdi-card-multiple-outline"></i>&nbsp
       &nbsp<b>{{
@@ -42,6 +49,7 @@
   </Modal>
 
 </template>
+<!-- </draggable> -->
 <script>
 import { computed } from '@vue/reactivity';
 import { AppState } from '../AppState.js';
@@ -92,13 +100,18 @@ export default {
           Pop.error(error);
         }
       },
-      async removeDeckCard() {
+      async removeCardFromDeck() {
         try {
-          let cardId = props.card.cardId
-          await deckCardsService.removeCard(cardId)
-        } catch (error) {
-          logger.error('[Removing Card from Collection]', error)
-          Pop.toast(error.message, 'error')
+          const yes = await Pop.confirm("Remove Card?");
+          if (!yes) {
+            return;
+          }
+          const cardId = props.deckcard.id;
+          await deckCardsService.removeCard(cardId);
+        }
+        catch (error) {
+          logger.error(error);
+          Pop.toast(error.message, "error");
         }
       },
       async removeCard() {
@@ -130,17 +143,17 @@ export default {
   font-size: x-small;
 }
 
-.remove-button {
-  position: absolute;
-  color: goldenrod;
-  left: 200px;
-  bottom: 100px;
-}
+// .remove-button {
+//   position: absolute;
+//   color: goldenrod;
+//   left: 200px;
+//   bottom: 100px;
+// }
 
-.remove-button:hover {
-  color: whitesmoke;
-  transition: 0.3s;
-}
+// .remove-button:hover {
+//   color: whitesmoke;
+//   transition: 0.3s;
+// }
 
 .position-relative {
   position: relative;
@@ -155,8 +168,9 @@ export default {
 .add-button {
   position: absolute;
   color: goldenrod;
-  left: 200px;
-  top: 15px;
+  left: 40px;
+  bottom: 47px;
+  font-size: 1.5vw;
 }
 
 .add-button:hover {
@@ -193,4 +207,19 @@ export default {
 //   color: rgb(0, 0, 0);
 //   border: none;
 // }
+
+.deckText {
+  -webkit-text-stroke: .5px black;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow:
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+.borderRadius {
+  border-radius: 7%;
+}
 </style>

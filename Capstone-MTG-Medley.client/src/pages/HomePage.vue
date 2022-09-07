@@ -1,15 +1,45 @@
 <template>
-
   <div class="row justify-content-center hero-img">
     <div class="col-12 text-center">
-      <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="">
-    </div>
-    <div>
-      <FooterNav />
+      <img
+        class="img-fluid"
+        src="../assets/img/FullLogo_Transparent_NoBuffer.png"
+        alt=""
+      />
+      <div class="row d-flex my-4">
+        <div class="col-4">
+          <div class="fs-4 btn btn-secondary selectable">
+            <router-link :to="{ name: 'Search' }" class="text-my-light">
+              Search Cards
+            </router-link>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="fs-4 btn btn-secondary selectable">
+            <router-link
+              :to="{ name: 'Guild' }"
+              class="text-my-light selectable"
+            >
+              Guild
+            </router-link>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="fs-4 btn btn-secondary selectable">
+            <router-link :to="{ name: 'Collection' }" class="text-my-light">
+              My Collection
+            </router-link>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-
+  <div class="row">
+    <div class="col-12">
+      <FooterNav />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -17,16 +47,14 @@ import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
-import { cardsService } from "../services/CardsService"
-import { symbolsService } from "../services/SymbolsService"
+import { cardsService } from "../services/CardsService";
+import { symbolsService } from "../services/SymbolsService";
 import { onMounted } from "vue";
 import SearchedCards from "../components/SearchedCards.vue";
 import FooterNav from "../components/FooterNav.vue";
 
-
 export default {
   setup() {
-
     // async function getSymbols() {
     //   try {
     //     await symbolsService.getSymbols();
@@ -44,8 +72,8 @@ export default {
       searchedCards: computed(() => AppState.searchedCards),
     };
   },
-  components: { SearchedCards, FooterNav }
-}
+  components: { SearchedCards, FooterNav },
+};
 </script>
 
 <style scoped lang="scss">
@@ -63,8 +91,8 @@ a:active {
 }
 
 img {
-  height: 40em;
-  width: 50em;
+  height: 30em;
+  width: 40em;
 }
 
 .hero-img {
