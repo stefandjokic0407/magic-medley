@@ -8,7 +8,7 @@ import { popScopeId } from "vue";
 const baseSearch = "search?as=grid&order=name&q=";
 
 class CardsService {
-  // NOTE this is connected to the search bar and works
+  // NOTE this is connected to the search bar and works - if statement spaghetti that is appending our search term and filter term to the api URL, we had to do this because of how our API works
   async getCardsBySearch(searchTerm, filterTerm) {
     let manaTerm = null;
     let powerTerm = null;
@@ -78,6 +78,7 @@ class CardsService {
       if (filterTerm.toughness) {
         searchTerm += toughnessTerm + filterTerm.toughness;
       }
+      console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
 
       console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
 
@@ -142,22 +143,9 @@ class CardsService {
     AppState.activeProfile = res.data;
     return res.data;
   }
-  async removeCard(cardId, cardName) {
+  async removeCard(cardId) {
     const res = await api.delete("account/cards/" + cardId);
-    switch (res.data.action) {
-      case "none":
-        break;
-      case "confirm-delete":
-        if (await Pop.confirm("Deleting this card will delete all cards.")) {
-          const res = await api.delete(
-            "account/cards/" + cardId + "/deleteall"
-          );
-          logger.log(res.data);
-          AppState.collection = AppState.collection.filter(
-            (c) => c.name != cardName
-          );
-        }
-    }
+    AppState.collection = AppState.collection.filter((c) => c.id != cardId);
 
     return res;
   }
