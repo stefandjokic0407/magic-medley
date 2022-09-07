@@ -27,7 +27,7 @@
 
     <div class="row align-items-center justify-content-center mx-1 deck-container" v-for="d in decks" :key="d.id">
         <div @click="setActiveDeck(d.id)" type="button" data-bs-toggle="modal"
-            :data-bs-target="'#deckModal'" class="mt-4 col-3 px-0">
+            data-bs-target="#deckModal" class="mt-4 col-3 px-0">
             <div v-if="d?.picture">
               <h5>{{d?.name}}</h5>
               <img class="img-fluid shadow card-border" :src=d?.picture :title="d?.name">
@@ -38,7 +38,7 @@
     <!-- SECTION Profile Guild -->
     <div class="row"></div>
   </section>
-  <DeckModal />
+  <DeckModal id="deckModal"/>
 </template>
 
 <script>
