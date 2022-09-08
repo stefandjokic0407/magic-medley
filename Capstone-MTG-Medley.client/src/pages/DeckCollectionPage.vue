@@ -10,13 +10,16 @@
                 <div class="col-12">
                   <h1 class="bannerFontSize text-center deckText">{{activeDeck?.name}}</h1>
                 </div>
-                <div class="col-3">
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+<div class="row">
+  <div class="col-2" v-for="c in deckCards" :key="c.id">
+    <DeckDetailsCard :card="c" />
+  </div>
+</div>
 
 
 
@@ -44,7 +47,10 @@ import { onMounted, ref, watchEffect, } from 'vue';
 import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
 import { deckCardsService } from '../services/DeckCardsService.js';
+import CollectionCard from '../components/CollectionCard.vue';
 import DeckCard from '../components/DeckCard.vue';
+import SearchedCards from '../components/SearchedCards.vue';
+import DeckDetailsCard from '../components/DeckDetailsCard.vue';
 
 
 export default {
@@ -80,7 +86,7 @@ export default {
             activeCards: computed(() => AppState.activeProfile),
         };
     },
-    components: { DeckCard }
+    components: { DeckCard, DeckDetailsCard }
 };
 </script>
 
