@@ -1,7 +1,7 @@
 <template>
     <div class="modal fade" id="deckModal" tabindex="-1" :aria-labelledby="activeDeck?.name" aria-hidden="true">
-        <div class="modal-dialog deck-modal">
-            <div v-if="activeDeck.id" class="modal-content">
+        <div class="modal-dialog">
+            <div v-if="activeDeck.id" class="modal-content" style="width: 15rem;">
 
                 <div class="card hero-img">
                     <h5 class="card-title text-center text-light"><b>{{activeDeck?.name}}</b></h5>
@@ -18,9 +18,9 @@
                     <div class="card-body">
                         <span class="d-flex justify-content-around">
                             <button class="btn btn-outline-light">Rating up</button>
-                            <p class="text-center">Community Rating:<br>{{calcRating}}/{{activeDeck.rating?.length*5}}
+                            <p class="text-center">Community Rating:<br>{{activeDeck?.avgRating}}/{{activeDeck.rating?.length*5}}
                             </p>
-                            <button @click="deckDetails" class="btn btn-outline-light" data-bs-dismiss="modal"
+                            <button @click="deckDetails" class="btn btn-outline-light" @click="rateDeck(5)" data-bs-dismiss="modal"
                                 data-bs-target="#deckModal">Deck Details</button>
                         </span>
                         <p class="card-text px-4">{{activeDeck?.description}}</p>
@@ -38,6 +38,8 @@ import { computed } from '@vue/reactivity';
 import { Modal } from "bootstrap";
 import { AppState } from '../AppState.js';
 import { router } from "../router.js";
+import { decksService } from "../services/DecksService.js";
+import Pop from "../utils/Pop.js";
 
 
 export default {
@@ -62,6 +64,16 @@ export default {
                     console.log(error)
                 }
             },
+
+            async rateDeck(num) {
+                try {
+                    const accountId = this.activeDeck.accountId
+                    const deckId = this.activeDeck.id
+                    await decksService.rateDeck({value: num}, deckId, accountId)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
 
         }
     }
