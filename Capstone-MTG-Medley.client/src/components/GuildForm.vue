@@ -24,9 +24,17 @@
                     <option value="Boros Legion">Boros Legion</option>
                     <option value="Simic Combine">Simic Combine</option>
                     <option value="Gruul Clans">Gruul Clans</option>
-
                   </select>
                 </div>
+                <label class="form-label">Background Image</label>
+                <input type="url" class="form-control" v-model="editable.coverImg" placeholder="Cover Image" />
+                <label class="form-label">Guild Card Image</label>
+                <input type="url" class="form-control" v-model="editable.cardImg" placeholder="Card Image" />
+                <label class="form-label">Icon</label>
+                <input type="url" class="form-control" v-model="editable.icon" placeholder="Icon Image" />
+                <label class="form-label">Guild Background</label>
+                <textarea type="text" class="form-control" v-model="editable.background" rows="10"
+                  placeholder="Guild Background"></textarea>
                 <button type="submit" class="btn btn-primary col-md-10 offset-md-1 mt-5 mb-2"
                   data-bs-dismiss="modal">Join Guild</button>
               </div>
@@ -57,11 +65,8 @@ export default {
 
       async createGuild() {
         try {
-
           await guildsService.createGuild(editable.value)
           Pop.toast('Guild Created')
-          // router.push({name: 'GuildDetails', params: {guildId: editable.value.id}})
-          // router.push not working - need to look at some again
         } catch (error) {
           logger.error('[creating guild]', error)
           Pop.error(error)
@@ -75,4 +80,5 @@ export default {
 
 
 <style scoped lang="scss">
+
 </style>

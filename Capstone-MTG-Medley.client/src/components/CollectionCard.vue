@@ -1,11 +1,5 @@
-<!-- <draggable
-v-model="myArray" 
-group="people" 
-@start="drag=true" 
-@end="drag=false" 
-item-key="id"> -->
 <template>
-  <div class="row align-items-center justify-content-center mx-1 position-relative">
+  <div class="row align-items-center justify-content-center mx-1">
     <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
       :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
       <div v-if="card.image_uris?.normal">
@@ -25,6 +19,7 @@ item-key="id"> -->
         @click="removeCardFromDeck(card.cardId)"
         class="mdi mdi-minus-circle mdi-36px remove-button btn remove-from-deck"></i> -->
     </div>
+
   </div>
   <div class="col-9 mx-auto">
     <div class="row ">
@@ -45,13 +40,7 @@ item-key="id"> -->
       </div>
     </div>
   </div>
-
-  <!-- <p v-if="activeDeck" class="col-10 text-end cardCount"><i class="mdi mdi-card-multiple-outline"></i>&nbsp
-      &nbsp<b>{{
-          (card.count)
-      }}</b>
-    </p> -->
-
+  <!-- NOTE COLLECTION CARD MODAL -->
   <Modal :id="'collectionCardModal' + card.cardId">
     <CardModal :card="card" />
   </Modal>
@@ -211,15 +200,6 @@ export default {
   border: solid rgba(255, 255, 255, 0.435) 1px;
 }
 
-// .addCard {
-//   z-index: 1;
-//   position: relative;
-//   top: 45px;
-//   left: 0px;
-//   color: rgb(0, 0, 0);
-//   border: none;
-// }
-
 .deckText {
   -webkit-text-stroke: .5px black;
   color: rgba(255, 255, 255, 0.88);
@@ -233,5 +213,9 @@ export default {
 
 .borderRadius {
   border-radius: 7%;
+}
+
+.modal-backdrop {
+  position: static !important;
 }
 </style>

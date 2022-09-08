@@ -1,5 +1,6 @@
 <template>
-  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" id="deck-form" aria-hidden="true">
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" id="deck-form-create"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <form @submit.prevent="handleSubmit" class="p-2">
@@ -29,8 +30,6 @@ import { AppState } from '../AppState.js';
 
 export default {
   setup() {
-    const editable = ref({})
-
     watchEffect(() => {
       if (!AppState.activeDeck) { return }
       editable.value = { ...AppState.activeDeck }
@@ -41,17 +40,12 @@ export default {
       async handleSubmit() {
         try {
           debugger
-          if (editable.value.id) {
-            await decksService.editDeck(editable.value)
-            Pop.success('Deck Edited!')
-          } else {
-            await decksService.createDeck(editable.value)
-            Pop.success('Deck Created Successfully!')
-            Modal.getOrCreateInstance(document.getElementById('deck-form')).hide()
-          }
-          AppState.activeDeck = {}
+          await decksService.createDeck(card)
+          Pop.success('Deck Created Successfully!')
+          Modal.getOrCreateInstance(document.getElementById('deck-form-create')).hide()
+          // AppState.activeDeck = null
         } catch (error) {
-          Pop.error('[Editing, Creating Deck]', error)
+          Pop.error(error)
         }
       },
 

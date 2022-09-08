@@ -44,114 +44,114 @@
         <span class="row">
           <!-- SECTION Format -->
           <section class="col collapse multi-collapse" id="multiCollapseFormat">
-        <div class=" mt-1">
-          <h4>Format</h4>
-          <div class="">
-            <div class="form-check">
-              <input @click="filter.format = ''" checked class=" form-check-input" type="radio" name="radiosFormat"
-                id="radiosFormatAll" value="">
-              <label class="form-check-label" for="radiosFormatAll">All</label>
+            <div class=" mt-1">
+              <h4>Format</h4>
+              <div class="">
+                <div class="form-check">
+                  <input @click="filter.format = ''" checked class=" form-check-input" type="radio" name="radiosFormat"
+                    id="radiosFormatAll" value="">
+                  <label class="form-check-label" for="radiosFormatAll">All</label>
+                </div>
+                <div class="form-check">
+                  <input @click="filter.format = 'standard'" class=" form-check-input" type="radio" name="radiosFormat"
+                    id="radiosFormatStandard" value="standard">
+                  <label class="form-check-label" for="radiosFormatStandard">Standard</label>
+                </div>
+                <div class="form-check">
+                  <input @click="filter.format = 'modern'" class=" form-check-input" type="radio" name="radiosFormat"
+                    id="radiosFormatModern" value="modern">
+                  <label class="form-check-label" for="radiosFormatModern">Modern</label>
+                </div>
+                <div class="form-check">
+                  <input @click="filter.format = 'legacy'" class=" form-check-input" type="radio" name="radiosFormat"
+                    id="radiosFormatLegacy" value="legacy">
+                  <label class="form-check-label" for="radiosFormatLegacy">Legacy</label>
+                </div>
+                <div class="form-check">
+                  <input @click="filter.format = 'vintage'" class=" form-check-input" type="radio" name="radiosFormat"
+                    id="radiosFormatVintage" value="vintage">
+                  <label class="form-check-label" for="radiosFormatVintage">Vintage</label>
+                </div>
+                <div class="form-check">
+                  <input @click="filter.format = 'pauper'" class=" form-check-input" type="radio" name="radiosFormat"
+                    id="radiosFormatPauper" value="pauper">
+                  <label class="form-check-label" for="radiosFormatPauper">Pauper</label>
+                </div>
+                <div class="form-check">
+                  <input @click="filter.format = 'commander'" class=" form-check-input" type="radio" name="radiosFormat"
+                    id="radiosFormatCommander" value="commander">
+                  <label class="form-check-label" for="radiosFormatCommander">Commander</label>
+                </div>
+              </div>
             </div>
-            <div class="form-check">
-              <input @click="filter.format = 'standard'" class=" form-check-input" type="radio" name="radiosFormat"
-                id="radiosFormatStandard" value="standard">
-              <label class="form-check-label" for="radiosFormatStandard">Standard</label>
-            </div>
-            <div class="form-check">
-              <input @click="filter.format = 'modern'" class=" form-check-input" type="radio" name="radiosFormat"
-                id="radiosFormatModern" value="modern">
-              <label class="form-check-label" for="radiosFormatModern">Modern</label>
-            </div>
-            <div class="form-check">
-              <input @click="filter.format = 'legacy'" class=" form-check-input" type="radio" name="radiosFormat"
-                id="radiosFormatLegacy" value="legacy">
-              <label class="form-check-label" for="radiosFormatLegacy">Legacy</label>
-            </div>
-            <div class="form-check">
-              <input @click="filter.format = 'vintage'" class=" form-check-input" type="radio" name="radiosFormat"
-                id="radiosFormatVintage" value="vintage">
-              <label class="form-check-label" for="radiosFormatVintage">Vintage</label>
-            </div>
-            <div class="form-check">
-              <input @click="filter.format = 'pauper'" class=" form-check-input" type="radio" name="radiosFormat"
-                id="radiosFormatPauper" value="pauper">
-              <label class="form-check-label" for="radiosFormatPauper">Pauper</label>
-            </div>
-            <div class="form-check">
-              <input @click="filter.format = 'commander'" class=" form-check-input" type="radio" name="radiosFormat"
-                id="radiosFormatCommander" value="commander">
-              <label class="form-check-label" for="radiosFormatCommander">Commander</label>
-            </div>
-          </div>
-        </div>
           </section>
 
           <!-- SECTION Color -->
           <!-- NOTE should add options to filter, right now its just any that include -->
           <section class="col collapse multi-collapse" id="multiCollapseColor">
-        <div class=" mt-1">
-          <h4>Color</h4>
+            <div class=" mt-1">
+              <h4>Color</h4>
 
-          <div class="">
-            <input type="checkbox" class="" @change="filterChange('color', 'u')">
-            <label class="form-check-label ps-2">Blue</label><br>
-            <input type="checkbox" class="" @change="filterChange('color', 'g')">
-            <label class="form-check-label ps-2">Green</label><br>
-            <input type="checkbox" class="" @change="filterChange('color', 'w')">
-            <label class="form-check-label ps-2">White</label><br>
-            <input type="checkbox" class="" @change="filterChange('color', 'r')">
-            <label class="form-check-label ps-2 ">Red</label><br>
-            <input type="checkbox" class="" @change="filterChange('color', 'b')">
-            <label class="form-check-label ps-2">Black</label><br>
-            <!-- FIXME all searches show colorless when its not selected -->
-            <input type="checkbox" class="" @change="filterChange('color', 'c')">
-            <label class="form-check-label ps-2">Colorless</label><br>
-          </div>
-        </div>
+              <div class="">
+                <input type="checkbox" class="" @change="filterChange('color', 'u')">
+                <label class="form-check-label ps-2">Blue</label><br>
+                <input type="checkbox" class="" @change="filterChange('color', 'g')">
+                <label class="form-check-label ps-2">Green</label><br>
+                <input type="checkbox" class="" @change="filterChange('color', 'w')">
+                <label class="form-check-label ps-2">White</label><br>
+                <input type="checkbox" class="" @change="filterChange('color', 'r')">
+                <label class="form-check-label ps-2 ">Red</label><br>
+                <input type="checkbox" class="" @change="filterChange('color', 'b')">
+                <label class="form-check-label ps-2">Black</label><br>
+                <!-- FIXME all searches show colorless when its not selected -->
+                <input type="checkbox" class="" @change="filterChange('color', 'c')">
+                <label class="form-check-label ps-2">Colorless</label><br>
+              </div>
+            </div>
           </section>
 
           <!-- SECTION Rarity -->
           <!-- NOTE should maybe add options to filter, right now its just one at a time-->
           <section class="col collapse multi-collapse" id="multiCollapseRarity">
-        <div class=" mt-1">
-          <h4>Rarity</h4>
-          <div class="">
-            <div class="form-check">
-              <input @click="filter.rarity = ''" checked class=" form-check-input" type="radio" name="radiosRarity"
-                id="radiosRarityAll" value="">
-              <label class="form-check-label" for="radiosRarityAll">All</label>
+            <div class=" mt-1">
+              <h4>Rarity</h4>
+              <div class="">
+                <div class="form-check">
+                  <input @click="filter.rarity = ''" checked class=" form-check-input" type="radio" name="radiosRarity"
+                    id="radiosRarityAll" value="">
+                  <label class="form-check-label" for="radiosRarityAll">All</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityCommon" value="c"
+                    @click="filter.rarity = 'c'">
+                  <label class="form-check-label" for="radiosRarityCommon">
+                    Common
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityUncommon" value="u"
+                    @click="filter.rarity = 'u'">
+                  <label class="form-check-label" for="radiosRarityUncommon">
+                    Uncommon
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityRare" value="r"
+                    @click="filter.rarity = 'r'">
+                  <label class="form-check-label" for="radiosRarityRare">
+                    Rare
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityMythicRare" value="m"
+                    @click="filter.rarity = 'm'">
+                  <label class="form-check-label" for="radiosRarityMythicRare">
+                    Mythic
+                  </label>
+                </div>
+              </div>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityCommon" value="c"
-                @click="filter.rarity = 'c'">
-              <label class="form-check-label" for="radiosRarityCommon">
-                Common
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityUncommon" value="u"
-                @click="filter.rarity = 'u'">
-              <label class="form-check-label" for="radiosRarityUncommon">
-                Uncommon
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityRare" value="r"
-                @click="filter.rarity = 'r'">
-              <label class="form-check-label" for="radiosRarityRare">
-                Rare
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="radiosRarity" id="radiosRarityMythicRare" value="m"
-                @click="filter.rarity = 'm'">
-              <label class="form-check-label" for="radiosRarityMythicRare">
-                Mythic
-              </label>
-            </div>
-          </div>
-        </div>
-        
+
           </section>
         </span>
       </section>
@@ -168,9 +168,11 @@
             <div class="mt-1">
               <div class="input-group mb-3 selectable no-select">
                 <span class="text-fix form-control d-flex" data-bs-toggle="dropdown">
-                  <div class="col-12 text-center" v-if="AppState.manaLesser"><i class="mdi mdi-less-than-or-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.manaLesser"><i class="mdi mdi-less-than-or-equal"></i>
+                  </div>
                   <div class="col-12 text-center" v-if="AppState.manaEqual"><i class="mdi mdi-equal"></i></div>
-                  <div class="col-12 text-center" v-if="AppState.manaGreater"><i class="mdi mdi-greater-than-or-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.manaGreater"><i
+                      class="mdi mdi-greater-than-or-equal"></i></div>
                 </span>
                 <ul class="dropdown-menu text-fix">
                   <li><a class="dropdown-item" @click="toggleMana(1)">Equal</a></li>
@@ -178,7 +180,7 @@
                   <li><a class="dropdown-item" @click="toggleMana(3)">Greater</a></li>
                 </ul>
                 <input v-model="filter.mana" type="number" class="form-control" placeholder="All">
-              </div>  
+              </div>
             </div>
           </section>
 
@@ -188,9 +190,11 @@
             <div class="mt-1">
               <div class="input-group mb-3 selectable no-select">
                 <span class="text-fix form-control d-flex" data-bs-toggle="dropdown">
-                  <div class="col-12 text-center" v-if="AppState.powerLesser"><i class="mdi mdi-less-than-or-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.powerLesser"><i class="mdi mdi-less-than-or-equal"></i>
+                  </div>
                   <div class="col-12 text-center" v-if="AppState.powerEqual"><i class="mdi mdi-equal"></i></div>
-                  <div class="col-12 text-center" v-if="AppState.powerGreater"><i class="mdi mdi-greater-than-or-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.powerGreater"><i
+                      class="mdi mdi-greater-than-or-equal"></i></div>
                 </span>
                 <ul class="dropdown-menu text-fix">
                   <li><a class="dropdown-item" @click="togglePower(1)">Equal</a></li>
@@ -198,7 +202,7 @@
                   <li><a class="dropdown-item" @click="togglePower(3)">Greater</a></li>
                 </ul>
                 <input v-model="filter.power" type="number" class="form-control" placeholder="All">
-              </div>  
+              </div>
             </div>
           </section>
 
@@ -208,9 +212,11 @@
             <div class="mt-1">
               <div class="input-group mb-3 selectable no-select">
                 <span class="text-fix form-control d-flex" data-bs-toggle="dropdown">
-                  <div class="col-12 text-center" v-if="AppState.toughnessLesser"><i class="mdi mdi-less-than-or-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.toughnessLesser"><i
+                      class="mdi mdi-less-than-or-equal"></i></div>
                   <div class="col-12 text-center" v-if="AppState.toughnessEqual"><i class="mdi mdi-equal"></i></div>
-                  <div class="col-12 text-center" v-if="AppState.toughnessGreater"><i class="mdi mdi-greater-than-or-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.toughnessGreater"><i
+                      class="mdi mdi-greater-than-or-equal"></i></div>
                 </span>
                 <ul class="dropdown-menu text-fix">
                   <li><a class="dropdown-item" @click="toggleToughness(1)">Equal</a></li>
@@ -218,7 +224,7 @@
                   <li><a class="dropdown-item" @click="toggleToughness(3)">Greater</a></li>
                 </ul>
                 <input v-model="filter.toughness" type="number" class="form-control" placeholder="All">
-              </div>  
+              </div>
             </div>
           </section>
         </span>
@@ -357,7 +363,7 @@
         </section>
 
       </section>
-      
+
     </section>
 
   </form>
@@ -376,133 +382,123 @@ export default {
 
 
 
-setup() {
-const query = ref('')
-let filter = ref({
-color: [],
-rarity: null,
-mana: null,
-power: null,
-toughness: null,
-set: null
-})
+  setup() {
+    const query = ref('')
+    let filter = ref({
+      color: [],
+      rarity: null,
+      mana: null,
+      power: null,
+      toughness: null,
+      set: null
+    })
+
+    return {
+      filter,
+      query,
+      AppState,
+
+      async filterChange(type, val) {
+        try {
+          if (filter.value[type].includes(val)) {
+            filter.value[type] = filter.value[type].filter(v => v != val)
+          } else {
+            filter.value[type].push(val)
+          }
+        } catch (error) {
+          logger.error(error)
+          Pop.error('[filtering]', error)
+        }
+      },
+
+      async searchCards() {
+        if (filter.value.color.length > 0) {
+          filter.value['color'] = filter.value['color'].join('').toString();
+        }
+        // filter.value['rarity'] = filter.value['rarity'].join('').toString();
+        console.log('filer value', filter.value);
+        await cardsService.getCardsBySearch(query.value, filter.value)
+        if (filter.value.color.length > 0) {
+          filter.value['color'] = filter.value['color'].split('')
+        }
+        // filter.value['rarity'] = filter.value['rarity'].split('')
+      },
+
+      toggleSearch(option) {
+        if (option == 1) {
+          AppState.searchByName = true
+          AppState.searchByText = false
+          AppState.searchByType = false
+        } else if (option == 2) {
+          AppState.searchByType = true
+          AppState.searchByText = false
+          AppState.searchByName = false
+        } else if (option == 3) {
+          AppState.searchByText = true
+          AppState.searchByName = false
+          AppState.searchByType = false
+        }
+      },
+
+      toggleMana(option) {
+        if (option == 1) {
+          AppState.manaEqual = true
+          AppState.manaLesser = false
+          AppState.manaGreater = false
+        } else if (option == 2) {
+          AppState.manaLesser = true
+          AppState.manaEqual = false
+          AppState.manaGreater = false
+        } else if (option == 3) {
+          AppState.manaGreater = true
+          AppState.manaEqual = false
+          AppState.manaLesser = false
+        }
+      },
 
 
-async function alphaSearch() {
-const search = 'set%3Alea'
-await cardsService.getAlphaSearch(search)
-}
+      togglePower(option) {
+        if (option == 1) {
+          AppState.powerEqual = true
+          AppState.powerLesser = false
+          AppState.powerGreater = false
+        } else if (option == 2) {
+          AppState.powerLesser = true
+          AppState.powerEqual = false
+          AppState.powerGreater = false
+        } else if (option == 3) {
+          AppState.powerGreater = true
+          AppState.powerEqual = false
+          AppState.powerLesser = false
+        }
+      },
 
-onMounted(() => {
-alphaSearch()
-});
-return {
-filter,
-  query,
-AppState,
+      toggleToughness(option) {
+        if (option == 1) {
+          AppState.toughnessEqual = true
+          AppState.toughnessLesser = false
+          AppState.toughnessGreater = false
+        } else if (option == 2) {
+          AppState.toughnessLesser = true
+          AppState.toughnessEqual = false
+          AppState.toughnessGreater = false
+        } else if (option == 3) {
+          AppState.toughnessGreater = true
+          AppState.toughnessEqual = false
+          AppState.toughnessLesser = false
+        }
+      },
 
-async filterChange(type, val) {
-try {
-if (filter.value[type].includes(val)) {
-filter.value[type] = filter.value[type].filter(v => v != val)
-} else {
-filter.value[type].push(val)
-}
-} catch (error) {
-logger.error(error)
-Pop.error('[filtering]', error)
-}
-},
+    };
 
-async searchCards() {
-  if (filter.value.color.length > 0) {
-  filter.value['color'] = filter.value['color'].join('').toString();
   }
-  // filter.value['rarity'] = filter.value['rarity'].join('').toString();
-  console.log('filer value', filter.value);
-  await cardsService.getCardsBySearch(query.value, filter.value)
-  if (filter.value.color.length > 0) {
-  filter.value['color'] = filter.value['color'].split('')
-  }
-  // filter.value['rarity'] = filter.value['rarity'].split('')
-    },
-
-  toggleSearch(option) {
-    if (option == 1) {
-      AppState.searchByName = true
-      AppState.searchByText = false
-      AppState.searchByType = false
-    } else if (option == 2) {
-      AppState.searchByType = true
-      AppState.searchByText = false
-      AppState.searchByName = false
-    } else if (option == 3) {
-      AppState.searchByText = true
-      AppState.searchByName = false
-      AppState.searchByType = false
-    }
-  },
-
-  toggleMana(option) {
-    if (option == 1) {
-      AppState.manaEqual = true
-      AppState.manaLesser = false
-      AppState.manaGreater = false
-    } else if (option == 2) {
-      AppState.manaLesser = true
-      AppState.manaEqual = false
-      AppState.manaGreater = false
-    } else if (option == 3) {
-      AppState.manaGreater = true
-      AppState.manaEqual = false
-      AppState.manaLesser = false
-    }
-  },
-
-
-  togglePower(option) {
-    if (option == 1) {
-      AppState.powerEqual = true
-      AppState.powerLesser = false
-      AppState.powerGreater = false
-    } else if (option == 2) {
-      AppState.powerLesser = true
-      AppState.powerEqual = false
-      AppState.powerGreater = false
-    } else if (option == 3) {
-      AppState.powerGreater = true
-      AppState.powerEqual = false
-      AppState.powerLesser = false
-    }
-  },
-
-
-  toggleToughness(option) {
-    if (option == 1) {
-      AppState.toughnessEqual = true
-      AppState.toughnessLesser = false
-      AppState.toughnessGreater = false
-    } else if (option == 2) {
-      AppState.toughnessLesser = true
-      AppState.toughnessEqual = false
-      AppState.toughnessGreater = false
-    } else if (option == 3) {
-      AppState.toughnessGreater = true
-      AppState.toughnessEqual = false
-      AppState.toughnessLesser = false
-    }
-  },
-
-};
-
-}
 }
 </script>
 
 <style lang="scss" scoped>
-  .text-fix{
-    text-shadow: none;
-  }
+.text-fix {
+  text-shadow: none;
+}
 
 .search-zone {
   text-shadow: 1px 1px 3px black;
