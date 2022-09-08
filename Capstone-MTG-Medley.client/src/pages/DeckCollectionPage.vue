@@ -17,6 +17,8 @@
       <DeckDetailsCard :card="c" />
     </div>
   </div>
+
+  
 </section>
 
 
