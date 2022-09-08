@@ -14,7 +14,7 @@ class CardsService {
     let powerTerm = null;
     let toughnessTerm = null;
     try {
-      // if (AppState.searchByColor == true) { searchTerm += '+color%3d' + (AppState.colors.toString()) }
+
       // console.log('this is the modified search term', searchTerm)
       if (AppState.searchByName) {
         searchTerm = searchTerm;
@@ -97,8 +97,11 @@ class CardsService {
 
   // TODO do we really need this?
   async getAlphaSearch(searchTerm) {
-    const res = await search.get(baseSearch + searchTerm);
-    AppState.searchedCards = res.data.data.map((c) => new Card(c));
+    // FIXME doesn't draw if you refresh the page
+    if (!AppState.searchedCards) {
+      const res = await search.get(baseSearch + searchTerm);
+      AppState.searchedCards = res.data.data.map((c) => new Card(c));
+    }
   }
 
   // async getRandomCard() {

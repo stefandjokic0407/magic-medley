@@ -657,7 +657,7 @@ export default {
 
 .deck-card {
   height: 12em;
-  width: 12%;
+  width: 150px;
 }
 
 

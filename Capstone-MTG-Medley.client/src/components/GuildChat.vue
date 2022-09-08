@@ -98,6 +98,9 @@ input {
   border-color: #3e4042 !important;
 }
 
+  *::-webkit-scrollbar {
+  display: initial !important;
+}
 
 .chat::-webkit-scrollbar {
   width: 5px;

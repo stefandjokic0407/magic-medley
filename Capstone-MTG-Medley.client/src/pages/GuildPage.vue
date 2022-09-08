@@ -3,6 +3,7 @@
     <Navbar />
   </header>
 
+  <!-- NOTE add flex-grow -->
   <main class="row rav-bg">
     <div class="col-12">
       <section class="row">
@@ -235,7 +236,7 @@ button:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 90vh;
 }
 
 .guild-container-bg {

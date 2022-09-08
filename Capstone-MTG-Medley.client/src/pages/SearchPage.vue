@@ -60,4 +60,6 @@ export default {
 .bg-search {
   background-color: rgba(6, 19, 32, 255);
 }
+
+
 </style>

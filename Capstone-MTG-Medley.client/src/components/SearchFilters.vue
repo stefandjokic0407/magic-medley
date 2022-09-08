@@ -8,17 +8,17 @@
       <section class="col-3 py-1">
         <div class="d-flex flex-row justify-content-around">
           <div class="form-check form-check-inline">
-            <input @click="toggleName" checked class="form-check-input selectable no-select" type="radio"
+            <input @click="toggleSearch(1)" checked class="form-check-input selectable no-select" type="radio"
               name="inlineRadioSearch" id="inlineRadio1" value="option1">
             <label class="form-check-label  selectable no-select" for="inlineRadio1">Name</label>
           </div>
           <div class="form-check form-check-inline">
-            <input @click="toggleType" class="form-check-input selectable no-select" type="radio"
+            <input @click="toggleSearch(2)" class="form-check-input selectable no-select" type="radio"
               name="inlineRadioSearch" id="inlineRadio2" value="option2">
             <label class="form-check-label selectable no-select" for="inlineRadio2">Type</label>
           </div>
           <div class="form-check form-check-inline">
-            <input @click="toggleText" class="form-check-input selectable no-select" type="radio"
+            <input @click="toggleSearch(3)" class="form-check-input selectable no-select" type="radio"
               name="inlineRadioSearch" id="inlineRadio3" value="option3">
             <label class="form-check-label selectable no-select" for="inlineRadio3">Text</label>
           </div>
@@ -39,8 +39,11 @@
 
       </section>
 
-      <!-- SECTION Format -->
-      <section class="col-2 collapse multi-collapse" id="multiCollapseFormat">
+      <!-- SECTION Format, Color and Rarity -->
+      <section class="col-4">
+        <span class="row">
+          <!-- SECTION Format -->
+          <section class="col collapse multi-collapse" id="multiCollapseFormat">
         <div class=" mt-1">
           <h4>Format</h4>
           <div class="">
@@ -81,13 +84,14 @@
             </div>
           </div>
         </div>
-      </section>
+          </section>
 
-      <!-- SECTION Color -->
-      <!-- NOTE should add options to filter, right now its just any that include -->
-      <section class="col-1 collapse multi-collapse" id="multiCollapseColor">
+          <!-- SECTION Color -->
+          <!-- NOTE should add options to filter, right now its just any that include -->
+          <section class="col collapse multi-collapse" id="multiCollapseColor">
         <div class=" mt-1">
           <h4>Color</h4>
+
           <div class="">
             <input type="checkbox" class="" @change="filterChange('color', 'u')">
             <label class="form-check-label ps-2">Blue</label><br>
@@ -104,11 +108,11 @@
             <label class="form-check-label ps-2">Colorless</label><br>
           </div>
         </div>
-      </section>
+          </section>
 
-      <!-- SECTION Rarity -->
-      <!-- NOTE should maybe add options to filter, right now its just one at a time-->
-      <section class="col-1 collapse multi-collapse" id="multiCollapseRarity">
+          <!-- SECTION Rarity -->
+          <!-- NOTE should maybe add options to filter, right now its just one at a time-->
+          <section class="col collapse multi-collapse" id="multiCollapseRarity">
         <div class=" mt-1">
           <h4>Rarity</h4>
           <div class="">
@@ -147,88 +151,74 @@
             </div>
           </div>
         </div>
+        
+          </section>
+        </span>
       </section>
 
       <!-- SECTION Converted Mana Cost, Power, Toughness and Sets -->
       <section class="col-5 collapse multi-collapse" id="multiCollapseMix">
 
         <!-- SECTION Converted Mana Cost, Power, Toughness -->
-        <!-- NOTE should add options to filters, right now it must be equal to number-->
-        <span class="d-flex flex-row">
+        <span class="row px-3">
 
           <!-- SECTION Converted Mana Cost -->
-          <section class="mx-2">
-            <div class=" mt-1">
-              <h4 class="text-center">Mana Cost</h4>
-              <div class="d-flex flex-row justify-content-around">
-                <div class="form-check form-check-inline">
-                  <input @click="toggleManaLesser" checked class="form-check-input selectable no-select" type="radio"
-                    name="inlineRadioMana" id="inlineRadio1" value="option1" title="Less then or equal to">
-                  <label class="form-check-label  selectable no-select" for="inlineRadio1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input @click="toggleManaEqual" class="form-check-input selectable no-select" type="radio"
-                    name="inlineRadioMana" id="inlineRadio2" value="option2" title="Equal to">
-                  <label class="form-check-label selectable no-select" for="inlineRadio2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input @click="toggleManaGreater" class="form-check-input selectable no-select" type="radio"
-                    name="inlineRadioMana" id="inlineRadio3" value="option3" title="Greater then or equal to">
-                  <label class="form-check-label selectable no-select" for="inlineRadio3"></label>
-                </div>
-              </div>
-              <input v-model="filter.mana" type="number" class="form-control" placeholder="All">
+          <section class="col-4 px-2">
+            <h4 class="text-center mb-0">Mana Cost</h4>
+            <div class="mt-1">
+              <div class="input-group mb-3 selectable no-select">
+                <span class="text-fix form-control d-flex" data-bs-toggle="dropdown">
+                  <div class="col-12 text-center" v-if="AppState.manaLesser"><i class="mdi mdi-less-than-or-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.manaEqual"><i class="mdi mdi-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.manaGreater"><i class="mdi mdi-greater-than-or-equal"></i></div>
+                </span>
+                <ul class="dropdown-menu text-fix">
+                  <li><a class="dropdown-item" @click="toggleMana(1)">Equal</a></li>
+                  <li><a class="dropdown-item" @click="toggleMana(2)">Lesser</a></li>
+                  <li><a class="dropdown-item" @click="toggleMana(3)">Greater</a></li>
+                </ul>
+                <input v-model="filter.mana" type="number" class="form-control" placeholder="All">
+              </div>  
             </div>
           </section>
 
           <!-- SECTION Power -->
-          <section class="mx-2">
-            <div class=" mt-1">
-              <h4 class="text-center">Power</h4>
-              <div class="d-flex flex-row justify-content-around">
-                <div class="form-check form-check-inline">
-                  <input @click="togglePowerLesser" checked class="form-check-input selectable no-select" type="radio"
-                    name="inlineRadioPower" id="inlineRadio1" value="option1" title="Less then or equal to">
-                  <label class="form-check-label  selectable no-select" for="inlineRadio1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input @click="togglePowerEqual" class="form-check-input selectable no-select" type="radio"
-                    name="inlineRadioPower" id="inlineRadio2" value="option2" title="Equal to">
-                  <label class="form-check-label selectable no-select" for="inlineRadio2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input @click="togglePowerGreater" class="form-check-input selectable no-select" type="radio"
-                    name="inlineRadioPower" id="inlineRadio3" value="option3" title="Greater then or equal to">
-                  <label class="form-check-label selectable no-select" for="inlineRadio3"></label>
-                </div>
-              </div>
-              <input v-model="filter.power" type="number" class="form-control" placeholder="All">
+          <section class="col-4 px-2">
+            <h4 class="text-center mb-0">Power</h4>
+            <div class="mt-1">
+              <div class="input-group mb-3 selectable no-select">
+                <span class="text-fix form-control d-flex" data-bs-toggle="dropdown">
+                  <div class="col-12 text-center" v-if="AppState.powerLesser"><i class="mdi mdi-less-than-or-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.powerEqual"><i class="mdi mdi-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.powerGreater"><i class="mdi mdi-greater-than-or-equal"></i></div>
+                </span>
+                <ul class="dropdown-menu text-fix">
+                  <li><a class="dropdown-item" @click="togglePower(1)">Equal</a></li>
+                  <li><a class="dropdown-item" @click="togglePower(2)">Lesser</a></li>
+                  <li><a class="dropdown-item" @click="togglePower(3)">Greater</a></li>
+                </ul>
+                <input v-model="filter.power" type="number" class="form-control" placeholder="All">
+              </div>  
             </div>
           </section>
 
           <!-- SECTION Toughness -->
-          <section class="mx-2">
-            <div class=" mt-1">
-              <h4 class="text-center">Toughness</h4>
-              <div class="d-flex flex-row justify-content-around">
-                <div class="form-check form-check-inline">
-                  <input @click="toggleToughnessLesser" checked class="form-check-input selectable no-select"
-                    type="radio" name="inlineRadioToughness" id="inlineRadio1" value="option1"
-                    title="Less then or equal to">
-                  <label class="form-check-label  selectable no-select" for="inlineRadio1"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input @click="toggleToughnessEqual" class="form-check-input selectable no-select" type="radio"
-                    name="inlineRadioToughness" id="inlineRadio2" value="option2" title="Equal to">
-                  <label class="form-check-label selectable no-select" for="inlineRadio2"></label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input @click="toggleToughnessGreater" class="form-check-input selectable no-select" type="radio"
-                    name="inlineRadioToughness" id="inlineRadio3" value="option3" title="Greater then or equal to">
-                  <label class="form-check-label selectable no-select" for="inlineRadio3"></label>
-                </div>
-              </div>
-              <input v-model="filter.toughness" type="number" class="form-control" placeholder="All">
+          <section class="col-4 px-2">
+            <h4 class="text-center mb-0">Toughness</h4>
+            <div class="mt-1">
+              <div class="input-group mb-3 selectable no-select">
+                <span class="text-fix form-control d-flex" data-bs-toggle="dropdown">
+                  <div class="col-12 text-center" v-if="AppState.toughnessLesser"><i class="mdi mdi-less-than-or-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.toughnessEqual"><i class="mdi mdi-equal"></i></div>
+                  <div class="col-12 text-center" v-if="AppState.toughnessGreater"><i class="mdi mdi-greater-than-or-equal"></i></div>
+                </span>
+                <ul class="dropdown-menu text-fix">
+                  <li><a class="dropdown-item" @click="toggleToughness(1)">Equal</a></li>
+                  <li><a class="dropdown-item" @click="toggleToughness(2)">Lesser</a></li>
+                  <li><a class="dropdown-item" @click="toggleToughness(3)">Greater</a></li>
+                </ul>
+                <input v-model="filter.toughness" type="number" class="form-control" placeholder="All">
+              </div>  
             </div>
           </section>
         </span>
@@ -367,6 +357,7 @@
         </section>
 
       </section>
+      
     </section>
 
   </form>
@@ -407,7 +398,8 @@ alphaSearch()
 });
 return {
 filter,
-query,
+  query,
+AppState,
 
 async filterChange(type, val) {
 try {
@@ -423,88 +415,83 @@ Pop.error('[filtering]', error)
 },
 
 async searchCards() {
-if (filter.value.color.length > 0) {
-filter.value['color'] = filter.value['color'].join('').toString();
-}
-// filter.value['rarity'] = filter.value['rarity'].join('').toString();
-console.log('filer value', filter.value);
-await cardsService.getCardsBySearch(query.value, filter.value)
-if (filter.value.color.length > 0) {
-filter.value['color'] = filter.value['color'].split('')
-}
-// filter.value['rarity'] = filter.value['rarity'].split('')
-},
+  if (filter.value.color.length > 0) {
+  filter.value['color'] = filter.value['color'].join('').toString();
+  }
+  // filter.value['rarity'] = filter.value['rarity'].join('').toString();
+  console.log('filer value', filter.value);
+  await cardsService.getCardsBySearch(query.value, filter.value)
+  if (filter.value.color.length > 0) {
+  filter.value['color'] = filter.value['color'].split('')
+  }
+  // filter.value['rarity'] = filter.value['rarity'].split('')
+    },
 
-async toggleText() {
-AppState.searchByText = true
-AppState.searchByName = false
-AppState.searchByType = false
-},
-async toggleType() {
-AppState.searchByType = true
-AppState.searchByText = false
-AppState.searchByName = false
-},
-async toggleName() {
-AppState.searchByName = true
-AppState.searchByText = false
-AppState.searchByType = false
-},
+  toggleSearch(option) {
+    if (option == 1) {
+      AppState.searchByName = true
+      AppState.searchByText = false
+      AppState.searchByType = false
+    } else if (option == 2) {
+      AppState.searchByType = true
+      AppState.searchByText = false
+      AppState.searchByName = false
+    } else if (option == 3) {
+      AppState.searchByText = true
+      AppState.searchByName = false
+      AppState.searchByType = false
+    }
+  },
 
-async toggleManaEqual() {
-AppState.manaEqual = true
-AppState.manaLesser = false
-AppState.manaGreater = false
-},
+  toggleMana(option) {
+    if (option == 1) {
+      AppState.manaEqual = true
+      AppState.manaLesser = false
+      AppState.manaGreater = false
+    } else if (option == 2) {
+      AppState.manaLesser = true
+      AppState.manaEqual = false
+      AppState.manaGreater = false
+    } else if (option == 3) {
+      AppState.manaGreater = true
+      AppState.manaEqual = false
+      AppState.manaLesser = false
+    }
+  },
 
-async toggleManaLesser() {
-AppState.manaLesser = true
-AppState.manaEqual = false
-AppState.manaGreater = false
-},
 
-async toggleManaGreater() {
-AppState.manaGreater = true
-AppState.manaEqual = false
-AppState.manaLesser = false
-},
+  togglePower(option) {
+    if (option == 1) {
+      AppState.powerEqual = true
+      AppState.powerLesser = false
+      AppState.powerGreater = false
+    } else if (option == 2) {
+      AppState.powerLesser = true
+      AppState.powerEqual = false
+      AppState.powerGreater = false
+    } else if (option == 3) {
+      AppState.powerGreater = true
+      AppState.powerEqual = false
+      AppState.powerLesser = false
+    }
+  },
 
-async togglePowerEqual() {
-AppState.powerEqual = true
-AppState.powerLesser = false
-AppState.powerGreater = false
-},
 
-async togglePowerLesser() {
-AppState.powerLesser = true
-AppState.powerEqual = false
-AppState.powerGreater = false
-},
-
-async togglePowerGreater() {
-AppState.powerGreater = true
-AppState.powerEqual = false
-AppState.powerLesser = false
-},
-
-async toggleToughnessEqual() {
-AppState.toughnessEqual = true
-AppState.toughnessLesser = false
-AppState.toughnessGreater = false
-},
-
-async toggleToughnessLesser() {
-AppState.toughnessLesser = true
-AppState.toughnessEqual = false
-AppState.toughnessGreater = false
-},
-
-async toggleToughnessGreater() {
-AppState.toughnessGreater = true
-AppState.toughnessEqual = false
-AppState.toughnessLesser = false
-},
-
+  toggleToughness(option) {
+    if (option == 1) {
+      AppState.toughnessEqual = true
+      AppState.toughnessLesser = false
+      AppState.toughnessGreater = false
+    } else if (option == 2) {
+      AppState.toughnessLesser = true
+      AppState.toughnessEqual = false
+      AppState.toughnessGreater = false
+    } else if (option == 3) {
+      AppState.toughnessGreater = true
+      AppState.toughnessEqual = false
+      AppState.toughnessLesser = false
+    }
+  },
 
 };
 
@@ -513,6 +500,10 @@ AppState.toughnessLesser = false
 </script>
 
 <style lang="scss" scoped>
+  .text-fix{
+    text-shadow: none;
+  }
+
 .search-zone {
   text-shadow: 1px 1px 3px black;
   font-weight: 900;
