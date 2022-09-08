@@ -24,7 +24,8 @@
           </div>
         </div>
         <div class="input-group" title="Search">
-          <input class="form-control" placeholder="Search by Name, Type or Text..." type="text" v-model="query" />
+          <input class="form-control" placeholder="Search by Name, Type or Text..." type="text" v-model="query"
+            name="card" />
           <button class="btn btn-outline-light" type="submit">
             <i class="mdi mdi-magnify"></i>
           </button>
@@ -179,7 +180,7 @@
                   <li><a class="dropdown-item" @click="toggleMana(2)">Lesser</a></li>
                   <li><a class="dropdown-item" @click="toggleMana(3)">Greater</a></li>
                 </ul>
-                <input v-model="filter.mana" type="number" class="form-control" placeholder="All">
+                <input v-model="filter.mana" type="number" class="form-control" min="0" placeholder="All">
               </div>
             </div>
           </section>
