@@ -16,6 +16,7 @@
           <button @click="rateDeck(3)" class="btn col-1">3</button>
           <button @click="rateDeck(4)" class="btn col-1">4</button>
           <button @click="rateDeck(5)" class="btn col-1">5</button>
+          <button class="btn col-2 offset-4" @click="cloneDeck">Copy Deck to My Collection</button>
         </div>
       </div>
     </div>
@@ -70,14 +71,17 @@ export default {
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
       activeCards: computed(() => AppState.activeProfile),
       async rateDeck(num) {
-                try {
-                    const accountId = this.activeDeck.accountId
-                    const deckId = this.activeDeck.id
-                    await decksService.rateDeck({ value: num }, deckId, accountId)
-                } catch (error) {
-                    Pop.error(error)
-                }
-            },
+        try {
+          const accountId = this.activeDeck.accountId
+          const deckId = this.activeDeck.id
+          await decksService.rateDeck({ value: num }, deckId, accountId)
+        } catch (error) {
+          Pop.error(error)
+        }
+      },
+      async cloneDeck() {
+        
+      }
     };
   },
   components: { DeckCard, DeckDetailsCard }

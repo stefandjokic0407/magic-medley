@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <span class="d-flex justify-content-around">
                             <p class="text-center">Community
-                                Rating:<br>{{activeDeck?.avgRating}}/{{activeDeck.rating?.length*5}}
+                                Rating:<br>{{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5
                             </p>
                             <button @click="deckDetails" class="btn btn-outline-light" data-bs-dismiss="modal"
                                 data-bs-target="#deckModal">Deck Details</button>
