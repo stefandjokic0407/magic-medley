@@ -1,7 +1,7 @@
 <template>
-    <div class="row">
-        <div v-if="card" class="deleteCard col-12">
-            <img class="img-fluid shadow cardsBg childElement deleteCard" :src=card.card?.image_uris?.small
+    <div class="">
+        <div v-if="card" class="deleteCard">
+            <img class="img-fluid shadow cardsBg childElement deleteCard deck-details-card" :src=card.card?.image_uris?.normal
                 :title="card.card?.name">
         </div>
         <div v-else>
@@ -94,6 +94,10 @@ export default {
 <style>
 .deleteCard:hover img {
     opacity: 50;
+}
+
+.deck-details-card {
+    width: 100%;
 }
 
 .quantityBorder {

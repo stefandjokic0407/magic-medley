@@ -34,8 +34,8 @@
         </div>
       </div>
     </div>
-    <div class="row scroll justify-content-around d-flex">
-      <div class=" py-3 col-2" v-for="c in deckCards" :key="c.id">
+    <div class="row scroll justify-content-center">
+      <div class=" py-3 col-2 mx-4 g-3" v-for="c in deckCards" :key="c.id">
         <DeckDetailsCard :card="c" />
       </div>
     </div>
