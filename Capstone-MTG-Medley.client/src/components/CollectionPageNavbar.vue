@@ -9,7 +9,7 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon deckText" />
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse text-center" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
           <router-link :to="{ name: 'Collection' }" class="btn deckText my-3 text-uppercase square buttonPadding">
@@ -27,8 +27,8 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Account'}" class="btn deckText text-uppercase square buttonPadding">
-            <img class="profilePicture" :src="account.picture" alt="">
+          <router-link :to="{ name: 'Profile', params: { profileId: account?.id } }"
+            class="my-2 btn deckText text-uppercase borderRadius buttonPadding accountImage">
           </router-link>
         </li>
       </ul>
@@ -48,6 +48,7 @@ export default {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
       profile: computed(() => AppState.activeProfile),
+      cover: computed(() => `url(${AppState.account?.picture})`),
     };
   },
   components: { SearchForm }
@@ -96,9 +97,15 @@ a:hover {
   background-color: rgba(0, 0, 0, 0) !important;
 }
 
-.profilePicture {
-  height: 4em;
-  width: 4em;
+.accountImage {
+  height: 6em;
+  width: 6em;
+  background-image: v-bind(cover) !important;
+  background-size: cover;
+  background-position: center;
+}
+
+.borderRadius {
   border-radius: 50%;
 }
 </style>
