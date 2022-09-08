@@ -37,10 +37,6 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState";
-import { logger } from "../utils/Logger";
-import Pop from "../utils/Pop";
-import { cardsService } from "../services/CardsService";
-import { symbolsService } from "../services/SymbolsService";
 import { onMounted } from "vue";
 import SearchedCards from "../components/SearchedCards.vue";
 import FooterNav from "../components/FooterNav.vue";
@@ -159,13 +155,9 @@ img {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
 
 // EFFECT AND EFFECT2 ARE FOR THE STYLING ON THE HOVER EFFECT TEXT
 .effect{
-=======
-.effect {
->>>>>>> e9650cecbd8d7b44719f7382f7caa906b2e7e989
   color: white;
   font-size: 20px;
   position: absolute;
@@ -183,19 +175,7 @@ img {
   background-color: #008CBA;
 }
 
-<<<<<<< HEAD
-
-// THESE EFFECTS MAKE THE TEXT ON HOVER APPEAR
-.bg-left:hover .effect2{
-  opacity: 1;
-}
-.bg-center:hover .effect2{
-  opacity: 1;
-}
-.bg-right:hover .effect2{
-=======
 .bg-left:hover .effect2 {
->>>>>>> e9650cecbd8d7b44719f7382f7caa906b2e7e989
   opacity: 1;
 }
 
