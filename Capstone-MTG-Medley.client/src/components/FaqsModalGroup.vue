@@ -29,10 +29,10 @@
       <div class="modal-content explain-mtg-modal">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel2">What is Magic the Gathering?</h5>
-          <span>
+          <span class="d-flex">
             <button class="btn btn-outline-light border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
               FAQs</button>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div  class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></div>
           </span>
         </div>
         <div class="modal-body">
@@ -67,10 +67,10 @@
       <div class="modal-content how-mtg-modal">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel2">How to play</h5>
-          <span>
+          <span class="d-flex">
             <button class="btn btn-outline-light border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
               FAQs</button>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div  class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></div>
           </span>
         </div>
         <div class="modal-body">
@@ -722,7 +722,7 @@
             <section class="col-12">
               <div class="row">
                 <div class="col-3">
-                  <img class="img-fluid" src="../assets/img/serra-angel.jpg" alt="">
+                  <img class="img-fluid rounded" src="../assets/img/serra-angel.jpg" alt="">
                 </div>
                 <div class="col-9">
                   <p class="fs-5">Casting Spells</p>
@@ -889,10 +889,10 @@
       <div class="modal-content glossary-modal">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel2">Glossary</h5>
-          <span>
+          <span class="d-flex">
             <button class="btn btn-outline-light border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
               FAQs</button>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div  class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></div>
           </span>
         </div>
         <div class="modal-body">
@@ -1402,5 +1402,9 @@ export default {
 .limit-size {
   overflow-y: scroll;
   max-height: 28vh;
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
 </style>

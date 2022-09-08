@@ -18,8 +18,10 @@ export const AppState = reactive({
   /**@type {import('./models/Card.js').Card} */
   activeCard: {},
   decks: [],
+  profileDecks: [],
   deckCards: [],
   activeDeck: null,
+  profileCollection: [],
   collection: [],
   currentLocation: '',
   // filter toggles
