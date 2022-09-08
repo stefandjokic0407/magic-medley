@@ -97,8 +97,10 @@ class CardsService {
 
   // TODO do we really need this?
   async getAlphaSearch(searchTerm) {
-    const res = await search.get(baseSearch + searchTerm);
-    AppState.searchedCards = res.data.data.map((c) => new Card(c));
+    if (!AppState.searchedCards) {
+      const res = await search.get(baseSearch + searchTerm);
+      AppState.searchedCards = res.data.data.map((c) => new Card(c));
+    }
   }
 
   // async getRandomCard() {
