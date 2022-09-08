@@ -54,8 +54,7 @@
           <p class="text-center">
             Community Rating:<br>{{(d?.avgRating/d.rating?.length).toFixed(1)}}/5
           </p>
-          <button @click="deckDetails" class="btn btn-outline-light" data-bs-dismiss="modal"
-            data-bs-target="#deckModal">
+          <button @click="deckDetails" class="btn btn-outline-light">
             Deck Details
           </button>
         </span>
@@ -116,6 +115,14 @@ export default {
       decks: computed(() => AppState.profileDecks),
       cover: computed(() => `url(${AppState.activeProfile?.coverImg ||
         "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"})`),
+      async deckDetails() {
+        try {
+          router.push({ name: "DeckDetails", params: { deckId: AppState.activeDeck?.id } })
+          // Modal.getOrCreateInstance(document.getElementById('deck-modal')).hide()
+        } catch (error) {
+          console.log(error)
+        }
+      },
       async setActiveDeck(deckId) {
         try {
           await decksService.setActiveDeck(deckId);
