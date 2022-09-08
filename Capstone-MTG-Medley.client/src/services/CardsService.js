@@ -97,11 +97,8 @@ class CardsService {
 
   // TODO do we really need this?
   async getAlphaSearch(searchTerm) {
-    // FIXME doesn't draw if you refresh the page
-    if (!AppState.searchedCards) {
-      const res = await search.get(baseSearch + searchTerm);
-      AppState.searchedCards = res.data.data.map((c) => new Card(c));
-    }
+    const res = await search.get(baseSearch + searchTerm);
+    AppState.searchedCards = res.data.data.map((c) => new Card(c));
   }
 
   // async getRandomCard() {

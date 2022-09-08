@@ -20,7 +20,7 @@ export const AppState = reactive({
   decks: [],
   profileDecks: [],
   deckCards: [],
-  activeDeck: null,
+  activeDeck: {},
   profileCollection: [],
   collection: [],
   currentLocation: '',

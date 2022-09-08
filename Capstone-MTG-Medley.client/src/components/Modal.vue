@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="modal fade"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
+  <div class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
@@ -27,4 +22,5 @@ export default {
 
 
 <style lang="scss" scoped>
+
 </style>
