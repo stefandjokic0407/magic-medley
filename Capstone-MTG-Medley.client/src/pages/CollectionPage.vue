@@ -286,11 +286,6 @@ export default {
 }
 
 .myCollectionsBanner {
-  background-image: url(src/assets/img/smaller_banner-removebg-preview.png);
-  background-position: center;
-  background-size: cover;
-  height: 100%;
-  width: auto;
   font-family: MagicMedieval;
 }
 
@@ -301,13 +296,13 @@ export default {
 }
 
 .deckText {
-  -webkit-text-stroke: .5px black;
-  color: rgba(255, 255, 255, 0.88);
+  -webkit-text-stroke: .5px rgba(0, 0, 0, 0.103);
+  color: rgb(255, 255, 255) !important;
   text-shadow:
-    3px 3px 0 #000,
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+    2px 2px 1px #000,
+    -1px -1px 1px #000,
+    1px -1px 1px #000,
+    -1px 1px 1px #000,
+    1px 1px 1px #000;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <header>
-    <Navbar />
+    <ClearNavBar />
   </header>
   <!-- Gruul Clans Page -->
   <div class="row gruul">

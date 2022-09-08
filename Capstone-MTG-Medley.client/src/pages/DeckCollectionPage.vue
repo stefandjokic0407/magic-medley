@@ -10,10 +10,32 @@
     <div class="row my-3">
       <div class="col-12 text-center">
         <h1>{{activeDeck.name}}</h1>
+        <h4>Deck Rating: {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<i class="mdi mdi-star"></i>
+        </h4>
+        <div class="row">
+          <div class="col-3 m-0 p-0">
+            <button @click="rateDeck(1)" class="btn m-0 p-0">
+              <i class="mdi mdi-star-outline mdi-36px"></i>
+            </button>
+            <button @click="rateDeck(2)" class="btn m-0 p-0">
+              <i class="mdi mdi-star-outline mdi-36px"></i>
+            </button>
+            <button @click="rateDeck(3)" class="btn m-0 p-0">
+              <i class="mdi mdi-star-outline mdi-36px"></i>
+            </button>
+            <button @click="rateDeck(4)" class="btn m-0 p-0">
+              <i class="mdi mdi-star-outline mdi-36px"></i>
+            </button>
+            <button @click="rateDeck(5)" class="btn m-0 p-0">
+              <i class="mdi mdi-star-outline mdi-36px"></i>
+            </button>
+          </div>
+          <button class="btn col-2 offset-4" @click="cloneDeck">Copy Deck to My Collection</button>
+        </div>
       </div>
     </div>
-    <div class="row scroll">
-      <div class=" py-2 col-2" v-for="c in deckCards" :key="c.id">
+    <div class="row scroll justify-content-around d-flex">
+      <div class=" py-3 col-2" v-for="c in deckCards" :key="c.id">
         <DeckDetailsCard :card="c" />
       </div>
     </div>
@@ -43,6 +65,7 @@ export default {
   setup() {
     const route = useRoute();
 
+
     async function setActiveDeck() {
       try {
         await decksService.setActiveDeck(route.params.deckId);
@@ -57,11 +80,22 @@ export default {
       setActiveDeck();
     });
     return {
-      decks: computed(() => AppState.decks),
       activeDeck: computed(() => AppState.activeDeck),
       deckCards: computed(() => AppState.deckCards),
+      collectionCards: computed(() => AppState.collection),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
-      activeCards: computed(() => AppState.activeProfile),
+      async rateDeck(num) {
+        try {
+          const accountId = this.activeDeck.accountId
+          const deckId = this.activeDeck.id
+          await decksService.rateDeck({ value: num }, deckId, accountId)
+        } catch (error) {
+          Pop.error(error)
+        }
+      },
+      async cloneDeck() {
+
+      }
     };
   },
   components: { DeckCard, DeckDetailsCard }

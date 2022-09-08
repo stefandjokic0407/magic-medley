@@ -17,28 +17,38 @@
 
     <div class="row my-2" v-if="profile.id == account.id">
       <div class="col-12">
-        <router-link class="btn square btn-warning" :to="{ name: 'Account' }"
-          >Edit Account
+        <router-link class="btn square btn-warning" :to="{ name: 'Account' }">Edit Account
         </router-link>
       </div>
     </div>
 
     <!-- SECTION Profile Decks -->
 
-    <div v-if="profile" class="row align-items-center justify-content-center mx-1 deck-container">
-        <div v-for="d in decks" :key="d.id" @click="setActiveDeck(d.id)" type="button" data-bs-toggle="modal"
-            data-bs-target="#deckModal" class="mt-4 col-3 px-4">
-            <div v-if="d?.picture">
-              <h5>{{d?.name}}</h5>
-              <img class="img-fluid shadow card-border" :src=d?.picture :title="d?.name">
-            </div>
-        </div>
+    <div v-for="d in decks" :key="d.id" @click="setActiveDeck(d.id)" class="card hero-img col-3 px-4">
+      <h5 class="card-title text-center text-light"><b>{{d?.name}}</b></h5>
+      <div class=" px-3 pt-3">
+        <img v-if="d" :src='d?.picture' class="card-img-top img-fluid">
+        <img v-else
+          src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+          class="card-img-top" alt="...">
+      </div>
+      <div v-if="!d?.picture" class="card-img-top">
+        <img
+          src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+          class="cardBg img-fluid" alt="...">
+      </div>
+      <div class="card-body fs-5">
+        <span class="d-flex justify-content-around">
+          <p class="text-center">
+            Community Rating:<br>{{(d?.avgRating/d.rating?.length).toFixed(1)}}/5
+          </p>
+          <button @click="deckDetails" class="btn btn-outline-dark">
+            Deck Details
+          </button>
+        </span>
+      </div>
     </div>
-
-    <!-- SECTION Profile Guild -->
-    <div class="row"></div>
   </section>
-  <DeckModal/>
 </template>
 
 <script>
@@ -50,52 +60,59 @@ import { router } from "../router";
 import { decksService } from "../services/DecksService.js";
 import { profilesService } from "../services/ProfilesService";
 import Pop from "../utils/Pop";
-import DeckModal from "../components/DeckModal.vue";
 
 export default {
-    setup() {
-        const route = useRoute();
-        // NOTE this function is getting your profile using the Id, it takes in a users profileId
-        async function getProfileById() {
-            try {
-                await profilesService.getProfileById(route.params.profileId);
-            }
-            catch (error) {
-                Pop.error("[Getting profile by Id]", error);
-                router.push({ name: "Home" });
-            }
+  setup() {
+    const route = useRoute();
+    // NOTE this function is getting your profile using the Id, it takes in a users profileId
+    async function getProfileById() {
+      try {
+        await profilesService.getProfileById(route.params.profileId);
+      }
+      catch (error) {
+        Pop.error("[Getting profile by Id]", error);
+        router.push({ name: "Home" });
+      }
+    }
+    async function getProfileDecks() {
+      try {
+        await decksService.getProfileDecks(route.params.profileId);
+        console.log(route.params.profileId);
+      }
+      catch (error) {
+        Pop.error("[getting profile decks]", error);
+      }
+    }
+    onMounted(() => {
+      getProfileById();
+      getProfileDecks();
+    });
+    return {
+      route,
+      account: computed(() => AppState.account),
+      profile: computed(() => AppState.activeProfile),
+      decks: computed(() => AppState.profileDecks),
+      cover: computed(() => `url(${AppState.activeProfile?.coverImg ||
+        "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"})`),
+      async deckDetails() {
+        try {
+          router.push({ name: "DeckDetails", params: { deckId: AppState.activeDeck?.id } })
+          // Modal.getOrCreateInstance(document.getElementById('deck-modal')).hide()
+        } catch (error) {
+          console.log(error)
         }
-        async function getProfileDecks() {
-            try {
-                await decksService.getProfileDecks(route.params.profileId);
-                console.log(route.params.profileId);
-            }
-            catch (error) {
-                Pop.error("[getting profile decks]", error);
-            }
+      },
+      async setActiveDeck(deckId) {
+        try {
+          await decksService.setActiveDeck(deckId);
         }
-        onMounted(() => {
-            getProfileById();
-            getProfileDecks();
-        });
-        return {
-            route,
-            account: computed(() => AppState.account),
-            profile: computed(() => AppState.activeProfile),
-            decks: computed(() => AppState.profileDecks),
-            cover: computed(() => `url(${AppState.activeProfile?.coverImg ||
-                "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"})`),
-            async setActiveDeck(deckId) {
-                try {
-                    await decksService.setActiveDeck(deckId);
-                }
-                catch (error) {
-                    Pop.error("[setting active deck]", error);
-                }
-            },
-        };
-    },
-    components: { DeckModal }
+        catch (error) {
+          Pop.error("[setting active deck]", error);
+        }
+      },
+    };
+  },
+
 };
 </script>
 
@@ -132,14 +149,29 @@ export default {
   scroll-snap-type: x mandatory;
   max-width: 100vw;
   overflow-x: scroll;
-  > div {
+
+  >div {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
 }
 
 .card-border {
-    border-radius: 5%;
-    border: 3px solid darkslategray
+  border-radius: 5%;
+  border: 3px solid darkslategray
+}
+
+.hero-img {
+  background-image: url(../assets/img/note.png);
+  background-position: center;
+  background-size: cover;
+  height: 750px;
+  width: 500px;
+  transform: scale(.75);
+}
+
+.deck-modal {
+  height: 750px;
+  width: 500px;
 }
 </style>
