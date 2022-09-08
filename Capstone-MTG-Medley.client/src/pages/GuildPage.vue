@@ -10,7 +10,7 @@
           <div class="row justify-content-center mt-4">
             <div class="col-md-8">
               <div
-                class="btn mb-5"
+                class="btn mb-5 no-select"
                 type="button"
                 title="Guild Faqs"
                 data-bs-toggle="collapse"
@@ -44,7 +44,10 @@
                 </div>
               </div>
             </section>
-            <div class="col-12 collapse" id="collapseExample">
+
+            <!-- FIXME un-collapsing and taking this out of the collapsable adds a bunch of white space to the bottom of the page, need to make background immobile while being able to scroll the content -->
+            <!-- <div class="col-10 collapse" id="collapseExample"></div> -->
+            <div class="col-10 collapse" id="collapseExample">
               <div class="card card-body m-2">
                 <h3 class="text-start">Choose Your Guild</h3>
                 <div class="d-flex flex-column align-items-center">
