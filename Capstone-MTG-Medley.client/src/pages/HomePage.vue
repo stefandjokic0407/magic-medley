@@ -2,9 +2,9 @@
   <div class="row justify-content-center hero-img">
     <div class="col-12 text-center">
       <!-- <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="" /> -->
-      <div class="row d-flex justify-content-evenly">
-        <div class="col-3 bg-left mx-1 align-items-center d-flex justify-content-center">
-          <div class="fs-4 btn btn-secondary selectable">
+      <div class="effect3 row d-flex justify-content-evenly">
+        <div class="col-3 bg-left text-light mx-1 d-flex align-items-center justify-content-center">
+          <div class="fs-4 selectable effect2">
             <router-link :to="{ name: 'Search' }" class="text-my-light">
               <p class="effect">Search for your cards</p>
             </router-link>
@@ -167,5 +167,23 @@ img {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.effect2 {
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.bg-left:hover .effect2 {
+  opacity: 1;
+}
+
+.bg-center:hover .effect2 {
+  opacity: 1;
+}
+
+.bg-right:hover .effect2 {
+  opacity: 1;
 }
 </style>
