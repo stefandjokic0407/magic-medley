@@ -122,7 +122,7 @@ img {
 .bg-left:hover {
   border-left: 2px white solid;
   border-right: 2px white solid;
-  box-shadow: 0 0 100px rgb(255, 255, 255);
+  box-shadow: 0 0 100px rgb(249, 58, 58);
   transform: translate(0, -1px);
 }
 
@@ -138,7 +138,7 @@ img {
 .bg-center:hover {
   border-left: 2px white solid;
   border-right: 2px white solid;
-  box-shadow: 0 0 100px rgb(255, 255, 255);
+  box-shadow: 0 0 100px rgb(15, 160, 238);
   transform: translate(0, -1px);
 }
 
