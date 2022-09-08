@@ -3,78 +3,80 @@
     <Navbar />
   </header>
 
-  <!-- NOTE x-Scrollable guild cards with snap -->
-  <section class="row align-items-center wrapper">
-    <div class="col-1">
-      <button class="btn btn-light" @click="scrollLeft">
-        <i class="fs-1 mdi mdi-chevron-left"></i>
-      </button>
-    </div>
-    <div class="col-10">
-      <div class="row guild-cards-container">
-        <div class="col-md-3 my-4" v-for="g in guilds" :key="g.id">
-          <GuildCard :guild="g" />
-        </div>
-      </div>
-    </div>
-    <div class="col-1">
-      <button class="btn btn-light" @click="scrollRight">
-        <i class="fs-1 mdi mdi-chevron-right"></i>
-      </button>
-    </div>
-  </section>
+  <main class="row rav-bg">
+    <div class="col-12">
+      <section class="row">
+        <div class="col-md-12 text-center">
+          <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+              <div
+                class="btn mb-5 no-select"
+                type="button"
+                title="Guild Faqs"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+                @click="scrollDown"
+              >
+                <img
+                  src="../assets/img/mtg-guilds/guildofrav_mtg.webp"
+                  alt=""
+                />
+              </div>
+            </div>
 
-  <section class="row">
-    <div class="col-md-12 text-center">
-      <div class="row justify-content-between mt-4">
-        <div class="col-md-3">
-          <!-- <button
-            class="btn fs-3"
-            title="Guild Faqs"
-            data-bs-target="#guildfaq-modal"
-            data-bs-toggle="modal"
-          >
-            GUILD FAQS
-          </button>
-          <GuildFaq /> -->
+            <!-- NOTE x-Scrollable guild cards with snap -->
+            <section class="col-10 rounded guild-container-bg">
+              <div class="row align-items-center">
+                <div class="col-1 text-center" @click="scrollLeft">
+                  <i class="button-style mdi mdi-chevron-left"></i>
+                </div>
+                <div class="col-10">
+                  <div class="row guild-cards-container">
+                    <div class="col-md-3 my-4" v-for="g in guilds" :key="g.id">
+                      <GuildCard :guild="g" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-1 text-center" @click="scrollRight">
+                  <i class="button-style mdi mdi-chevron-right"></i>
+                </div>
+              </div>
+            </section>
 
-          <button
-            class="btn btn-light fs-3"
-            type="button"
-            title="Guild Faqs"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-            @click="scrollDown"
-          >
-            Guild FAQ's
-          </button>
-        </div>
-        <div class="col-12 collapse" id="collapseExample">
-          <div class="card card-body m-2">
-            <h3 class="text-start">Choose Your Guild</h3>
-            <div class="d-flex flex-column align-items-center">
-              <img
-                class="img-fluid"
-                src="https://imgur.com/ONxZ8bm.png"
-                alt="guild-img"
-                title="guild-img"
-                height="400px"
-                width="400px"
-                id="faqs"
-              />
-              <img
-                class="img-fluid"
-                src="https://i.pinimg.com/originals/19/8d/b5/198db572ea3cb88445e5f284f3c7aa0a.jpg"
-                alt="guild-desc-img"
-                title="guild-desc-img"
-              />
+            <!-- FIXME un-collapsing and taking this out of the collapsable adds a bunch of white space to the bottom of the page, need to make background immobile while being able to scroll the content -->
+            <!-- <div class="col-10 collapse" id="collapseExample"></div> -->
+            <div class="col-10 collapse" id="collapseExample">
+              <div class="card card-body m-2">
+                <h3 class="text-start">Choose Your Guild</h3>
+                <div class="d-flex flex-column align-items-center">
+                  <img
+                    class="img-fluid"
+                    src="https://imgur.com/ONxZ8bm.png"
+                    alt="guild-img"
+                    title="guild-img"
+                    height="400px"
+                    width="400px"
+                    id="faqs"
+                  />
+                  <img
+                    class="img-fluid"
+                    src="https://i.pinimg.com/originals/19/8d/b5/198db572ea3cb88445e5f284f3c7aa0a.jpg"
+                    alt="guild-desc-img"
+                    title="guild-desc-img"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <!-- NOTE this was to create a guild -->
-        <!-- <div class="col-md-3">
+      </section>
+    </div>
+  </main>
+
+  <!-- NOTE this was to create a guild -->
+  <!-- <div class="col-md-3">
           <div class="text-end">
             <button class="btn" title="Create Guild" data-bs-toggle="modal" data-bs-target="#guild-modal">
               <i class="mdi mdi-plus fs-3"></i>
@@ -83,9 +85,6 @@
             <GuildForm />
           </div>
         </div> -->
-      </div>
-    </div>
-  </section>
 </template>
 
 <script>
@@ -231,6 +230,27 @@ button:hover {
   background: #ddd;
 }
 
+.rav-bg {
+  background-image: url(../assets/img/mtg-guilds/guild2-mtg.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90vh;
+}
+
+.guild-container-bg {
+  background: rgb(54 52 75 / 38%);
+  backdrop-filter: blur(4px);
+  border: solid #8d8b8b1f;
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.button-style {
+  color: #bd4362;
+  font-size: 4em;
+  padding: 0%;
+}
 .guild-cards-container {
   flex-wrap: nowrap;
   scroll-snap-type: x mandatory;

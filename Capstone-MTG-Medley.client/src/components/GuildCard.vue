@@ -176,8 +176,8 @@ export default {
 
 .guild-img {
   // max-height: 600px;
-  height: 60vh;
-  max-width: 20vw;
+  height: 40vh;
+  max-width: 15vw;
   border-radius: 5px;
   filter: drop-shadow(3px 3px 3px black);
 }
@@ -188,7 +188,7 @@ export default {
 }
 
 .card {
-  height: 60vh;
-  max-width: 20vw;
+  height: 40vh;
+  max-width: 15vw;
 }
 </style>

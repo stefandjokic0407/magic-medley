@@ -1,30 +1,23 @@
 <template>
-  <div>
-    <div class="accordion px-3" id="accordionChat">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button p-2 chat-color d-flex flex-column" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <h3 class="m-0">{{ activeGuild.name }}</h3>
-            <div><b>Members Online:</b><span class="p-2" id="user-count">0</span></div>
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-          data-bs-parent="#accordionChat">
-          <div class="accordion-body p-3 cs-height chat">
-            <div v-for="m in messages" :key="m.id">
-              <MessageBody :message="m" />
-            </div>
-          </div>
-          <form class="px-2" id="form" @submit.prevent="sendMessage()">
-            <input class="rounded-pill my-2 px-3" v-model="editable.body" type="text" placeholder="Send Message" />
-          </form>
-        </div>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="chat-off-canvas" aria-labelledby="offcanvasExampleLabel">
+    <div>
+      <div class="px-2">
+        <button type="button" class="btn-close text-end" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="text-start"><b>Members Online:</b><span class="px-2" id="user-count">0</span></div>
+        <br>
+        <h1 class="text-center">{{ activeGuild.name }}</h1>
       </div>
+    </div>
+    <div class="offcanvas-body">
+      <div v-for="m in messages" :key="m.id">
+        <MessageBody :message="m" />
+      </div>
+      <form class="px-2" id="form" @submit.prevent="sendMessage()">
+        <input class="rounded-pill my-2 px-3" v-model="editable.body" type="text" placeholder="Send Message" />
+      </form>
     </div>
   </div>
 </template>
-
 
 
 <script>
@@ -78,6 +71,14 @@ export default {
 
 
 <style scoped lang="scss">
+.offcanvas {
+  max-height: 70vh !important;
+  max-width: 70vh !important;
+  background-color: rgba(46, 48, 49, 0.5) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom-right-radius: 10px;
+}
+
 input {
   width: 100%;
 }
@@ -91,22 +92,23 @@ input {
   height: 50vh;
   overflow-y: scroll;
   color: rgb(215, 215, 215);
-  position: relative;
-}
-
-.accordion-item {
-  border-color: #3e4042 !important;
 }
 
 
-.chat::-webkit-scrollbar {
-  width: 5px;
+
+.offcanvas-body::-webkit-scrollbar {
+  width: 10px;
   margin-right: 10em;
 }
 
-.chat::-webkit-scrollbar-thumb {
+.offcanvas-body::-webkit-scrollbar-thumb {
   background-color: darkgrey;
   border-radius: 5px;
+}
+
+.chat-color {
+  background-color: #242526 !important;
+  color: rgb(215, 215, 215) !important;
 }
 
 .cs-header {

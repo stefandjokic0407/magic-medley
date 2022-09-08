@@ -27,16 +27,16 @@ export const AppState = reactive({
   searchByType: false,
   searchByText: false,
 
-  manaLesser: true,
-  manaEqual: false,
+  manaLesser: false,
+  manaEqual: true,
   manaGreater: false,
 
-  powerLesser: true,
-  powerEqual: false,
+  powerLesser: false,
+  powerEqual: true,
   powerGreater: false,
 
-  toughnessLesser: true,
-  toughnessEqual: false,
+  toughnessLesser: false,
+  toughnessEqual: true,
   toughnessGreater: false,
 
   nextPage: null,

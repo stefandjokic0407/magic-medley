@@ -114,7 +114,7 @@ img {
   background-image: url(https://images.hdqwalls.com/wallpapers/magic-the-gathering-arena-o6.jpg);
   background-position: center;
   background-size: cover;
-  height: 95vh;
+  height: 93vh;
   transition: 2 ease;
 }
 
@@ -123,6 +123,7 @@ img {
   border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(249, 58, 58);
   transform: translate(0, -1px);
+  cursor: pointer;
 }
 
 
@@ -130,7 +131,7 @@ img {
   background-image: url(https://wallpaperaccess.com/full/251814.jpg);
   background-position: center;
   background-size: cover;
-  height: 95vh;
+  height: 93vh;
   transition: 2 ease;
 }
 
@@ -139,13 +140,14 @@ img {
   border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(15, 160, 238);
   transform: translate(0, -1px);
+  cursor: pointer;
 }
 
 .bg-right {
   background-image: url(https://i.pinimg.com/originals/d2/85/a3/d285a31cd7a4bf82c9caf8127bcb4dc5.jpg);
   background-position: center;
   background-size: cover;
-  height: 95vh;
+  height: 93vh;
   transition: 2 ease;
 }
 
@@ -154,11 +156,16 @@ img {
   border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(255, 255, 255);
   transform: translate(0, -1px);
+  cursor: pointer;
 }
 
+<<<<<<< HEAD
 
 // EFFECT AND EFFECT2 ARE FOR THE STYLING ON THE HOVER EFFECT TEXT
 .effect{
+=======
+.effect {
+>>>>>>> e9650cecbd8d7b44719f7382f7caa906b2e7e989
   color: white;
   font-size: 20px;
   position: absolute;
@@ -170,12 +177,13 @@ img {
   text-align: center;
 }
 
-.effect2{
+.effect2 {
   opacity: 0;
   transition: .5s ease;
   background-color: #008CBA;
 }
 
+<<<<<<< HEAD
 
 // THESE EFFECTS MAKE THE TEXT ON HOVER APPEAR
 .bg-left:hover .effect2{
@@ -185,9 +193,17 @@ img {
   opacity: 1;
 }
 .bg-right:hover .effect2{
+=======
+.bg-left:hover .effect2 {
+>>>>>>> e9650cecbd8d7b44719f7382f7caa906b2e7e989
   opacity: 1;
 }
 
+.bg-center:hover .effect2 {
+  opacity: 1;
+}
 
-
+.bg-right:hover .effect2 {
+  opacity: 1;
+}
 </style>
