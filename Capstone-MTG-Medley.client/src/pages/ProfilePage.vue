@@ -50,6 +50,7 @@ import { router } from "../router";
 import { decksService } from "../services/DecksService.js";
 import { profilesService } from "../services/ProfilesService";
 import Pop from "../utils/Pop";
+import DeckModal from "../components/DeckModal.vue";
 
 export default {
     setup() {
@@ -67,7 +68,7 @@ export default {
         async function getProfileDecks() {
             try {
                 await decksService.getProfileDecks(route.params.profileId);
-                console.log(route.params.profileId)
+                console.log(route.params.profileId);
             }
             catch (error) {
                 Pop.error("[getting profile decks]", error);
@@ -84,15 +85,17 @@ export default {
             decks: computed(() => AppState.profileDecks),
             cover: computed(() => `url(${AppState.activeProfile?.coverImg ||
                 "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"})`),
-                async setActiveDeck(deckId){
-                  try {
-                    await decksService.setActiveDeck(deckId)
-                  } catch (error) {
-                    Pop.error('[setting active deck]', error)
-                  }
-                },
+            async setActiveDeck(deckId) {
+                try {
+                    await decksService.setActiveDeck(deckId);
+                }
+                catch (error) {
+                    Pop.error("[setting active deck]", error);
+                }
+            },
         };
     },
+    components: { DeckModal }
 };
 </script>
 

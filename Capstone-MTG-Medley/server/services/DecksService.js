@@ -28,7 +28,7 @@ class DecksService {
   }
 
   async getDecksByAccountId(accountId) {
-    const decks = await dbContext.Decks.find({ accountId }).populate('profile', 'name picture')
+    const decks = await dbContext.Decks.find({ accountId }).populate('profile', 'name picture').populate('avgRating')
     return decks
   }
 

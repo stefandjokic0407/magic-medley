@@ -1,6 +1,7 @@
 <template>
     <div class="modal fade" id="deckModal" tabindex="-1" :aria-labelledby="activeDeck?.name" aria-hidden="true">
-        <div v-if="activeDeck.id" class="modal-dialog" style="width: 15rem;">
+        <div  class="modal-dialog" >
+            <div v-if="activeDeck.id" class="modal-content" style="width: 15rem;">
 
             <div class="card hero-img">
                 <div class=" mx-3 mt-3">
@@ -27,7 +28,7 @@
 
                 </div>
             </div>
-
+        </div>
         </div>
     </div>
 </template>
