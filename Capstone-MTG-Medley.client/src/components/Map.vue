@@ -50,8 +50,7 @@ export default {
 
 <style scoped lang="scss">
 .map-body {
-    height: 20em;
+    height: 17em;
     width: 100%;
-    margin-top: 3em;
 }
 </style>
