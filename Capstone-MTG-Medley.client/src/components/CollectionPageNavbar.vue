@@ -12,18 +12,23 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Collection' }" class="btn deckText my-4 text-uppercase square buttonPadding">
+          <router-link :to="{ name: 'Collection' }" class="btn deckText my-3 text-uppercase square buttonPadding">
             Collection
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Search' }" class="btn deckText my-4 text-uppercase square buttonPadding">
+          <router-link :to="{ name: 'Search' }" class="btn deckText my-3 text-uppercase square buttonPadding">
             Search
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Guild' }" class="btn deckText my-4 text-uppercase square buttonPadding">
+          <router-link :to="{ name: 'Guild' }" class="btn deckText my-3 text-uppercase square buttonPadding">
             Guild
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{ name: 'Account'}" class="btn deckText text-uppercase square buttonPadding">
+            <img class="profilePicture" :src="account.picture" alt="">
           </router-link>
         </li>
       </ul>
@@ -34,10 +39,16 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
+import { AppState } from "../AppState";
 import SearchForm from "./SearchForm.vue";
 export default {
   setup() {
-    return {};
+    return {
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
+      profile: computed(() => AppState.activeProfile),
+    };
   },
   components: { SearchForm }
 };
@@ -83,5 +94,11 @@ a:hover {
 
 .bgClear {
   background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.profilePicture {
+  height: 5em;
+  width: auto;
+  border-radius: 50%;
 }
 </style>
