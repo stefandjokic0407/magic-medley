@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row main-bg">
     <div class="col-12">
       <p class="fs-1 p-2 m-0 text-center"><b>Choose Your Guild</b></p>
 
@@ -526,9 +526,12 @@ button:hover {
   padding: 0%;
 }
 
-.row-one-bg {
-  background-image: url(../assets/img/transparents/topCity-transparent.png);
-}
+// .main-bg {
+//   background-image: url(../assets/img/transparents/topCity-transparent.png);
+//   background-image: url(../assets/img/transparents/grass-transparent.png);
+//   background-repeat: no-repeat;
+//   background-position: bottom;
+// }
 
 .choose-banner {
   color: white;
