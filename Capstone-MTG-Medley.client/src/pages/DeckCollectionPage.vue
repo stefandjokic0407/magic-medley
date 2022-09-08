@@ -1,37 +1,23 @@
 <template>
+
+
+<section class="container-fluid pageBg">
+
   <header class="row sticky-top">
     <Navbar />
   </header>
-  <div class="row collectionPageViewHeight">
-    <div class="col-10 px-0">
-          <div class="row align-items-center ">
-            <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
-              <div class="row mx-auto">
-                <div class="col-12">
-                  <h1 class="bannerFontSize text-center deckText">{{activeDeck?.name}}</h1>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-<div class="row">
-  <div class=" my-2 col-2" v-for="c in deckCards" :key="c.id">
-    <DeckDetailsCard :card="c" />
+
+  <div class="row my-3">
+    <div class="col-12 text-center">
+      <h1>{{activeDeck.name}}</h1>
+    </div>
   </div>
-</div>
-
-
-
-    <!-- SECTION THE OFFCANVAS FOR THE DECKS -->
-    <!-- <div class="col-2 p-3 text-end">
-      <button class="btn btn-outline-dark img-text deckCanvas" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRight" aria-controls="offcanvasExample" data-bs-scroll="true">
-        Your Decks
-      </button>
-    </div> -->
-
-
+  <div class="row">
+    <div class=" py-2 col-2" v-for="c in deckCards" :key="c.id">
+      <DeckDetailsCard :card="c" />
+    </div>
+  </div>
+</section>
 
 
 </template>
@@ -47,24 +33,14 @@ import { onMounted, ref, watchEffect, } from 'vue';
 import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
 import { deckCardsService } from '../services/DeckCardsService.js';
-import CollectionCard from '../components/CollectionCard.vue';
 import DeckCard from '../components/DeckCard.vue';
-import SearchedCards from '../components/SearchedCards.vue';
 import DeckDetailsCard from '../components/DeckDetailsCard.vue';
 
 
 export default {
     setup() {
         const route = useRoute();
-        // async function getDeckCards(deckId) {
-        //   try {
-        //   await deckCardsService.getDeckCards(deckId)
-        //   }
-        //   catch (error) {
-        //   Pop.error(error);
-        //   console.log(error)
-        //   }
-        // }
+
         async function setActiveDeck() {
             try {
                 await decksService.setActiveDeck(route.params.deckId);
@@ -92,6 +68,29 @@ export default {
 
 
 <style scoped lang="scss">
+
+
+.pageBg{
+  background-color: #faea9b;
+  background-image: url("https://i.etsystatic.com/5295659/r/il/c200e4/1840157274/il_1588xN.1840157274_4m0e.jpg");
+  background-repeat: none;
+  min-height: 100%;
+  overflow-y: auto;
+  min-width: 1024px;
+  background-size: cover;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+
 .deckCanvas {
   position: fixed;
   right: 0px;
@@ -128,19 +127,6 @@ export default {
 }
 .collectionPageViewHeight {
   height: 100%;
-}
-
-.myCollectionsBanner {
-  background-image: url(src/assets/img/smaller_banner-removebg-preview.png);
-  background-position: center;
-  background-size: cover;
-  height: 20VH;
-  font-family: MagicMedieval;
-}
-
-.bannerFontSize {
-  font-size: 4vw;
-  padding-bottom: 5.7%;
 }
 
 .deckText {
