@@ -24,25 +24,33 @@ item-key="id"> -->
       <!-- <i v-if="activeDeck && deckCard?.find(d => d.cardId == card.cardId)" title="remove from deck"
         @click="removeCardFromDeck(card.cardId)"
         class="mdi mdi-minus-circle mdi-36px remove-button btn remove-from-deck"></i> -->
-
-      <div class="cardCount">
-        <p class=" mx-2 mb-1"><i class="mdi mdi-card-multiple-outline"></i>&nbsp<b> {{
-        card.count
-        }}</b></p>
+    </div>
+  </div>
+  <div class="col-9 mx-auto">
+    <div class="row ">
+      <div class="col-6 cardCount xsFont align-items-center d-flex">
+        <p class="p-0 m-0"><i class="mdi p-0 m-0 mdi-card-multiple-outline"></i>&nbsp
+          {{
+          card.count
+          }}</p>
+      </div>
+      <div class="col-3">
+        <i @click.prevent="removeCard() && getAccountCards()" class="deckText mdi mdi-minus-circle-outline text-light"
+          value="Delete" type="button">
+        </i>
+      </div>
+      <div class="col-3">
+        <i v-if="activeDeck" @click="createDeckCard(card.cardId)" title="Add to Deck"
+          class="deckText   mdi mdi-plus-circle mdi"></i>
       </div>
     </div>
-    <i v-if="activeDeck" @click="createDeckCard(card.cardId)" title="Add to Deck"
-      class="deckText  mdi mdi-plus-circle mdi add-button"></i>
+  </div>
 
-    <!-- <p v-if="activeDeck" class="col-10 text-end cardCount"><i class="mdi mdi-card-multiple-outline"></i>&nbsp
+  <!-- <p v-if="activeDeck" class="col-10 text-end cardCount"><i class="mdi mdi-card-multiple-outline"></i>&nbsp
       &nbsp<b>{{
           (card.count)
       }}</b>
     </p> -->
-    <span @click.prevent="removeCard() && getAccountCards()"
-      class=" xsFont mdi mdi-minus-circle-outline sub-button deckText" value="Delete" type="button">
-    </span>
-  </div>
 
   <Modal :id="'collectionCardModal' + card.cardId">
     <CardModal :card="card" />
@@ -197,14 +205,9 @@ export default {
 }
 
 .cardCount {
-  z-index: 1;
-  bottom: 35px;
-  left: 8px;
   background-color: rgba(0, 0, 0, 0.601);
   color: white;
   border-radius: 10%;
-  width: 50px;
-  height: 30px;
   border: solid rgba(255, 255, 255, 0.435) 1px;
 }
 
