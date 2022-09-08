@@ -1,5 +1,5 @@
 <template>
-    <GMapMap :center="center" :zoom="10" map-type-id="terrain" style="width: 100%; height: 500px">
+    <GMapMap :center="center" :zoom="10" map-type-id="terrain" class="map-body">
         <GMapCluster :zoomOnClick="true">
             <GMapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true"
                 :draggable="true" @click="center = m.position" />
@@ -49,5 +49,9 @@ export default {
 
 
 <style scoped lang="scss">
-
+.map-body {
+    height: 20em;
+    width: 100%;
+    margin-top: 3em;
+}
 </style>
