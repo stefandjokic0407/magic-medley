@@ -1,14 +1,17 @@
 <template>
   <!-- SECTION NAVBAR -->
   <div class="row collectionPageBg collectionPageViewHeight">
-    <div class="col-1">
+    <div class="col-2 d-flex flex-column">
       <CollectionPageNavbar />
+      <div class="mt-auto">
+        <CollectionFilter />
+      </div>
     </div>
 
     <!-- SECTION MY COLLECTION COLUMN -->
-    <div class="col-10 px-0">
+    <div class="col-8 px-0">
       <div class="row align-items-center">
-        <div class="col-9 mx-auto">
+        <div class="col-12 mx-auto">
           <div class="row ">
             <div class="myCollectionsBanner mx-auto col-12 col-lg-10 mt-4">
               <div class="row mx-auto ">
@@ -18,7 +21,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row mb-5">
             <div v-for="c in cards" :key="c.id" class="col-4 col-md-2">
               <CollectionCard :card="c" />
             </div>
@@ -92,6 +95,7 @@ import Deck from "../components/Deck.vue";
 import DeckCard from "../components/DeckCard.vue";
 import DeckCardCanvas from "../components/DeckCardCanvas.vue";
 import CollectionPageNavbar from "../components/CollectionPageNavbar.vue";
+import CollectionFilter from '../components/CollectionFilter.vue';
 
 export default {
   setup() {
@@ -187,7 +191,7 @@ export default {
       },
     };
   },
-  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas, CollectionPageNavbar }
+  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas, CollectionPageNavbar, CollectionFilter }
 };
 </script>
 
