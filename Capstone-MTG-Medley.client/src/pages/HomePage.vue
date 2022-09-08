@@ -3,13 +3,8 @@
     <div class="col-12 text-center">
       <!-- <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="" /> -->
       <div class="row d-flex justify-content-evenly">
-<<<<<<< HEAD
         <div class="col-3 bg-left text-light mx-1 d-flex align-items-center justify-content-center">
           <div class="fs-4 selectable effect2">
-=======
-        <div class="col-3 bg-left mx-1 align-items-center d-flex justify-content-center">
-          <div class="fs-4 btn btn-secondary selectable">
->>>>>>> cafac4aa0c5a13e8d7ed0fbe3490d5d702d61592
             <router-link :to="{ name: 'Search' }" class="text-my-light">
               <p class="effect">Search for your cards</p>
             </router-link>
