@@ -52,11 +52,11 @@ a:hover {
   -webkit-text-stroke: .5px rgba(0, 0, 0, 0.103);
   color: rgb(255, 255, 255) !important;
   text-shadow:
-    3px 3px 0 #000,
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+    2px 2px 1px #000,
+    -1px -1px 1px #000,
+    1px -1px 1px #000,
+    -1px 1px 1px #000,
+    1px 1px 1px #000;
   border: none;
 }
 
