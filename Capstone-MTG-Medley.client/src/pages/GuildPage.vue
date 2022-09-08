@@ -4,22 +4,13 @@
   </header>
 
   <!-- NOTE add flex-grow -->
-  <main class="row rav-bg">
+  <div class="row rav-bg">
     <div class="col-12">
       <section class="row">
         <div class="col-md-12 text-center">
           <div class="row justify-content-center mt-4">
             <div class="col-md-8">
-              <div
-                class="btn mb-5 no-select"
-                type="button"
-                title="Guild Faqs"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-                @click="scrollDown"
-              >
+              <div>
                 <img
                   src="../assets/img/mtg-guilds/guildofrav_mtg.webp"
                   alt=""
@@ -45,36 +36,95 @@
                 </div>
               </div>
             </section>
-
-            <!-- FIXME un-collapsing and taking this out of the collapsable adds a bunch of white space to the bottom of the page, need to make background immobile while being able to scroll the content -->
-            <!-- <div class="col-10 collapse" id="collapseExample"></div> -->
-            <div class="col-10 collapse" id="collapseExample">
-              <div class="card card-body m-2">
-                <h3 class="text-start">Choose Your Guild</h3>
-                <div class="d-flex flex-column align-items-center">
-                  <img
-                    class="img-fluid"
-                    src="https://imgur.com/ONxZ8bm.png"
-                    alt="guild-img"
-                    title="guild-img"
-                    height="400px"
-                    width="400px"
-                    id="faqs"
-                  />
-                  <img
-                    class="img-fluid"
-                    src="https://i.pinimg.com/originals/19/8d/b5/198db572ea3cb88445e5f284f3c7aa0a.jpg"
-                    alt="guild-desc-img"
-                    title="guild-desc-img"
-                  />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
     </div>
-  </main>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <p class="fs-1 p-2 m-0 text-center">Choose Your Guild</p>
+    </div>
+  </div>
+
+  <div class="row justify-content-around my-3">
+    <div class="col-4 bg-white elevation-3 rounded">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <p class="fs-3 p-2">Azorius Senate</p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <p class="p-0 m-0 bg-dark text-light rounded">
+            <b class="p-3">Official Role</b>
+          </p>
+          <p class="m-0 p-2">Legislation and Law Enforcement</p>
+          <p class="p-0 m-0 bg-dark text-light rounded">
+            <b class="p-3">Actual Role</b>
+          </p>
+          <p class="m-0 p-2">Bureaucratic nightmares</p>
+          <p class="p-0 m-0 bg-dark text-light rounded">
+            <b class="p-3">Races Role</b>
+          </p>
+          <p class="m-0 p-2">Human, Vedalken</p>
+          <p class="p-0 m-0 bg-dark text-light rounded">
+            <b class="p-3">Members Role</b>
+          </p>
+          <p class="m-0 p-2">Functionaries, Lawmages, Politicians</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 bg-white elevation-3 rounded">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <p class="fs-3 p-2">Azorius Senate</p>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <p class="p-0 m-0 bg-dark text-light rounded">
+            <b class="p-3">Official Role</b>
+          </p>
+          <p class="m-0 p-2">Legislation and Law Enforcement</p>
+          <p class="p-0 m-0 bg-dark text-light rounded">
+            <b class="p-3">Actual Role</b>
+          </p>
+          <p class="m-0 p-2">Bureaucratic nightmares</p>
+          <p class="p-0 m-0 bg-dark text-light rounded">
+            <b class="p-3">Races Role</b>
+          </p>
+          <p class="m-0 p-2">Human, Vedalken</p>
+          <p class="p-0 m-0 bg-dark text-light rounded">
+            <b class="p-3">Members Role</b>
+          </p>
+          <p class="m-0 p-2">Functionaries, Lawmages, Politicians</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="card card-body m-2">
+    <h3 class="text-start">Choose Your Guild</h3>
+    <div class="d-flex flex-column align-items-center">
+      <img
+        class="img-fluid"
+        src="https://imgur.com/ONxZ8bm.png"
+        alt="guild-img"
+        title="guild-img"
+        height="400px"
+        width="400px"
+        id="faqs"
+      />
+      <img
+        class="img-fluid"
+        src="https://i.pinimg.com/originals/19/8d/b5/198db572ea3cb88445e5f284f3c7aa0a.jpg"
+        alt="guild-desc-img"
+        title="guild-desc-img"
+      />
+    </div>
+  </div> -->
 
   <!-- NOTE this was to create a guild -->
   <!-- <div class="col-md-3">
@@ -184,12 +234,12 @@ export default {
       //   message = ref('')
       // }
 
-      scrollDown() {
-        // document.getElementById("faqs").scrollIntoView({ block: "end" });
-        setTimeout(() => {
-          window.scrollTo(0, 750);
-        }, 100);
-      },
+      // scrollDown() {
+      // document.getElementById("faqs").scrollIntoView({ block: "end" });
+      //   setTimeout(() => {
+      //     window.scrollTo(0, 750);
+      //   }, 100);
+      // },
 
       scrollLeft() {
         let content = document.querySelector(".guild-cards-container");
@@ -245,6 +295,10 @@ button:hover {
   border: solid #8d8b8b1f;
   border-radius: 8px;
   padding: 1em;
+}
+
+.guild-faq-bg {
+  background-color: #4e6d69;
 }
 
 .button-style {

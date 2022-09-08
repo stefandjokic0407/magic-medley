@@ -1,6 +1,6 @@
 <template>
     <div class="modal fade" id="deckModal" tabindex="-1" :aria-labelledby="activeDeck?.name" aria-hidden="true">
-        <div class="modal-dialog" style="width: 15rem;">
+        <div v-if="activeDeck.id" class="modal-dialog" style="width: 15rem;">
 
             <div class="card hero-img">
                 <div class=" mx-3 mt-3">
@@ -18,13 +18,11 @@
                     <p class="card-text">{{activeDeck?.description}}</p>
                 </div>
                 <div class="card-body">
-                    <p>Community Rating:{{sum}}/{{activeDeck.rating.length*5}}</p>
+                    <p>Community Rating:{{calcRating}}/{{activeDeck.rating?.length*5}}</p>
                 </div>
-
                 <div class="card-footer">
                     <button class="btn btn-outline-light">rating up</button>
                     <button class="btn btn-outline-light">Deck Details</button>
-
                 </div>
             </div>
 
@@ -78,5 +76,11 @@ p {
 
 .rotated {
     transform: scale(1.1);
+}
+
+.hero-img {
+    background-image: url(../assets/img/note.png);
+    background-position: center;
+    background-size: inherit;
 }
 </style>
