@@ -115,7 +115,7 @@ img {
   background-image: url(https://images.hdqwalls.com/wallpapers/magic-the-gathering-arena-o6.jpg);
   background-position: center;
   background-size: cover;
-  height: 95vh;
+  height: 93vh;
   transition: 2 ease;
 }
 
@@ -124,6 +124,7 @@ img {
   border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(249, 58, 58);
   transform: translate(0, -1px);
+  cursor: pointer;
 }
 
 
@@ -131,7 +132,7 @@ img {
   background-image: url(https://wallpaperaccess.com/full/251814.jpg);
   background-position: center;
   background-size: cover;
-  height: 95vh;
+  height: 93vh;
   transition: 2 ease;
 }
 
@@ -140,13 +141,14 @@ img {
   border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(15, 160, 238);
   transform: translate(0, -1px);
+  cursor: pointer;
 }
 
 .bg-right {
   background-image: url(https://i.pinimg.com/originals/d2/85/a3/d285a31cd7a4bf82c9caf8127bcb4dc5.jpg);
   background-position: center;
   background-size: cover;
-  height: 95vh;
+  height: 93vh;
   transition: 2 ease;
 }
 
@@ -155,6 +157,7 @@ img {
   border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(255, 255, 255);
   transform: translate(0, -1px);
+  cursor: pointer;
 }
 
 .effect {
