@@ -1,9 +1,10 @@
 <template>
-    <GMapMap :center="center" :zoom="10" map-type-id="terrain" class="map-body">
-        <GMapCluster :zoomOnClick="true">
-            <GMapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true"
-                :draggable="true" @click="center = m.position" />
-        </GMapCluster>
+    <GMapMap :center="center" :zoom="17" map-type-id="terrain" class="map-body">
+
+        <GMapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true"
+            :draggable="true" @click="center = m.position" />
+
+
     </GMapMap>
 </template>
 
@@ -14,30 +15,30 @@ export default {
     setup() {
 
         return {
-            center: { lat: 51.093048, lng: 6.84212 },
+            center: { lat: 43.60641142319335, lng: -116.2860776917006 },
             markers: [
                 {
                     position: {
-                        lat: 51.093048,
-                        lng: 6.84212,
+                        lat: 43.60641142319335,
+                        lng: -116.2860776917006,
                     },
                 },
                 {
                     position: {
-                        lat: 51.198429,
-                        lng: 6.69529,
+                        lat: 44.198429,
+                        lng: -117.69529,
                     },
                 },
                 {
                     position: {
-                        lat: 51.165218,
-                        lng: 7.067116,
+                        lat: 42.165218,
+                        lng: -115.067116,
                     },
                 },
                 {
                     position: {
-                        lat: 51.09256,
-                        lng: 6.84074,
+                        lat: 43.09256,
+                        lng: -116.84074,
                     },
                 },
             ],

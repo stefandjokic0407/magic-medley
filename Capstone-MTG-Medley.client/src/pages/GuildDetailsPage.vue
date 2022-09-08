@@ -3,12 +3,12 @@
     <Navbar />
   </header>
 
-
-
   <!-- Gruul Clans Page -->
   <div v-if="activeGuild.name == 'Gruul Clans'" class="row gruul">
+    <!-- NOTE Guild Members & Title & Join/Remove Button -->
     <section class="col-md-12">
       <div class="row">
+        <!-- GUILD MEMBERS -->
         <div class="col-md-4">
           <h4>Guild Members</h4>
           <div class="d-flex my-2">
@@ -17,10 +17,12 @@
             </div>
           </div>
         </div>
+        <!-- GUILD TITLE -->
         <div class="col-md-4 text-center">
           <h1>{{ activeGuild.name }}</h1>
           <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
         </div>
+        <!-- GUILD JOIN/REMOVE -->
         <div class="col-md-4 text-end">
           <button v-if="isMember == false" class="btn" @click="joinGuild()">
             <i class="mdi mdi-plus fs-3"></i>
@@ -66,9 +68,10 @@
         </div>
       </div>
     </section>
-    <!-- NOTE deck -->
+    <!-- NOTE Map & Offcanvas Button -->
     <section class="col-md-12">
       <div class="row">
+        <!-- DECK -->
         <div class="col-md-10">
           <div class="card deck-card border-none">
             <img class="gruul-deck rounded elevation-4"
@@ -81,14 +84,13 @@
             </div>
           </div>
         </div>
-        <!-- NOTE chat -->
+        <!-- CHAT -->
         <div class="col-md-2 d-flex flex-column justify-content-end text-end">
           <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-off-canvas"
             aria-controls="chat-off-canvas">
             Chat With Guild Members
           </button>
           <ChatOffcanvas />
-
         </div>
       </div>
       <!-- NOTE Might need this to add starter decks -->
