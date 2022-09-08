@@ -81,7 +81,7 @@ a:hover {
   height: 10VH;
 }
 
-// .bgClear {
-//   background-color: rgba(0, 0, 0, 0) !important;
-// }
+.bgClear {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
 </style>
