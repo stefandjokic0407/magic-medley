@@ -1,5 +1,6 @@
 <template>
   <!-- SECTION NAVBAR -->
+
   <div class="row collectionPageBg collectionPageViewHeight">
     <div class="col-2 d-flex flex-column">
       <CollectionPageNavbar />
@@ -253,7 +254,7 @@ export default {
 }
 
 .deckImg {
-  aspect-ratio: 4 / 1;
+  aspect-ratio: 3 / 1;
   background-image: v-bind(cover) !important;
   background-position: center;
   background-repeat: no-repeat;
