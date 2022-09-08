@@ -1,32 +1,33 @@
 <template>
     <div class="modal fade" id="deckModal" tabindex="-1" :aria-labelledby="activeDeck?.name" aria-hidden="true">
-        <div  class="modal-dialog" >
-            <div v-if="activeDeck.id" class="modal-content" style="width: 15rem;">
+        <div class="modal-dialog deck-modal">
+            <div v-if="activeDeck.id" class="modal-content">
 
-            <div class="card hero-img">
-                <div class=" mx-3 mt-3">
-                    <img v-if="activeDeck" :src='activeDeck?.picture' class="card-img-top">
-                    <img v-else
-                        src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
-                        class="card-img-top" alt="...">
-                </div>
-                <div v-if="!activeDeck?.picture" class="card-img-top">
-                    <img src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
-                        class="cardBg img-fluid" alt="...">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title"><b>{{activeDeck?.name}}</b></h5>
-                    <p class="card-text">{{activeDeck?.description}}</p>
-                </div>
-                <div class="card-body">
-                    <p>Community Rating:{{calcRating}}/{{activeDeck.rating?.length*5}}</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-outline-light">rating up</button>
-                    <button class="btn btn-outline-light">Deck Details</button>
+                <div class="card hero-img">
+                    <h5 class="card-title text-center text-light"><b>{{activeDeck?.name}}</b></h5>
+                    <div class=" px-5 pt-2" style="max-height: 490px;">
+                        <img v-if="activeDeck" :src='activeDeck?.picture' class="card-img-top img-fluid">
+                        <img v-else
+                            src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+                            class="card-img-top" alt="...">
+                    </div>
+                    <div v-if="!activeDeck?.picture" class="card-img-top">
+                        <img src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+                            class="cardBg img-fluid" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <span class="d-flex justify-content-around">
+                            <button class="btn btn-outline-light">Rating up</button>
+                            <p class="text-center">Community Rating:<br>{{calcRating}}/{{activeDeck.rating?.length*5}}
+                            </p>
+                            <button @click="deckDetails" class="btn btn-outline-light" data-bs-dismiss="modal"
+                                data-bs-target="#deckModal">Deck Details</button>
+                        </span>
+                        <p class="card-text px-4">{{activeDeck?.description}}</p>
+
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 </template>
@@ -34,7 +35,9 @@
 
 <script>
 import { computed } from '@vue/reactivity';
+import { Modal } from "bootstrap";
 import { AppState } from '../AppState.js';
+import { router } from "../router.js";
 
 
 export default {
@@ -43,14 +46,22 @@ export default {
 
         return {
             activeDeck: computed(() => AppState.activeDeck),
-            calcRating: computed(()  => {
+            calcRating: computed(() => {
                 const arr = AppState.activeDeck?.rating;
-                    let sum = 0;
-                    for (const value of arr) {
-                        sum += value;
-                    }
-                    return sum
-            })
+                let sum = 0;
+                for (const value of arr) {
+                    sum += value;
+                }
+                return sum
+            }),
+            async deckDetails() {
+                try {
+                    router.push({ name: "DeckDetails", params: { deckId: AppState.activeDeck?.id } })
+                    // Modal.getOrCreateInstance(document.getElementById('deck-modal')).hide()
+                } catch (error) {
+                    console.log(error)
+                }
+            },
 
         }
     }
@@ -82,6 +93,13 @@ p {
 .hero-img {
     background-image: url(../assets/img/note.png);
     background-position: center;
-    background-size: inherit;
+    background-size: cover;
+    height: 750px;
+    width: 500px;
+}
+
+.deck-modal {
+    height: 750px;
+    width: 500px;
 }
 </style>

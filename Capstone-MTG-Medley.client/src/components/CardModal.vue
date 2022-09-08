@@ -295,4 +295,8 @@ p {
 .rotated {
   transform: scale(1.1);
 }
+
+.modal-backdrop {
+  position: static !important;
+}
 </style>
