@@ -6,58 +6,10 @@
     </div>
     <div class="col-10 px-0">
       <div class="row align-items-center">
-        <!-- add deck component -->
-        <!-- <h3 class="col-4 col-md-12">My Deck
-        </h3> -->
-        <!-- <div v-if="activeDeck" class="col-12 col-md-2 ms-2">
-          <div v-if="activeDeck" class="row">
-            <h4 class="m-0 p-0 text-center col-12 my-2">{{ activeDeck?.name }}</h4>
-            <h5 v-if="deckCards.length" class="m-0 p-0 text-center col-12">Cards:{{ " " + deckCards.length }}</h5>
-            <button v-if="activeDeck" class="btn btn-outline col-6 mx-auto" data-bs-toggle="modal"
-              :data-bs-target="'#deck-form'">Edit
-              Deck</button>
-            <button v-if="activeDeck" class="btn btn-outline col-6 mx-auto" data-bs-toggle="modal"
-              :data-bs-target="'#deck-form'">Delete</button>
-          </div>
-        </div> -->
-        <!-- <div v-if="activeDeck" class="col-12 col-md-4">
-          <div class="row">
-            <img class="img-fluid col-3" :src="activeDeck?.picture" alt="" :title="activeDeck?.name" srcset="">
-            <p class="col-9">{{ activeDeck?.description }}</p>
-          </div>
-        </div> -->
-        <div class="col-12">
-          <div class="row">
-
-            <!-- SECTION CAROUSEL FOR DECK CARDS// DIDN'T THINK IT LOOKED GOOD BUT COMMENTED IT OUT FOR NOW  -->
-            <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div v-for="c in displayCards" :key="c.id" class="carousel-item active">
-              <DeckCard :card="c" />
-            </div>
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div> -->
-
-            <!-- 
-            <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-2 col-md-1 mx-1 my-3">
-              <DeckCard :card="c" />
-            </div> -->
-          </div>
-        </div>
         <div class="col-9 mx-auto">
           <div class="row ">
-            <div class="myCollectionsBanner mx-auto col-12 col-lg-10 align-items-center d-flex mt-4">
-              <div class="row mx-auto">
+            <div class="myCollectionsBanner mx-auto col-12 col-lg-10 mt-4">
+              <div class="row mx-auto ">
                 <div class="col-12">
                   <h1 class="bannerFontSize text-center deckText">My Collection</h1>
                 </div>
@@ -303,7 +255,7 @@ export default {
 
 .collectionPageBg {
   background-color: #faea9b;
-  background-image: url("https://giffiles.alphacoders.com/134/134977.gif");
+  background-image: url("https://papers.co/wallpaper/papers.co-mc29-wallpaper-earth-is-round-star-space-white-36-3840x2400-4k-wallpaper.jpg");
   background-repeat: none;
   min-height: 100%;
   overflow-y: auto;
@@ -334,8 +286,9 @@ export default {
 }
 
 .bannerFontSize {
-  font-size: 4vw;
-  padding-bottom: 5.7%;
+  font-size: 3vw;
+  padding-bottom: 4%;
+
 }
 
 .deckText {
@@ -347,5 +300,9 @@ export default {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
+}
+
+.modal-backdrop {
+  position: static !important;
 }
 </style>
