@@ -24,7 +24,6 @@
                     <option value="Boros Legion">Boros Legion</option>
                     <option value="Simic Combine">Simic Combine</option>
                     <option value="Gruul Clans">Gruul Clans</option>
-
                   </select>
                 </div>
                 <button type="submit" class="btn btn-primary col-md-10 offset-md-1 mt-5 mb-2"
@@ -75,4 +74,5 @@ export default {
 
 
 <style scoped lang="scss">
+
 </style>
