@@ -1,6 +1,6 @@
 <template>
   <header>
-    <Navbar />
+    <ClearNavBar />
   </header>
 
   <!-- NOTE add flex-grow -->
@@ -11,10 +11,7 @@
           <div class="row justify-content-center mt-4">
             <div class="col-md-8">
               <div>
-                <img
-                  src="../assets/img/mtg-guilds/guildofrav_mtg.webp"
-                  alt=""
-                />
+                <img src="../assets/img/mtg-guilds/guildofrav_mtg.webp" alt="" />
               </div>
             </div>
 
@@ -344,12 +341,7 @@
   <!-- NOTE this was to create a guild -->
   <div class="col-md-3">
     <div class="text-end">
-      <button
-        class="btn"
-        title="Create Guild"
-        data-bs-toggle="modal"
-        data-bs-target="#guild-modal"
-      >
+      <button class="btn" title="Create Guild" data-bs-toggle="modal" data-bs-target="#guild-modal">
         <i class="mdi mdi-plus fs-3"></i>
         <span class="fs-5">CREATE GUILD</span>
       </button>
@@ -371,6 +363,7 @@ import GuildFaq from "../components/GuildFaq.vue";
 import GuildForm from "../components/GuildForm.vue";
 import Pop from "../utils/Pop";
 import { useRouter } from "vue-router";
+import ClearNavBar from "../components/ClearNavBar.vue";
 
 export default {
   setup() {
@@ -484,7 +477,7 @@ export default {
       },
     };
   },
-  components: { GuildForm, GuildCard, GuildFaq },
+  components: { GuildForm, GuildCard, GuildFaq, ClearNavBar },
 };
 </script>
 
@@ -523,7 +516,7 @@ button:hover {
   max-width: 100vw;
   overflow-x: scroll;
 
-  > div {
+  >div {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }

@@ -1,5 +1,5 @@
 <template>
-  <header class="fixed-top">
+  <header class="fixed-top img-text">
     <Navbar />
   </header>
   <section class="row">
@@ -27,6 +27,8 @@ import { AppState } from '../AppState';
 import { computed, ref } from '@vue/reactivity';
 import { logger } from '../utils/Logger.js';
 import { cardsService } from '../services/CardsService.js';
+import ClearNavBar from '../components/ClearNavBar.vue';
+import Navbar from '../components/Navbar.vue';
 export default {
   setup() {
     const page = ref(1)
@@ -49,7 +51,7 @@ export default {
 
     };
   },
-  components: { SearchFilters, SearchForm, SearchedCards }
+  components: { SearchFilters, SearchForm, SearchedCards, ClearNavBar, Navbar }
 };
 
 </script>
@@ -57,9 +59,12 @@ export default {
 
 
 <style lang="scss" scoped>
+.img-text {
+  color: whitesmoke !important;
+  text-shadow: 1px 1px 3px black;
+}
+
 .bg-search {
   background-color: rgba(6, 19, 32, 255);
 }
-
-
 </style>

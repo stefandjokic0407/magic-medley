@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg  bg-light px-3 mx-0 my-0 py-0 navHeight">
+  <nav class="navbar navbar-expand-lg px-3 mx-0 my-0 py-0 navHeight bg-clear">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center" title="Home">
         <img alt="logo" src="../assets/img/FullLogo_Transparent_NoBuffer.png" height="55" />
@@ -13,19 +13,19 @@
       <ul class="navbar-nav me-auto">
         <li>
           <router-link :to="{ name: 'Collection' }"
-            class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">
+            class="btn img-text lighten-30 selectable text-uppercase square buttonPadding">
             Collection
           </router-link>
         </li>
         <li>
           <router-link :to="{ name: 'Search' }"
-            class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">
+            class="btn img-text lighten-30 selectable text-uppercase square buttonPadding">
             Search
           </router-link>
         </li>
         <li>
           <router-link :to="{ name: 'Guild' }"
-            class="btn text-black lighten-30 selectable text-uppercase square buttonPadding">
+            class="btn img-text lighten-30 selectable text-uppercase square buttonPadding">
             Guild
           </router-link>
         </li>
@@ -72,5 +72,14 @@ a:hover {
 
 .navHeight {
   height: 10VH;
+}
+
+.bg-clear {
+  background-color: transparent;
+}
+
+.img-text {
+  color: whitesmoke !important;
+  text-shadow: 1px 1px 3px black !important;
 }
 </style>
