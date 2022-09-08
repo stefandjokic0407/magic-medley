@@ -3,24 +3,24 @@
     <div class="col-12 text-center">
       <!-- <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="" /> -->
       <div class="row d-flex justify-content-evenly">
-        <div class="col-3 bg-left mx-1 ">
-          <div class="fs-4 btn btn-secondary selectable">
+        <div class="col-3 bg-left text-light mx-1 d-flex align-items-center justify-content-center">
+          <div class="fs-4 selectable effect2">
             <router-link :to="{ name: 'Search' }" class="text-my-light">
-              Search Cards
+              <p class="effect">Search for your cards</p>
             </router-link>
           </div>
         </div>
-        <div class="col-3 bg-center mx-1 ">
-          <div class="fs-4 btn btn-secondary selectable">
+        <div class="col-3 bg-center mx-1 text-light d-flex align-items-center justify-content-center">
+          <div class="fs-4 selectable effect2">
             <router-link :to="{ name: 'Guild' }" class="text-my-light selectable">
-              Guild
+              <p class="effect">Guild</p> 
             </router-link>
           </div>
         </div>
-        <div class="col-3 bg-right mx-1 ">
-          <div class="fs-4 btn btn-secondary selectable">
+        <div class="col-3 bg-right mx-1 text-light d-flex align-items-center justify-content-center">
+          <div class="fs-4 selectable effect2">
             <router-link :to="{ name: 'Collection' }" class="text-my-light">
-              My Collection
+              <p class="effect">My Collection</p>
             </router-link>
           </div>
         </div>
@@ -156,4 +156,17 @@ img {
   box-shadow: 0 0 100px rgb(255, 255, 255);
   transform: translate(0, -1px);
 }
+
+.effect{
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 </style>
