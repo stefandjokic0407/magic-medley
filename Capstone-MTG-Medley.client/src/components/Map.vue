@@ -1,10 +1,10 @@
 <template>
+    <form class="mb-2">
+        <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Enter Address">
+    </form>
     <GMapMap :center="center" :zoom="17" map-type-id="terrain" class="map-body">
-
         <GMapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true"
             :draggable="true" @click="center = m.position" />
-
-
     </GMapMap>
 </template>
 
