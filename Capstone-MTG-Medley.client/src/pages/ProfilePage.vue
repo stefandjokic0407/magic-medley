@@ -83,7 +83,7 @@ export default {
             route,
             account: computed(() => AppState.account),
             profile: computed(() => AppState.activeProfile),
-            decks: computed(() => AppState.decks),
+            decks: computed(() => AppState.profileDecks),
             cover: computed(() => `url(${AppState.activeProfile?.coverImg ||
                 "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"})`),
                 async setActiveDeck(deckId){
