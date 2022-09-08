@@ -17,8 +17,8 @@
                     </div>
                     <div class="card-body">
                         <span class="d-flex justify-content-around">
-                            <button @click="rateDeck(5)" class="btn btn-outline-light">Rating up</button>
-                            <p class="text-center">Community Rating:<br>{{activeDeck?.avgRating}}/{{activeDeck.rating?.length*5}}
+                            <p class="text-center">Community
+                                Rating:<br>{{activeDeck?.avgRating}}/{{activeDeck.rating?.length*5}}
                             </p>
                             <button @click="deckDetails" class="btn btn-outline-light" data-bs-dismiss="modal"
                                 data-bs-target="#deckModal">Deck Details</button>
@@ -64,16 +64,6 @@ export default {
                     console.log(error)
                 }
             },
-
-            async rateDeck(num) {
-                try {
-                    const accountId = this.activeDeck.accountId
-                    const deckId = this.activeDeck.id
-                    await decksService.rateDeck({value: num}, deckId, accountId)
-                } catch (error) {
-                    Pop.error(error)
-                }
-            }
 
         }
     }
