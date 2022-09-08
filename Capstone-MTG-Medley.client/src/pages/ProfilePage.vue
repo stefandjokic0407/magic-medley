@@ -39,8 +39,11 @@
       </div>
       <div class="card-body fs-5">
         <span class="d-flex justify-content-around">
-          <p class="text-center">
-            Community Rating:<br><span v-if="d.avgRating">{{(d?.avgRating/d.rating?.length).toFixed(1)}}</span>/5
+          <p class="text-center" v-if="d.avgRating">
+            Community Rating:<br>{{(d?.avgRating/d.rating?.length).toFixed(1)}}/5
+          </p>
+          <p class="text-center" v-else>
+            Community Rating:<br>not rated
           </p>
           <button @click="deckDetails" class="btn btn-outline-dark">
             Deck Details

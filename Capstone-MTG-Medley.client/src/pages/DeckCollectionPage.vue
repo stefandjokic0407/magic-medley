@@ -20,15 +20,19 @@
             </button>
             <button @click="rateDeck(2)" class="btn m-0 p-0 text-warning">
               <i class="mdi mdi-star-outline mdi-36px"></i>
+              <i class="mdi mdi-star mdi-36px"></i>
             </button>
             <button @click="rateDeck(3)" class="btn m-0 p-0 text-warning">
               <i class="mdi mdi-star-outline mdi-36px text-warning"></i>
+              <i class="mdi mdi-star mdi-36px"></i>
             </button>
             <button @click="rateDeck(4)" class="btn m-0 p-0 text-warning">
               <i class="mdi mdi-star-outline mdi-36px"></i>
+              <i class="mdi mdi-star mdi-36px"></i>
             </button>
             <button @click="rateDeck(5)" class="btn m-0 p-0 text-warning">
               <i class="mdi mdi-star-outline mdi-36px"></i>
+              <i class="mdi mdi-star mdi-36px"></i>
             </button>
           </div>
           <button class="btn col-2 offset-4" @click="cloneDeck">Copy Deck to My Collection</button>
