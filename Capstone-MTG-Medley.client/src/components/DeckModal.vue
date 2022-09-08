@@ -19,10 +19,10 @@
                         <p class="card-text">{{activeDeck?.description}}</p>
                     </div>
                     <div class="card-body">
-                        <p>Community Rating:{{calcRating}}/{{activeDeck.rating?.length*5}}</p>
+                        <p>Community Rating:{{activeDeck?.avgRating}}/{{activeDeck.rating?.length*5}}</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-outline-light">rating up</button>
+                        <button class="btn btn-outline-light" @click="rateDeck(5)">rating up</button>
                         <button @click="deckDetails" class="btn btn-outline-light">Deck Details</button>
                     </div>
                 </div>
@@ -37,6 +37,8 @@ import { computed } from '@vue/reactivity';
 import { Modal } from "bootstrap";
 import { AppState } from '../AppState.js';
 import { router } from "../router.js";
+import { decksService } from "../services/DecksService.js";
+import Pop from "../utils/Pop.js";
 
 
 export default {
@@ -61,6 +63,16 @@ export default {
                     console.log(error)
                 }
             },
+
+            async rateDeck(num) {
+                try {
+                    const accountId = this.activeDeck.accountId
+                    const deckId = this.activeDeck.id
+                    await decksService.rateDeck({value: num}, deckId, accountId)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
 
         }
     }

@@ -14,6 +14,7 @@ export class DecksController extends BaseController {
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createDeck)
             .put('/:id', this.editDeck)
+            .put('/:deckId/:userId', this.rateDeck)
             .delete('/:id', this.deleteDeck)
     }
 
@@ -73,12 +74,12 @@ export class DecksController extends BaseController {
         }
     }
 
-    async addRating(req, res, next) {
+    async rateDeck(req, res, next) {
         try {
             // the body should be an object with a value {value: 5}
             let rating = req.body
             rating.creatorId = req.userInfo.id
-            let deck = await decksService.addRating(req.params.deckId, rating)
+            let deck = await decksService.rateDeck(req.params.deckId, rating)
             return res.send(deck)
         } catch (error) {
             next(error)
