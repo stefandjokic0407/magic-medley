@@ -3,7 +3,7 @@
     <div class="col-12 text-center">
       <!-- <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="" /> -->
       <div class="row d-flex justify-content-evenly">
-        <div class="col-3 bg-left mx-1 ">
+        <div class="col-3 bg-left mx-1 align-items-center d-flex justify-content-center">
           <div class="fs-4 btn btn-secondary selectable">
             <router-link :to="{ name: 'Search' }" class="text-my-light">
               Search Cards
