@@ -2,86 +2,107 @@
   <header>
     <Navbar />
   </header>
+
+
+
   <!-- Gruul Clans Page -->
   <div v-if="activeGuild.name == 'Gruul Clans'" class="row gruul">
-    <div class="col-md-4 my-2">
-      <h4>Guild Members</h4>
-      <div class="d-flex my-2">
-        <div v-for="m in members" :key="m.id">
-          <Member :member="m" />
+    <section class="col-md-12">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Guild Members</h4>
+          <div class="d-flex my-2">
+            <div v-for="m in members" :key="m.id">
+              <Member :member="m" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <h1>{{ activeGuild.name }}</h1>
+          <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
+        </div>
+        <div class="col-md-4 text-end">
+          <button v-if="isMember == false" class="btn" @click="joinGuild()">
+            <i class="mdi mdi-plus fs-3"></i>
+            <span class="fs-5">JOIN GUILD</span>
+          </button>
+          <button v-else class="btn" @click="removeFromGuild()">
+            <i class="mdi mdi-minus fs-3"></i>
+            <span class="fs-5">Leave Guild</span>
+          </button>
         </div>
       </div>
-    </div>
-    <div class="col-md-4 text-center">
-      <h1>{{ activeGuild.name }}</h1>
-      <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
-    </div>
-    <div class="col-md-4 text-end my-2">
-      <button v-if="isMember == false" class="btn" @click="joinGuild()">
-        <i class="mdi mdi-plus fs-3"></i>
-        <span class="fs-5">JOIN GUILD</span>
-      </button>
-      <button v-else class="btn" @click="removeFromGuild()">
-        <i class="mdi mdi-minus fs-3"></i>
-        <span class="fs-5">Leave Guild</span>
-      </button>
-    </div>
-    <!-- GUILD INFO -->
-    <main class="d-flex justify-content-evenly r-height">
-      <section class="col-md-6">
-        <!-- Gruul Clans Background -->
-        <div class="row flex-column justify-content-center">
-          <div class="col-md-12">
-            <div class="card p-3 gruul-bg elevation-4">
-              <h4>
-                {{ activeGuild.name }} Background
-              </h4>
-              Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble
-              guild
-              charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
-              Civilization and the other nine guilds, however, overran every wild place on the plane. This changed the
-              Gruul.
-              <br>
-              <br>
-              The Gruul decentralized, lacking any sort of real leadership. The guild became nothing but a loose
-              affiliation of clans. Exploited and ignored, they started to take any reason to cause chaos, any reason
-              to
-              destroy a symbol of civilization. Most Gruul hold contempt for those outside the Clans, referring to
-              them
-              as
-              "cobble roaches".
-            </div>
+    </section>
+    <!-- NOTE Background & Map Row -->
+    <section class="col-md-12">
+      <!-- BACKGROUND -->
+      <div class="row align-items-center">
+        <div class="col-md-8">
+          <div class="card p-3 gruul-bg elevation-4">
+            <h4>
+              {{ activeGuild.name }} Background
+            </h4>
+            Before and for a short time after the signing of the Guildpact, the Gruul Clans were a wild and noble
+            guild
+            charged with maintaining the wild places on Ravnica. They were supposed to keep civilization in check.
+            Civilization and the other nine guilds, however, overran every wild place on the plane. This changed the
+            Gruul.
+            <br>
+            <br>
+            The Gruul decentralized, lacking any sort of real leadership. The guild became nothing but a loose
+            affiliation of clans. Exploited and ignored, they started to take any reason to cause chaos, any reason
+            to
+            destroy a symbol of civilization. Most Gruul hold contempt for those outside the Clans, referring to
+            them
+            as
+            "cobble roaches".
           </div>
-          <div class="col-md-12">
-            <div class="mb-3">
-              <Map />
+        </div>
+        <!-- MAP -->
+        <div class="col-md-4">
+          <div class="">
+            <Map />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- NOTE deck -->
+    <section class="col-md-12">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="card deck-card border-none">
+            <img class="gruul-deck rounded elevation-4"
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7c1a7ee8-ee25-4224-b5bf-ec4d43489c77/dartqc3-2bccbd58-4c87-4111-9ab1-21b3dc8abb84.jpg/v1/fill/w_670,h_1192,q_70,strp/gruul_clans_smartphone_wallpaper_1080p_by_locix_ita_dartqc3-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTkyMCIsInBhdGgiOiJcL2ZcLzdjMWE3ZWU4LWVlMjUtNDIyNC1iNWJmLWVjNGQ0MzQ4OWM3N1wvZGFydHFjMy0yYmNjYmQ1OC00Yzg3LTQxMTEtOWFiMS0yMWIzZGM4YWJiODQuanBnIiwid2lkdGgiOiI8PTEwODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.41brHS-Ebvlvh99GHE39I6whtvmt9xa2ijpa_GKu4rg"
+              alt="Gruul Deck" title="Gruul Deck">
+            <div class="card-img-overlay p-0">
+              <div class="glass-card fs-6 text-dark text-center rounded-top p-1">
+                {{ activeGuild.name }} Starter Deck
+              </div>
             </div>
           </div>
         </div>
-      </section>
-      <!-- NOTE deck -->
-      <section class="col-md-2">
-        <div class="card border-none">
-          <img class="gruul-deck rounded elevation-4"
-            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7c1a7ee8-ee25-4224-b5bf-ec4d43489c77/dartqc3-2bccbd58-4c87-4111-9ab1-21b3dc8abb84.jpg/v1/fill/w_670,h_1192,q_70,strp/gruul_clans_smartphone_wallpaper_1080p_by_locix_ita_dartqc3-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTkyMCIsInBhdGgiOiJcL2ZcLzdjMWE3ZWU4LWVlMjUtNDIyNC1iNWJmLWVjNGQ0MzQ4OWM3N1wvZGFydHFjMy0yYmNjYmQ1OC00Yzg3LTQxMTEtOWFiMS0yMWIzZGM4YWJiODQuanBnIiwid2lkdGgiOiI8PTEwODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.41brHS-Ebvlvh99GHE39I6whtvmt9xa2ijpa_GKu4rg"
-            alt="Gruul Deck" title="Gruul Deck">
-          <div class="card-img-overlay p-0">
-            <div class="glass-card fs-3 text-dark text-center rounded-top p-1">
-              {{ activeGuild.name }} Starter Deck
-            </div>
-          </div>
+        <!-- NOTE chat -->
+        <div class="col-md-2 d-flex flex-column justify-content-end text-end">
+          <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-off-canvas"
+            aria-controls="chat-off-canvas">
+            Chat With Guild Members
+          </button>
+          <ChatOffcanvas />
+
         </div>
-        <!-- NOTE Might need this to add starter decks -->
-        <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
+      </div>
+      <!-- NOTE Might need this to add starter decks -->
+      <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
                 <img :src="oracleCard.image_uris.small" alt="">
               </div> -->
-      </section>
-      <!-- NOTE chat -->
-      <section class="col-md-3 d-flex flex-column justify-content-end align-items-center">
-        <GuildChat />
-      </section>
-    </main>
+    </section>
   </div>
+
+
+
+
+
+
   <!-- Simic Combine Page -->
   <div v-if="activeGuild.name == 'Simic Combine'" class="row simic">
     <div class="col-md-12 text-end">
@@ -500,9 +521,6 @@
     </section>
   </div>
   <!-- CHAT -->
-  <footer class="fixed-bottom">
-
-  </footer>
 </template>
 
 <script>
@@ -631,8 +649,13 @@ export default {
 
 .gruul-deck {
   background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7c1a7ee8-ee25-4224-b5bf-ec4d43489c77/dartqbg-57fdc724-abf7-44f7-9786-57a86ee09733.jpg/v1/fill/w_1024,h_1821,q_75,strp/izzet_league_smartphone_wallpaper_1080p_by_locix_ita_dartqbg-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTgyMSIsInBhdGgiOiJcL2ZcLzdjMWE3ZWU4LWVlMjUtNDIyNC1iNWJmLWVjNGQ0MzQ4OWM3N1wvZGFydHFiZy01N2ZkYzcyNC1hYmY3LTQ0ZjctOTc4Ni01N2E4NmVlMDk3MzMuanBnIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.cBa4aKec7aWtUlz7FHBKpsAQVmFf9tkpnqNoh15uEi8);
-  height: 50vh;
+  height: 12em;
   width: 100%;
+}
+
+.deck-card {
+  height: 12em;
+  width: 12%;
 }
 
 
