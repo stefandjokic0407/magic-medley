@@ -40,6 +40,7 @@
 
       </section>
 
+      <!--  -->
       <!-- SECTION Format, Color and Rarity -->
       <section class="col-4">
         <span class="row">
