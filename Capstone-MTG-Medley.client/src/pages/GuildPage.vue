@@ -235,7 +235,7 @@ button:hover {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 90vh;
 }
 
 .guild-container-bg {
