@@ -188,6 +188,7 @@ export default {
   background-image: v-bind(cover);
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   height: 90vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /* backdrop-filter: blur(4px); */

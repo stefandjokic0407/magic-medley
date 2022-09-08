@@ -72,7 +72,7 @@ export default {
 }
 
 .map-group {
-	border: 2px solid black;
+	border: 4px solid white;
 	border-radius: 5px;
 	filter: drop-shadow(2px 2px 2px black);
 }

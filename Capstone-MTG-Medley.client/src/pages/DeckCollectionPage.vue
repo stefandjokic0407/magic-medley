@@ -4,7 +4,7 @@
   <section class="container-fluid pageBg collectionPageViewHeight">
 
     <header class="row">
-      <DeckDetailsNavBar />
+      <ClearNavBar />
     </header>
 
     <div class="row my-3">
