@@ -98,18 +98,19 @@
             <Deck :deck="d" />
           </div>
         </div>
-        <div class="col-12">
-          <div class="row fixed-bottom mx-auto position-relative">
-            <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-              class="btn btn-outline deckText selectable square col-12" @click.prevent="setEditable">CREATE</button>
-            <button v-if="activeDeck" class="deckText btn btn-outline square col-6" @click.prevent="deleteDeck">DELETE
-            </button>
-            <button v-if="activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-              class="deckText btn btn-outline square col-6">EDIT</button>
-          </div>
-        </div>
       </div>
     </div>
+
+    <div class="row fixed-bottom mx-auto justify-content-end px-0">
+      <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
+        class=" deckText  square col-2 createButton" @click.prevent="setEditable">CREATE</button>
+      <button v-if="activeDeck" class="deckText square col-1 deleteButton" @click.prevent="deleteDeck">DELETE
+      </button>
+      <button v-if="activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
+        class="deckText square col-1 editButton">EDIT</button>
+    </div>
+
+
   </div>
 
 
@@ -245,12 +246,40 @@ export default {
 .myDecksSideBar {
   background: rgb(0 0 0 / 38%);
   backdrop-filter: blur(4px);
-  border: solid 5px rgba(0, 0, 0, 0.43);
+  border-left: solid 5px rgba(0, 0, 0, 0.43);
+  border-right: solid 5px rgba(0, 0, 0, 0.43);
   /* color: white; */
-  height: 100VH;
+  height: 95VH;
   position: fixed;
   right: 0;
   overflow-y: auto;
+}
+
+.createButton {
+  background: rgb(0 0 0 / 38%);
+  backdrop-filter: blur(4px);
+  border-right: solid 5px rgba(0, 0, 0, 0.43);
+  border-left: solid 5px rgba(0, 0, 0, 0.43);
+  height: 5vh;
+  border-top: 0px;
+}
+
+.editButton {
+  background: rgb(0 0 0 / 38%);
+  backdrop-filter: blur(4px);
+  border-right: solid 5px rgba(0, 0, 0, 0.43);
+  border-left: 0px;
+  border-top: 0px;
+  height: 5vh;
+}
+
+.deleteButton {
+  background: rgb(0 0 0 / 38%);
+  backdrop-filter: blur(4px);
+  border-left: solid 5px rgba(0, 0, 0, 0.43);
+  height: 5vh;
+  border-top: 0px;
+  border-right: 0px;
 }
 
 .myDeckSize {
@@ -296,7 +325,7 @@ export default {
 }
 
 .myCollectionsBanner {
-  background-image: url(src/assets/img/CollectionsBanner.png);
+  background-image: url(src/assets/img/smaller_banner-removebg-preview.png);
   background-position: center;
   background-size: cover;
   height: 100%;
