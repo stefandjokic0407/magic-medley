@@ -10,7 +10,7 @@
         <!-- GUILD MEMBERS -->
         <div class="col-md-4">
           <h4>Guild Members</h4>
-          <div class="d-flex my-2">
+          <div class="d-flex">
             <div v-for="m in members" :key="m.id">
               <Member :member="m" />
             </div>
@@ -38,7 +38,7 @@
     <section class="col-md-12">
       <!-- BACKGROUND -->
       <div class="row align-items-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
           <div class="card p-3 gruul-bg elevation-4">
             <h4>
               {{ activeGuild.name }} Background
@@ -100,6 +100,8 @@ import Pop from '../utils/Pop';
 import Member from '../components/Member.vue';
 import GuildChat from '../components/GuildChat.vue';
 import Map from '../components/Map.vue';
+import ClearNavBar from '../components/ClearNavBar.vue';
+import Navbar from '../components/Navbar.vue';
 
 export default {
   setup() {
@@ -167,7 +169,7 @@ export default {
 
     };
   },
-  components: { Member, GuildChat, Map }
+  components: { Member, GuildChat, Map, ClearNavBar, Navbar }
 };
 </script>
 
@@ -189,7 +191,7 @@ export default {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 100vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
