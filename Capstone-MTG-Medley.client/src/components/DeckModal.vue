@@ -20,11 +20,9 @@
                 <div class="card-body">
                     <p>Community Rating:{{sum}}/{{activeDeck.rating.length*5}}</p>
                 </div>
-
                 <div class="card-footer">
                     <button class="btn btn-outline-light">rating up</button>
                     <button class="btn btn-outline-light">Deck Details</button>
-
                 </div>
             </div>
 
@@ -81,5 +79,11 @@ p {
 
 .rotated {
     transform: scale(1.1);
+}
+
+.hero-img {
+    background-image: url(../assets/img/note.png);
+    background-position: center;
+    background-size: inherit;
 }
 </style>
