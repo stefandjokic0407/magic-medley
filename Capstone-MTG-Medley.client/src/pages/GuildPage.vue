@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="">
     <Navbar />
   </header>
 
@@ -371,6 +371,7 @@ import GuildFaq from "../components/GuildFaq.vue";
 import GuildForm from "../components/GuildForm.vue";
 import Pop from "../utils/Pop";
 import { useRouter } from "vue-router";
+import Navbar from "../components/Navbar.vue";
 
 export default {
   setup() {
@@ -484,7 +485,7 @@ export default {
       },
     };
   },
-  components: { GuildForm, GuildCard, GuildFaq },
+  components: { GuildForm, GuildCard, GuildFaq, Navbar },
 };
 </script>
 
