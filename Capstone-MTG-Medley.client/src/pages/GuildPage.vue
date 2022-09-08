@@ -551,7 +551,7 @@ button:hover {
 
 .choose-banner {
   color: #bd4362;
-  text-shadow: 2px 2px 2px black;
+  text-shadow: 1px 1px 1px black;
 }
 
 .azo-g {
