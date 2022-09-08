@@ -42,9 +42,11 @@
     </div>
   </div>
 
-  <div class="row main-bg">
-    <div class="col-12">
-      <p class="fs-1 p-2 m-0 text-center"><b>Choose Your Guild</b></p>
+  <div class="row main-bg justify-content-center">
+    <div class="col-10">
+      <p class="fs-1 p-2 m-0 text-center choose-banner">
+        <b>Choose Your Guild</b>
+      </p>
 
       <div class="row justify-content-center my-3">
         <div class="col-4 bg-white elevation-3 rounded mx-3">
@@ -340,15 +342,20 @@
   </div>
 
   <!-- NOTE this was to create a guild -->
-  <!-- <div class="col-md-3">
-          <div class="text-end">
-            <button class="btn" title="Create Guild" data-bs-toggle="modal" data-bs-target="#guild-modal">
-              <i class="mdi mdi-plus fs-3"></i>
-              <span class="fs-5">CREATE GUILD</span>
-            </button>
-            <GuildForm />
-          </div>
-        </div> -->
+  <div class="col-md-3">
+    <div class="text-end">
+      <button
+        class="btn"
+        title="Create Guild"
+        data-bs-toggle="modal"
+        data-bs-target="#guild-modal"
+      >
+        <i class="mdi mdi-plus fs-3"></i>
+        <span class="fs-5">CREATE GUILD</span>
+      </button>
+      <GuildForm />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -509,6 +516,7 @@ button:hover {
   border-radius: 8px;
   padding: 1em;
 }
+
 .guild-cards-container {
   flex-wrap: nowrap;
   scroll-snap-type: x mandatory;
@@ -520,23 +528,32 @@ button:hover {
     scroll-snap-stop: always;
   }
 }
+
 .button-style {
   color: #bd4362;
   font-size: 4em;
   padding: 0%;
 }
 
-// .main-bg {
-//   background-image: url(../assets/img/transparents/topCity-transparent.png);
-//   background-image: url(../assets/img/transparents/grass-transparent.png);
-//   background-repeat: no-repeat;
-//   background-position: bottom;
-// }
+.main-bg {
+  background-image: url(../assets/img/transparents/topCity-transparent.png),
+    url(../assets/img/transparents/human-char.png),
+    url(../assets/img/transparents/crab-char.png),
+    url(../assets/img/transparents/healer-char.png),
+    url(../assets/img/transparents/elf-char.png),
+    url(../assets/img/transparents/grass-transparent.png);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat,
+    no-repeat;
+  background-position: top right, 0% 0%, 5% 11%, bottom right, 100% 95%,
+    bottom left;
+  background-size: 40em, 20em, 20em, 20em, 20em, 40em;
+}
 
 .choose-banner {
-  color: white;
-  background-color: #bd4362;
+  color: #bd4362;
+  text-shadow: 1px 1px 1px black;
 }
+
 .azo-g {
   background-color: #056f9d;
   color: white;

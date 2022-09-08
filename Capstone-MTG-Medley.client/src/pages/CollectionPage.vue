@@ -120,6 +120,7 @@ export default {
     // }
 
     onMounted(() => {
+      AppState.activeDeck = {}
       // getAccountDecks();
       // getAccountCards();
     });
