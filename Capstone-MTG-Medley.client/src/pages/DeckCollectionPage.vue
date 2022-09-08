@@ -3,7 +3,7 @@
 
 <section class="container-fluid pageBg">
 
-  <header class="row sticky-top">
+  <header class="row">
     <Navbar />
   </header>
 
