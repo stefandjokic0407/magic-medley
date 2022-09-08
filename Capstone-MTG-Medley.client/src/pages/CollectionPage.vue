@@ -1,9 +1,11 @@
 <template>
-
+  <!-- SECTION NAVBAR -->
   <div class="row collectionPageBg collectionPageViewHeight">
     <div class="col-1">
       <CollectionPageNavbar />
     </div>
+
+    <!-- SECTION MY COLLECTION COLUMN -->
     <div class="col-10 px-0">
       <div class="row align-items-center">
         <div class="col-9 mx-auto">
@@ -33,19 +35,21 @@
         Your Decks
       </button>
     </div> -->
+
+    <!-- SECTION MY DECKS SIDEBAR -->
     <div v-if="decks" class="d-none d-md-block col-md-2 myDecksSideBar px-0">
       <div class="row mx-auto">
-        <div @click.prevent="noActive" v-if="activeDeck" class="deckImg col-11 mx-auto mt-1 selectable">
+        <div @click.prevent="noActive" v-if="activeDeck.id" class="deckImg col-11 mx-auto mt-1 selectable">
           <div class="row">
             <h5 class="deckText mb-0 col-12">{{ activeDeck.name }}</h5>
-            <p v-if="activeDeck" class="col-12 deckText">Cards:{{ " " + deckCards.length }}</p>
+            <p v-if="activeDeck.id" class="col-12 deckText">Cards:{{ " " + deckCards.length }}</p>
           </div>
         </div>
-        <div v-if="activeDeck" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto position-relative">
+        <div v-if="activeDeck.id" v-for="c in displayCards" :key="c.id" class="col-12 mx-auto position-relative">
           <DeckCardCanvas :card="c" />
         </div>
-        <img v-if="!activeDeck" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
-        <div v-if="decks.length && !activeDeck" class="row mx-auto">
+        <img v-if="!activeDeck.id" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
+        <div v-if="decks.length && !activeDeck.id" class="row mx-auto">
           <div v-for="d in decks" :key="d.id" class="col-12 col-md-12 mx-auto my-2">
             <Deck :deck="d" />
           </div>
@@ -54,11 +58,11 @@
     </div>
 
     <div class="row fixed-bottom mx-auto justify-content-end px-0">
-      <button v-if="!activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
-        class=" deckText  square col-2 createButton" @click.prevent="setEditable">CREATE</button>
-      <button v-if="activeDeck" class="deckText square col-1 deleteButton" @click.prevent="deleteDeck">DELETE
+      <button v-if="!activeDeck.id" data-bs-toggle="modal" data-bs-target="#deck-form"
+        class=" deckText  square col-2 createButton" @click="setEditable">CREATE</button>
+      <button v-if="activeDeck.id" class="deckText square col-1 deleteButton" @click.prevent="deleteDeck">DELETE
       </button>
-      <button v-if="activeDeck" data-bs-toggle="modal" data-bs-target="#deck-form"
+      <button v-if="activeDeck.id" data-bs-toggle="modal" data-bs-target="#deck-form"
         class="deckText square col-1 editButton">EDIT</button>
     </div>
 
@@ -145,7 +149,7 @@ export default {
       },
 
       noActive() {
-        AppState.activeDeck = null
+        AppState.activeDeck = {}
       },
 
       async deleteDeck() {
@@ -157,7 +161,7 @@ export default {
           const deckId = AppState.activeDeck.id
           console.log('Deck Id:', deckId)
           await decksService.deleteDeck(deckId)
-          AppState.activeDeck = null
+          AppState.activeDeck = {}
         } catch (error) {
           logger.error('[Deleting Deck]', error)
           Pop.toast(error.message, 'error')
@@ -300,9 +304,5 @@ export default {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
-}
-
-.modal-backdrop {
-  position: static !important;
 }
 </style>
