@@ -14,7 +14,8 @@
       <!-- <span class="star position-absolute "><i class="mdi display-none  mdi-star"></i></span> -->
       {{ oracleCard.set_name }}
       <span class="magicCard" :title="oracleCard.set_name + ' ' + oracleCard.name" v-if="oracleCard.prices.usd"><a
-          :href="oracleCard.purchase_uris.tcgplayer">${{ oracleCard.prices.usd }}</a></span>
+          target="_blank" rel="noopener noreferrer" :href="oracleCard.purchase_uris.tcgplayer">${{ oracleCard.prices.usd
+          }}</a></span>
       <span v-else>{{ oracleCard.prices.usd }}</span>
     </div>
 
