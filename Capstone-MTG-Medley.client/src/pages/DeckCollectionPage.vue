@@ -10,6 +10,13 @@
     <div class="row my-3">
       <div class="col-12 text-center">
         <h1>{{activeDeck.name}}</h1>
+        <div class="row">
+          <button @click="rateDeck(1)" class="btn col-1">1</button>
+          <button @click="rateDeck(2)" class="btn col-1">2</button>
+          <button @click="rateDeck(3)" class="btn col-1">3</button>
+          <button @click="rateDeck(4)" class="btn col-1">4</button>
+          <button @click="rateDeck(5)" class="btn col-1">5</button>
+        </div>
       </div>
     </div>
     <div class="row scroll">
@@ -62,6 +69,15 @@ export default {
       deckCards: computed(() => AppState.deckCards),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
       activeCards: computed(() => AppState.activeProfile),
+      async rateDeck(num) {
+                try {
+                    const accountId = this.activeDeck.accountId
+                    const deckId = this.activeDeck.id
+                    await decksService.rateDeck({ value: num }, deckId, accountId)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            },
     };
   },
   components: { DeckCard, DeckDetailsCard }
