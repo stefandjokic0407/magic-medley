@@ -11,6 +11,7 @@ class DecksService {
   async createDeck(newDeck) {
     const res = await api.post("/api/decks", newDeck);
     AppState.decks = res.data;
+    AppState.decks = AppState.decks;
     return res.data;
   }
 
