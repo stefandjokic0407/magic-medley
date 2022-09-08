@@ -1,6 +1,6 @@
 <template>
   <header>
-    <Navbar />
+    <ClearNavBar />
   </header>
   <!-- Gruul Clans Page -->
   <div class="row gruul">
@@ -100,6 +100,7 @@ import Pop from '../utils/Pop';
 import Member from '../components/Member.vue';
 import GuildChat from '../components/GuildChat.vue';
 import Map from '../components/Map.vue';
+import ClearNavBar from '../components/ClearNavBar.vue';
 
 export default {
   setup() {
@@ -167,7 +168,7 @@ export default {
 
     };
   },
-  components: { Member, GuildChat, Map }
+  components: { Member, GuildChat, Map, ClearNavBar }
 };
 </script>
 

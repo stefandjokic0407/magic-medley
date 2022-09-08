@@ -17,8 +17,8 @@
                     </div>
                     <div class="card-body">
                         <span class="d-flex justify-content-around">
-                            <button @click="rateDeck(5)" class="btn btn-outline-light">Rating up</button>
-                            <p class="text-center">Community Rating:<br>{{activeDeck?.avgRating}}/{{activeDeck.rating?.length*5}}
+                            <p class="text-center">Community
+                                Rating:<br>{{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5
                             </p>
                             <button @click="deckDetails" class="btn btn-outline-light" data-bs-dismiss="modal"
                                 data-bs-target="#deckModal">Deck Details</button>
@@ -48,14 +48,6 @@ export default {
 
         return {
             activeDeck: computed(() => AppState.activeDeck),
-            calcRating: computed(() => {
-                const arr = AppState.activeDeck?.rating;
-                let sum = 0;
-                for (const value of arr) {
-                    sum += value;
-                }
-                return sum
-            }),
             async deckDetails() {
                 try {
                     router.push({ name: "DeckDetails", params: { deckId: AppState.activeDeck?.id } })
@@ -64,16 +56,6 @@ export default {
                     console.log(error)
                 }
             },
-
-            async rateDeck(num) {
-                try {
-                    const accountId = this.activeDeck.accountId
-                    const deckId = this.activeDeck.id
-                    await decksService.rateDeck({value: num}, deckId, accountId)
-                } catch (error) {
-                    Pop.error(error)
-                }
-            }
 
         }
     }

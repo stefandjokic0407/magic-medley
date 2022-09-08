@@ -10,6 +10,15 @@
     <div class="row my-3">
       <div class="col-12 text-center">
         <h1>{{activeDeck.name}}</h1>
+        <h4>Deck Rating: {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<i class="mdi mdi-star" ></i></h4>
+        <div class="row">
+          <button @click="rateDeck(1)" class="btn col-1">1</button>
+          <button @click="rateDeck(2)" class="btn col-1">2</button>
+          <button @click="rateDeck(3)" class="btn col-1">3</button>
+          <button @click="rateDeck(4)" class="btn col-1">4</button>
+          <button @click="rateDeck(5)" class="btn col-1">5</button>
+          <button class="btn col-2 offset-4" @click="cloneDeck">Copy Deck to My Collection</button>
+        </div>
       </div>
     </div>
     <div class="row scroll">
@@ -62,6 +71,18 @@ export default {
       deckCards: computed(() => AppState.deckCards),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
       activeCards: computed(() => AppState.activeProfile),
+      async rateDeck(num) {
+        try {
+          const accountId = this.activeDeck.accountId
+          const deckId = this.activeDeck.id
+          await decksService.rateDeck({ value: num }, deckId, accountId)
+        } catch (error) {
+          Pop.error(error)
+        }
+      },
+      async cloneDeck() {
+        
+      }
     };
   },
   components: { DeckCard, DeckDetailsCard }
