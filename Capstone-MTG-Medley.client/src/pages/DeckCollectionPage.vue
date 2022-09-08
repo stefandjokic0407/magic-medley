@@ -14,29 +14,36 @@
         </h4>
         <div class="row">
           <div class="col-3 m-0 p-0">
-            <button @click="rateDeck(1)" class="btn m-0 p-0">
+            <button @click="rateDeck(1)" class="btn m-0 p-0 text-warning">
               <i class="mdi mdi-star-outline mdi-36px"></i>
+              <i class="mdi mdi-star mdi-36px"></i>
             </button>
-            <button @click="rateDeck(2)" class="btn m-0 p-0">
+            <button @click="rateDeck(2)" class="btn m-0 p-0 text-warning">
               <i class="mdi mdi-star-outline mdi-36px"></i>
+              <i class="mdi mdi-star mdi-36px"></i>
             </button>
-            <button @click="rateDeck(3)" class="btn m-0 p-0">
-              <i class="mdi mdi-star-outline mdi-36px"></i>
+            <button @click="rateDeck(3)" class="btn m-0 p-0 text-warning">
+              <i class="mdi mdi-star-outline mdi-36px text-warning"></i>
+              <i class="mdi mdi-star mdi-36px"></i>
             </button>
-            <button @click="rateDeck(4)" class="btn m-0 p-0">
+            <button @click="rateDeck(4)" class="btn m-0 p-0 text-warning">
               <i class="mdi mdi-star-outline mdi-36px"></i>
+              <i class="mdi mdi-star mdi-36px"></i>
             </button>
-            <button @click="rateDeck(5)" class="btn m-0 p-0">
+            <button @click="rateDeck(5)" class="btn m-0 p-0 text-warning">
               <i class="mdi mdi-star-outline mdi-36px"></i>
+              <i class="mdi mdi-star mdi-36px"></i>
             </button>
           </div>
           <button class="btn col-2 offset-4" @click="cloneDeck">Copy Deck to My Collection</button>
         </div>
       </div>
     </div>
-    <div class="row scroll justify-content-around d-flex">
-      <div class=" py-3 col-2" v-for="c in deckCards" :key="c.id">
-        <DeckDetailsCard :card="c" />
+    <div class="container">
+      <div class="row scroll justify-content-center">
+        <div class="col-2 p-3" v-for="c in deckCards" :key="c.id">
+          <DeckDetailsCard :card="c" />
+        </div>
       </div>
     </div>
 
@@ -166,6 +173,10 @@ export default {
 
 .collectionPageViewHeight {
   height: 100%;
+}
+
+i{
+  text-shadow: 1px 1px 6px rgb(0, 0, 0);
 }
 
 .deckText {
