@@ -22,7 +22,7 @@
       </div>
     </div>
 
-    <!-- SECTION Profile Decks -->
+    <!-- SECTION Profile Decks test -->
 
     <div v-for="d in decks" :key="d.id" @click="setActiveDeck(d.id)" class="card hero-img col-3 px-4">
       <h5 class="card-title text-center text-light"><b>{{d?.name}}</b></h5>
