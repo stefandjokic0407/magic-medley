@@ -68,7 +68,7 @@ export default {
         }
         async function getProfileDecks() {
             try {
-                await decksService.getAccountDecks(route.params.profileId);
+                await decksService.getProfileDecks(route.params.profileId);
                 console.log(route.params.profileId)
             }
             catch (error) {

@@ -18,7 +18,7 @@
                     <div class="row align-items-center">
                         <div class="col-6">
 
-                            <p>Community Rating:{{}}</p>
+                            <p>Community Rating:{{sum}}/{{activeDeck.rating.length*5}}</p>
                         </div>
                         <div class="offset-2 col-4">
                             <button class="btn btn-outline">Visit Deck Page</button>
@@ -44,17 +44,18 @@ export default {
     props: { deck: { type: Object, required: true, } },
     setup(props) {
 // NOTE this function should take the array of ratings and get a sum which we will display as a total over the total possible value times the array.length
-        function sumRating() {
-            const arr = activeDeck?.rating;
+
+        return {
+            activeDeck: computed(() => AppState.activeDeck),
+            rating: computed(()=> {
+                const arr = AppState.activeDeck?.rating;
             let sum = 0;
             for (const value of arr) {
                 sum += value;
             }
-            
-        }
+            return sum
+            })
 
-        return {
-            activeDeck: computed(() => AppState.activeDeck),
         }
     }
 }
