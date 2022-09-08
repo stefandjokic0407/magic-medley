@@ -3,24 +3,20 @@
   <!-- SECTION Modal--FAQs Menu -->
   <section class="modal fade" id="faqsModal" aria-hidden="true" aria-labelledby="faqsModalLabel" tabindex="-1">
     <div class="modal-dialog modal-sm modal-dialog-centered">
-      <div class="modal-content">
+      <div class="modal-content faq-modal">
         <div class="modal-header">
           <h5 class="modal-title" id="faqsModalLabel">FAQs</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div  class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></div>
         </div>
-        <div class="modal-body d-flex flex-column">
-          <button class="btn btn-outline-dark border-0" data-bs-target="#mtgExplainedModalToggle"
+        <div class="modal-body">
+          <div class="my-btn m-2" data-bs-target="#mtgExplainedModalToggle"
             data-bs-toggle="modal">What is Magic
-            the Gathering?</button>
-          <!-- <button class="btn btn-outline-dark border-0" data-bs-target="#magicMedleyModalToggle"
-            data-bs-toggle="modal">Why build
-            Magic
-            Medley?</button> -->
-          <button class="btn btn-outline-dark border-0" data-bs-target="#howToPlayModalToggle"
+            the Gathering?</div>
+          <div class="my-btn m-2" data-bs-target="#howToPlayModalToggle"
             data-bs-toggle="modal">How to
-            play</button>
-          <button class="btn btn-outline-dark border-0" data-bs-target="#glossaryModalToggle"
-            data-bs-toggle="modal">Glossary</button>
+            play</div>
+          <div class="my-btn m-2" data-bs-target="#glossaryModalToggle"
+            data-bs-toggle="modal">Glossary</div>
         </div>
       </div>
     </div>
@@ -30,7 +26,7 @@
   <section class="modal fade" id="mtgExplainedModalToggle" aria-hidden="true" aria-labelledby="mtgExplainedModalToggle"
     tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered ">
-      <div class="modal-content explain-mtg">
+      <div class="modal-content explain-mtg-modal">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel2">What is Magic the Gathering?</h5>
           <span>
@@ -55,13 +51,6 @@
             Dungeons & Dragons, the gameplay bears little similarity to paper-and-pencil games, while simultaneously
             having substantially more cards and more complex rules than many other card games.<br><br>
 
-            Magic can be played by two or more players, either in person with printed cards or on a computer, smartphone
-            or tablet with virtual cards through the Internet-based software Magic: The Gathering Online or other video
-            games such as Magic: The Gathering Arena and Magic Duels. It can be played in various rule formats, which
-            fall into two categories: constructed and limited. Limited formats involve players building a deck
-            spontaneously out of a pool of random cards with a minimum deck size of 40 cards; in constructed formats,
-            players create decks from cards they own, usually with a minimum of 60 cards per deck.<br><br>
-
             New cards are released on a regular basis through expansion sets. Further developments include the Wizards
             Play Network played at the international level and the worldwide community Players Tour, as well as a
             substantial resale market for Magic cards. Certain cards can be valuable due to their rarity in production
@@ -71,39 +60,15 @@
     </div>
   </section>
 
-  <!-- SECTION Modal--Why build Magic Medley -->
-  <!-- <section class="modal fade" id="magicMedleyModalToggle" aria-hidden="true" aria-labelledby="magicMedleyModalToggle"
-    tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel2">Why build Magic Medley?</h5>
-          <span>
-            <button class="btn btn-outline-dark border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
-              FAQs</button>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </span>
-        </div>
-        <div class="modal-body">
-          <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis fugit eum, earum sapiente
-            recusandae
-            deleniti sit minus nesciunt consequuntur, illum natus nihil cumque nobis expedita est voluptas illo
-            voluptatem
-            tempore!</p>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
   <!-- SECTION Modal--How to play -->
   <section class="modal fade" id="howToPlayModalToggle" aria-hidden="true" aria-labelledby="howToPlayModalToggle"
     tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
-      <div class="modal-content">
+      <div class="modal-content how-mtg-modal">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel2">How to play</h5>
           <span>
-            <button class="btn btn-outline-dark border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
+            <button class="btn btn-outline-light border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
               FAQs</button>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </span>
@@ -921,11 +886,11 @@
   <section class="modal fade" id="glossaryModalToggle" aria-hidden="true" aria-labelledby="glossaryModalToggle"
     tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
-      <div class="modal-content">
+      <div class="modal-content glossary-modal">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel2">Glossary</h5>
           <span>
-            <button class="btn btn-outline-dark border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
+            <button class="btn btn-outline-light border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
               FAQs</button>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </span>
@@ -1346,10 +1311,55 @@ export default {
 
 
 <style lang="scss" scoped>
-.explain-mtg {
+.explain-mtg-modal {
   background-image: url(https://images.ctfassets.net/s5n2t79q9icq/684AfTBXMgTnyfifLHcUzv/de7ea09847a02b8dfec7cf6174446dad/bg-latest-product.jpg?q=70);
   background-position: center;
   background-size: cover;
+  color: whitesmoke;
+  text-shadow: 1px 1px 3px black;
+  font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.faq-modal {
+  background-image: url(https://c4.wallpaperflare.com/wallpaper/53/810/403/dark-magic-the-gathering-wallpaper-preview.jpg);
+  background-position: center;
+  background-size: cover;
+  color: whitesmoke;
+  text-shadow: 1px 1px 3px black;
+  font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.glossary-modal {
+  background-image: url(https://wallpaperaccess.com/full/2057218.jpg);
+  background-position: center;
+  background-size: cover;
+  color: whitesmoke;
+  text-shadow: 1px 1px 3px black;
+  // font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.how-mtg-modal {
+  background-image: url(https://wallpaperaccess.com/full/2057218.jpg);
+  background-position: center;
+  background-size: cover;
+  color: whitesmoke;
+  text-shadow: 1px 1px 3px black;
+  // font-size: large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.my-btn{
+  cursor: pointer;
+  text-align: center;
+  transform: scale(1.15);
+}
+.my-btn:hover{
+  background: white;
+  border-radius: 4px;
+  color: black;
+  text-shadow: none;
+}
+
+.light-text{
   color: whitesmoke;
   text-shadow: 1px 1px 3px black;
   font-size: large;
