@@ -28,8 +28,9 @@
 
 
     </section>
+
     <!-- SECTION Colors -->
-    <section class="">
+    <!-- <section class="">
       <div class=" mt-1">
         <h4>Color</h4>
         <div class="">
@@ -43,12 +44,11 @@
           <label class="form-check-label ps-2 ">Red</label><br>
           <input type="checkbox" class="" @change="filterChange('color', 'b')">
           <label class="form-check-label ps-2">Black</label><br>
-          <!-- FIXME all searches show colorless when its not selected -->
           <input type="checkbox" class="" @change="filterChange('color', 'c')">
           <label class="form-check-label ps-2">Colorless</label><br>
         </div>
       </div>
-    </section>
+    </section> -->
 
 
   </div>
@@ -58,7 +58,9 @@
 <script>
 export default {
   setup() {
-    return {}
+    return {
+
+    }
   }
 }
 </script>

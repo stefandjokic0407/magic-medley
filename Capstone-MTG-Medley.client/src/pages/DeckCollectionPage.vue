@@ -1,25 +1,25 @@
 <template>
 
 
-<section class="container-fluid pageBg">
+  <section class="container-fluid pageBg collectionPageViewHeight">
 
-  <header class="row">
-    <Navbar />
-  </header>
+    <header class="row">
+      <DeckDetailsNavBar />
+    </header>
 
-  <div class="row my-3">
-    <div class="col-12 text-center">
-      <h1>{{activeDeck.name}}</h1>
+    <div class="row my-3">
+      <div class="col-12 text-center">
+        <h1>{{activeDeck.name}}</h1>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class=" py-2 col-2" v-for="c in deckCards" :key="c.id">
-      <DeckDetailsCard :card="c" />
+    <div class="row scroll">
+      <div class=" py-2 col-2" v-for="c in deckCards" :key="c.id">
+        <DeckDetailsCard :card="c" />
+      </div>
     </div>
-  </div>
 
-  
-</section>
+
+  </section>
 
 
 </template>
@@ -40,41 +40,39 @@ import DeckDetailsCard from '../components/DeckDetailsCard.vue';
 
 
 export default {
-    setup() {
-        const route = useRoute();
+  setup() {
+    const route = useRoute();
 
-        async function setActiveDeck() {
-            try {
-                await decksService.setActiveDeck(route.params.deckId);
-                await deckCardsService.getDeckCards(route.params.deckId);
-            }
-            catch (error) {
-                console.log(error);
-                Pop.error("[setting active deck]", error);
-            }
-        }
-        onMounted(() => {
-            setActiveDeck();
-        });
-        return {
-            decks: computed(() => AppState.decks),
-            activeDeck: computed(() => AppState.activeDeck),
-            deckCards: computed(() => AppState.deckCards),
-            cover: computed(() => `url(${AppState.activeDeck?.picture})`),
-            activeCards: computed(() => AppState.activeProfile),
-        };
-    },
-    components: { DeckCard, DeckDetailsCard }
+    async function setActiveDeck() {
+      try {
+        await decksService.setActiveDeck(route.params.deckId);
+        await deckCardsService.getDeckCards(route.params.deckId);
+      }
+      catch (error) {
+        console.log(error);
+        Pop.error("[setting active deck]", error);
+      }
+    }
+    onMounted(() => {
+      setActiveDeck();
+    });
+    return {
+      decks: computed(() => AppState.decks),
+      activeDeck: computed(() => AppState.activeDeck),
+      deckCards: computed(() => AppState.deckCards),
+      cover: computed(() => `url(${AppState.activeDeck?.picture})`),
+      activeCards: computed(() => AppState.activeProfile),
+    };
+  },
+  components: { DeckCard, DeckDetailsCard }
 };
 </script>
 
 
 <style scoped lang="scss">
-
-
-.pageBg{
+.pageBg {
   background-color: #faea9b;
-  background-image: url("https://i.etsystatic.com/5295659/r/il/c200e4/1840157274/il_1588xN.1840157274_4m0e.jpg");
+  background-image: url("https://img.freepik.com/free-photo/vintage-textured-watercolor-paper-background_53876-103939.jpg?w=2000");
   background-repeat: none;
   min-height: 100%;
   overflow-y: auto;
@@ -89,6 +87,10 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+.scroll {
+  overflow-y: scroll;
 }
 
 
@@ -127,6 +129,7 @@ export default {
   border: 2px solid black;
   outline: 3px solid #d4af37c3;
 }
+
 .collectionPageViewHeight {
   height: 100%;
 }

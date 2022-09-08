@@ -11,6 +11,7 @@ class DecksService {
   async createDeck(newDeck) {
     const res = await api.post("/api/decks", newDeck);
     AppState.decks = res.data;
+    AppState.decks = AppState.decks;
     return res.data;
   }
 
@@ -39,6 +40,12 @@ class DecksService {
     const index = AppState.decks.findIndex((d) => d.id == deckData.id);
     AppState.decks.splice(index, 1, res.data);
     // AppState.activeDeck = {}
+  }
+// sends a rating value and the active deck to the service to set a rating
+  async rateDeck(rating, deckId, accountId) {
+    const res = await api.put('/api/decks/' + deckId + '/' + accountId, rating)
+    console.log(res);
+    // AppState.activeDeck = res.data
   }
 
   async setActiveDeck(deckId) {

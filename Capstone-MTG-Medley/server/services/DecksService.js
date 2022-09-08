@@ -29,7 +29,6 @@ class DecksService {
 
   async getDecksByAccountId(accountId) {
     const decks = await dbContext.Decks.find({ accountId }).populate('profile', 'name picture')
-    // .populate('avgRating')
     return decks
   }
 
@@ -48,7 +47,7 @@ class DecksService {
     return deck
   }
 // add a rating to a deckId rating array
-  async addRating(deckId, rating){
+  async rateDeck(deckId, rating){
     // get the deck by its id
     const deck = await this.getById(deckId)
     // check if user has already voted

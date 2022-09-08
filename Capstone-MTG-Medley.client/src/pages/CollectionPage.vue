@@ -52,7 +52,7 @@
           <DeckCardCanvas :card="c" />
         </div>
         <img v-if="!activeDeck.id" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
-        <div v-if="decks && !activeDeck.id" class="row mx-auto">
+        <div v-if="decks.length && !activeDeck.id" class="row mx-auto">
           <div v-for="d in decks" :key="d.id" class="col-12 col-md-12 mx-auto my-2">
             <Deck :deck="d" />
           </div>
@@ -120,6 +120,7 @@ export default {
     // }
 
     onMounted(() => {
+      AppState.activeDeck = {}
       // getAccountDecks();
       // getAccountCards();
     });
