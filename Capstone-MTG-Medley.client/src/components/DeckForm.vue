@@ -40,6 +40,7 @@ export default {
 
       async handleSubmit() {
         try {
+          debugger
           if (editable.value.id) {
             await decksService.editDeck(editable.value)
             Pop.success('Deck Edited!')
@@ -50,7 +51,7 @@ export default {
           }
           AppState.activeDeck = {}
         } catch (error) {
-          Pop.error(error)
+          Pop.error('[Editing, Creating Deck]', error)
         }
       },
 

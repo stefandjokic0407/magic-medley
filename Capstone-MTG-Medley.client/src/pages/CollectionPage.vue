@@ -1,14 +1,17 @@
 <template>
   <!-- SECTION NAVBAR -->
   <div class="row collectionPageBg collectionPageViewHeight">
-    <div class="col-1">
+    <div class="col-2 d-flex flex-column">
       <CollectionPageNavbar />
+      <div class="mt-auto">
+        <CollectionFilter />
+      </div>
     </div>
 
     <!-- SECTION MY COLLECTION COLUMN -->
-    <div class="col-10 px-0">
+    <div class="col-8 px-0">
       <div class="row align-items-center">
-        <div class="col-9 mx-auto">
+        <div class="col-12 mx-auto">
           <div class="row ">
             <div class="myCollectionsBanner mx-auto col-12 col-lg-10 mt-4">
               <div class="row mx-auto ">
@@ -18,7 +21,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row mb-5">
             <div v-for="c in cards" :key="c.id" class="col-4 col-md-2">
               <CollectionCard :card="c" />
             </div>
@@ -37,7 +40,7 @@
     </div> -->
 
     <!-- SECTION MY DECKS SIDEBAR -->
-    <div v-if="decks" class="d-none d-md-block col-md-2 myDecksSideBar px-0">
+    <div v-if=" decks" class="d-none d-md-block col-md-2 myDecksSideBar px-0">
       <div class="row mx-auto">
         <div @click.prevent="noActive" v-if="activeDeck.id" class="deckImg col-11 mx-auto mt-1 selectable">
           <div class="row">
@@ -49,7 +52,7 @@
           <DeckCardCanvas :card="c" />
         </div>
         <img v-if="!activeDeck.id" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
-        <div v-if="decks.length && !activeDeck.id" class="row mx-auto">
+        <div v-if="decks && !activeDeck.id" class="row mx-auto">
           <div v-for="d in decks" :key="d.id" class="col-12 col-md-12 mx-auto my-2">
             <Deck :deck="d" />
           </div>
@@ -59,7 +62,7 @@
 
     <div class="row fixed-bottom mx-auto justify-content-end px-0">
       <button v-if="!activeDeck.id" data-bs-toggle="modal" data-bs-target="#deck-form"
-        class=" deckText  square col-2 createButton" @click="setEditable">CREATE</button>
+        class=" deckText  square col-2 createButton" @click.prevent="setEditable">CREATE</button>
       <button v-if="activeDeck.id" class="deckText square col-1 deleteButton" @click.prevent="deleteDeck">DELETE
       </button>
       <button v-if="activeDeck.id" data-bs-toggle="modal" data-bs-target="#deck-form"
@@ -92,6 +95,7 @@ import Deck from "../components/Deck.vue";
 import DeckCard from "../components/DeckCard.vue";
 import DeckCardCanvas from "../components/DeckCardCanvas.vue";
 import CollectionPageNavbar from "../components/CollectionPageNavbar.vue";
+import CollectionFilter from '../components/CollectionFilter.vue';
 
 export default {
   setup() {
@@ -187,7 +191,7 @@ export default {
       },
     };
   },
-  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas, CollectionPageNavbar }
+  components: { SearchedCards, CollectionCard, DeckForm, Deck, DeckCard, DeckCardCanvas, CollectionPageNavbar, CollectionFilter }
 };
 </script>
 
