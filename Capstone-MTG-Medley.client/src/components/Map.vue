@@ -1,7 +1,5 @@
 <template>
 	<div class="map-group">
-		<GMapAutocomplete class="map-search" placeholder="Enter Your Location..." @place_changed="setPlace()">
-		</GMapAutocomplete>
 		<GMapMap :center="center" :zoom="zoom" map-type-id="terrain" class="map-body">
 			<GMapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true"
 				@click="center = m.position" />
@@ -12,21 +10,22 @@
 
 
 <script>
-import { ref, watchEffect } from 'vue';
-import { logger } from '../utils/Logger';
-import Pop from '../utils/Pop';
+import { onMounted, ref, watchEffect } from 'vue';
+
 
 export default {
 	setup() {
 		const center = { lat: 43.60641142319335, lng: -116.2860776917006 }
-		const zoom = 17
-		const mapRef = ref()
+		const zoom = 11
 
-		watchEffect(mapRef)
+
+		onMounted(() => {
+		})
 		return {
+
 			center,
 			zoom,
-			mapRef,
+
 			markers: [
 				{
 					position: {
@@ -54,14 +53,6 @@ export default {
 				},
 			],
 
-			async setPlace() {
-				try {
-
-				} catch (error) {
-					logger.error('setting map place', error)
-					Pop.error(error)
-				}
-			}
 		};
 
 	},
