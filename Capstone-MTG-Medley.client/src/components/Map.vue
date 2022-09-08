@@ -12,7 +12,7 @@
 
 
 <script>
-import { ref, watch } from 'vue';
+import { ref, watchEffect } from 'vue';
 import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 
@@ -22,7 +22,7 @@ export default {
 		const zoom = 17
 		const mapRef = ref()
 
-		watch(mapRef)
+		watchEffect(mapRef)
 		return {
 			center,
 			zoom,
