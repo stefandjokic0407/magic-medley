@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar deckText bgClear navHeight mx-3">
+  <nav class="navbar bgClear navHeight mx-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex  bgClear flex-column align-items-center" title="Home">
         <img class='' alt="logo" src="../assets/img/FullLogo_Transparent_NoBuffer.png" height="55" />
@@ -12,17 +12,17 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'Collection' }" class="btn my-4 text-uppercase square buttonPadding">
+          <router-link :to="{ name: 'Collection' }" class="btn deckText my-4 text-uppercase square buttonPadding">
             Collection
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Search' }" class="btn my-4 text-uppercase square buttonPadding">
+          <router-link :to="{ name: 'Search' }" class="btn deckText my-4 text-uppercase square buttonPadding">
             Search
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Guild' }" class="btn my-4 text-uppercase square buttonPadding">
+          <router-link :to="{ name: 'Guild' }" class="btn deckText my-4 text-uppercase square buttonPadding">
             Guild
           </router-link>
         </li>
@@ -49,24 +49,26 @@ a:hover {
 }
 
 .deckText {
-  -webkit-text-stroke: .5px black;
-  color: rgba(255, 255, 255, 0.88) !important;
+  -webkit-text-stroke: .5px rgba(0, 0, 0, 0.103);
+  color: rgb(255, 255, 255) !important;
   text-shadow:
-    3px 3px 0 #000,
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+    2px 2px 1px #000,
+    -1px -1px 1px #000,
+    1px -1px 1px #000,
+    -1px 1px 1px #000,
+    1px 1px 1px #000;
+  border: none;
+}
+
+.deckText:hover {
+  transform: scale(1.1);
+  transition: ease .1s;
 }
 
 .nav-link {
   text-transform: uppercase;
 }
 
-.navbar-nav .router-link-exact-active {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
 
 .buttonPadding {
   padding-top: 21px;
