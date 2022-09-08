@@ -10,7 +10,7 @@ class DeckCardsService {
   async getDeckCards(deckId) {
     const res = await api.get("api/decks/" + deckId + "/deckCards");
     AppState.deckCards = res.data;
-    console.log(res.data)
+    console.log('Deck Cards',res.data)
   }
 
   async removeCard(cardId) {

@@ -34,3 +34,12 @@ DeckSchema.virtual('profile', {
   justOne: true,
   ref: 'Account'
 })
+
+// DeckSchema.virtual('avgRating').get(()=>
+// // @ts-ignore
+// { const arr = this.rating;
+// let sum = 0;
+// for (const value of arr) {
+//     sum += value;
+// }
+// return sum})

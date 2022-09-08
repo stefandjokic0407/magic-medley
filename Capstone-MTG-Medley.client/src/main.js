@@ -15,6 +15,7 @@ root
   .use(VueGoogleMaps, {
     load: {
       key: "AIzaSyA7Lu464b19aRFfGS2r0C11tIMdzYUPs6c",
+      libraries: "places"
     },
   })
   .mount("#app");
