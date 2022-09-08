@@ -2,15 +2,13 @@
   <header>
     <ClearNavBar />
   </header>
-  <!-- Gruul Clans Page -->
   <div class="row gruul">
-    <!-- NOTE Guild Members & Title & Join/Remove Button -->
-    <section class="col-md-12">
+    <!-- Gruul Clans Page -->
+    <div class="col-12">
       <div class="row">
-        <!-- GUILD MEMBERS -->
         <div class="col-md-4">
           <h4>Guild Members</h4>
-          <div class="d-flex my-2">
+          <div class="d-flex">
             <div v-for="m in members" :key="m.id">
               <Member :member="m" />
             </div>
@@ -33,57 +31,52 @@
           </button>
         </div>
       </div>
-    </section>
-    <!-- NOTE Background & Map Row -->
-    <section class="col-md-12">
-      <!-- BACKGROUND -->
-      <div class="row align-items-center">
-        <div class="col-md-8">
-          <div class="card p-3 gruul-bg elevation-4">
-            <h4>
-              {{ activeGuild.name }} Background
-            </h4>
-            {{activeGuild.background}}
-          </div>
+    </div>
+    <div class="row gruul">
+      <!-- NOTE Guild Members & Title & Join/Remove Button -->
+      <!-- GUILD MEMBERS -->
+      <!-- NOTE Background & Map Row -->
+      <div class="col-md-6">
+        <div class="card p-3 gruul-bg elevation-4">
+          <h4>
+            {{ activeGuild.name }} Background
+          </h4>
+          {{activeGuild.background}}
         </div>
-        <!-- MAP -->
-        <div class="col-md-4">
-          <div class="">
-            <Map />
+      </div>
+      <!-- MAP -->
+      <div class="col-md-4">
+        <div class="">
+          <Map />
+        </div>
+      </div>
+      <!-- NOTE Map & Offcanvas Button -->
+      <!-- DECK -->
+      <div class="col-md-10">
+        <div class="card deck-card border-none">
+          <div class="gruul-deck">
+
+          </div>
+          <div class="card-img-overlay p-0">
+            <div class="glass-card fs-6 text-dark text-center rounded-top p-1">
+              {{ activeGuild.name }} Starter Deck
+            </div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- NOTE Map & Offcanvas Button -->
-    <section class="col-md-12">
-      <div class="row">
-        <!-- DECK -->
-        <div class="col-md-10">
-          <div class="card deck-card border-none">
-            <div class="gruul-deck">
-
-            </div>
-            <div class="card-img-overlay p-0">
-              <div class="glass-card fs-6 text-dark text-center rounded-top p-1">
-                {{ activeGuild.name }} Starter Deck
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- CHAT -->
-        <div class="col-md-2 d-flex flex-column justify-content-end text-end">
-          <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-off-canvas"
-            aria-controls="chat-off-canvas">
-            Chat With Guild Members
-          </button>
-          <ChatOffcanvas />
-        </div>
+      <!-- CHAT -->
+      <div class="col-md-2 d-flex flex-column justify-content-end text-end">
+        <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-off-canvas"
+          aria-controls="chat-off-canvas">
+          Chat With Guild Members
+        </button>
+        <ChatOffcanvas />
       </div>
       <!-- NOTE Might need this to add starter decks -->
       <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
                 <img :src="oracleCard.image_uris.small" alt="">
               </div> -->
-    </section>
+    </div>
   </div>
   <!-- CHAT -->
 </template>
@@ -101,6 +94,7 @@ import Member from '../components/Member.vue';
 import GuildChat from '../components/GuildChat.vue';
 import Map from '../components/Map.vue';
 import ClearNavBar from '../components/ClearNavBar.vue';
+import Navbar from '../components/Navbar.vue';
 
 export default {
   setup() {
@@ -168,7 +162,7 @@ export default {
 
     };
   },
-  components: { Member, GuildChat, Map, ClearNavBar }
+  components: { Member, GuildChat, Map, ClearNavBar, Navbar }
 };
 </script>
 
@@ -179,8 +173,9 @@ export default {
   border-radius: 50%;
 }
 
-.r-height {
-  height: 70vh;
+
+.fixed-height {
+  height: 10vh !important;
 }
 
 .gruul {
@@ -190,7 +185,7 @@ export default {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 100vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
