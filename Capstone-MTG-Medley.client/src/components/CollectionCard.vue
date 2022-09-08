@@ -39,9 +39,9 @@ item-key="id"> -->
           (card.count)
       }}</b>
     </p> -->
-    <button @click.prevent="removeCard() && getAccountCards()" class="btn-outline btn mt-4 xsFont" value="Delete"
-      type="button">Remove from
-      Collection</button>
+    <span @click.prevent="removeCard() && getAccountCards()"
+      class=" xsFont mdi mdi-minus-circle-outline sub-button deckText" value="Delete" type="button">
+    </span>
   </div>
 
   <Modal :id="'collectionCardModal' + card.cardId">
@@ -169,8 +169,16 @@ export default {
 .add-button {
   position: absolute;
   color: goldenrod;
-  left: 40px;
-  bottom: 47px;
+  left: 80px;
+  bottom: 0px;
+  font-size: 1.5vw;
+}
+
+.sub-button {
+  position: absolute;
+  color: goldenrod;
+  left: 45px;
+  bottom: 0px;
   font-size: 1.5vw;
 }
 
