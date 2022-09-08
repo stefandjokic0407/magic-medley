@@ -37,7 +37,7 @@
     </div> -->
 
     <!-- SECTION MY DECKS SIDEBAR -->
-    <div v-if="decks" class="d-none d-md-block col-md-2 myDecksSideBar px-0">
+    <div v-if=" decks" class="d-none d-md-block col-md-2 myDecksSideBar px-0">
       <div class="row mx-auto">
         <div @click.prevent="noActive" v-if="activeDeck.id" class="deckImg col-11 mx-auto mt-1 selectable">
           <div class="row">
@@ -49,7 +49,7 @@
           <DeckCardCanvas :card="c" />
         </div>
         <img v-if="!activeDeck.id" class="img-fluid" src="src/assets/img/fancy banner.png" alt="">
-        <div v-if="decks.length && !activeDeck.id" class="row mx-auto">
+        <div v-if="decks && !activeDeck.id" class="row mx-auto">
           <div v-for="d in decks" :key="d.id" class="col-12 col-md-12 mx-auto my-2">
             <Deck :deck="d" />
           </div>
@@ -59,7 +59,7 @@
 
     <div class="row fixed-bottom mx-auto justify-content-end px-0">
       <button v-if="!activeDeck.id" data-bs-toggle="modal" data-bs-target="#deck-form"
-        class=" deckText  square col-2 createButton" @click="setEditable">CREATE</button>
+        class=" deckText  square col-2 createButton" @click.prevent="setEditable">CREATE</button>
       <button v-if="activeDeck.id" class="deckText square col-1 deleteButton" @click.prevent="deleteDeck">DELETE
       </button>
       <button v-if="activeDeck.id" data-bs-toggle="modal" data-bs-target="#deck-form"

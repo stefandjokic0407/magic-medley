@@ -15,29 +15,29 @@ class DecksService {
   }
 
   async deleteDeck(deckId) {
-    const res = await api.delete('/api/decks/' + deckId)
-    AppState.decks = AppState.decks.filter(d => d.id != deckId)
-    return res
+    const res = await api.delete("/api/decks/" + deckId);
+    AppState.decks = AppState.decks.filter((d) => d.id != deckId);
+    return res;
   }
 
   async getAccountDecks(accountId) {
-    const res = await api.get('/api/decks/profile/' + accountId);
+    const res = await api.get("/api/decks/profile/" + accountId);
     logger.log("getting all decks", res.data);
     AppState.decks = res.data;
     return res.data;
   }
 
   async getProfileDecks(accountId) {
-    const res = await api.get('/api/decks/profile/' + accountId);
+    const res = await api.get("/api/decks/profile/" + accountId);
     logger.log("getting all decks", res.data);
     AppState.profileDecks = res.data;
     return res.data;
   }
 
-  async editDeck(deckData){
-    const res = await api.put(`/api/decks/${deckData.id}`, deckData)
-    const index = AppState.decks.findIndex(d => d.id == deckData.id)
-    AppState.decks.splice(index, 1, res.data)
+  async editDeck(deckData) {
+    const res = await api.put(`/api/decks/${deckData.id}`, deckData);
+    const index = AppState.decks.findIndex((d) => d.id == deckData.id);
+    AppState.decks.splice(index, 1, res.data);
     // AppState.activeDeck = {}
   }
 
@@ -47,7 +47,6 @@ class DecksService {
     logger.log(res);
     console.log(AppState.activeDeck);
   }
-
 }
 
 export const decksService = new DecksService();
