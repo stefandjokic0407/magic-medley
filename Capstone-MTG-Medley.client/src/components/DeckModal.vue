@@ -17,10 +17,10 @@
                     </div>
                     <div class="card-body">
                         <span class="d-flex justify-content-around">
-                            <button class="btn btn-outline-light">Rating up</button>
+                            <button @click="rateDeck(5)" class="btn btn-outline-light">Rating up</button>
                             <p class="text-center">Community Rating:<br>{{activeDeck?.avgRating}}/{{activeDeck.rating?.length*5}}
                             </p>
-                            <button @click="deckDetails" class="btn btn-outline-light" @click="rateDeck(5)" data-bs-dismiss="modal"
+                            <button @click="deckDetails" class="btn btn-outline-light" data-bs-dismiss="modal"
                                 data-bs-target="#deckModal">Deck Details</button>
                         </span>
                         <p class="card-text px-4">{{activeDeck?.description}}</p>
