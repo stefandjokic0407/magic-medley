@@ -91,6 +91,10 @@ export default {
   left: 0;
 }
 
+.container-fluid{
+  overflow-y: scroll;
+}
+
 
 
 .deckCanvas {
