@@ -30,8 +30,6 @@
                 <input type="url" class="form-control" v-model="editable.coverImg" placeholder="Cover Image" />
                 <label class="form-label">Guild Card Image</label>
                 <input type="url" class="form-control" v-model="editable.cardImg" placeholder="Card Image" />
-                <label class="form-label">Icon</label>
-                <input type="url" class="form-control" v-model="editable.icon" placeholder="Icon Image" />
                 <label class="form-label">Guild Background</label>
                 <textarea type="text" class="form-control" v-model="editable.background" rows="10"
                   placeholder="Guild Background"></textarea>

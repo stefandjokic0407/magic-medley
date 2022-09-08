@@ -15,7 +15,6 @@ export const GuildSchema = new Schema(
     members: { type: Number, min: 0, default: 0, required: true },
     coverImg: { type: String, required: true },
     cardImg: { type: String, required: true },
-    icon: { type: String, required: true },
     background: { type: String, required: true }
 
   },
