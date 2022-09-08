@@ -28,14 +28,14 @@ item-key="id"> -->
   </div>
   <div class="col-9 mx-auto">
     <div class="row ">
-      <div class="col-6 cardCount xsFont align-items-center d-flex">
+      <div class="col-5 cardCount xsFont align-items-center d-flex">
         <p class="p-0 m-0"><i class="mdi p-0 m-0 mdi-card-multiple-outline"></i>&nbsp
           {{
           card.count
           }}</p>
       </div>
       <div class="col-3">
-        <i @click.prevent="removeCard() && getAccountCards()" class="deckText mdi mdi-minus-circle-outline text-light"
+        <i @click.prevent="removeCard() && getAccountCards()" class="deckText mdi mdi-minus-circle text-light"
           value="Delete" type="button">
         </i>
       </div>
