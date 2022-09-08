@@ -50,7 +50,7 @@ a:hover {
 
 .deckText {
   -webkit-text-stroke: .5px black;
-  color: rgba(255, 255, 255, 0.88) !important;
+  color: rgba(255, 255, 255, 0.88);
   text-shadow:
     3px 3px 0 #000,
     -1px -1px 0 #000,
@@ -79,7 +79,7 @@ a:hover {
   height: 10VH;
 }
 
-// .bgClear {
-//   background-color: rgba(0, 0, 0, 0) !important;
-// }
+.bgClear {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
 </style>
