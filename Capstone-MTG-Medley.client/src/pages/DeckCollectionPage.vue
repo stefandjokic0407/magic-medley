@@ -10,13 +10,18 @@
     <div class="row my-3">
       <div class="col-12 text-center">
         <h1>{{activeDeck.name}}</h1>
-        <h4>Deck Rating: {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<i class="mdi mdi-star" ></i></h4>
+        <h4>Deck Rating: {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<i class="mdi mdi-star"></i>
+        </h4>
         <div class="row">
-          <button @click="rateDeck(1)" class="btn col-1">1</button>
-          <button @click="rateDeck(2)" class="btn col-1">2</button>
-          <button @click="rateDeck(3)" class="btn col-1">3</button>
-          <button @click="rateDeck(4)" class="btn col-1">4</button>
-          <button @click="rateDeck(5)" class="btn col-1">5</button>
+          <div class="col-3 m-0 p-0">
+            <button @click="rateDeck(1)" class="btn m-0 p-0">
+              <i class="mdi mdi-star-outline mdi-24px"></i>
+            </button>
+            <button @click="rateDeck(2)" class="btn m-0 p-0">2</button>
+            <button @click="rateDeck(3)" class="btn m-0 p-0">3</button>
+            <button @click="rateDeck(4)" class="btn m-0 p-0">4</button>
+            <button @click="rateDeck(5)" class="btn m-0 p-0">5</button>
+          </div>
           <button class="btn col-2 offset-4" @click="cloneDeck">Copy Deck to My Collection</button>
         </div>
       </div>
@@ -52,6 +57,7 @@ export default {
   setup() {
     const route = useRoute();
 
+
     async function setActiveDeck() {
       try {
         await decksService.setActiveDeck(route.params.deckId);
@@ -66,11 +72,10 @@ export default {
       setActiveDeck();
     });
     return {
-      decks: computed(() => AppState.decks),
       activeDeck: computed(() => AppState.activeDeck),
       deckCards: computed(() => AppState.deckCards),
+      collectionCards: computed(() => AppState.collection),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
-      activeCards: computed(() => AppState.activeProfile),
       async rateDeck(num) {
         try {
           const accountId = this.activeDeck.accountId
@@ -81,7 +86,7 @@ export default {
         }
       },
       async cloneDeck() {
-        
+
       }
     };
   },
