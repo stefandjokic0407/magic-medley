@@ -7,21 +7,15 @@
       </div>
       <div>
         <label for="picture">Picture:</label>
-        <input
-          type="url"
-          class="form-control"
-          v-model="editable.picture"
-          placeholder="picture"
-        />
+        <input type="url" class="form-control" v-model="editable.picture" placeholder="picture" />
       </div>
       <div>
         <label for="coverImg">Cover Image:</label>
-        <input
-          type="url"
-          class="form-control"
-          v-model="editable.coverImg"
-          placeholder="Cover Image"
-        />
+        <input type="url" class="form-control" v-model="editable.coverImg" placeholder="Cover Image" />
+      </div>
+      <div>
+        <label for="location">Location:</label>
+        <input type="text" class="form-control" v-model="editable.location" placeholder="Location" />
       </div>
       <div>
         <label for="email">Email:</label>
@@ -76,4 +70,6 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+</style>
