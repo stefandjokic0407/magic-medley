@@ -16,7 +16,7 @@
         </div>
       </div>
 <div class="row">
-  <div class="col-2" v-for="c in deckCards" :key="c.id">
+  <div class=" my-2 col-2" v-for="c in deckCards" :key="c.id">
     <DeckDetailsCard :card="c" />
   </div>
 </div>

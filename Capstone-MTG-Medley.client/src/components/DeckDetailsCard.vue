@@ -1,5 +1,4 @@
 <template>
-    <button @click="removeCardFromDeck()" class="btn-outline btn xsFont">Remove from Deck</button>
     <div class="row">
         <div v-if="card" class="deleteCard col-12">
             <img class="img-fluid shadow cardsBg childElement deleteCard" :src=card.card?.image_uris?.small
@@ -85,27 +84,6 @@ export default {
                     Pop.toast(error.message, "error");
                 }
             }
-            // mounted() {
-            //   const childElements = document.querySelectorAll('.childElement');
-            //   childElements.forEach(childElement => {
-            //     // create button for each childElement
-            //     const deleteButton = document.createElement('button');
-            //     deleteButton.setAttribute('hidden', '');
-            //     deleteButton.innerText = "Click to delete";
-            //     // append button to the childElement
-            //     childElement.appendChild(deleteButton);
-            //     // add event listeners
-            //     childElement.addEventListener('mouseenter', event => {
-            //       deleteButton.removeAttribute('hidden');
-            //     });
-            //     childElement.addEventListener('mouseleave', event => {
-            //       deleteButton.setAttribute('hidden', '');
-            //     });
-            //     deleteButton.addEventListener('click', event => {
-            //       childElement.setAttribute('hidden', '');
-            //     });
-            //   });
-            // },
         };
     },
     components: { Modal }
