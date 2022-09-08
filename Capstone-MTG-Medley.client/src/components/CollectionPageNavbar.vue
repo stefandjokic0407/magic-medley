@@ -98,7 +98,7 @@ a:hover {
 
 .profilePicture {
   height: 3em;
-  width: auto;
+  width: 3em;
   border-radius: 50%;
 }
 </style>
