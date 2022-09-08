@@ -3,6 +3,7 @@
     <Navbar />
   </header>
 
+  <!-- NOTE add flex-grow -->
   <main class="row rav-bg">
     <div class="col-12">
       <section class="row">
