@@ -3,21 +3,21 @@
     <div class="col-12 text-center">
       <!-- <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="" /> -->
       <div class="row d-flex justify-content-evenly">
-        <div class="col-3 bg-left mx-1">
+        <div class="col-3 bg-left mx-1 ">
           <div class="fs-4 btn btn-secondary selectable">
             <router-link :to="{ name: 'Search' }" class="text-my-light">
               Search Cards
             </router-link>
           </div>
         </div>
-        <div class="col-3 bg-center mx-1">
+        <div class="col-3 bg-center mx-1 ">
           <div class="fs-4 btn btn-secondary selectable">
             <router-link :to="{ name: 'Guild' }" class="text-my-light selectable">
               Guild
             </router-link>
           </div>
         </div>
-        <div class="col-3 bg-right mx-1">
+        <div class="col-3 bg-right mx-1 ">
           <div class="fs-4 btn btn-secondary selectable">
             <router-link :to="{ name: 'Collection' }" class="text-my-light">
               My Collection
@@ -116,13 +116,14 @@ img {
   background-position: center;
   background-size: cover;
   height: 95vh;
-
+  transition: 2 ease;
 }
 
 .bg-left:hover {
   border-left: 2px white solid;
   border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(255, 255, 255);
+  transform: translate(0, -1px);
 }
 
 
@@ -131,12 +132,14 @@ img {
   background-position: center;
   background-size: cover;
   height: 95vh;
+  transition: 2 ease;
 }
 
 .bg-center:hover {
   border-left: 2px white solid;
   border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(255, 255, 255);
+  transform: translate(0, -1px);
 }
 
 .bg-right {
@@ -144,11 +147,13 @@ img {
   background-position: center;
   background-size: cover;
   height: 95vh;
+  transition: 2 ease;
 }
 
 .bg-right:hover {
   border-left: 2px white solid;
   border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(255, 255, 255);
+  transform: translate(0, -1px);
 }
 </style>
