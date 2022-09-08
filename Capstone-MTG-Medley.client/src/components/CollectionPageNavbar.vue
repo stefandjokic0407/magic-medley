@@ -49,13 +49,8 @@ a:hover {
 }
 
 .deckText {
-<<<<<<< HEAD
-  -webkit-text-stroke: .5px black;
-  color: rgba(255, 255, 255, 0.88);
-=======
   -webkit-text-stroke: .5px rgba(0, 0, 0, 0.103);
   color: rgb(255, 255, 255) !important;
->>>>>>> 1fc999a25ce43f2a1c78f1dba9fcd6ea41100335
   text-shadow:
     2px 2px 1px #000,
     -1px -1px 1px #000,
