@@ -48,14 +48,6 @@ export default {
 
         return {
             activeDeck: computed(() => AppState.activeDeck),
-            calcRating: computed(() => {
-                const arr = AppState.activeDeck?.rating;
-                let sum = 0;
-                for (const value of arr) {
-                    sum += value;
-                }
-                return sum
-            }),
             async deckDetails() {
                 try {
                     router.push({ name: "DeckDetails", params: { deckId: AppState.activeDeck?.id } })
