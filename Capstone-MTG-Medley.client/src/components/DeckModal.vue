@@ -1,6 +1,6 @@
 <template>
     <div class="modal fade" id="deckModal" tabindex="-1" :aria-labelledby="activeDeck?.name" aria-hidden="true">
-        <div class="modal-dialog" style="width: 15rem;">
+        <div v-if="activeDeck.id" class="modal-dialog" style="width: 15rem;">
 
             <div class="card hero-img">
                 <div class=" mx-3 mt-3">
@@ -18,7 +18,7 @@
                     <p class="card-text">{{activeDeck?.description}}</p>
                 </div>
                 <div class="card-body">
-                    <p>Community Rating:{{sum}}/{{activeDeck.rating.length*5}}</p>
+                    <p>Community Rating:{{calcRating}}/{{activeDeck.rating?.length*5}}</p>
                 </div>
                 <div class="card-footer">
                     <button class="btn btn-outline-light">rating up</button>
@@ -34,24 +34,21 @@
 <script>
 import { computed } from '@vue/reactivity';
 import { AppState } from '../AppState.js';
-import { decksService } from '../services/DecksService.js';
-import Pop from '../utils/Pop.js';
 
 
 export default {
-    props: { deck: { type: Object, required: true, } },
+    // props: { deck: { type: Object, required: true, } },
     setup(props) {
-        // NOTE this function should take the array of ratings and get a sum which we will display as a total over the total possible value times the array.length
 
         return {
             activeDeck: computed(() => AppState.activeDeck),
-            rating: computed(() => {
+            calcRating: computed(()  => {
                 const arr = AppState.activeDeck?.rating;
-                let sum = 0;
-                for (const value of arr) {
-                    sum += value;
-                }
-                return sum
+                    let sum = 0;
+                    for (const value of arr) {
+                        sum += value;
+                    }
+                    return sum
             })
 
         }
