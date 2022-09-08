@@ -50,6 +50,8 @@
           <Map />
         </div>
       </div>
+
+
       <!-- NOTE Map & Offcanvas Button -->
       <!-- DECK -->
       <div class="col-md-10">
