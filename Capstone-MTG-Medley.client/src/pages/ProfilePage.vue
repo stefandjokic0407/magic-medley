@@ -25,7 +25,7 @@
 
     <!-- SECTION Profile Decks -->
 
-    <div class="row align-items-center justify-content-center mx-1 deck-container">
+    <div v-if="profile" class="row align-items-center justify-content-center mx-1 deck-container">
         <div v-for="d in decks" :key="d.id" @click="setActiveDeck(d.id)" type="button" data-bs-toggle="modal"
             data-bs-target="#deckModal" class="mt-4 col-3 px-4">
             <div v-if="d?.picture">
@@ -50,8 +50,6 @@ import { router } from "../router";
 import { decksService } from "../services/DecksService.js";
 import { profilesService } from "../services/ProfilesService";
 import Pop from "../utils/Pop";
-import DeckModal from "../components/DeckModal.vue";
-import Modal from "../components/Modal.vue";
 
 export default {
     setup() {
@@ -95,7 +93,6 @@ export default {
                 },
         };
     },
-    components: { DeckModal, Modal }
 };
 </script>
 

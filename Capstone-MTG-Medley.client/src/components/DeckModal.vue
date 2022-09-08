@@ -1,59 +1,56 @@
 <template>
     <div class="modal fade" id="deckModal" tabindex="-1" :aria-labelledby="activeDeck?.name" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="width: 15rem;">
 
-            <div class="modal-content row g-0 cardBg elevation-3">
-                <h5 class="modal-title mx-2"><b>{{activeDeck?.name}}</b></h5>
-                <!-- SECTION MODALS ACTIVE DECK PHOTO -->
-                <div v-if="activeDeck" class="col-12">
-                    <img :src='activeDeck?.picture' class="deck-banner img-fluid">
+            <div class="card hero-img">
+                <div class=" mx-3 mt-3">
+                    <img v-if="activeDeck" :src='activeDeck?.picture' class="card-img-top">
+                    <img v-else
+                        src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+                        class="card-img-top" alt="...">
                 </div>
-                <div v-if="!activeDeck?.picture" class="col-md-6">
+                <div v-if="!activeDeck?.picture" class="card-img-top">
                     <img src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
                         class="cardBg img-fluid" alt="...">
                 </div>
-
-                <div class="col-12 mx-2">
-                    <p>{{activeDeck?.description}}</p>
-                    <div class="row align-items-center">
-                        <div class="col-6">
-
-                            <p>Community Rating:{{sum}}/{{activeDeck.rating.length*5}}</p>
-                        </div>
-                        <div class="offset-2 col-4">
-                            <button class="btn btn-outline">Visit Deck Page</button>
-                        </div>
-                    </div>
-
+                <div class="card-body">
+                    <h5 class="card-title"><b>{{activeDeck?.name}}</b></h5>
+                    <p class="card-text">{{activeDeck?.description}}</p>
+                </div>
+                <div class="card-body">
+                    <p>Community Rating:{{sum}}/{{activeDeck.rating.length*5}}</p>
                 </div>
 
+                <div class="card-footer">
+                    <button class="btn btn-outline-light">rating up</button>
+                    <button class="btn btn-outline-light">Deck Details</button>
 
+                </div>
             </div>
+
         </div>
     </div>
 </template>
 
+
 <script>
 import { computed } from '@vue/reactivity';
 import { AppState } from '../AppState.js';
-import { decksService } from '../services/DecksService.js';
-import Pop from '../utils/Pop.js';
 
 
 export default {
-    props: { deck: { type: Object, required: true, } },
+    // props: { deck: { type: Object, required: true, } },
     setup(props) {
-// NOTE this function should take the array of ratings and get a sum which we will display as a total over the total possible value times the array.length
 
         return {
             activeDeck: computed(() => AppState.activeDeck),
-            rating: computed(()=> {
+            calcRating: computed(()  => {
                 const arr = AppState.activeDeck?.rating;
-            let sum = 0;
-            for (const value of arr) {
-                sum += value;
-            }
-            return sum
+                    let sum = 0;
+                    for (const value of arr) {
+                        sum += value;
+                    }
+                    return sum
             })
 
         }
