@@ -10,7 +10,7 @@
     <div class="row my-3">
       <div class="col-12 text-center">
         <h1>{{activeDeck.name}}</h1>
-        <h4>Deck Rating: {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5</h4>
+        <h4>Deck Rating: {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<i class="mdi mdi-star" ></i></h4>
         <div class="row">
           <button @click="rateDeck(1)" class="btn col-1">1</button>
           <button @click="rateDeck(2)" class="btn col-1">2</button>
