@@ -2,7 +2,7 @@
   <header class="row sticky-top">
     <Navbar />
   </header>
-  <div class="row collectionPageBg collectionPageViewHeight">
+  <div class="row collectionPageViewHeight">
     <div class="col-10 px-0">
           <div class="row align-items-center ">
             <div class="myCollectionsBanner mx-auto col-12 col-lg-7 align-items-center d-flex mt-4">
@@ -121,19 +121,12 @@ export default {
   border: 2px solid black;
   outline: 3px solid #d4af37c3;
 }
-
-.collectionPageBg {
-  background-image: url('https://img.freepik.com/premium-photo/abstract-background-beige-brown-grunge-material-old-paper_213524-129.jpg?w=2000');
-  background-size: cover;
-  background-position: center;
-}
-
 .collectionPageViewHeight {
   height: 100%;
 }
 
 .myCollectionsBanner {
-  background-image: url(src/assets/img/CollectionsBanner.png);
+  background-image: url(src/assets/img/smaller_banner-removebg-preview.png);
   background-position: center;
   background-size: cover;
   height: 20VH;

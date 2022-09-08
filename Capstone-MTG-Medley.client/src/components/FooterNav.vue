@@ -38,7 +38,7 @@ export default {
   backdrop-filter: blur(4px);
   border: solid #8d8b8b1f;
   border-radius: 8px;
-  height: 5VH;
+  height: 7VH;
 }
 
 .text-my-light {
