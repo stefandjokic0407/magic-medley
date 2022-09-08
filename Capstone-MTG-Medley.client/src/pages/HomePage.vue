@@ -1,30 +1,23 @@
 <template>
   <div class="row justify-content-center hero-img">
     <div class="col-12 text-center">
-      <img
-        class="img-fluid"
-        src="../assets/img/FullLogo_Transparent_NoBuffer.png"
-        alt=""
-      />
-      <div class="row d-flex my-4">
-        <div class="col-4">
+      <!-- <img class="img-fluid" src="../assets/img/FullLogo_Transparent_NoBuffer.png" alt="" /> -->
+      <div class="row d-flex justify-content-evenly">
+        <div class="col-3 bg-left mx-1">
           <div class="fs-4 btn btn-secondary selectable">
             <router-link :to="{ name: 'Search' }" class="text-my-light">
               Search Cards
             </router-link>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-3 bg-center mx-1">
           <div class="fs-4 btn btn-secondary selectable">
-            <router-link
-              :to="{ name: 'Guild' }"
-              class="text-my-light selectable"
-            >
+            <router-link :to="{ name: 'Guild' }" class="text-my-light selectable">
               Guild
             </router-link>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-3 bg-right mx-1">
           <div class="fs-4 btn btn-secondary selectable">
             <router-link :to="{ name: 'Collection' }" class="text-my-light">
               My Collection
@@ -35,8 +28,8 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-12">
+  <div class="row footerHeight">
+    <div class="col-12 ">
       <FooterNav />
     </div>
   </div>
@@ -96,7 +89,7 @@ img {
 }
 
 .hero-img {
-  background-image: url(../assets/img/bg-mtg.jpg);
+  background-image: url(https://wallpaper.dog/large/11041144.jpg);
   background-position: top;
   background-size: cover;
   height: 100vh;
@@ -116,6 +109,46 @@ img {
   width: 20vw;
   text-shadow: none;
   height: fit-content;
-  margin-top: 10vh;
+}
+
+.bg-left {
+  background-image: url(https://images.hdqwalls.com/wallpapers/magic-the-gathering-arena-o6.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 95vh;
+
+}
+
+.bg-left:hover {
+  border-left: 2px white solid;
+  border-right: 2px white solid;
+  box-shadow: 0 0 100px rgb(255, 255, 255);
+}
+
+
+.bg-center {
+  background-image: url(https://wallpaperaccess.com/full/251814.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 95vh;
+}
+
+.bg-center:hover {
+  border-left: 2px white solid;
+  border-right: 2px white solid;
+  box-shadow: 0 0 100px rgb(255, 255, 255);
+}
+
+.bg-right {
+  background-image: url(https://i.pinimg.com/originals/d2/85/a3/d285a31cd7a4bf82c9caf8127bcb4dc5.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 95vh;
+}
+
+.bg-right:hover {
+  border-left: 2px white solid;
+  border-right: 2px white solid;
+  box-shadow: 0 0 100px rgb(255, 255, 255);
 }
 </style>
