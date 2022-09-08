@@ -11,7 +11,10 @@
           <div class="row justify-content-center mt-4">
             <div class="col-md-8">
               <div>
-                <img src="../assets/img/mtg-guilds/guildofrav_mtg.webp" alt="" />
+                <img
+                  src="../assets/img/mtg-guilds/guildofrav_mtg.webp"
+                  alt=""
+                />
               </div>
             </div>
 
@@ -41,7 +44,9 @@
 
   <div class="row main-bg justify-content-center">
     <div class="col-10">
-      <p class="fs-1 p-2 m-0 text-center"><b>Choose Your Guild</b></p>
+      <p class="fs-1 p-2 m-0 text-center choose-banner">
+        <b>Choose Your Guild</b>
+      </p>
 
       <div class="row justify-content-center my-3">
         <div class="col-4 bg-white elevation-3 rounded mx-3">
@@ -339,7 +344,12 @@
   <!-- NOTE this was to create a guild -->
   <div class="col-md-3">
     <div class="text-end">
-      <button class="btn" title="Create Guild" data-bs-toggle="modal" data-bs-target="#guild-modal">
+      <button
+        class="btn"
+        title="Create Guild"
+        data-bs-toggle="modal"
+        data-bs-target="#guild-modal"
+      >
         <i class="mdi mdi-plus fs-3"></i>
         <span class="fs-5">CREATE GUILD</span>
       </button>
@@ -513,7 +523,7 @@ button:hover {
   max-width: 100vw;
   overflow-x: scroll;
 
-  >div {
+  > div {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
@@ -540,8 +550,8 @@ button:hover {
 }
 
 .choose-banner {
-  color: white;
-  background-color: #bd4362;
+  color: #bd4362;
+  text-shadow: 1px 1px 1px black;
 }
 
 .azo-g {

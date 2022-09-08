@@ -4,7 +4,7 @@
 <section class="container-fluid pageBg">
 
   <header class="row">
-    <Navbar />
+    <DeckDetailsNavBar />
   </header>
 
   <div class="row my-3">
@@ -74,7 +74,7 @@ export default {
 
 .pageBg{
   background-color: #faea9b;
-  background-image: url("https://i.etsystatic.com/5295659/r/il/c200e4/1840157274/il_1588xN.1840157274_4m0e.jpg");
+  background-image: url("https://img.freepik.com/free-photo/vintage-textured-watercolor-paper-background_53876-103939.jpg?w=2000");
   background-repeat: none;
   min-height: 100%;
   overflow-y: auto;
