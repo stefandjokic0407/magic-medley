@@ -10,6 +10,8 @@
                 <div class="col-12">
                   <h1 class="bannerFontSize text-center deckText">{{activeDeck?.name}}</h1>
                 </div>
+                <div class="col-3">
+                </div>
               </div>
             </div>
           </div>
@@ -42,46 +44,43 @@ import { onMounted, ref, watchEffect, } from 'vue';
 import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
 import { deckCardsService } from '../services/DeckCardsService.js';
+import DeckCard from '../components/DeckCard.vue';
 
 
 export default {
-  setup() {
-    const route = useRoute()
-
-    // async function getDeckCards(deckId) {
-    //   try {
-    //   await deckCardsService.getDeckCards(deckId)
-    //   }
-    //   catch (error) {
-    //   Pop.error(error);
-    //   console.log(error)
-    //   }
-    // }
-
-    async function setActiveDeck(){
-      try {
-      await decksService.setActiveDeck(route.params.deckId)
-      await deckCardsService.getDeckCards(route.params.deckId)
-      } catch (error) {
-      console.log(error)
-      Pop.error('[setting active deck]', error)
-      }
-      }
-
-
-    onMounted(() => {
-      setActiveDeck();
-    });
-
-    return {
-      decks: computed(() => AppState.decks),
-      activeDeck: computed(() => AppState.activeDeck),
-      deckCards: computed(() => AppState.deckCards),
-      cover: computed(() => `url(${AppState.activeDeck?.picture})`),
-      activeCards: computed(() => AppState.activeProfile),
-
-    };
-  }
+    setup() {
+        const route = useRoute();
+        // async function getDeckCards(deckId) {
+        //   try {
+        //   await deckCardsService.getDeckCards(deckId)
+        //   }
+        //   catch (error) {
+        //   Pop.error(error);
+        //   console.log(error)
+        //   }
+        // }
+        async function setActiveDeck() {
+            try {
+                await decksService.setActiveDeck(route.params.deckId);
+                await deckCardsService.getDeckCards(route.params.deckId);
+            }
+            catch (error) {
+                console.log(error);
+                Pop.error("[setting active deck]", error);
+            }
+        }
+        onMounted(() => {
+            setActiveDeck();
+        });
+        return {
+            decks: computed(() => AppState.decks),
+            activeDeck: computed(() => AppState.activeDeck),
+            deckCards: computed(() => AppState.deckCards),
+            cover: computed(() => `url(${AppState.activeDeck?.picture})`),
+            activeCards: computed(() => AppState.activeProfile),
+        };
+    },
+    components: { DeckCard }
 };
 </script>
 
