@@ -42,8 +42,8 @@
     </div>
   </div>
 
-  <div class="row main-bg">
-    <div class="col-12">
+  <div class="row main-bg justify-content-center">
+    <div class="col-10">
       <p class="fs-1 p-2 m-0 text-center"><b>Choose Your Guild</b></p>
 
       <div class="row justify-content-center my-3">
@@ -526,12 +526,19 @@ button:hover {
   padding: 0%;
 }
 
-// .main-bg {
-//   background-image: url(../assets/img/transparents/topCity-transparent.png);
-//   background-image: url(../assets/img/transparents/grass-transparent.png);
-//   background-repeat: no-repeat;
-//   background-position: bottom;
-// }
+.main-bg {
+  background-image: url(../assets/img/transparents/topCity-transparent.png),
+    url(../assets/img/transparents/human-char.png),
+    url(../assets/img/transparents/crab-char.png),
+    url(../assets/img/transparents/healer-char.png),
+    url(../assets/img/transparents/elf-char.png),
+    url(../assets/img/transparents/grass-transparent.png);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat,
+    no-repeat;
+  background-position: top right, 0% 0%, 5% 11%, bottom right, 100% 95%,
+    bottom left;
+  background-size: 40em, 20em, 20em, 20em, 20em, 40em;
+}
 
 .choose-banner {
   color: white;
