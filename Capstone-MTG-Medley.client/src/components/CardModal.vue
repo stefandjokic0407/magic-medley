@@ -34,149 +34,125 @@
           <div v-else></div>
         </div>
         <!-- NOTE  IF LEGAL/BANNED/RESTRICT BOXES-->
-        <div class="row mx-auto my-3 legalSize">
-          <div v-if="activeCard.legalities?.standard == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Standard</div>
+        <div class="row mx-auto my-1 legalSize">
+          <div v-if="activeCard.legalities?.standard == 'legal'" class="col-5 mx-auto my-1">
             <div class=" bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>STANDARD</p>
             </div>
           </div>
-          <div v-else class="col-5 mx-auto">
-            <div class=" text-center">Standard</div>
+          <div v-else class="col-5 mx-auto my-1">
             <div class=" bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>STANDARD</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.alchemy == 'legal'" class="col-5 mx-auto">
-            <div class=" text-center">Alchemy</div>
+          <div v-if="activeCard.legalities?.alchemy == 'legal'" class="col-5 mx-auto my-1">
             <div class=" bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>ALCHEMY</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.alchemy == false" class="col-5 mx-auto">
-            <div class="text-center">Alchemy</div>
+          <div v-else="activeCard.legalities?.alchemy == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>ALCHEMY</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.pioneer == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Pioneer</div>
+          <div v-if="activeCard.legalities?.pioneer == 'legal'" class="col-5 mx-auto my-1">
             <div class="bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>PIONEER</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.pioneer == false" class="col-5 mx-auto">
-            <div class="text-center">Pioneer</div>
+          <div v-else="activeCard.legalities?.pioneer == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>PIONEER</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.explorer == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Explorer</div>
+          <div v-if="activeCard.legalities?.explorer == 'legal'" class="col-5 mx-auto my-1">>
             <div class="bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>EXPLORER</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.explorer == false" class="col-5 mx-auto">
-            <div class="text-center">Explorer</div>
+          <div v-else="activeCard.legalities?.explorer == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>EXPLORER</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.modern == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Modern</div>
+          <div v-if="activeCard.legalities?.modern == 'legal'" class="col-5 mx-auto my-1">
             <div class="bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>MODERN</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.modern == false" class="col-5 mx-auto">
-            <div class="text-center">Modern</div>
+          <div v-else="activeCard.legalities?.modern == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>MODERN</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.brawl == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Brawl</div>
+          <div v-if="activeCard.legalities?.brawl == 'legal'" class="col-5 mx-auto my-1">
             <div class="bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>BRAWL</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.brawl == false" class="col-5 mx-auto">
-            <div class="text-center">Brawl</div>
+          <div v-else="activeCard.legalities?.brawl == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>BRAWL</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.legacy == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Legacy</div>
+          <div v-if="activeCard.legalities?.legacy == 'legal'" class="col-5 mx-auto my-1">
             <div class="bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>LEGACY</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.legacy == false" class="col-5 mx-auto">
-            <div class="text-center">Legacy</div>
+          <div v-else="activeCard.legalities?.legacy == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>LEGACY</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.historic == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Historic</div>
+          <div v-if="activeCard.legalities?.historic == 'legal'" class="col-5 mx-auto my-1">
             <div class="bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>HISTORIC</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.historic == false" class="col-5 mx-auto">
-            <div class="text-center">Historic</div>
+          <div v-else="activeCard.legalities?.historic == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>HISTORIC</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.vintage == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Vintage</div>
+          <div v-if="activeCard.legalities?.vintage == 'legal'" class="col-5 mx-auto my-1">
             <div class="bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>VINTAGE</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.vintage == false" class="col-5 mx-auto">
-            <div class="text-center">Vintage</div>
+          <div v-else="activeCard.legalities?.vintage == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>VINTAGE</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.pauper == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Pauper</div>
+          <div v-if="activeCard.legalities?.pauper == 'legal'" class="col-5 mx-auto my-1">
             <div class="bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>PAUPER</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.pauper == false" class="col-5 mx-auto">
-            <div class="text-center">Pauper</div>
+          <div v-else="activeCard.legalities?.pauper == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>PAUPER</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.commander == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Commander</div>
+          <div v-if="activeCard.legalities?.commander == 'legal'" class="col-5 mx-auto my-1">
             <div class="bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>COMMANDER</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.commander == false" class="col-5 mx-auto">
-            <div class="text-center">Commander</div>
+          <div v-else="activeCard.legalities?.commander == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>COMMANDER</p>
             </div>
           </div>
-          <div v-if="activeCard.legalities?.penny == 'legal'" class="col-5 mx-auto">
-            <div class="text-center">Penny</div>
+          <div v-if="activeCard.legalities?.penny == 'legal'" class="col-5 mx-auto my-1">
             <div class="bgLegal text-light text-center rounded">
-              <p>LEGAL</p>
+              <p>PENNY</p>
             </div>
           </div>
-          <div v-else="activeCard.legalities?.penny == false" class="col-5 mx-auto">
-            <div class="text-center">Penny</div>
+          <div v-else="activeCard.legalities?.penny == false" class="col-5 mx-auto my-1">
             <div class="bgNotLegal text-light text-center rounded">
-              <p>NOT LEGAL</p>
+              <p>PENNY</p>
             </div>
           </div>
         </div>

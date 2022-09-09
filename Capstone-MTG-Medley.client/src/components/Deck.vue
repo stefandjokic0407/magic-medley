@@ -120,7 +120,6 @@ export default {
 }
 
 .deckImg {
-
   aspect-ratio: 4 / 1;
   background-image: v-bind(cover) !important;
   background-position: center;
@@ -139,9 +138,5 @@ export default {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
-}
-
-.deckHeight {
-  height: 10VH;
 }
 </style>
