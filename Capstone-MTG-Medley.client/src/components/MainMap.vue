@@ -35,6 +35,8 @@ export default {
         center: { lat: -34, lng: 150 },
         zoom: 15
       })
+
+
     }
 
 
