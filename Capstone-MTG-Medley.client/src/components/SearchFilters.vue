@@ -1,6 +1,6 @@
 <template>
 
-  <form @submit.prevent="searchCards()" class="search-zone">
+  <form @submit.prevent="searchCards()" class="col-12 search-zone">
 
     <section class="row m-mine">
 
@@ -510,6 +510,7 @@ export default {
   background-position: center;
   background-size: cover;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  max-width: 100vw;
 }
 
 .filter-btn {
