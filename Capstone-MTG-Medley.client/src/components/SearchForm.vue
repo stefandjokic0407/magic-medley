@@ -11,7 +11,7 @@
 
 <script>
 import { ref } from "vue";
-import { useRouter } from "vue-router";
+// import { useRouter } from "vue-router";
 import { cardsService } from "../services/CardsService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
@@ -22,7 +22,7 @@ export default {
 
 
   setup() {
-    const router = useRouter();
+    // const router = useRouter();
     const query = ref('')
 
     return {
