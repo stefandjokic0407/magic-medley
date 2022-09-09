@@ -24,19 +24,19 @@
               <i v-else class="mdi mdi-star mdi-36px"></i>
             </button>
             <button @click="rateDeck(2)" class="btn m-0 p-0 text-warning">
-              <i v-if="activeRater.value >= 2" class="mdi mdi-star mdi-36px"></i>
+              <i v-if="activeRater?.value >= 2" class="mdi mdi-star mdi-36px"></i>
               <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
             <button @click="rateDeck(3)" class="btn m-0 p-0 text-warning">
-              <i v-if="activeRater.value >= 3" class="mdi mdi-star mdi-36px text-warning"></i>
+              <i v-if="activeRater?.value >= 3" class="mdi mdi-star mdi-36px text-warning"></i>
               <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
             <button @click="rateDeck(4)" class="btn m-0 p-0 text-warning">
-              <i v-if="activeRater.value >= 4" class="mdi mdi-star mdi-36px"></i>
+              <i v-if="activeRater?.value >= 4" class="mdi mdi-star mdi-36px"></i>
               <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
             <button @click="rateDeck(5)" class="btn m-0 p-0 text-warning">
-              <i v-if="activeRater.value >= 5" class="mdi mdi-star mdi-36px"></i>
+              <i v-if="activeRater?.value >= 5" class="mdi mdi-star mdi-36px"></i>
               <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
           </div>
