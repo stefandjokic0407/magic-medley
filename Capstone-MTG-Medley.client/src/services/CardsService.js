@@ -81,6 +81,7 @@ class CardsService {
 
       console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
 
+      AppState.searchedCards = [];
       const res = await search.get(baseSearch + searchTerm);
       AppState.searchedCards = res.data.data.map((c) => new Card(c));
       AppState.nextPage = res.data.next_page;
