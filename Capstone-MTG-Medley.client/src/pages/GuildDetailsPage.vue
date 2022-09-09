@@ -3,6 +3,76 @@
     <ClearNavBar />
   </header>
   <!-- Gruul Clans Page -->
+<<<<<<< HEAD
+  <div class="row gruul ">
+    <!-- NOTE Guild Members & Title & Join/Remove Button -->
+    <!-- GUILD MEMBERS -->
+    <div class="col-12">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Guild Members</h4>
+          <div class="">
+            <div v-for="m in members" :key="m.id">
+              <Member :member="m" />
+            </div>
+          </div>
+        </div>
+        <!-- GUILD TITLE -->
+        <div class="col-md-4 text-center">
+          <h1>{{ activeGuild.name }}</h1>
+          <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
+        </div>
+        <!-- GUILD JOIN/REMOVE -->
+        <div class="col-md-4 text-end">
+          <button v-if="isMember == false" class="btn" @click="joinGuild()">
+            <i class="mdi mdi-plus fs-3"></i>
+            <span class="fs-5 ">JOIN GUILD</span>
+          </button>
+          <button v-else class="btn" @click="removeFromGuild()">
+            <i class="mdi mdi-minus fs-3"></i>
+            <span class="fs-5">Leave Guild</span>
+          </button>
+        </div>
+        <div class="col-md-6 columnHeight">
+          <div class="card p-3 gruul-bg elevation-4 mb-5">
+            <h4>
+              {{ activeGuild.name }} Background
+            </h4>
+            {{activeGuild.background}}
+          </div>
+        </div>
+        <div class="col-md-4 columnHeight">
+          <div class="">
+            <Map />
+          </div>
+        </div>
+      </div>
+      <div class="card-img-overlay p-0">
+        <div class="glass-card fs-6 text-dark text-center rounded-top p-1">
+          {{ activeGuild.name }} Starter Deck
+        </div>
+      </div>
+    </div>
+    <!-- NOTE Background & Map Row -->
+    <!-- MAP -->
+    <!-- NOTE Map & Offcanvas Button -->
+    <!-- DECK -->
+    <div class="col-md-10 columnHeight">
+      <div class="card deck-card border-none">
+        <div class="gruul-deck">
+
+        </div>
+      </div>
+    </div>
+    <!-- CHAT -->
+    <div class="col-md-2 d-flex flex-column justify-content-end text-end">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-off-canvas"
+        aria-controls="chat-off-canvas">
+        Chat With Guild Members
+      </button>
+      <ChatOffcanvas />
+    </div>
+=======
   <main class="row gruul p-5">
     <!-- NOTE Guild Members & Title & Join/Remove Button -->
     <!-- GUILD MEMBERS -->
@@ -89,11 +159,16 @@
         </section>
       </div>
     </div>
+>>>>>>> 384f8147186c07be58ee44183034f9972ca3debc
     <!-- NOTE Might need this to add starter decks -->
     <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
                 <img :src="oracleCard.image_uris.small" alt="">
               </div> -->
+<<<<<<< HEAD
+  </div>
+=======
   </main>
+>>>>>>> 384f8147186c07be58ee44183034f9972ca3debc
   <!-- CHAT -->
 </template>
 
@@ -262,7 +337,12 @@ export default {
   color: #0f0f0f !important;
 }
 
-
+.buttonHeight {
+  height: 100VH;
+  height: 95VH;
+  position: fixed;
+  right: 0;
+}
 
 .btn {
   text-shadow: 1px 1px 3px black;
@@ -377,6 +457,11 @@ export default {
   /* border-radius: 8px; */
 }
 
+<<<<<<< HEAD
+// .columnHeight {
+//   height: 10Vh;
+// }
+=======
 .guild-container-bg {
   background: rgb(54 52 75 / 38%);
   backdrop-filter: blur(4px);
@@ -402,4 +487,5 @@ export default {
   font-size: 4em;
   padding: 0%;
 }
+>>>>>>> 384f8147186c07be58ee44183034f9972ca3debc
 </style>
