@@ -47,7 +47,7 @@
           </div>
           <div class="col-3"></div>
           <button class="glass btn col-2 m-1" @click="cloneDeck">Copy Deck to My Collection</button>
-          <button class="glass btn btn-outline col-2 m-1" @click="compareDeck">Compare to my collection</button>
+          <button class="glass btn btn-outline col-2 m-1" type="button" @click="compareDeck" data-bs-toggle="offcanvas" data-bs-target="#shopping-cart-modal" aria-controls="offcanvasExample">Compare to my collection</button>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@
 
   </section>
 
-
+  <ShoppingCartModal />
 </template>
 
 
@@ -79,6 +79,7 @@ import { deckCardsService } from '../services/DeckCardsService.js';
 import DeckCard from '../components/DeckCard.vue';
 import DeckDetailsCard from '../components/DeckDetailsCard.vue';
 import { router } from "../router.js";
+import ShoppingCartModal from "../components/ShoppingCartModal.vue";
 
 
 export default {
@@ -168,7 +169,7 @@ export default {
       }
     };
   },
-  components: { DeckCard, DeckDetailsCard }
+  components: { DeckCard, DeckDetailsCard, ShoppingCartModal }
 };
 </script>
 
