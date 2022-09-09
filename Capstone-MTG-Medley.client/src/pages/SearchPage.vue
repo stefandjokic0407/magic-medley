@@ -3,7 +3,7 @@
     <Navbar />
   </header>
 
-  <section v-if="card" class="row">
+  <section v-if="searchedCards" class="row">
     <SearchFilters />
     <!-- <div class="col-md-12 bg-search"> -->
     <div class="card-grid bg-search">
