@@ -89,6 +89,8 @@ class AccountService {
     // @ts-ignore
     account.coverImg = accountData.coverImg || account.coverImg
     // @ts-ignore
+    account.bio = accountData.bio || account.bio
+    // @ts-ignore
     await account.save()
     return account
   }
