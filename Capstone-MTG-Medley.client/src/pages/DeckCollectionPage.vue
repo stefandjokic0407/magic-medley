@@ -7,6 +7,11 @@
       <ClearNavBar />
     </header>
 
+    <div>
+      <img @click="gotToProfile()" type="button" :src=activeDeck.profile?.picture alt="profile picture">
+      {{activeDeck.profile?.name}}
+    </div>
+
     <div v-if="activeDeck.id" class="row my-3">
       <div class="col-12 text-center">
         <h1>{{activeDeck.name}}</h1>
@@ -73,6 +78,7 @@ import Pop from '../utils/Pop.js';
 import { deckCardsService } from '../services/DeckCardsService.js';
 import DeckCard from '../components/DeckCard.vue';
 import DeckDetailsCard from '../components/DeckDetailsCard.vue';
+import { router } from "../router.js";
 
 
 export default {
@@ -99,7 +105,6 @@ export default {
       activeDeck: computed(() => AppState.activeDeck),
       activeRater: computed(() => AppState.activeDeck?.rating.find(r => r.creatorId == AppState.account.id)),
       deckCards: computed(() => AppState.deckCards),
-      collectionCards: computed(() => AppState.collection),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
       displayCards: computed(() => {
         let newArray = [...AppState.deckCards]
@@ -119,26 +124,25 @@ export default {
       }),
 
       compareDeck(){
-        AppState.deckCards.forEach(dc => {
-        if (AppState.collection.find(c => c.name == dc.card.name)) console.log('duplicates', dc)
-      })
+        let missingCards = this.displayCards.map(dc => {
+          let found = AppState.collection.find(c => c.name == dc.card.name)
+          if(found){
+            let missingCard = {...found} 
+            missingCard.missingQty = dc.quantity - found.quantity
+            if(missingCard.missingQty > 0){
+              return missingCard
+            }
+          }
+          else{
+            let missingCard = {...dc}
+            missingCard.missingQty = dc.quantity
+            return missingCard
+          }
+        })
+        return missingCards
       },
 
       compareDeckCards(){
-        let newArray = [...AppState.deckCards]
-        for(let i = 0; i < newArray.length; i++) {
-          const firstCard = newArray[i];
-          firstCard.quantity = 1
-          for(let j = 0; j < newArray.length; i++) {
-            const secondCard = newArray[j];
-            if (firstCard.name == secondCard.name) {
-              firstCard.quantity++
-              newArray.splice(j, 1)
-              j--
-            }
-          }
-        }
-        AppState.deckCards.forEach(dc => {})
       },
 
       
@@ -158,7 +162,9 @@ export default {
         } catch (error) {
           Pop.error(error)
         }
-
+      },
+      async gotToProfile(){
+        router.push({name: 'Profile', params: {profileId: AppState.activeDeck.profile.id}})
       }
     };
   },
