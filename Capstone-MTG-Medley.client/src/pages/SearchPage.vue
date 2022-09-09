@@ -16,7 +16,10 @@
       Loading...
     </div>
     <div v-if="nextPage" class="row justify-content-center py-3">
-      <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-light w-50">
+      <button
+        @click="changePage(nextPage, page + 1)"
+        class="btn btn-outline-light w-50"
+      >
         More Results
       </button>
     </div>
@@ -73,9 +76,8 @@ export default {
   max-width: 100vw;
 
   .grid-item {
-    align-self: stretch;
-    justify-self: stretch;
-
+    align-self: center;
+    justify-self: center;
   }
 }
 
