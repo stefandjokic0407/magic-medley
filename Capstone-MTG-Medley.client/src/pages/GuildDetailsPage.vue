@@ -3,24 +3,30 @@
     <ClearNavBar />
   </header>
   <!-- Gruul Clans Page -->
-  <div class="row gruul">
+  <main class="row gruul p-5">
     <!-- NOTE Guild Members & Title & Join/Remove Button -->
     <!-- GUILD MEMBERS -->
-    <div class="col-md-4">
-      <h4>Guild Members</h4>
+    <section class="col-md-4">
+      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-off-canvas"
+        aria-controls="chat-off-canvas">
+        Chat With Guild Members
+      </button>
+      <ChatOffcanvas />
+
+      <h4 class="my-2 mx-3">Guild Members</h4>
       <div class="d-flex">
         <div v-for="m in members" :key="m.id">
           <Member :member="m" />
         </div>
       </div>
-    </div>
+    </section>
     <!-- GUILD TITLE -->
-    <div class="col-md-4 text-center">
+    <section class="col-md-4 text-center">
       <h1>{{ activeGuild.name }}</h1>
       <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
-    </div>
+    </section>
     <!-- GUILD JOIN/REMOVE -->
-    <div class="col-md-4 text-end">
+    <section class="col-md-4 text-end">
       <button v-if="isMember == false" class="btn" @click="joinGuild()">
         <i class="mdi mdi-plus fs-3"></i>
         <span class="fs-5">JOIN GUILD</span>
@@ -29,51 +35,65 @@
         <i class="mdi mdi-minus fs-3"></i>
         <span class="fs-5">Leave Guild</span>
       </button>
-    </div>
-    <!-- NOTE Background & Map Row -->
-    <div class="col-md-6">
-      <div class="card p-3 gruul-bg elevation-4">
-        <h4>
-          {{ activeGuild.name }} Background
-        </h4>
-        {{activeGuild.background}}
-      </div>
-    </div>
-    <!-- MAP -->
-    <div class="col-md-6">
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <Map />
-        </div>
-      </div>
-    </div>
-    <!-- NOTE Map & Offcanvas Button -->
-    <!-- DECK -->
-    <div class="col-md-10">
-      <div class="card deck-card border-none">
-        <div class="gruul-deck">
+    </section>
+    <!-- NOTE DECK -->
 
-        </div>
-        <div class="card-img-overlay p-0">
-          <div class="glass-card fs-6 text-dark text-center rounded-top p-1">
-            {{ activeGuild.name }} Starter Deck
+    <section class="col-md-12 my-3">
+      <div class="row">
+        <div class="col-md-2">
+          <div class="azorius-deck rounded d-flex justify-content-end align-items-end">
+            <div class="azorius-glass-card fs-5 text-center rounded-bottom p-1">
+              <b>
+                Starter Deck
+              </b>
+            </div>
           </div>
         </div>
+        <section class="col-10 rounded guild-container-bg">
+          <div class="row align-items-center">
+            <div class="col-1 text-center" @click="scrollLeft">
+              <i class="button-style mdi mdi-chevron-left"></i>
+            </div>
+            <div class="col-10">
+              <div class="row guild-cards-container">
+                <div class="col-md-3 my-4" v-for="g in guilds" :key="g.id">
+                  <GuildCard :guild="g" />
+                </div>
+              </div>
+            </div>
+            <div class="col-1 text-center" @click="scrollRight">
+              <i class="button-style mdi mdi-chevron-right"></i>
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
-    <!-- CHAT -->
-    <div class="col-md-2 d-flex flex-column justify-content-end text-end">
-      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-off-canvas"
-        aria-controls="chat-off-canvas">
-        Chat With Guild Members
-      </button>
-      <ChatOffcanvas />
+    </section>
+    <!-- NOTE Background & Map Row -->
+    <div class="col-md-12">
+      <div class="row align-items-center justify-content-evenly">
+        <section class="col-md-6">
+          <div class="card p-3 azorius-bg elevation-4">
+            <h4>
+              {{ activeGuild.name }} Background
+            </h4>
+            {{activeGuild.background}}
+          </div>
+        </section>
+        <!-- MAP -->
+        <section class="col-md-6">
+          <div class="row justify-content-end">
+            <div class="col-md-8">
+              <Map />
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
     <!-- NOTE Might need this to add starter decks -->
     <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
                 <img :src="oracleCard.image_uris.small" alt="">
               </div> -->
-  </div>
+  </main>
   <!-- CHAT -->
 </template>
 
@@ -122,6 +142,7 @@ export default {
       message: computed(() => AppState.messages),
       activeGuild: computed(() => AppState.activeGuild),
       members: computed(() => AppState.members),
+      guilds: computed(() => AppState.guilds),
       cover: computed(() => `url(${AppState.activeGuild?.coverImg})`),
       cardImg: computed(() => `url(${AppState.activeGuild?.cardImg})`),
       isMember: computed(() => {
@@ -154,7 +175,29 @@ export default {
           logger.error('[removing from guild]', error);
           Pop.error(error)
         }
-      }
+      },
+
+      scrollLeft() {
+        let content = document.querySelector(".guild-cards-container");
+        if (scrollPosition.value > 100) {
+          scrollPosition.value -= 500;
+        }
+        content.scrollTo({
+          left: scrollPosition.value,
+          behavior: "smooth",
+        });
+      },
+
+      scrollRight() {
+        let content = document.querySelector(".guild-cards-container");
+        if (scrollPosition.value < 1501) {
+          scrollPosition.value += 500;
+        }
+        content.scrollTo({
+          left: scrollPosition.value,
+          behavior: "smooth",
+        });
+      },
 
     };
   },
@@ -169,19 +212,13 @@ export default {
   border-radius: 50%;
 }
 
-
-.fixed-height {
-  height: 10vh !important;
-}
-
 .gruul {
-  text-shadow: 1px 1px 3px black;
   color: whitesmoke;
   background-image: v-bind(cover);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
@@ -190,33 +227,39 @@ export default {
 
 .gruul-bg {
   background: rgba(196, 211, 202, 0.5);
+  text-shadow: 1px 1px 3px black;
   backdrop-filter: blur(5px);
   color: #f0f0f0 !important;
   border: none;
+}
+
+.azorius-bg {
+  background: rgba(248, 231, 185, 0.8);
+  text-shadow: 1px 1px 3px black;
+  backdrop-filter: blur(5px);
+  color: #f0f0f0 !important;
+  border: none;
+  width: 90%;
 }
 
 .btn:hover {
   border: none !important;
 }
 
-.glass-card {
-  background: rgba(202, 181, 181, 0.4);
-  backdrop-filter: blur(1px);
-  text-shadow: 2px 2px 2px rgb(31, 29, 29);
-  color: #f2e9e4 !important;
+.azorius-glass-card {
+  background: rgba(248, 231, 185, 0.8);
+  backdrop-filter: blur(5px);
   width: 100%;
+  height: 15%;
 }
 
-.gruul-deck {
+.azorius-deck {
   background-image: v-bind(cardImg);
+  background-size: cover;
   background-position: center;
-  height: 12em;
-  width: 100%;
-}
-
-.deck-card {
-  height: 12em;
-  width: 150px;
+  min-height: 20em;
+  width: 75%;
+  color: #0f0f0f !important;
 }
 
 
@@ -332,5 +375,31 @@ export default {
   /* backdrop-filter: blur(4px); */
   /* border: solid #8d8b8b1f; */
   /* border-radius: 8px; */
+}
+
+.guild-container-bg {
+  background: rgb(54 52 75 / 38%);
+  backdrop-filter: blur(4px);
+  border: solid #8d8b8b1f;
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.guild-cards-container {
+  flex-wrap: nowrap;
+  scroll-snap-type: x mandatory;
+  max-width: 100vw;
+  overflow-x: scroll;
+
+  >div {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
+
+.button-style {
+  color: #bd4362;
+  font-size: 4em;
+  padding: 0%;
 }
 </style>
