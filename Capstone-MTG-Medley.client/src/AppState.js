@@ -51,4 +51,6 @@ export const AppState = reactive({
   messages: [],
 
   members: [],
+
+  accountAddress: {},
 });

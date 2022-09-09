@@ -63,7 +63,7 @@ export default {
 
 <style scoped lang="scss">
 .map-body {
-	height: 17em;
+	height: 30vh;
 	width: 100%;
 }
 
@@ -72,7 +72,7 @@ export default {
 }
 
 .map-group {
-	border: 4px solid white;
+	border: 4px solid rgba(248, 231, 185);
 	border-radius: 5px;
 	filter: drop-shadow(2px 2px 2px black);
 }

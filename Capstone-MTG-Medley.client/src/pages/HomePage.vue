@@ -2,17 +2,20 @@
   <div class="row justify-content-center hero-img">
     <div class="col-12 text-center">
       <div class="row d-flex justify-content-evenly">
-        <div @click="searchPage()" class="col-3 bg-left text-light mx-1 d-flex align-items-center justify-content-center">
+        <div @click="searchPage()"
+          class="col-3 bg-left text-light mx-1 d-flex align-items-center justify-content-center">
           <div class="fs-4 selectable effect2">
-              <h1 class="effect">Search for your cards</h1>
+            <h1 class="effect">Search for your cards</h1>
           </div>
         </div>
-        <div @click="guildPage()" class="col-3 bg-center mx-1 text-light d-flex align-items-center justify-content-center">
+        <div @click="guildPage()"
+          class="col-3 bg-center mx-1 text-light d-flex align-items-center justify-content-center">
           <div class="fs-4 selectable effect2">
-              <h1 class="effect">Guild</h1> 
+            <h1 class="effect">Guild</h1>
           </div>
         </div>
-        <div @click="collectionPage()" class="col-3 bg-right mx-1 text-light d-flex align-items-center justify-content-center">
+        <div @click="collectionPage()"
+          class="col-3 bg-right mx-1 text-light d-flex align-items-center justify-content-center">
           <div class="fs-4 selectable effect2">
             <router-link :to="{ name: 'Collection' }" class="text-my-light">
               <h1 class="effect">My Collection</h1>
@@ -36,10 +39,11 @@ import { AppState } from "../AppState";
 import { onMounted } from "vue";
 import SearchedCards from "../components/SearchedCards.vue";
 import FooterNav from "../components/FooterNav.vue";
-import { router } from "../router.js";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
+    const router = useRouter();
     // async function getSymbols() {
     //   try {
     //     await symbolsService.getSymbols();
@@ -56,28 +60,28 @@ export default {
       card: computed(() => AppState.card),
       searchedCards: computed(() => AppState.searchedCards),
 
-      async searchPage(){
-      try {
-      router.push({name: "Search", params: {}}) 
-      } catch (error) {
-      console.log(error)  
-      }
+      async searchPage() {
+        try {
+          router.push({ name: "Search", params: {} })
+        } catch (error) {
+          console.log(error)
+        }
       },
 
-      async guildPage(){
-      try {
-      router.push({name: "Guild", params: {}}) 
-      } catch (error) {
-      console.log(error)  
-      }
+      async guildPage() {
+        try {
+          router.push({ name: "Guild", params: {} })
+        } catch (error) {
+          console.log(error)
+        }
       },
 
-      async collectionPage(){
-      try {
-      router.push({name: "Collection", params: {}}) 
-      } catch (error) {
-      console.log(error)  
-      }
+      async collectionPage() {
+        try {
+          router.push({ name: "Collection", params: {} })
+        } catch (error) {
+          console.log(error)
+        }
       }
 
 
@@ -181,7 +185,7 @@ img {
 
 
 // EFFECT AND EFFECT2 ARE FOR THE STYLING ON THE HOVER EFFECT TEXT
-.effect{
+.effect {
   color: white;
   font-size: 20px;
   position: absolute;
