@@ -21,6 +21,7 @@ class AccountService {
   async edit(accountData) {
     const res = await api.put('/account', accountData)
     AppState.account = new Account(res.data)
+    console.log(AppState.account);
   }
 }
 
