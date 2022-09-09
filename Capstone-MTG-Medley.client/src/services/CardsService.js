@@ -144,6 +144,9 @@ class CardsService {
     return res.data;
   }
   async removeCard(cardId, cardName) {
+    Pop.confirm(
+      "Are you sure you want to remove this card from your Collection?"
+    );
     const res = await api.delete("account/cards/" + cardId);
     switch (res.data.action) {
       case "none":
