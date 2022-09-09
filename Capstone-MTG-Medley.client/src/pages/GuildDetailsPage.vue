@@ -160,6 +160,7 @@ export default {
           };
           await membersService.joinGuild(newMember);
           Pop.toast(`You've joined the ${AppState.activeGuild.name} Guild`);
+          console.log(AppState.account);
         }
         catch (error) {
           logger.error("[joining guild]", error);

@@ -148,6 +148,7 @@ img {
   box-shadow: 0 0 100px rgb(249, 58, 58);
   transform: translate(0, -1px);
   cursor: pointer;
+  filter: brightness(90%);
 }
 
 
@@ -165,6 +166,7 @@ img {
   box-shadow: 0 0 100px rgb(15, 160, 238);
   transform: translate(0, -1px);
   cursor: pointer;
+  filter: brightness(90%);
 }
 
 .bg-right {
@@ -181,6 +183,7 @@ img {
   box-shadow: 0 0 100px rgb(255, 255, 255);
   transform: translate(0, -1px);
   cursor: pointer;
+  filter: brightness(90%);
 }
 
 

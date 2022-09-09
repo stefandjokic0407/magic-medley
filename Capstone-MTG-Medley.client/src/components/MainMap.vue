@@ -31,12 +31,15 @@ export default {
     const error = ref('')
 
     function initMap() {
-      new google.maps.Map(document.getElementById("map"), {
-        center: { lat: -34, lng: 150 },
-        zoom: 15
+      let map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 43.6067, lng: - 116.2867 },
+        zoom: 18,
+        mapTypeId: google.maps.MapTypeId.HYBRID
       })
-
-
+      new google.maps.Marker({
+        position: new google.maps.LatLng(43.6067, -116.2867),
+        map: map
+      })
     }
 
 

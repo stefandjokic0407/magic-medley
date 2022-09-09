@@ -14,16 +14,18 @@
         <input type="url" class="form-control" v-model="editable.coverImg" placeholder="Cover Image" />
       </div>
       <div>
-        <label for="location">Location:</label>
-        <input type="text" class="form-control" v-model="editable.location" placeholder="Location" />
-      </div>
-      <div>
         <label for="email">Email:</label>
         <input type="text" class="form-control" v-model="editable.email" />
       </div>
       <div>
         <label for="bio">Bio:</label>
-        <textarea class="form-control" cols="30" rows="6" placeholder="Write A Bio..." v-model="editable.bio"></textarea>
+        <textarea class="form-control" cols="30" rows="6" placeholder="Write A Bio..."
+          v-model="editable.bio"></textarea>
+      </div>
+      <div>
+        <label for="location">Location:</label>
+        <input id="autocomplete" type="text" class="form-control" v-model="editable.location"
+          placeholder="Enter Address" @click="askLocationPermission()" />
       </div>
       <div>
         <button type="submit" class="btn btn-outline text-light w-100 mt-2">
@@ -36,11 +38,12 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { ref, watchEffect } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import { useRouter } from "vue-router";
 import { AppState } from "../AppState";
 import { router } from "../router.js";
 import { accountService } from "../services/AccountService";
+import { mapsService } from '../services/MapsService';
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 
@@ -56,21 +59,69 @@ export default {
       editable.value = { ...AppState.account };
     });
 
+    function mountAutoComplete() {
+      // let autocomplete = NOTE Add back variable declaration for commented out addListener below
+      new google.maps.places.Autocomplete(
+        document.getElementById('autocomplete'),
+        {
+          bounds: new google.maps.LatLngBounds(
+            new google.maps.LatLng(43.6150, -116.2023)
+          )
+        })
+      // autocomplete.addListener("place_changed", () => {
+      //   let place = autocomplete.getPlace()
+      //   console.log(place);
+      // })
+    }
+
+    onMounted(() => {
+      mountAutoComplete()
+    })
     return {
       editable,
       // account: computed(() => AppState.account),
       async handleSubmit() {
         try {
+          debugger
           await accountService.edit(editable.value);
           router.push({
             name: "Profile",
             params: { profileId: editable.value.id },
           });
+          console.log('getting location', editable.value);
         } catch (error) {
           logger.error(error);
           Pop.toast(error.message, "error");
         }
       },
+      address: computed(() => AppState.accountAddress),
+      askLocationPermission() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(position => {
+            this.getAddress(position.coords.latitude, position.coords.longitude)
+            console.log(position.coords.latitude, position.coords.longitude);
+          }, error => {
+            logger.log(error)
+            Pop.error(error)
+          })
+        } else {
+          Pop.toast('Your browser does not support geolocation')
+        }
+      },
+      async getAddress(lat, lng) {
+        try {
+          await mapsService.getAddress(lat, lng)
+          editable.value.location = AppState.accountAddress
+          console.log(editable.value.location);
+        } catch (error) {
+          logger.error('[getting address]', error)
+          Pop.error(error)
+        }
+      },
+
+
+
+
     };
   },
 };
@@ -83,5 +134,10 @@ export default {
   border: solid #8d8b8b1f;
   border-radius: 8px;
   color: #f2e9e4 !important;
+  z-index: 99;
+}
+
+#autocomplete {
+  z-index: 0;
 }
 </style>
