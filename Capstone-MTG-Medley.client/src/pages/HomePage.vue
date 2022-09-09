@@ -39,11 +39,11 @@ import { AppState } from "../AppState";
 import { onMounted } from "vue";
 import SearchedCards from "../components/SearchedCards.vue";
 import FooterNav from "../components/FooterNav.vue";
-import { useRouter } from "vue-router";
+// import { useRouter } from "vue-router";
 
 export default {
   setup() {
-    const router = useRouter();
+    // const router = useRouter();
     // async function getSymbols() {
     //   try {
     //     await symbolsService.getSymbols();

@@ -16,7 +16,7 @@
         <h4 v-else>Deck Rating: UNRATED<span class="mdi mdi-star mdi-24px"></span>
         </h4>
         <div class="row">
-          <div class="col-3 m-0 p-0">
+          <div class="col-3 m-1 p-0">
             <h5 v-if="activeRater">You rated this deck:</h5>
             <h5 v-else>Rate this deck:</h5>
             <button @click="rateDeck(1)" class="btn m-0 p-0 text-warning">
@@ -40,7 +40,9 @@
               <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
           </div>
-          <button class="btn col-2 offset-4" @click="cloneDeck">Copy Deck to My Collection</button>
+          <div class="col-3"></div>
+          <button class="glass btn col-2 m-1" @click="cloneDeck">Copy Deck to My Collection</button>
+          <button class="glass btn btn-outline col-2 m-1">Compare to my collection</button>
         </div>
       </div>
     </div>
@@ -88,8 +90,20 @@ export default {
         Pop.error("[setting active deck]", error);
       }
     }
+// I may be able to run the comparison without a function
+    // async function compareDeckCards() {
+    //   try {
+    //     await deckCardsService.compareDeckCards(route.params.deckId);
+    //   }
+    //   catch (error) {
+    //     console.log(error);
+    //     Pop.error("[comparing deck to collection]", error);
+    //   }
+    // }
+
     onMounted(() => {
       setActiveDeck();
+      // compareDeckCards();
     });
     return {
       activeDeck: computed(() => AppState.activeDeck),
@@ -97,6 +111,11 @@ export default {
       deckCards: computed(() => AppState.deckCards),
       collectionCards: computed(() => AppState.collection),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
+      haveCards: computed(() => 
+        AppState.deckCards.forEach(dc => {
+        if (collectionCards.find(c => c.name == dc.card.name)) 
+        {AppState.duplicates.push(dc)}
+        })),
       async rateDeck(num) {
         try {
           const accountId = this.activeDeck.accountId
@@ -107,8 +126,12 @@ export default {
         }
       },
       async cloneDeck() {
-        createDeck()
-        // map over all cards change out deckId and creatorId
+        try {
+          await decksService.cloneDeck(this.activeDeck.id)
+        } catch (error) {
+          Pop.error(error)
+        }
+        
       }
     };
   },
@@ -141,7 +164,9 @@ export default {
   overflow-y: scroll;
 }
 
-
+.glass {
+  background-color: rgb(0, 0, 0, .2);
+}
 
 .deckCanvas {
   position: fixed;

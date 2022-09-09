@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <div v-if="card" class="deleteCard">
+        <div v-if="card" class="">
             <img class="img-fluid shadow cardsBg childElement deleteCard deck-details-card" :src=card.card?.image_uris?.normal
                 :title="card.card?.name">
         </div>
@@ -11,7 +11,7 @@
     </div>
     <!-- NOTE CARD QUANTITY -->
     <!-- <p>{{ card.quantity }}</p> -->
-    <div v-if="card.quantity == 1">
+    <!-- <div v-if="card.quantity == 1">
         <p class="text-center"><span class="mdi mdi-checkbox-blank-circle"></span><span
                 class="mdi mdi-checkbox-blank-circle-outline"></span><span
                 class="mdi mdi-checkbox-blank-circle-outline"></span><span
@@ -32,7 +32,7 @@
         <p class="text-center"><span class="mdi mdi-checkbox-blank-circle"></span><span
                 class="mdi mdi-checkbox-blank-circle"></span><span class="mdi mdi-checkbox-blank-circle"></span><span
                 class="mdi mdi-checkbox-blank-circle"></span></p>
-    </div>
+    </div> -->
 </template>
 
 <script>
@@ -56,6 +56,10 @@ export default {
         return {
             activeCard: computed(() => AppState.activeCard),
             deckCard: computed(() => AppState.deckCards),
+            collectionCards: computed(() => AppState.collection),
+            duplicateCards: computed(() => AppState.duplicates), 
+            // this makes an array of cards that exist both in the user's collection and the activeDeck
+
             reset() {
                 AppState.activeCard = props.card;
                 console.log("Active Card:", props.card);
