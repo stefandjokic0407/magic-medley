@@ -4,7 +4,7 @@
       :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
       <div v-if="card.image_uris?.normal">
         <img class="img-fluid borderRadius shadow cardsBg"
-          :class="!activeDeck || deckCard?.find(d => d.cardId == card.cardId) ? '' : 'card-in-deck'"
+          :class="!activeDeck.id || deckCard?.find(d => d.cardId == card.cardId) ? '' : 'card-in-deck'"
           :src=card.image_uris?.normal :title="card.name">
         <!-- <p class="xsFont">{{deckCard}}</p> -->
       </div>
@@ -36,7 +36,7 @@
       </div>
       <div class="col-3">
         <i v-if="activeDeck" @click="createDeckCard(card.cardId)" title="Add to Deck"
-          class="deckText   mdi mdi-plus-circle mdi"></i>
+          class="deckText mdi mdi-plus-circle mdi" type="button"></i>
       </div>
     </div>
   </div>
