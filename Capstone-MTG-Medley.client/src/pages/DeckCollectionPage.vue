@@ -67,7 +67,7 @@
 import { useRoute } from 'vue-router';
 import { decksService } from '../services/DecksService.js';
 import { computed } from '@vue/reactivity';
-import { onMounted, ref, watchEffect, } from 'vue';
+import { onMounted } from 'vue';
 import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
 import { deckCardsService } from '../services/DeckCardsService.js';
@@ -114,7 +114,7 @@ export default {
       haveCards: computed(() => 
         AppState.deckCards.forEach(dc => {
         if (collectionCards.find(c => c.name == dc.card.name)) 
-        {AppState.duplicates.push(dc)}
+        {console.log('duplicates', dc)}
         })),
       async rateDeck(num) {
         try {
