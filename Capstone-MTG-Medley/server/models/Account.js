@@ -9,7 +9,7 @@ export const AccountSchema = new Schema(
     picture: { type: String },
     coverImg: { type: String },
     location: { type: String, default: 'Boise, ID' },
-    bio: { type: String }
+    bio: { type: String, maxlength: 1000, }
     // NOTE If you wish to add additional properties do so here
 
   },

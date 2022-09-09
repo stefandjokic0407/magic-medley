@@ -67,7 +67,7 @@
 import { useRoute } from 'vue-router';
 import { decksService } from '../services/DecksService.js';
 import { computed } from '@vue/reactivity';
-import { onMounted, ref, watchEffect, } from 'vue';
+import { onMounted } from 'vue';
 import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
 import { deckCardsService } from '../services/DeckCardsService.js';
@@ -90,7 +90,7 @@ export default {
         Pop.error("[setting active deck]", error);
       }
     }
-// I may be able to run the comparison without a function
+    // I may be able to run the comparison without a function
     // async function compareDeckCards() {
     //   try {
     //     await deckCardsService.compareDeckCards(route.params.deckId);
@@ -111,10 +111,10 @@ export default {
       deckCards: computed(() => AppState.deckCards),
       collectionCards: computed(() => AppState.collection),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
-      haveCards: computed(() => 
+      haveCards: computed(() =>
         AppState.deckCards.forEach(dc => {
         if (collectionCards.find(c => c.name == dc.card.name)) 
-        {AppState.duplicates.push(dc)}
+        {console.log('duplicates', dc)}
         })),
       async rateDeck(num) {
         try {
@@ -131,7 +131,7 @@ export default {
         } catch (error) {
           Pop.error(error)
         }
-        
+
       }
     };
   },
