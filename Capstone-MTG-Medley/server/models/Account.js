@@ -8,7 +8,7 @@ export const AccountSchema = new Schema(
     name: { type: String, required: true },
     picture: { type: String },
     coverImg: { type: String },
-    location: { type: String, default: 'Boise, ID' },
+    location: { type: String },
     bio: { type: String, maxlength: 1000, }
     // NOTE If you wish to add additional properties do so here
 
