@@ -108,4 +108,10 @@ a:hover {
 .borderRadius {
   border-radius: 50%;
 }
+
+.tooltipStyle {
+  background-color: rgba(0, 0, 0, 0.779);
+  color: white;
+  font-size: large;
+}
 </style>
