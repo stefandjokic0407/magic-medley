@@ -14,7 +14,6 @@ class CardsService {
     let powerTerm = null;
     let toughnessTerm = null;
     try {
-
       // console.log('this is the modified search term', searchTerm)
       if (AppState.searchByName) {
         searchTerm = searchTerm;
@@ -82,6 +81,7 @@ class CardsService {
 
       console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
 
+      AppState.searchedCards = [];
       const res = await search.get(baseSearch + searchTerm);
       AppState.searchedCards = res.data.data.map((c) => new Card(c));
       AppState.nextPage = res.data.next_page;

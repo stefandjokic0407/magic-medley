@@ -3,13 +3,17 @@
     <Navbar />
   </header>
 
-  <section v-if="searchedCards" class="row">
+  <section class="row bg-search">
     <SearchFilters />
     <!-- <div class="col-md-12 bg-search"> -->
-    <div class="card-grid bg-search">
+    <div v-if="searchedCards.length" class="card-grid bg-search">
       <div v-for="c in searchedCards" :key="c.id" class="grid-item">
         <SearchedCards :card="c" />
       </div>
+    </div>
+    <div v-else class="text-light">
+      <!-- <img src="../assets/img/Misterious mist.gif" alt=""> -->
+      Loading...
     </div>
     <div v-if="nextPage" class="row justify-content-center py-3">
       <button
@@ -23,9 +27,6 @@
   </section>
 
   <!-- FIXME maybe need to set a time for this to show while the page is loading? -->
-  <section v-else>
-    <div>Loading ...</div>
-  </section>
 </template>
 
 <script>
