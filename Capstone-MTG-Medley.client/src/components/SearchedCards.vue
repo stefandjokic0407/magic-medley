@@ -6,7 +6,7 @@
     :data-bs-target="'#cardModal' + card.id"
     class="shadow rotated"
   >
-    <div class="card-bg">
+    <div class="bg-dark">
       <div class="magic-card" :class="{ loaded: imgLoaded }">
         <img
           @load="imgLoaded = true"
