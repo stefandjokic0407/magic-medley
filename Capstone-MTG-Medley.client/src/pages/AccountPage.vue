@@ -1,24 +1,14 @@
 <template>
-  <header>
+  <header class="fixed-top">
     <Navbar />
   </header>
-  <div class="about text-center">
-    <!-- <div>
-      <img class="img-fluid" :src="account.coverImg">
-    </div> -->
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="profile-pic" :src="account.picture" alt="" width="100" height="100" />
-    <p>{{ account.email }}</p>
-  </div>
-
-  <div class="row m-auto">
-    <div class="col-3 offset-5">
-      <h2>Edit Account:</h2>
+  <section class="container-fluid hero-img">
+    <div class="row">
+      <div class="col-8 fixed-bottom mb-3 account-set">
+        <AccountForm />
+      </div>
     </div>
-    <div class="col-6 m-auto">
-      <AccountForm />
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -29,6 +19,8 @@ export default {
   setup() {
     return {
       account: computed(() => AppState.account),
+      profile: computed(() => AppState.activeProfile),
+      cover: computed(() => `url(${AppState.account.coverImg?.picture})`),
     };
   },
 };
@@ -39,7 +31,16 @@ img {
   max-width: 100px;
 }
 
-.profile-pic {
-  border-radius: 50%;
+
+
+.hero-img {
+  background-image: url(https://www.hipstersofthecoast.com/wp-content/uploads/2020/06/14.De-Ro-Mountain.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.account-set {
+  margin: auto;
 }
 </style>

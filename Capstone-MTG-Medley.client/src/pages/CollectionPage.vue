@@ -4,9 +4,6 @@
   <div class="row collectionPageBg collectionPageViewHeight">
     <div class="col-2 d-flex flex-column">
       <CollectionPageNavbar />
-      <div class="mt-auto">
-        <CollectionFilter />
-      </div>
     </div>
 
     <!-- SECTION MY COLLECTION COLUMN -->
@@ -23,6 +20,11 @@
             </div>
           </div>
           <div class="row mb-5">
+            <div class="col-12">
+              <div class="row justify-content-center">
+                <CollectionFilter />
+              </div>
+            </div>
             <div v-for="c in cards" :key="c.id" class="col-4 col-md-2">
               <CollectionCard :card="c" />
             </div>
@@ -264,14 +266,11 @@ export default {
 }
 
 .collectionPageBg {
-  background-color: #faea9b;
-  background-image: url("https://papers.co/wallpaper/papers.co-mc29-wallpaper-earth-is-round-star-space-white-36-3840x2400-4k-wallpaper.jpg");
-  background-repeat: none;
+  background-image: url("src/assets/img/Backgrounds/Jace & Chandra.png");
+  background-position: center;
+  background-size: cover;
   min-height: 100%;
   overflow-y: auto;
-  min-width: 1024px;
-  background-size: cover;
-
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;

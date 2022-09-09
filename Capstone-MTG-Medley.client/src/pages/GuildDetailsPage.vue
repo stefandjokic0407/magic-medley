@@ -12,7 +12,6 @@
         Chat With Guild Members
       </button>
       <ChatOffcanvas />
-
       <h4 class="my-2 mx-3">Guild Members</h4>
       <div class="d-flex">
         <div v-for="m in members" :key="m.id">
@@ -37,7 +36,6 @@
       </button>
     </section>
     <!-- NOTE DECK -->
-
     <section class="col-md-12 my-3">
       <div class="row">
         <div class="col-md-2">
@@ -262,7 +260,12 @@ export default {
   color: #0f0f0f !important;
 }
 
-
+.buttonHeight {
+  height: 100VH;
+  height: 95VH;
+  position: fixed;
+  right: 0;
+}
 
 .btn {
   text-shadow: 1px 1px 3px black;
@@ -377,6 +380,10 @@ export default {
   /* border-radius: 8px; */
 }
 
+// .columnHeight {
+
+//   height: 10Vh;
+// }
 .guild-container-bg {
   background: rgb(54 52 75 / 38%);
   backdrop-filter: blur(4px);
