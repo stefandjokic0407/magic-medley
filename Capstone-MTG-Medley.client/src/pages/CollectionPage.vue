@@ -4,7 +4,7 @@
   <div class="row collectionPageBg collectionPageViewHeight">
     <div class="col-2 d-flex flex-column">
       <CollectionPageNavbar />
-      <div class="mt-auto">
+      <div class="">
         <CollectionFilter />
       </div>
     </div>

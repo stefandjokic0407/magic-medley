@@ -4,16 +4,16 @@
   </header>
   <section class="row">
     <SearchFilters />
-    <div class="col-md-12 bg-search">
-      <div class="row">
-        <div v-for="c in searchedCards" :key="c.id" class="col-md-2">
-          <SearchedCards :card="c" />
-        </div>
-      </div>
-      <div v-if="nextPage" class="row justify-content-center py-3">
-        <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-light w-50">More Results</button>
+    <!-- <div class="col-md-12 bg-search"> -->
+    <div class="card-grid bg-search">
+      <div v-for="c in searchedCards" :key="c.id" class="grid-item">
+        <SearchedCards :card="c" />
       </div>
     </div>
+    <div v-if="nextPage" class="row justify-content-center py-3">
+      <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-light w-50">More Results</button>
+    </div>
+    <!-- </div> -->
   </section>
 </template>
 
@@ -59,6 +59,17 @@ export default {
 
 
 <style lang="scss" scoped>
+.card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: .4em;
+
+  .grid-item {
+    align-self: stretch;
+    justify-self: stretch;
+  }
+}
+
 .img-text {
   color: whitesmoke !important;
   text-shadow: 1px 1px 3px black;

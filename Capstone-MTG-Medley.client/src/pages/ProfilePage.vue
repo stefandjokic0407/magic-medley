@@ -1,71 +1,97 @@
 <template>
-  <header>
+  <header class="fixed-top">
     <Navbar />
   </header>
 
-  <section>
+  <section class="container-fluid cover-img">
+
     <!-- SECTION Profile Details -->
-    <div class="row cover-img">
-      <div class="profile-details text-light">
+    <div class="row">
+      <div class="col-4 profile-details anchor-point">
+        <div v-if="profile.id == account.id" title="Edit Account" class="edit-btn">
+          <router-link class="bg-warning rounded-circle " :to="{ name: 'Account' }"><i class="mdi mdi-pen p-1"></i>
+          </router-link>
+        </div>
         <img class="img-fluid profile-img" :src="profile.picture" alt="" />
         <div class="glass-card rounded p-3 my-3">
           <h3>{{ profile.name }}</h3>
           <p>{{ profile.email }}</p>
+          <!-- NOTE we have no bio to add -->
+          <!-- <p>{{ profile.bio }}</p> -->
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, neque. Odio voluptate fuga, voluptates
+            explicabo sint provident amet quam quas mollitia optio pariatur, ipsum, ad perferendis voluptatem! Magni
+            placeat necessitatibus iure omnis cupiditate praesentium ullam quibusdam veritatis, modi id. Voluptas
+            numquam autem laboriosam quae voluptatem, quibusdam, enim amet aspernatur iste voluptatum eius non quos,
+            voluptates dicta in! Vel autem eius quisquam aliquam laborum, asperiores ad nam iste obcaecati nesciunt
+            nihil inventore modi. Debitis suscipit consequuntur, quia eaque ad earum magnam autem corrupti officia
+            ducimus fuga accusantium assumenda dicta illo sed dolore unde est sunt in repudiandae porro maiores
+            architecto! Rem?</p>
         </div>
       </div>
-    </div>
 
-    <div class="row my-2" v-if="profile.id == account.id">
-      <div class="col-12">
-        <router-link class="btn square btn-warning" :to="{ name: 'Account' }">Edit Account
-        </router-link>
-      </div>
-    </div>
+      <!-- SECTION Profile Decks -->
 
-    <!-- SECTION Profile Decks test -->
+      <div class="col-8 profile-decks">
+        <div class="row align-items-center">
+          <div class="col-1 text-center" @click="scrollLeft">
+            <i class="button-style mdi mdi-chevron-left"></i>
+          </div>
+          <div class="col-10 deck-container-bg rounded">
+            <div class="row deck-cards-container">
+              <div v-for="d in decks" :key="d.id" class="card hero-img col-3 px-4 mx-2">
+                <div class=" px-3 pt-3 ">
+                  <img v-if="d" :src='d?.picture' class="card-img-top img-max">
+                  <img v-else
+                    src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+                    class="img-fluid" alt="...">
+                </div>
+                <h5 class="card-title text-center text-dark"><b>{{d?.name}}</b></h5>
+                <div v-if="!d?.picture" class="card-img-top">
+                  <img
+                    src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+                    class="" alt="...">
+                </div>
+                <div class="card-body text-dark fs-5">
+                  <span class="d-flex justify-content-between">
+                    <p class="text-center" v-if="d.avgRating">
+                      Rating:<br>{{(d?.avgRating/d.rating?.length).toFixed(1)}}/5
+                    </p>
+                    <p class="text-center" v-else>
+                      Rating:<br>Not Rated
+                    </p>
+                    <button @click="deckDetails(d.id)" class="btn btn-outline-dark">
+                      Deck Details
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-1 text-center" @click="scrollRight">
+            <i class="button-style mdi mdi-chevron-right"></i>
+          </div>
+        </div>
+      </div>
 
-    <div v-for="d in decks" :key="d.id" @click="setActiveDeck(d.id)" class="card hero-img col-3 px-4">
-      <h5 class="card-title text-center text-light"><b>{{d?.name}}</b></h5>
-      <div class=" px-3 pt-3">
-        <img v-if="d" :src='d?.picture' class="card-img-top img-fluid">
-        <img v-else
-          src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
-          class="card-img-top" alt="...">
-      </div>
-      <div v-if="!d?.picture" class="card-img-top">
-        <img
-          src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
-          class="cardBg img-fluid" alt="...">
-      </div>
-      <div class="card-body fs-5">
-        <span class="d-flex justify-content-around">
-          <p class="text-center" v-if="d.avgRating">
-            Community Rating:<br>{{(d?.avgRating/d.rating?.length).toFixed(1)}}/5
-          </p>
-          <p class="text-center" v-else>
-            Community Rating:<br>not rated
-          </p>
-          <button @click="deckDetails" class="btn btn-outline-dark">
-            Deck Details
-          </button>
-        </span>
-      </div>
+
     </div>
   </section>
 </template>
 
 <script>
 import { computed } from "@vue/reactivity";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { AppState } from "../AppState";
 import { router } from "../router";
 import { decksService } from "../services/DecksService.js";
 import { profilesService } from "../services/ProfilesService";
 import Pop from "../utils/Pop";
+import Navbar from "../components/Navbar.vue";
 
 export default {
   setup() {
+    const scrollPosition = ref(0);
     const route = useRoute();
     // NOTE this function is getting your profile using the Id, it takes in a users profileId
     async function getProfileById() {
@@ -97,57 +123,118 @@ export default {
       decks: computed(() => AppState.profileDecks),
       cover: computed(() => `url(${AppState.activeProfile?.coverImg ||
         "https://cdn.pixabay.com/photo/2017/07/16/17/33/background-2509983_1280.jpg"})`),
-      async deckDetails() {
-        try {
-          router.push({ name: "DeckDetails", params: { deckId: AppState.activeDeck?.id } })
-          // Modal.getOrCreateInstance(document.getElementById('deck-modal')).hide()
-        } catch (error) {
-          console.log(error)
+
+      scrollLeft() {
+        let content = document.querySelector(".deck-cards-container");
+        if (scrollPosition.value > 100) {
+          scrollPosition.value -= 1000;
         }
+        content.scrollTo({
+          left: scrollPosition.value,
+          behavior: "smooth",
+        });
       },
-      async setActiveDeck(deckId) {
+
+      scrollRight() {
+        let content = document.querySelector(".deck-cards-container");
+        if (scrollPosition.value <= 2000) {
+          scrollPosition.value += 1000;
+        }
+        content.scrollTo({
+          left: scrollPosition.value,
+          behavior: "smooth",
+        });
+      },
+      async deckDetails(deckId) {
         try {
           await decksService.setActiveDeck(deckId);
+          router.push({ name: "DeckDetails", params: { deckId: AppState.activeDeck?.id } });
+          // Modal.getOrCreateInstance(document.getElementById('deck-modal')).hide()
         }
         catch (error) {
-          Pop.error("[setting active deck]", error);
+          console.log(error);
         }
       },
+
     };
   },
-
+  components: { Navbar }
 };
 </script>
 
 <style scoped lang="scss">
 .cover-img {
-  height: 500px;
+  height: 100vh;
   background-position: center;
-  background-attachment: fixed;
+  // background-attachment: fixed;
   background-size: cover;
-  display: grid;
+  // display: grid;
   place-content: center;
   color: aliceblue;
   background-image: v-bind(cover);
 }
 
 .profile-img {
-  height: 10rem;
-  width: 10rem;
+  height: 7rem;
+  width: 7rem;
   object-fit: cover;
   border-radius: 50%;
   border: #b6d369 solid 2px;
 }
 
 .glass-card {
-  background: rgba(202, 181, 181, 0.4);
-  backdrop-filter: blur(1px);
-  text-shadow: 2px 2px 2px rgb(31, 29, 29);
+  background: rgb(54 52 75 / 38%);
+  backdrop-filter: blur(4px);
+  border: solid #8d8b8b1f;
+  border-radius: 8px;
+  padding: 1em;
   color: #f2e9e4 !important;
   width: 100%;
+  max-height: 50vh;
+  overflow-y: scroll;
 }
 
-.deck-container {
+.hero-img {
+  background-image: url(../assets/img/note.png);
+  background-position: center;
+  background-size: cover;
+  height: 475px;
+  width: 325px;
+}
+
+* {
+  max-height: 100vh;
+}
+
+.profile-details {
+  margin-top: 10vh;
+}
+
+.profile-decks {
+  margin-top: 10vh;
+}
+
+.img-max {
+  max-height: 300px;
+}
+
+.button-style {
+  color: #ffffff;
+  text-shadow: 3px 3px 3px black;
+  font-size: 4em;
+  padding: 0%;
+}
+
+.deck-container-bg {
+  background: rgb(54 52 75 / 38%);
+  backdrop-filter: blur(4px);
+  border: solid #8d8b8b1f;
+  border-radius: 8px;
+  padding: 1em;
+  padding-left: 2em;
+}
+
+.deck-cards-container {
   flex-wrap: nowrap;
   scroll-snap-type: x mandatory;
   max-width: 100vw;
@@ -159,22 +246,11 @@ export default {
   }
 }
 
-.card-border {
-  border-radius: 5%;
-  border: 3px solid darkslategray
-}
 
-.hero-img {
-  background-image: url(../assets/img/note.png);
-  background-position: center;
-  background-size: cover;
-  height: 750px;
-  width: 500px;
-  transform: scale(.75);
-}
 
-.deck-modal {
-  height: 750px;
-  width: 500px;
+.edit-btn {
+  position: relative;
+  top: 110px;
+  left: 90px;
 }
 </style>

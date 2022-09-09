@@ -22,6 +22,10 @@
         <input type="text" class="form-control" v-model="editable.email" />
       </div>
       <div>
+        <label for="bio">Bio:</label>
+        <textarea class="form-control" cols="30" rows="8" placeholder="Write A Bio..."></textarea>
+      </div>
+      <div>
         <button type="submit" class="btn btn-outline text-light w-100 mt-2">
           Save
         </button>
@@ -33,14 +37,15 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { ref, watchEffect } from "vue";
+import { useRouter } from "vue-router";
 import { AppState } from "../AppState";
-import { router } from "../router.js";
 import { accountService } from "../services/AccountService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 
 export default {
   setup() {
+    const router = useRouter();
     const editable = ref({});
 
     watchEffect(() => {

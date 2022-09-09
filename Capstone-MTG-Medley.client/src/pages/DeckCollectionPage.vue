@@ -7,32 +7,37 @@
       <ClearNavBar />
     </header>
 
-    <div class="row my-3">
+    <div v-if="activeDeck.id" class="row my-3">
       <div class="col-12 text-center">
         <h1>{{activeDeck.name}}</h1>
-        <h4>Deck Rating: {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<i class="mdi mdi-star"></i>
+        <h4 v-if="activeDeck?.avgRating">Deck Rating:
+          {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<span class="mdi mdi-star mdi-24px"></span>
+        </h4>
+        <h4 v-else>Deck Rating: UNRATED<span class="mdi mdi-star mdi-24px"></span>
         </h4>
         <div class="row">
           <div class="col-3 m-0 p-0">
+            <h5 v-if="activeRater">You rated this deck:</h5>
+            <h5 v-else>Rate this deck:</h5>
             <button @click="rateDeck(1)" class="btn m-0 p-0 text-warning">
-              <i class="mdi mdi-star-outline mdi-36px"></i>
-              <i class="mdi mdi-star mdi-36px"></i>
+              <i v-if="!activeRater" class="mdi mdi-star-outline mdi-36px"></i>
+              <i v-else class="mdi mdi-star mdi-36px"></i>
             </button>
             <button @click="rateDeck(2)" class="btn m-0 p-0 text-warning">
-              <i class="mdi mdi-star-outline mdi-36px"></i>
-              <i class="mdi mdi-star mdi-36px"></i>
+              <i v-if="activeRater.value >= 2" class="mdi mdi-star mdi-36px"></i>
+              <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
             <button @click="rateDeck(3)" class="btn m-0 p-0 text-warning">
-              <i class="mdi mdi-star-outline mdi-36px text-warning"></i>
-              <i class="mdi mdi-star mdi-36px"></i>
+              <i v-if="activeRater.value >= 3" class="mdi mdi-star mdi-36px text-warning"></i>
+              <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
             <button @click="rateDeck(4)" class="btn m-0 p-0 text-warning">
-              <i class="mdi mdi-star-outline mdi-36px"></i>
-              <i class="mdi mdi-star mdi-36px"></i>
+              <i v-if="activeRater.value >= 4" class="mdi mdi-star mdi-36px"></i>
+              <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
             <button @click="rateDeck(5)" class="btn m-0 p-0 text-warning">
-              <i class="mdi mdi-star-outline mdi-36px"></i>
-              <i class="mdi mdi-star mdi-36px"></i>
+              <i v-if="activeRater.value >= 5" class="mdi mdi-star mdi-36px"></i>
+              <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
           </div>
           <button class="btn col-2 offset-4" @click="cloneDeck">Copy Deck to My Collection</button>
@@ -88,6 +93,7 @@ export default {
     });
     return {
       activeDeck: computed(() => AppState.activeDeck),
+      activeRater: computed(() => AppState.activeDeck?.rating.find(r => r.creatorId == AppState.account.id)),
       deckCards: computed(() => AppState.deckCards),
       collectionCards: computed(() => AppState.collection),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
@@ -101,7 +107,8 @@ export default {
         }
       },
       async cloneDeck() {
-
+        createDeck()
+        // map over all cards change out deckId and creatorId
       }
     };
   },
@@ -112,14 +119,14 @@ export default {
 
 <style scoped lang="scss">
 .pageBg {
-  background-color: #faea9b;
+  background-color: #f7ae92;
   background-image: url("https://img.freepik.com/free-photo/vintage-textured-watercolor-paper-background_53876-103939.jpg?w=2000");
   background-repeat: none;
   min-height: 100%;
   overflow-y: auto;
   min-width: 1024px;
   background-size: cover;
-
+  background-blend-mode: screen;
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;
@@ -175,8 +182,8 @@ export default {
   height: 100%;
 }
 
-i{
-  text-shadow: 1px 1px 6px rgb(0, 0, 0);
+i {
+  text-shadow: 0px 0px 20px rgb(0, 0, 0);
 }
 
 .deckText {
