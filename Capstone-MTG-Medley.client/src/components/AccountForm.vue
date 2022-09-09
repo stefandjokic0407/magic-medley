@@ -1,5 +1,5 @@
 <template>
-  <form class="card account-form font bg-dark" @submit.prevent="handleSubmit">
+  <form class="card account-form font glass-card" @submit.prevent="handleSubmit">
     <div class="card-body text-start">
       <div>
         <label for="name">Name:</label>
@@ -23,7 +23,7 @@
       </div>
       <div>
         <label for="bio">Bio:</label>
-        <textarea class="form-control" cols="30" rows="8" placeholder="Write A Bio..."></textarea>
+        <textarea class="form-control" cols="30" rows="6" placeholder="Write A Bio..."></textarea>
       </div>
       <div>
         <button type="submit" class="btn btn-outline text-light w-100 mt-2">
@@ -76,5 +76,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.glass-card {
+  background: rgb(54 52 75 / 38%);
+  backdrop-filter: blur(4px);
+  border: solid #8d8b8b1f;
+  border-radius: 8px;
+  color: #f2e9e4 !important;
+}
 </style>
