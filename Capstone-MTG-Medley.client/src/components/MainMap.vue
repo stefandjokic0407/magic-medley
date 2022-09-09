@@ -30,24 +30,33 @@ export default {
     const editable = ref('')
     const error = ref('')
 
+    function initMap() {
+      new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -34, lng: 150 },
+        zoom: 15
+      })
+    }
+
+
     function mountAutoComplete() {
       let autocomplete = new google.maps.places.Autocomplete(
         document.getElementById('autocomplete'),
         {
           bounds: new google.maps.LatLngBounds(
             new google.maps.LatLng(43.6150, -116.2023)
-
           )
         })
       autocomplete.addListener("place_changed", () => {
         let place = autocomplete.getPlace()
         console.log(place);
-        this.showUserLocationOnTheMap(place.geometry.location.lat(), place.geometry.location.lng())
+        // NOTE this method needs to be fixed - showing undefined properties of place.geometry.location lat/lng
+        // this.showUserLocationOnTheMap(place.geometry.location.lat(), place.geometry.location.lng())
       })
     }
 
     onMounted(() => {
       mountAutoComplete()
+      initMap()
     })
 
     return {
@@ -59,6 +68,7 @@ export default {
           navigator.geolocation.getCurrentPosition(position => {
             this.getAddress(position.coords.latitude, position.coords.longitude)
             this.showUserLocationOnTheMap(position.coords.latitude, position.coords.longitude)
+            console.log(position.coords.latitude, position.coords.longitude);
           }, error => {
             error.value = error.message;
             logger.log(error)
@@ -79,13 +89,16 @@ export default {
           Pop.error(error.value.message)
         }
       },
+
       showUserLocationOnTheMap(latitude, longitude) {
+        console.log(latitude, longitude);
         let map = new google.maps.Map(document.getElementById('map'), {
           zoom: 15,
           center: new google.maps.LatLng(latitude, longitude),
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: google.maps.MapTypeId.HYBRID
         })
-
+        console.log(map);
+        console.log(map.center.lng);
         new google.maps.Marker({
           position: new google.maps.LatLng(latitude, longitude),
           map: map
@@ -101,7 +114,8 @@ export default {
 
 <style scoped lang="scss">
 #map {
-  height: 30vh;
+  height: 100vh;
+  width: 100%;
 }
 
 #autocomplete {

@@ -81,7 +81,8 @@
         <section class="col-md-6">
           <div class="row justify-content-end">
             <div class="col-md-8">
-              <MainMap />
+              <!-- NOTE put map component back -->
+              <!-- <MainMap /> -->
             </div>
           </div>
         </section>
@@ -91,6 +92,7 @@
     <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
                 <img :src="oracleCard.image_uris.small" alt="">
               </div> -->
+    <MainMap />
   </main>
   <!-- CHAT -->
 </template>
