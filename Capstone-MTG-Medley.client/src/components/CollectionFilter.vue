@@ -1,18 +1,31 @@
 <template>
-  <div class="hero-img">
-    <img class="mana white" src="../assets/img/mana-white.png" alt="">
-    <img class="mana blue" src="../assets/img/mana-blue.png" alt="">
-    <img class="mana black" src="../assets/img/mana-black.png" alt="">
-    <img class="mana red" src="../assets/img/mana-red.png" alt="">
-    <img class="mana green" src="../assets/img/mana-green.png" alt="">
-  </div>
+
+
+  <!-- SECTION Color Wheel -->
+  <section class="col-3 d-flex justify-content-center">
+    <div class="hero-img">
+      <img @click="sortColor" class="mana white" src="../assets/img/mana-white.png" alt="">
+      <img @click="sortColor(blue)" class="mana blue" src="../assets/img/mana-blue.png" alt="">
+      <img @click="sortColor(black)" class="mana black" src="../assets/img/mana-black.png" alt="">
+      <img @click="sortColor(red)" class="mana red" src="../assets/img/mana-red.png" alt="">
+      <img @click="sortColor(green)" class="mana green" src="../assets/img/mana-green.png" alt="">
+    </div>
+  </section>
 </template>
 
 
 <script>
+import { ref } from 'vue';
+
 export default {
   setup() {
+    let color = ref('')
     return {
+      color,
+
+      sortColor() {
+        // TODO finish this function
+      }
 
     }
   }
@@ -22,9 +35,10 @@ export default {
 
 <style lang="scss" scoped>
 .hero-img {
-  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Pentacle_on_white.svg/1200px-Pentacle_on_white.svg.png);
+  background-image: url(https://images.squarespace-cdn.com/content/5c71ee1f94d71a195e53ffc4/1554240806352-IDUTDZSPAS1RKO5BH5H0/mtg-wizards-colors.jpg?content-type=image%2Fjpeg);
   background-position: center;
   background-size: cover;
+  border-radius: 50%;
   height: 100px;
   width: 100px;
 }
@@ -34,6 +48,12 @@ export default {
   width: 35px;
   position: relative;
   cursor: pointer;
+  filter: brightness(55%);
+}
+
+.mana:hover {
+  transform: scale(1.15);
+  filter: brightness(100%);
 }
 
 .white {

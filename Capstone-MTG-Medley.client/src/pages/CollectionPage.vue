@@ -21,7 +21,9 @@
           </div>
           <div class="row mb-5">
             <div class="col-12">
-              <CollectionFilter />
+              <div class="row justify-content-center">
+                <CollectionFilter />
+              </div>
             </div>
             <div v-for="c in cards" :key="c.id" class="col-4 col-md-2">
               <CollectionCard :card="c" />

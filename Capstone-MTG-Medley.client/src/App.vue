@@ -38,6 +38,11 @@ export default {
 <style lang="scss">
 *::-webkit-scrollbar {
   display: none;
+
+}
+
+* {
+  overflow-x: hidden
 }
 
 @import "./assets/scss/main.scss";
