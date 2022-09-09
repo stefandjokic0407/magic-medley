@@ -266,14 +266,11 @@ export default {
 }
 
 .collectionPageBg {
-  background-color: #faea9b;
-  background-image: url("https://papers.co/wallpaper/papers.co-mc29-wallpaper-earth-is-round-star-space-white-36-3840x2400-4k-wallpaper.jpg");
-  background-repeat: none;
+  background-image: url("src/assets/img/Backgrounds/Jace & Chandra.png");
+  background-position: center;
+  background-size: cover;
   min-height: 100%;
   overflow-y: auto;
-  min-width: 1024px;
-  background-size: cover;
-
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;

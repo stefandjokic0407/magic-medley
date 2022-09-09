@@ -3,7 +3,7 @@
     <ClearNavBar />
   </header>
   <!-- Gruul Clans Page -->
-<<<<<<< HEAD
+
   <div class="row gruul ">
     <!-- NOTE Guild Members & Title & Join/Remove Button -->
     <!-- GUILD MEMBERS -->
@@ -72,103 +72,99 @@
       </button>
       <ChatOffcanvas />
     </div>
-=======
-  <main class="row gruul p-5">
-    <!-- NOTE Guild Members & Title & Join/Remove Button -->
-    <!-- GUILD MEMBERS -->
-    <section class="col-md-4">
-      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-off-canvas"
-        aria-controls="chat-off-canvas">
-        Chat With Guild Members
-      </button>
-      <ChatOffcanvas />
+    =======
+    <main class="row gruul p-5">
+      <!-- NOTE Guild Members & Title & Join/Remove Button -->
+      <!-- GUILD MEMBERS -->
+      <section class="col-md-4">
+        <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-off-canvas"
+          aria-controls="chat-off-canvas">
+          Chat With Guild Members
+        </button>
+        <ChatOffcanvas />
 
-      <h4 class="my-2 mx-3">Guild Members</h4>
-      <div class="d-flex">
-        <div v-for="m in members" :key="m.id">
-          <Member :member="m" />
-        </div>
-      </div>
-    </section>
-    <!-- GUILD TITLE -->
-    <section class="col-md-4 text-center">
-      <h1>{{ activeGuild.name }}</h1>
-      <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
-    </section>
-    <!-- GUILD JOIN/REMOVE -->
-    <section class="col-md-4 text-end">
-      <button v-if="isMember == false" class="btn" @click="joinGuild()">
-        <i class="mdi mdi-plus fs-3"></i>
-        <span class="fs-5">JOIN GUILD</span>
-      </button>
-      <button v-else class="btn" @click="removeFromGuild()">
-        <i class="mdi mdi-minus fs-3"></i>
-        <span class="fs-5">Leave Guild</span>
-      </button>
-    </section>
-    <!-- NOTE DECK -->
-
-    <section class="col-md-12 my-3">
-      <div class="row">
-        <div class="col-md-2">
-          <div class="azorius-deck rounded d-flex justify-content-end align-items-end">
-            <div class="azorius-glass-card fs-5 text-center rounded-bottom p-1">
-              <b>
-                Starter Deck
-              </b>
-            </div>
+        <h4 class="my-2 mx-3">Guild Members</h4>
+        <div class="d-flex">
+          <div v-for="m in members" :key="m.id">
+            <Member :member="m" />
           </div>
         </div>
-        <section class="col-10 rounded guild-container-bg">
-          <div class="row align-items-center">
-            <div class="col-1 text-center" @click="scrollLeft">
-              <i class="button-style mdi mdi-chevron-left"></i>
-            </div>
-            <div class="col-10">
-              <div class="row guild-cards-container">
-                <div class="col-md-3 my-4" v-for="g in guilds" :key="g.id">
-                  <GuildCard :guild="g" />
-                </div>
+      </section>
+      <!-- GUILD TITLE -->
+      <section class="col-md-4 text-center">
+        <h1>{{ activeGuild.name }}</h1>
+        <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
+      </section>
+      <!-- GUILD JOIN/REMOVE -->
+      <section class="col-md-4 text-end">
+        <button v-if="isMember == false" class="btn" @click="joinGuild()">
+          <i class="mdi mdi-plus fs-3"></i>
+          <span class="fs-5">JOIN GUILD</span>
+        </button>
+        <button v-else class="btn" @click="removeFromGuild()">
+          <i class="mdi mdi-minus fs-3"></i>
+          <span class="fs-5">Leave Guild</span>
+        </button>
+      </section>
+      <!-- NOTE DECK -->
+
+      <section class="col-md-12 my-3">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="azorius-deck rounded d-flex justify-content-end align-items-end">
+              <div class="azorius-glass-card fs-5 text-center rounded-bottom p-1">
+                <b>
+                  Starter Deck
+                </b>
               </div>
             </div>
-            <div class="col-1 text-center" @click="scrollRight">
-              <i class="button-style mdi mdi-chevron-right"></i>
+          </div>
+          <section class="col-10 rounded guild-container-bg">
+            <div class="row align-items-center">
+              <div class="col-1 text-center" @click="scrollLeft">
+                <i class="button-style mdi mdi-chevron-left"></i>
+              </div>
+              <div class="col-10">
+                <div class="row guild-cards-container">
+                  <div class="col-md-3 my-4" v-for="g in guilds" :key="g.id">
+                    <GuildCard :guild="g" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-1 text-center" @click="scrollRight">
+                <i class="button-style mdi mdi-chevron-right"></i>
+              </div>
             </div>
-          </div>
-        </section>
-      </div>
-    </section>
-    <!-- NOTE Background & Map Row -->
-    <div class="col-md-12">
-      <div class="row align-items-center justify-content-evenly">
-        <section class="col-md-6">
-          <div class="card p-3 azorius-bg elevation-4">
-            <h4>
-              {{ activeGuild.name }} Background
-            </h4>
-            {{activeGuild.background}}
-          </div>
-        </section>
-        <!-- MAP -->
-        <section class="col-md-6">
-          <div class="row justify-content-end">
-            <div class="col-md-8">
-              <Map />
+          </section>
+        </div>
+      </section>
+      <!-- NOTE Background & Map Row -->
+      <div class="col-md-12">
+        <div class="row align-items-center justify-content-evenly">
+          <section class="col-md-6">
+            <div class="card p-3 azorius-bg elevation-4">
+              <h4>
+                {{ activeGuild.name }} Background
+              </h4>
+              {{activeGuild.background}}
             </div>
-          </div>
-        </section>
+          </section>
+          <!-- MAP -->
+          <section class="col-md-6">
+            <div class="row justify-content-end">
+              <div class="col-md-8">
+                <Map />
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
->>>>>>> 384f8147186c07be58ee44183034f9972ca3debc
-    <!-- NOTE Might need this to add starter decks -->
-    <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
+      <!-- NOTE Might need this to add starter decks -->
+      <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
                 <img :src="oracleCard.image_uris.small" alt="">
               </div> -->
-<<<<<<< HEAD
+    </main>
   </div>
-=======
-  </main>
->>>>>>> 384f8147186c07be58ee44183034f9972ca3debc
   <!-- CHAT -->
 </template>
 
@@ -457,11 +453,10 @@ export default {
   /* border-radius: 8px; */
 }
 
-<<<<<<< HEAD
 // .columnHeight {
+
 //   height: 10Vh;
 // }
-=======
 .guild-container-bg {
   background: rgb(54 52 75 / 38%);
   backdrop-filter: blur(4px);
@@ -487,5 +482,4 @@ export default {
   font-size: 4em;
   padding: 0%;
 }
->>>>>>> 384f8147186c07be58ee44183034f9972ca3debc
 </style>
