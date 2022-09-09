@@ -4,27 +4,36 @@
   <!-- SECTION Color Wheel -->
   <section class="col-3 d-flex justify-content-center">
     <div class="hero-img">
-      <img @click="sortColor" class="mana white" src="../assets/img/mana-white.png" alt="">
-      <img @click="sortColor(blue)" class="mana blue" src="../assets/img/mana-blue.png" alt="">
-      <img @click="sortColor(black)" class="mana black" src="../assets/img/mana-black.png" alt="">
-      <img @click="sortColor(red)" class="mana red" src="../assets/img/mana-red.png" alt="">
-      <img @click="sortColor(green)" class="mana green" src="../assets/img/mana-green.png" alt="">
+      <img @click="sortColor('W')" class="mana white" src="../assets/img/mana-white.png" alt="">
+      <img @click="sortColor('U')" class="mana blue" src="../assets/img/mana-blue.png" alt="">
+      <img @click="sortColor('B')" class="mana black" src="../assets/img/mana-black.png" alt="">
+      <img @click="sortColor('R')" class="mana red" src="../assets/img/mana-red.png" alt="">
+      <img @click="sortColor('G')" class="mana green" src="../assets/img/mana-green.png" alt="">
     </div>
   </section>
 </template>
 
 
 <script>
-import { ref } from 'vue';
+// import { ref } from 'vue';
+import { computed } from '@vue/reactivity';
+import { AppState } from '../AppState.js';
+import { logger } from '../utils/Logger.js';
 
 export default {
   setup() {
-    let color = ref('')
+    let color = 'WUBRG'
     return {
       color,
+      cards: computed(() => AppState.collection),
 
-      sortColor() {
-        // TODO finish this function
+      sortColor(option) {
+
+        let filteredCards = this.cards.filter(c => c.colors = option)
+        logger.log(color)
+        logger.log(filteredCards)
+
+
       }
 
     }
