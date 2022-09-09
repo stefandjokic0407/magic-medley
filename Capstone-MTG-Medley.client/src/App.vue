@@ -3,7 +3,7 @@
     <!-- <Navbar /> -->
   </header>
 
-  <main class="container-fluid px-0">
+  <main class="container-fluid">
     <router-view />
   </main>
 
@@ -41,9 +41,6 @@ export default {
 
 }
 
-// * {
-//   overflow-x: hidden
-// }
 
 @import "./assets/scss/main.scss";
 </style>

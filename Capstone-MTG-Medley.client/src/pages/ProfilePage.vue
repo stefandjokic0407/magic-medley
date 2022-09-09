@@ -3,72 +3,72 @@
     <Navbar />
   </header>
 
-  <section class="container-fluid cover-img">
 
-    <!-- SECTION Profile Details -->
-    <div class="row">
-      <div class="col-4 profile-details anchor-point">
-        <div v-if="profile.id == account.id" title="Edit Account" class="edit-btn">
-          <router-link class="bg-warning rounded-circle " :to="{ name: 'Account' }"><i class="mdi mdi-pen p-1"></i>
-          </router-link>
-        </div>
-        <img class="img-fluid profile-img" :src="profile.picture" alt="" />
-        <div class="glass-card rounded p-3 my-3">
-          <h3>{{ profile.name }}</h3>
-          <p>{{ profile.email }}</p>
-          <!-- NOTE we have no bio to add -->
-          <!-- <p>{{ profile.bio }}</p> -->
-          <p>{{profile.bio}}</p>
-        </div>
+
+  <!-- SECTION Profile Details -->
+  <div class="row cover-img ">
+    <div class="col-4 profile-details anchor-point">
+      <div v-if="profile.id == account.id" title="Edit Account" class="edit-btn">
+        <router-link class="bg-warning rounded-circle " :to="{ name: 'Account' }"><i class="mdi mdi-pen p-1"></i>
+        </router-link>
       </div>
+      <img class="img-fluid profile-img" :src="profile.picture" alt="" />
+      <div class="glass-card rounded p-3 my-3">
+        <h3>{{ profile.name }}</h3>
+        <p>{{ profile.email }}</p>
+        <!-- NOTE we have no bio to add -->
+        <!-- <p>{{ profile.bio }}</p> -->
+        <p>{{profile.bio}}</p>
+      </div>
+    </div>
 
-      <!-- SECTION Profile Decks -->
+    <!-- SECTION Profile Decks -->
 
-      <div class="col-8 profile-decks">
-        <div class="row align-items-center">
-          <div class="col-1 text-center" @click="scrollLeft">
-            <i class="button-style mdi mdi-chevron-left"></i>
-          </div>
-          <div class="col-10 deck-container-bg rounded">
-            <div class="row deck-cards-container">
-              <div v-for="d in decks" :key="d.id" class="card hero-img col-3 px-4 mx-2">
-                <div class=" px-3 pt-3 ">
-                  <img v-if="d" :src='d?.picture' class="card-img-top img-max">
-                  <img v-else
-                    src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
-                    class="img-fluid" alt="...">
-                </div>
-                <h5 class="card-title text-center text-dark"><b>{{d?.name}}</b></h5>
-                <div v-if="!d?.picture" class="card-img-top">
-                  <img
-                    src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
-                    class="" alt="...">
-                </div>
-                <div class="card-body text-dark fs-5">
-                  <span class="d-flex justify-content-between">
-                    <p class="text-center" v-if="d.avgRating">
-                      Rating:<br>{{(d?.avgRating/d.rating?.length).toFixed(1)}}/5
-                    </p>
-                    <p class="text-center" v-else>
-                      Rating:<br>Not Rated
-                    </p>
-                    <button @click="deckDetails(d.id)" class="btn btn-outline-dark">
-                      Deck Details
-                    </button>
-                  </span>
-                </div>
+    <div class="col-8 profile-decks">
+      <div class="row align-items-center">
+        <div class="col-1 text-center" @click="scrollLeft">
+          <i class="button-style mdi mdi-chevron-left"></i>
+        </div>
+        <div class="col-10 deck-container-bg rounded">
+          <div class="row deck-cards-container">
+            <div v-for="d in decks" :key="d.id" class="card hero-img col-3 px-4 mx-2">
+              <div class=" px-3 pt-3 ">
+                <img v-if="d" :src='d?.picture' class="card-img-top img-max">
+                <img v-else
+                  src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+                  class="img-fluid" alt="...">
+              </div>
+              <h5 class="card-title text-center text-dark"><b>{{d?.name}}</b></h5>
+              <div v-if="!d?.picture" class="card-img-top">
+                <img
+                  src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+                  class="" alt="...">
+              </div>
+              <div class="card-body text-dark fs-5">
+                <span class="d-flex justify-content-between">
+                  <p class="text-center" v-if="d.avgRating">
+                    Rating:<br>{{(d?.avgRating/d.rating?.length).toFixed(1)}}/5
+                  </p>
+                  <p class="text-center" v-else>
+                    Rating:<br>Not Rated
+                  </p>
+                  <button @click="deckDetails(d.id)" class="btn btn-outline-dark">
+                    Deck Details
+                  </button>
+                </span>
               </div>
             </div>
           </div>
-          <div class="col-1 text-center" @click="scrollRight">
-            <i class="button-style mdi mdi-chevron-right"></i>
-          </div>
+        </div>
+        <div class="col-1 text-center" @click="scrollRight">
+          <i class="button-style mdi mdi-chevron-right"></i>
         </div>
       </div>
-
-
     </div>
-  </section>
+
+
+  </div>
+
 </template>
 
 <script>
