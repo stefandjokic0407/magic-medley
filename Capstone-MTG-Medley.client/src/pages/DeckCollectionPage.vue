@@ -118,18 +118,18 @@ export default {
         return newArray
       }),
 
-      compareDeck(){
+      compareDeck() {
         AppState.deckCards.forEach(dc => {
-        if (AppState.collection.find(c => c.name == dc.card.name)) console.log('duplicates', dc)
-      })
+          if (AppState.collection.find(c => c.name == dc.card.name)) console.log('duplicates', dc)
+        })
       },
 
-      compareDeckCards(){
+      compareDeckCards() {
         let newArray = [...AppState.deckCards]
-        for(let i = 0; i < newArray.length; i++) {
+        for (let i = 0; i < newArray.length; i++) {
           const firstCard = newArray[i];
           firstCard.quantity = 1
-          for(let j = 0; j < newArray.length; i++) {
+          for (let j = 0; j < newArray.length; i++) {
             const secondCard = newArray[j];
             if (firstCard.name == secondCard.name) {
               firstCard.quantity++
@@ -138,10 +138,10 @@ export default {
             }
           }
         }
-        AppState.deckCards.forEach(dc => {})
+        AppState.deckCards.forEach(dc => { })
       },
 
-      
+
 
       async rateDeck(num) {
         try {
