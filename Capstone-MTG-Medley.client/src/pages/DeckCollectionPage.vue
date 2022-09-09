@@ -7,6 +7,11 @@
       <ClearNavBar />
     </header>
 
+    <div>
+      <img @click="gotToProfile()" type="button" :src=activeDeck.profile?.picture alt="profile picture">
+      {{activeDeck.profile?.name}}
+    </div>
+
     <div v-if="activeDeck.id" class="row my-3">
       <div class="col-12 text-center">
         <h1>{{activeDeck.name}}</h1>
@@ -24,25 +29,25 @@
               <i v-else class="mdi mdi-star mdi-36px"></i>
             </button>
             <button @click="rateDeck(2)" class="btn m-0 p-0 text-warning">
-              <i v-if="activeRater.value >= 2" class="mdi mdi-star mdi-36px"></i>
+              <i v-if="activeRater?.value >= 2" class="mdi mdi-star mdi-36px"></i>
               <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
             <button @click="rateDeck(3)" class="btn m-0 p-0 text-warning">
-              <i v-if="activeRater.value >= 3" class="mdi mdi-star mdi-36px text-warning"></i>
+              <i v-if="activeRater?.value >= 3" class="mdi mdi-star mdi-36px text-warning"></i>
               <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
             <button @click="rateDeck(4)" class="btn m-0 p-0 text-warning">
-              <i v-if="activeRater.value >= 4" class="mdi mdi-star mdi-36px"></i>
+              <i v-if="activeRater?.value >= 4" class="mdi mdi-star mdi-36px"></i>
               <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
             <button @click="rateDeck(5)" class="btn m-0 p-0 text-warning">
-              <i v-if="activeRater.value >= 5" class="mdi mdi-star mdi-36px"></i>
+              <i v-if="activeRater?.value >= 5" class="mdi mdi-star mdi-36px"></i>
               <i v-else class="mdi mdi-star-outline mdi-36px"></i>
             </button>
           </div>
           <div class="col-3"></div>
           <button class="glass btn col-2 m-1" @click="cloneDeck">Copy Deck to My Collection</button>
-          <button class="glass btn btn-outline col-2 m-1">Compare to my collection</button>
+          <button class="glass btn btn-outline col-2 m-1" @click="compareDeck">Compare to my collection</button>
         </div>
       </div>
     </div>
@@ -73,6 +78,7 @@ import Pop from '../utils/Pop.js';
 import { deckCardsService } from '../services/DeckCardsService.js';
 import DeckCard from '../components/DeckCard.vue';
 import DeckDetailsCard from '../components/DeckDetailsCard.vue';
+import { router } from "../router.js";
 
 
 export default {
@@ -90,16 +96,6 @@ export default {
         Pop.error("[setting active deck]", error);
       }
     }
-    // I may be able to run the comparison without a function
-    // async function compareDeckCards() {
-    //   try {
-    //     await deckCardsService.compareDeckCards(route.params.deckId);
-    //   }
-    //   catch (error) {
-    //     console.log(error);
-    //     Pop.error("[comparing deck to collection]", error);
-    //   }
-    // }
 
     onMounted(() => {
       setActiveDeck();
@@ -109,13 +105,48 @@ export default {
       activeDeck: computed(() => AppState.activeDeck),
       activeRater: computed(() => AppState.activeDeck?.rating.find(r => r.creatorId == AppState.account.id)),
       deckCards: computed(() => AppState.deckCards),
-      collectionCards: computed(() => AppState.collection),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
-      haveCards: computed(() =>
-        AppState.deckCards.forEach(dc => {
-        if (collectionCards.find(c => c.name == dc.card.name)) 
-        {console.log('duplicates', dc)}
-        })),
+      displayCards: computed(() => {
+        let newArray = [...AppState.deckCards]
+        for (let i = 0; i < newArray.length; i++) {
+          const firstCard = newArray[i];
+          firstCard.quantity = 1
+          for (let j = i + 1; j < newArray.length; j++) {
+            const secondCard = newArray[j];
+            if (firstCard.cardId == secondCard.cardId) {
+              firstCard.quantity++
+              newArray.splice(j, 1)
+              j--
+            }
+          }
+        }
+        return newArray
+      }),
+
+      compareDeck(){
+        let missingCards = this.displayCards.map(dc => {
+          let found = AppState.collection.find(c => c.name == dc.card.name)
+          if(found){
+            let missingCard = {...found} 
+            missingCard.missingQty = dc.quantity - found.quantity
+            if(missingCard.missingQty > 0){
+              return missingCard
+            }
+          }
+          else{
+            let missingCard = {...dc}
+            missingCard.missingQty = dc.quantity
+            return missingCard
+          }
+        })
+        return missingCards
+      },
+
+      compareDeckCards(){
+      },
+
+
+
       async rateDeck(num) {
         try {
           const accountId = this.activeDeck.accountId
@@ -131,7 +162,9 @@ export default {
         } catch (error) {
           Pop.error(error)
         }
-
+      },
+      async gotToProfile(){
+        router.push({name: 'Profile', params: {profileId: AppState.activeDeck.profile.id}})
       }
     };
   },
