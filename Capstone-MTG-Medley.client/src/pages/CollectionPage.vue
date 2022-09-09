@@ -4,9 +4,6 @@
   <div class="row collectionPageBg collectionPageViewHeight">
     <div class="col-2 d-flex flex-column">
       <CollectionPageNavbar />
-      <div class="">
-        <CollectionFilter />
-      </div>
     </div>
 
     <!-- SECTION MY COLLECTION COLUMN -->
@@ -23,6 +20,9 @@
             </div>
           </div>
           <div class="row mb-5">
+            <div class="col-12">
+              <CollectionFilter />
+            </div>
             <div v-for="c in cards" :key="c.id" class="col-4 col-md-2">
               <CollectionCard :card="c" />
             </div>
