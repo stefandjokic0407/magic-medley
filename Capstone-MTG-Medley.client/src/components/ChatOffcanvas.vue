@@ -27,12 +27,17 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { logger } from '../utils/Logger';
 import { messagesService } from '../services/MessagesService';
+import { socketService } from '../services/SocketService';
 import Pop from '../utils/Pop';
 
 export default {
   setup() {
     const editable = ref({})
     const route = useRoute()
+
+    function joinGuild() {
+      socketService.joinGuild('guild-' + route.params.guildId)
+    }
 
     async function getMessages() {
       try {
@@ -43,8 +48,10 @@ export default {
       }
     }
 
+
     onMounted(() => {
       getMessages()
+      joinGuild()
     })
     return {
       editable,
@@ -56,6 +63,7 @@ export default {
         try {
           editable.value.guildId = route.params.guildId
           await messagesService.sendMessage(editable.value)
+          console.log(editable.value);
           editable.value = {}
         } catch (error) {
           logger.error('[sending message]', error)
