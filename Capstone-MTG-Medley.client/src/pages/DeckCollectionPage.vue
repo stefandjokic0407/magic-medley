@@ -42,7 +42,7 @@
           </div>
           <div class="col-3"></div>
           <button class="glass btn col-2 m-1" @click="cloneDeck">Copy Deck to My Collection</button>
-          <button class="glass btn btn-outline col-2 m-1">Compare to my collection</button>
+          <button class="glass btn btn-outline col-2 m-1" @click="compareDeck">Compare to my collection</button>
         </div>
       </div>
     </div>
@@ -90,16 +90,6 @@ export default {
         Pop.error("[setting active deck]", error);
       }
     }
-    // I may be able to run the comparison without a function
-    // async function compareDeckCards() {
-    //   try {
-    //     await deckCardsService.compareDeckCards(route.params.deckId);
-    //   }
-    //   catch (error) {
-    //     console.log(error);
-    //     Pop.error("[comparing deck to collection]", error);
-    //   }
-    // }
 
     onMounted(() => {
       setActiveDeck();
@@ -111,10 +101,48 @@ export default {
       deckCards: computed(() => AppState.deckCards),
       collectionCards: computed(() => AppState.collection),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
-      haveCards: computed(() =>
+      displayCards: computed(() => {
+        let newArray = [...AppState.deckCards]
+        for (let i = 0; i < newArray.length; i++) {
+          const firstCard = newArray[i];
+          firstCard.quantity = 1
+          for (let j = i + 1; j < newArray.length; j++) {
+            const secondCard = newArray[j];
+            if (firstCard.cardId == secondCard.cardId) {
+              firstCard.quantity++
+              newArray.splice(j, 1)
+              j--
+            }
+          }
+        }
+        return newArray
+      }),
+
+      compareDeck(){
         AppState.deckCards.forEach(dc => {
-          if (collectionCards.find(c => c.name == dc.card.name)) { AppState.duplicates.push(dc) }
-        })),
+        if (AppState.collection.find(c => c.name == dc.card.name)) console.log('duplicates', dc)
+      })
+      },
+
+      compareDeckCards(){
+        let newArray = [...AppState.deckCards]
+        for(let i = 0; i < newArray.length; i++) {
+          const firstCard = newArray[i];
+          firstCard.quantity = 1
+          for(let j = 0; j < newArray.length; i++) {
+            const secondCard = newArray[j];
+            if (firstCard.name == secondCard.name) {
+              firstCard.quantity++
+              newArray.splice(j, 1)
+              j--
+            }
+          }
+        }
+        AppState.deckCards.forEach(dc => {})
+      },
+
+      
+
       async rateDeck(num) {
         try {
           const accountId = this.activeDeck.accountId

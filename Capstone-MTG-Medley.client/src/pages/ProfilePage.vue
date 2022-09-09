@@ -18,14 +18,7 @@
           <p>{{ profile.email }}</p>
           <!-- NOTE we have no bio to add -->
           <!-- <p>{{ profile.bio }}</p> -->
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, neque. Odio voluptate fuga, voluptates
-            explicabo sint provident amet quam quas mollitia optio pariatur, ipsum, ad perferendis voluptatem! Magni
-            placeat necessitatibus iure omnis cupiditate praesentium ullam quibusdam veritatis, modi id. Voluptas
-            numquam autem laboriosam quae voluptatem, quibusdam, enim amet aspernatur iste voluptatum eius non quos,
-            voluptates dicta in! Vel autem eius quisquam aliquam laborum, asperiores ad nam iste obcaecati nesciunt
-            nihil inventore modi. Debitis suscipit consequuntur, quia eaque ad earum magnam autem corrupti officia
-            ducimus fuga accusantium assumenda dicta illo sed dolore unde est sunt in repudiandae porro maiores
-            architecto! Rem?</p>
+          <p>{{profile.bio}}</p>
         </div>
       </div>
 
