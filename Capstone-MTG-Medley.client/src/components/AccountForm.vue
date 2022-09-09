@@ -7,30 +7,15 @@
       </div>
       <div>
         <label for="picture">Picture:</label>
-        <input
-          type="url"
-          class="form-control"
-          v-model="editable.picture"
-          placeholder="picture"
-        />
+        <input type="url" class="form-control" v-model="editable.picture" placeholder="picture" />
       </div>
       <div>
         <label for="coverImg">Cover Image:</label>
-        <input
-          type="url"
-          class="form-control"
-          v-model="editable.coverImg"
-          placeholder="Cover Image"
-        />
+        <input type="url" class="form-control" v-model="editable.coverImg" placeholder="Cover Image" />
       </div>
       <div>
         <label for="location">Location:</label>
-        <input
-          type="text"
-          class="form-control"
-          v-model="editable.location"
-          placeholder="Location"
-        />
+        <input type="text" class="form-control" v-model="editable.location" placeholder="Location" />
       </div>
       <div>
         <label for="email">Email:</label>
@@ -38,12 +23,7 @@
       </div>
       <div>
         <label for="bio">Bio:</label>
-        <textarea
-          class="form-control"
-          cols="30"
-          rows="8"
-          placeholder="Write A Bio..."
-        ></textarea>
+        <textarea class="form-control" cols="30" rows="8" placeholder="Write A Bio..."></textarea>
       </div>
       <div>
         <button type="submit" class="btn btn-outline text-light w-100 mt-2">
@@ -57,14 +37,15 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { ref, watchEffect } from "vue";
+import { useRouter } from "vue-router";
 import { AppState } from "../AppState";
-import { router } from "../router.js";
 import { accountService } from "../services/AccountService";
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 
 export default {
   setup() {
+    const router = useRouter();
     const editable = ref({});
 
     watchEffect(() => {
@@ -94,4 +75,6 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+
+</style>

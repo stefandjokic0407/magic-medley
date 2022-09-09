@@ -10,7 +10,8 @@
     <div v-if="activeDeck.id" class="row my-3">
       <div class="col-12 text-center">
         <h1>{{activeDeck.name}}</h1>
-        <h4 v-if="activeDeck?.avgRating">Deck Rating: {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<span class="mdi mdi-star mdi-24px"></span>
+        <h4 v-if="activeDeck?.avgRating">Deck Rating:
+          {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<span class="mdi mdi-star mdi-24px"></span>
         </h4>
         <h4 v-else>Deck Rating: UNRATED<span class="mdi mdi-star mdi-24px"></span>
         </h4>
@@ -107,7 +108,7 @@ export default {
       },
       async cloneDeck() {
         createDeck()
-        map over all cards change out deckId and creatorId
+        // map over all cards change out deckId and creatorId
       }
     };
   },
@@ -181,7 +182,7 @@ export default {
   height: 100%;
 }
 
-i{
+i {
   text-shadow: 0px 0px 20px rgb(0, 0, 0);
 }
 
