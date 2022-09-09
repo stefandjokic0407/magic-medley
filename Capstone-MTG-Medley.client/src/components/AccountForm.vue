@@ -37,7 +37,7 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { ref, watchEffect } from "vue";
-// import { useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { AppState } from "../AppState";
 import { router } from "../router.js";
 import { accountService } from "../services/AccountService";

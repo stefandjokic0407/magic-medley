@@ -362,13 +362,13 @@ import GuildCard from "../components/GuildCard.vue";
 import GuildFaq from "../components/GuildFaq.vue";
 import GuildForm from "../components/GuildForm.vue";
 import Pop from "../utils/Pop";
-// import { useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import Navbar from "../components/Navbar.vue";
 
 export default {
   setup() {
     const scrollPosition = ref(0);
-    // const router = useRouter();
+    const router = useRouter();
     const message = ref("");
 
     const user = AppState.account;

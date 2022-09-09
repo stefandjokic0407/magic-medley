@@ -90,7 +90,7 @@ export default {
         Pop.error("[setting active deck]", error);
       }
     }
-// I may be able to run the comparison without a function
+    // I may be able to run the comparison without a function
     // async function compareDeckCards() {
     //   try {
     //     await deckCardsService.compareDeckCards(route.params.deckId);
@@ -111,7 +111,7 @@ export default {
       deckCards: computed(() => AppState.deckCards),
       collectionCards: computed(() => AppState.collection),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
-      haveCards: computed(() => 
+      haveCards: computed(() =>
         AppState.deckCards.forEach(dc => {
         if (collectionCards.find(c => c.name == dc.card.name)) 
         {console.log('duplicates', dc)}
@@ -131,7 +131,7 @@ export default {
         } catch (error) {
           Pop.error(error)
         }
-        
+
       }
     };
   },

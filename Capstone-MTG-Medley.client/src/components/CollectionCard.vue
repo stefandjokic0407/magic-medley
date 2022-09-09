@@ -23,11 +23,13 @@
   </div>
   <div class="col-9 mx-auto">
     <div class="row ">
-      <div class="col-5 cardCount xsFont align-items-center d-flex">
-        <p class="p-0 m-0"><i class="mdi p-0 m-0 mdi-card-multiple-outline"></i>&nbsp
-          {{
-          card.count
-          }}</p>
+      <div class="col-5 deckText xsFont align-items-center d-flex justify-content-center">
+        <div class="row">
+          <p class="p-0 m-0 "><i class="mdi numberBox p-0 m-0 mdi-card-multiple-outline"></i>&nbsp
+            {{
+            card.count
+            }}</p>
+        </div>
       </div>
       <div class="col-3">
         <i @click.prevent="removeCard() && getAccountCards()" class="deckText mdi mdi-minus-circle text-light"
@@ -201,14 +203,15 @@ export default {
 }
 
 .deckText {
-  -webkit-text-stroke: .5px black;
-  color: rgba(255, 255, 255, 0.88);
+  -webkit-text-stroke: .5px rgba(0, 0, 0, 0.103);
+  color: rgb(255, 255, 255) !important;
   text-shadow:
-    3px 3px 0 #000,
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;
+    2px 2px 1px #000,
+    -1px -1px 1px #000,
+    1px -1px 1px #000,
+    -1px 1px 1px #000,
+    1px 1px 1px #000;
+  border: none;
 }
 
 .borderRadius {
@@ -217,5 +220,9 @@ export default {
 
 .modal-backdrop {
   position: static !important;
+}
+
+.numberBox {
+  font-size: small;
 }
 </style>
