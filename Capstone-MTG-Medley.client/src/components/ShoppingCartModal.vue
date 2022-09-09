@@ -1,12 +1,12 @@
 <template>
   <div class="offcanvas offcanvas-end" tabindex="-1" id="shopping-cart-modal" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+    <h5 class="offcanvas-title border-bottom" id="offcanvasExampleLabel">Cards you need to make this deck</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+      These are the cards from {{AppState.activeDeck.name}} that you do not already have in your collection. Click each card below to purchase the card from an external site.
     </div>
     <div class="dropdown mt-3">
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { AppState } from "../AppState.js";
+
 export default {
   setup() {
     return {}
