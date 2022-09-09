@@ -1,19 +1,10 @@
 <template>
-  <div
-    @click="getCardByOracle() && reset(card)"
-    type="button"
-    data-bs-toggle="modal"
-    :data-bs-target="'#cardModal' + card.id"
-    class="shadow rotated"
-  >
+  <div @click="getCardByOracle() && reset(card)" type="button" data-bs-toggle="modal"
+    :data-bs-target="'#cardModal' + card.id" class="shadow rotated">
     <div class="card-bg">
       <div class="magic-card" :class="{ loaded: imgLoaded }">
-        <img
-          @load="imgLoaded = true"
-          class="img-fluid shadow"
-          :src="card.image_uris.normal"
-          :title="card.name"
-        />
+        <img @load="imgLoaded = true" class="img-fluid shadow rounded" :src="card.image_uris.normal"
+          :title="card.name" />
       </div>
       <!-- <div v-else class="">
         <img
@@ -65,6 +56,7 @@ export default {
 <style scoped lang="scss">
 .magic-card {
   opacity: 0;
+
   // transition: opacity 0.2s 0.1s linear;
   &.loaded {
     // opacity: 1;
@@ -97,6 +89,7 @@ input {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
