@@ -14,7 +14,6 @@ class CardsService {
     let powerTerm = null;
     let toughnessTerm = null;
     try {
-
       // console.log('this is the modified search term', searchTerm)
       if (AppState.searchByName) {
         searchTerm = searchTerm;
@@ -144,6 +143,9 @@ class CardsService {
     return res.data;
   }
   async removeCard(cardId, cardName) {
+    Pop.confirm(
+      "Are you sure you want to remove this card from your Collection?"
+    );
     const res = await api.delete("account/cards/" + cardId);
     switch (res.data.action) {
       case "none":

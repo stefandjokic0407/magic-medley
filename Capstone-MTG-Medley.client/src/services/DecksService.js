@@ -43,6 +43,7 @@ class DecksService {
   // sends a rating value and the active deck to the service to set a rating
   async rateDeck(rating, deckId, accountId) {
     const res = await api.put("/api/decks/" + deckId + "/" + accountId, rating);
+    AppState.activeDeck = res.data;
     console.log(res);
     // AppState.activeDeck = res.data
   }

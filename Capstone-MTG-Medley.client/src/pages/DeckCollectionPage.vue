@@ -145,7 +145,7 @@ export default {
       compareDeckCards(){
       },
 
-      
+
 
       async rateDeck(num) {
         try {
