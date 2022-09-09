@@ -83,7 +83,7 @@
         <section class="col-md-6">
           <div class="row justify-content-end">
             <div class="col-md-8">
-              <Map />
+              <MainMap />
             </div>
           </div>
         </section>
@@ -108,9 +108,9 @@ import { logger } from '../utils/Logger';
 import Pop from '../utils/Pop';
 import Member from '../components/Member.vue';
 import GuildChat from '../components/GuildChat.vue';
-import Map from '../components/Map.vue';
 import ClearNavBar from '../components/ClearNavBar.vue';
 import Navbar from '../components/Navbar.vue';
+import MainMap from '../components/MainMap.vue';
 
 export default {
   setup() {
@@ -201,7 +201,7 @@ export default {
 
     };
   },
-  components: { Member, GuildChat, Map, ClearNavBar, Navbar }
+  components: { Member, GuildChat, ClearNavBar, Navbar, MainMap }
 };
 </script>
 
