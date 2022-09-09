@@ -37,7 +37,7 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { ref, watchEffect } from "vue";
-// import { useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { AppState } from "../AppState";
 import { accountService } from "../services/AccountService";
 import { logger } from "../utils/Logger";
@@ -45,7 +45,7 @@ import Pop from "../utils/Pop";
 
 export default {
   setup() {
-    // const router = useRouter();
+    const router = useRouter();
     const editable = ref({});
 
     watchEffect(() => {
