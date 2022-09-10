@@ -10,6 +10,9 @@ class ProfilesService {
     // logger.log("what is a profile", res.data);
     AppState.activeProfile = new Profile(res.data);
   }
+
 }
+
+
 
 export const profilesService = new ProfilesService();
