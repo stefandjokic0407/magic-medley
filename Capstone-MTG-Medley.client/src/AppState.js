@@ -24,7 +24,7 @@ export const AppState = reactive({
   activeDeck: {},
   profileCollection: [],
   collection: [],
-  currentLocation: '',
+  currentLocation: "",
   // filter toggles
   searchByName: true,
   searchByType: false,
