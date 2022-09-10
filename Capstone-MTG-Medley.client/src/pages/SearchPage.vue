@@ -10,10 +10,7 @@
         <SearchedCards :card="c" />
       </div>
       <div v-if="nextPage" class="row justify-content-center py-3">
-        <button
-          @click="changePage(nextPage, page + 1)"
-          class="btn btn-outline-light w-50"
-        >
+        <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-light w-50">
           More Results
         </button>
       </div>
@@ -70,9 +67,7 @@ export default {
     SearchFilters,
     SearchForm,
     SearchedCards,
-    ClearNavBar,
     Navbar,
-    CollectionFilter,
     LoadingImg,
   },
 };
@@ -90,6 +85,7 @@ export default {
   .grid-item {
     align-self: center;
     justify-self: center;
+    // max-height: 15px;
   }
 }
 
@@ -131,18 +127,23 @@ main {
 .card:nth-child(1) {
   animation-delay: 0.2s;
 }
+
 .card:nth-child(2) {
   animation-delay: 0.3s;
 }
+
 .card:nth-child(3) {
   animation-delay: 0.4s;
 }
+
 .card:nth-child(4) {
   animation-delay: 0.5s;
 }
+
 .card:nth-child(5) {
   animation-delay: 0.6s;
 }
+
 .card:nth-child(6) {
   animation-delay: 0.7s;
 }
@@ -151,12 +152,15 @@ main {
   0% {
     transform: translate(0px, 0px);
   }
+
   10% {
     transform: translate(-300px, 0px);
   }
+
   90% {
     transform: translate(-200px, 0px);
   }
+
   100% {
     transform: translate(0px, 0px);
   }

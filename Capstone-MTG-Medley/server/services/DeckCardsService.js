@@ -1,12 +1,12 @@
 import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
-class DeckCardsService{
+class DeckCardsService {
 
-  async  deleteCardFromDeck(deckCardId, userId) {
+  async deleteCardFromDeck(deckCardId, userId) {
 
     const card = await dbContext.DeckCards.findById(deckCardId)
-    if(!card){
+    if (!card) {
       throw new BadRequest('Card does not exist in that deck!')
     }
     // @ts-ignore
@@ -16,10 +16,11 @@ class DeckCardsService{
     await card.remove()
     return 'Card has been removed from deck'
   }
-  
+
   async addCardToDeck(data) {
     //                 ^^^  this needs an ID generated on client side, a deck ID and a Card Id
     const deckCard = await dbContext.DeckCards.create(data)
+
     await deckCard.populate('deck', 'name picture')
     await deckCard.populate('card', 'name image_uris oracle_id type_line')
     return deckCard

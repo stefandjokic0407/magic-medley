@@ -58,9 +58,48 @@
       </div>
     </div>
     <div class="container">
-      <div class="row scroll justify-content-center">
-        <div class="col-2 p-3" v-for="c in deckCards" :key="c.id">
-          <DeckDetailsCard :card="c" />
+      <div class="row">
+        <!-- NOTE this shows proof of concept, need to access the card type_line in order to filter them properly.  I used a computed but there is prob a better way-->
+        <div class="col">
+          <p class="fs-4 mb-0 text-center">Lands<br>{{deckLandCards.length}}</p>
+          <div class="card-grid">
+            <div class="grid-item mx-3" v-for="(value, index) in deckLandCards" :key="index">
+              <DeckDetailsCard :card="value" />
+            </div>
+          </div>
+        </div>
+        <!-- NOTE this one is still the old way -->
+        <div class="col">
+          <p class="fs-4 mb-0 text-center">Creatures<br>{{deckCards.length}}</p>
+          <div class="card-grid">
+            <div class="grid-item mx-3" v-for="c in deckCards" :key="c.id">
+              <DeckDetailsCard :card="c" />
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <p class="fs-4 mb-0 text-center">Artifacts<br>Enchantments<br>{{deckLandCards.length}}</p>
+          <div class="card-grid">
+            <div class="grid-item mx-3" v-for="(value, index) in deckLandCards" :key="index">
+              <DeckDetailsCard :card="value" />
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <p class="fs-4 mb-0 text-center">Instant/Sorcery<br>{{deckLandCards.length}}</p>
+          <div class="card-grid">
+            <div class="grid-item mx-3" v-for="(value, index) in deckLandCards" :key="index">
+              <DeckDetailsCard :card="value" />
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <p class="fs-4 mb-0 text-center">PlanesWalkers<br>{{deckLandCards.length}}</p>
+          <div class="card-grid">
+            <div class="grid-item mx-3" v-for="(value, index) in deckLandCards" :key="index">
+              <DeckDetailsCard :card="value" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -78,7 +117,7 @@
 import { useRoute } from 'vue-router';
 import { decksService } from '../services/DecksService.js';
 import { computed } from '@vue/reactivity';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { AppState } from '../AppState.js';
 import Pop from '../utils/Pop.js';
 import { deckCardsService } from '../services/DeckCardsService.js';
@@ -91,6 +130,7 @@ import ShoppingCartModal from "../components/ShoppingCartModal.vue";
 export default {
   setup() {
     const route = useRoute();
+    const lands = 'Swamp' || 'Mountain'
 
     async function setActiveDeck() {
       try {
@@ -125,11 +165,13 @@ export default {
       setActiveDeck();
     });
     return {
+      lands,
       duplicates: computed(() => AppState.duplicates),
       activeDeck: computed(() => AppState.activeDeck),
       activeRater: computed(() => AppState.activeDeck?.rating.find(r => r.creatorId == AppState.account.id)),
       deckCards: computed(() => AppState.deckCards),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
+      deckLandCards: computed(() => AppState.deckCards?.filter(land => land.card.name == lands)),
 
       FindCardsMissingFromMyCollectionInDeck() {
         let missingCards = this.duplicates.map(dc => {
@@ -149,7 +191,7 @@ export default {
         })
         AppState.missingCards = missingCards
       },
-// the above method returns an array of undefined objects, the below method returns nothing.
+      // the above method returns an array of undefined objects, the below method returns nothing.
       // FindCardsMissingFromMyCollectionInDeck() {
       //   let missingCards = [] 
       //   this.duplicates.ForEach(dc => {
@@ -286,5 +328,30 @@ i {
   object-fit: cover;
   border-radius: 50%;
   border: #b6d369 solid 2px;
+}
+
+.card-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1em;
+  margin-top: 1em;
+  // min-height: 100vh;
+  max-width: 16vw;
+
+  .grid-item {
+    align-self: center;
+    justify-self: center;
+    max-height: 1.25vh;
+
+
+    :hover {
+      max-height: 50vh;
+      transform: translateY(-5px);
+      pointer-events: none;
+      // offset-path: path('M20,20 C20,100 200,0 200,100');
+      // offset-position: left top;
+      // animation: move 3000ms infinite alternate ease-in-out;
+    }
+  }
 }
 </style>
