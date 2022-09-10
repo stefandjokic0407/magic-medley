@@ -19,7 +19,7 @@ class GuildsService {
     AppState.activeGuild = res.data
   }
 
-  async getProfileGuild(){
+  async getGuildProfile(){
   const res = await api.get(`account/members/`)
   console.log(res.data)
 
