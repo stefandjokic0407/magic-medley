@@ -47,7 +47,7 @@
           </div>
           <div class="col-3"></div>
           <button class="glass btn col-2 m-1" @click="cloneDeck">Copy Deck to My Collection</button>
-          <button class="glass btn btn-outline col-2 m-1" type="button" @click="compareDeck" data-bs-toggle="offcanvas" data-bs-target="#shopping-cart-modal" aria-controls="offcanvasExample">Compare to my collection</button>
+          <button class="glass btn btn-outline col-2 m-1" type="button" @click="FindCardsMissingFromMyCollectionInDeck" data-bs-toggle="offcanvas" data-bs-target="#shopping-cart-modal" aria-controls="offcanvasExample">Compare to my collection</button>
         </div>
       </div>
     </div>
@@ -86,11 +86,11 @@ export default {
   setup() {
     const route = useRoute();
 
-
     async function setActiveDeck() {
       try {
         await decksService.setActiveDeck(route.params.deckId);
         await deckCardsService.getDeckCards(route.params.deckId);
+        createListOfDeckCardsWithQuantity()
       }
       catch (error) {
         console.log(error);
@@ -98,16 +98,7 @@ export default {
       }
     }
 
-    onMounted(() => {
-      setActiveDeck();
-      // compareDeckCards();
-    });
-    return {
-      activeDeck: computed(() => AppState.activeDeck),
-      activeRater: computed(() => AppState.activeDeck?.rating.find(r => r.creatorId == AppState.account.id)),
-      deckCards: computed(() => AppState.deckCards),
-      cover: computed(() => `url(${AppState.activeDeck?.picture})`),
-      displayCards: computed(() => {
+    function createListOfDeckCardsWithQuantity() {
         let newArray = [...AppState.deckCards]
         for (let i = 0; i < newArray.length; i++) {
           const firstCard = newArray[i];
@@ -121,11 +112,21 @@ export default {
             }
           }
         }
-        return newArray
-      }),
+        AppState.duplicates = newArray
+      }
 
-      compareDeck(){
-        let missingCards = this.displayCards.map(dc => {
+    onMounted(() => {
+      setActiveDeck();
+    });
+    return {
+      duplicates: computed(() => AppState.duplicates),
+      activeDeck: computed(() => AppState.activeDeck),
+      activeRater: computed(() => AppState.activeDeck?.rating.find(r => r.creatorId == AppState.account.id)),
+      deckCards: computed(() => AppState.deckCards),
+      cover: computed(() => `url(${AppState.activeDeck?.picture})`),
+
+      FindCardsMissingFromMyCollectionInDeck(){
+        let missingCards = this.duplicates.map(dc => {
           let found = AppState.collection.find(c => c.name == dc.card.name)
           if(found){
             let missingCard = {...found} 
@@ -142,12 +143,6 @@ export default {
         })
         return missingCards
       },
-
-      compareDeckCards(){
-      },
-
-
-
       async rateDeck(num) {
         try {
           const accountId = this.activeDeck.accountId

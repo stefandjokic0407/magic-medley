@@ -1,6 +1,9 @@
 import { AppState } from "../AppState.js";
 import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
 import { api } from "./AxiosService.js";
+import { cardsService } from "./CardsService.js";
+import { deckCardsService } from "./DeckCardsService.js";
 
 class DecksService {
   async getDeckById(deckId) {
@@ -53,6 +56,28 @@ class DecksService {
     AppState.activeDeck = res;
     logger.log(res);
     console.log(AppState.activeDeck);
+  }
+
+  async cloneDeck(){
+    let newDeck = {}
+    newDeck.picture = AppState.activeDeck.picture
+    newDeck.name = AppState.activeDeck.name+' copy'
+    newDeck.creatorId = AppState.activeDeck.creatorId || AppState.activeDeck.accountId
+    newDeck.accountId = AppState.account.id
+    console.log(newDeck)
+    const deck = await this.createDeck(newDeck)
+    AppState.duplicates.forEach(d => {
+      let newCard = {
+        cardId: d.cardId,
+        deckId: deck.id,
+        accountId: AppState.account.id,
+        card: d.card,
+        quantity: d.quantity
+      }
+      deckCardsService.createDeckCard(newCard)
+    })
+    Pop.success(`You cloned ${AppState.activeDeck.name}!`)
+    cardsService.cloneCards()
   }
 }
 

@@ -165,6 +165,15 @@ class CardsService {
 
     return res;
   }
+
+  cloneCards() {
+    AppState.duplicates.forEach(async (d) => {
+      if (AppState.collection.find(c => c.name == d.card.name)) { return }
+      console.log(d)
+      const clonedCard = await this.cardsById(d.cardId)
+      this.createCard(clonedCard)
+    })
+  }
 }
 
 export const cardsService = new CardsService();
