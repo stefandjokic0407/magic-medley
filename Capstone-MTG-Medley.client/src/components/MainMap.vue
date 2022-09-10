@@ -28,7 +28,7 @@ export default {
 
   setup() {
     const editable = ref('')
-    const error = ref('')
+    const address = AppState.members.profile?.location
 
     function initMap() {
       let map = new google.maps.Map(document.getElementById("map"), {
@@ -40,8 +40,29 @@ export default {
         position: new google.maps.LatLng(43.6067, -116.2867),
         map: map
       })
+      let geocoder = new google.maps.Geocoder()
+      codeAddress(geocoder, map)
     }
 
+    function codeAddress(geocoder, map) {
+      geocoder.geocode({ 'address': address }, function (results, status) {
+        console.log(address);
+        let latLng = {
+          lat: results[0].geometry.location.lat(),
+          lng: results[0].geometry.location.lng()
+        }
+        if (status == 'OK') {
+          let marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          })
+          console.log(map);
+        } else {
+          logger.error('[account marker]', error)
+          Pop.error(error)
+        }
+      })
+    }
 
     function mountAutoComplete() {
       let autocomplete = new google.maps.places.Autocomplete(
@@ -66,8 +87,6 @@ export default {
 
     return {
       editable,
-      error,
-      address: computed(() => AppState.accountAddress),
       askLocationPermission() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(position => {
@@ -88,7 +107,6 @@ export default {
         try {
           await mapsService.getAddress(lat, lng)
           editable.value = AppState.accountAddress
-          error.value = AppState.accountAddress.error_message
         } catch (error) {
           logger.error('[getting address]', error)
           Pop.error(error.value.message)

@@ -22,8 +22,8 @@ class MembersService {
     await guild.save()
 
     const member = await dbContext.Members.create(newMember)
-    await member.populate('profile', 'name picture')
-    await member.populate('guild')
+    await member.populate('profile', 'name picture location')
+    await member.populate('guild', 'name cardImg')
     return member
   }
 
