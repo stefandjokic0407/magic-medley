@@ -100,6 +100,11 @@ export default {
         for (let i = 0; i < results.length; i++) {
           let place = results[i];
           console.log(place)
+          let marker = new google.maps.Marker({
+            position: place.geometry.location,
+            map: map
+          })
+          marker(place)
         }
       }
     }
