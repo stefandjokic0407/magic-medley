@@ -5,12 +5,14 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <div>
-      These are the cards from <b>{{activeDeck.name}}</b> that you do not already have in your collection. Click each card below to purchase the card from an external site.
+    <div v-if="missingCards.length" class="parent">
+      <p>These are the cards from <b>{{activeDeck.name}}</b> that you do not already have in your collection. Click any card below to purchase the card from an external site.</p>
     </div>
-    <div class="mt-3 row" v-for="m in missingCards" >
-      <button class="col-10 btn" type="button">
-      </button>
+    <div v-else>
+      <p>You have all the cards necessary to make <b>{{activeDeck.name}}!</b> </p>
+    </div>
+    <div class="mt-3 row" v-for="m in missingCards" :key="m.id">
+      <img class="col-12 missing-card-image" type="button" :src="m.card.image_uris.normal">
     </div>
   </div>
 </div>
@@ -25,6 +27,7 @@ export default {
   setup() {
     return {
       activeDeck: computed(() => AppState.activeDeck),
+      missingCards: computed(() => AppState.missingCards),
     }
   }
 }
@@ -32,4 +35,11 @@ export default {
 
 <style lang="scss" scoped>
 
+.parent{
+  position: relative;
+  }
+.missing-card-image {
+  position: absolute;
+  transform: translateY(10px);
+}
 </style>

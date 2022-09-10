@@ -7,19 +7,23 @@
       <ClearNavBar />
     </header>
 
-    <div>
-      <img @click="gotToProfile()" type="button" class="profile-img" :src=activeDeck.profile?.picture alt="profile picture">
-      {{activeDeck.profile?.name}}
-    </div>
-
     <div v-if="activeDeck.id" class="row my-3">
-      <div class="col-12 text-center">
+      <div class="col-6 col-md-2 align-items-center">
+        <img @click="gotToProfile()" type="button" class="profile-img" :src=activeDeck.profile?.picture
+          alt="profile picture">
+        <h4 class="">{{activeDeck.profile?.name}}</h4>
+      </div>
+      <div class="col-12 col-md-10">
         <h1>{{activeDeck.name}}</h1>
-        <h4 v-if="activeDeck?.avgRating">Deck Rating:
-          {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<span class="mdi mdi-star mdi-24px"></span>
-        </h4>
-        <h4 v-else>Deck Rating: UNRATED<span class="mdi mdi-star mdi-24px"></span>
-        </h4>
+        <div class="col-12 col-md-8">{{activeDeck.description}}</div>
+        <div class="row">
+          <h4 v-if="activeDeck?.avgRating">Deck Rating:
+            {{(activeDeck?.avgRating/activeDeck.rating?.length).toFixed(1)}}/5<span
+              class="mdi mdi-star mdi-24px"></span>
+          </h4>
+          <h4 v-else>Deck Rating: UNRATED<span class="mdi mdi-star mdi-24px"></span>
+          </h4>
+        </div>
         <div class="row">
           <div class="col-3 m-1 p-0">
             <h5 v-if="activeRater">You rated this deck:</h5>
@@ -47,7 +51,9 @@
           </div>
           <div class="col-3"></div>
           <button class="glass btn col-2 m-1" @click="cloneDeck">Copy Deck to My Collection</button>
-          <button class="glass btn btn-outline col-2 m-1" type="button" @click="FindCardsMissingFromMyCollectionInDeck" data-bs-toggle="offcanvas" data-bs-target="#shopping-cart-modal" aria-controls="offcanvasExample">Compare to my collection</button>
+          <button class="glass btn btn-outline col-2 m-1" type="button" @click="FindCardsMissingFromMyCollectionInDeck"
+            data-bs-toggle="offcanvas" data-bs-target="#shopping-cart-modal" aria-controls="offcanvasExample">Compare to
+            my collection</button>
         </div>
       </div>
     </div>
@@ -99,21 +105,21 @@ export default {
     }
 
     function createListOfDeckCardsWithQuantity() {
-        let newArray = [...AppState.deckCards]
-        for (let i = 0; i < newArray.length; i++) {
-          const firstCard = newArray[i];
-          firstCard.quantity = 1
-          for (let j = i + 1; j < newArray.length; j++) {
-            const secondCard = newArray[j];
-            if (firstCard.cardId == secondCard.cardId) {
-              firstCard.quantity++
-              newArray.splice(j, 1)
-              j--
-            }
+      let newArray = [...AppState.deckCards]
+      for (let i = 0; i < newArray.length; i++) {
+        const firstCard = newArray[i];
+        firstCard.quantity = 1
+        for (let j = i + 1; j < newArray.length; j++) {
+          const secondCard = newArray[j];
+          if (firstCard.cardId == secondCard.cardId) {
+            firstCard.quantity++
+            newArray.splice(j, 1)
+            j--
           }
         }
-        AppState.duplicates = newArray
       }
+      AppState.duplicates = newArray
+    }
 
     onMounted(() => {
       setActiveDeck();
@@ -125,24 +131,45 @@ export default {
       deckCards: computed(() => AppState.deckCards),
       cover: computed(() => `url(${AppState.activeDeck?.picture})`),
 
-      FindCardsMissingFromMyCollectionInDeck(){
+      FindCardsMissingFromMyCollectionInDeck() {
         let missingCards = this.duplicates.map(dc => {
           let found = AppState.collection.find(c => c.name == dc.card.name)
-          if(found){
-            let missingCard = {...found} 
+          if (found) {
+            let missingCard = { ...found }
             missingCard.missingQty = dc.quantity - found.quantity
-            if(missingCard.missingQty > 0){
+            if (missingCard.missingQty > 0) {
               return missingCard
             }
           }
-          else{
-            let missingCard = {...dc}
+          else {
+            let missingCard = { ...dc }
             missingCard.missingQty = dc.quantity
             return missingCard
           }
         })
-        return missingCards
+        AppState.missingCards = missingCards
       },
+// the above method returns an array of undefined objects, the below method returns nothing.
+      // FindCardsMissingFromMyCollectionInDeck() {
+      //   let missingCards = [] 
+      //   this.duplicates.ForEach(dc => {
+      //     let found = AppState.collection.find(c => c.name == dc.card.name)
+      //     if (found) {
+      //       let missingCard = { ...found }
+      //       missingCard.missingQty = dc.quantity - found.quantity
+      //       if (missingCard.missingQty > 0) {
+      //         missingCards.push(missingCard)
+      //       }
+      //     }
+      //     else {
+      //       let missingCard = { ...dc }
+      //       missingCard.missingQty = dc.quantity
+      //       missingCards.push(missingCard)
+      //     }
+      //   })
+      //   AppState.missingCards = missingCards
+      // },
+
       async rateDeck(num) {
         try {
           const accountId = this.activeDeck.accountId
@@ -152,6 +179,7 @@ export default {
           Pop.error(error)
         }
       },
+
       async cloneDeck() {
         try {
           await decksService.cloneDeck(this.activeDeck.id)
@@ -159,8 +187,9 @@ export default {
           Pop.error(error)
         }
       },
-      async gotToProfile(){
-        router.push({name: 'Profile', params: {profileId: AppState.activeDeck.profile.id}})
+
+      async gotToProfile() {
+        router.push({ name: 'Profile', params: { profileId: AppState.activeDeck.profile.id } })
       }
     };
   },
