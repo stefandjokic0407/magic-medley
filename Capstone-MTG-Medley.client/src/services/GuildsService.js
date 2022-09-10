@@ -21,8 +21,8 @@ class GuildsService {
 
   async getGuildProfile(){
   const res = await api.get(`account/members/`)
-  console.log(res.data)
-
+  console.log('Guild Profile',res.data)
+  
 }
 
 
