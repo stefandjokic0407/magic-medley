@@ -82,7 +82,6 @@ export default {
       // account: computed(() => AppState.account),
       async handleSubmit() {
         try {
-          debugger
           await accountService.edit(editable.value);
           router.push({
             name: "Profile",

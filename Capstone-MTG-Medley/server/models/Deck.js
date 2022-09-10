@@ -20,6 +20,7 @@ export const DeckSchema = new Schema(
     name: { type: String, required: true, minlength: 1, maxlength: 50 },
     description: { type: String, maxlength: 5000 },
     accountId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
+    creatorId: { type: Schema.Types.ObjectId, ref: 'Account' },
     likeIds: { type: Array },
     likes: { type: Array },
     rating: [rating],

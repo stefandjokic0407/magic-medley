@@ -143,6 +143,11 @@ class CardsService {
     AppState.activeProfile = res.data;
     return res.data;
   }
+
+  async getCardOracleIdByCardId(cardId){
+    const res = await api.get('/account/cards/' + cardId)
+    return res.data
+  }
   async removeCard(cardId, cardName) {
     Pop.confirm(
       "Are you sure you want to remove this card from your Collection?"
@@ -164,6 +169,17 @@ class CardsService {
     }
 
     return res;
+  }
+
+  cloneCards() {
+    AppState.duplicates.forEach(async (d) => {
+      if (AppState.collection.find(c => c.name == d.card.name)) { return }
+      const clonedCard = await this.getCardOracleIdByCardId(d.cardId)
+      clonedCard.id = null
+      clonedCard._id = null
+      clonedCard.accountId = AppState.account.id
+      this.createCard(clonedCard)
+    })
   }
 }
 

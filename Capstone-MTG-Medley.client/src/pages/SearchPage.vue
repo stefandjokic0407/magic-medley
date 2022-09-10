@@ -46,6 +46,8 @@ import { logger } from "../utils/Logger.js";
 import { cardsService } from "../services/CardsService.js";
 import ClearNavBar from "../components/ClearNavBar.vue";
 import Navbar from "../components/Navbar.vue";
+import CollectionFilter from "../components/CollectionFilter.vue";
+import LoadingImg from "../components/LoadingImg.vue";
 export default {
   setup() {
     const page = ref(1);
@@ -69,7 +71,15 @@ export default {
       },
     };
   },
-  components: { SearchFilters, SearchForm, SearchedCards, ClearNavBar, Navbar },
+  components: {
+    SearchFilters,
+    SearchForm,
+    SearchedCards,
+    ClearNavBar,
+    Navbar,
+    CollectionFilter,
+    LoadingImg,
+  },
 };
 </script>
 

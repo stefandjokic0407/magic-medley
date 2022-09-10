@@ -7,8 +7,8 @@
     <!-- NOTE Guild Members & Title & Join/Remove Button -->
     <!-- GUILD MEMBERS -->
     <section class="col-md-4">
-      <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#chat-off-canvas"
-        aria-controls="chat-off-canvas">
+      <button v-if="isMember == true" class="btn" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#chat-off-canvas" aria-controls="chat-off-canvas">
         Chat With Guild Members
       </button>
       <ChatOffcanvas />
@@ -22,13 +22,12 @@
     <!-- GUILD TITLE -->
     <section class="col-md-4 text-center">
       <h1>{{ activeGuild.name }}</h1>
-      <h4>Total Members: <span>{{ activeGuild.members }}</span> </h4>
     </section>
     <!-- GUILD JOIN/REMOVE -->
     <section class="col-md-4 text-end">
       <button v-if="isMember == false" class="btn" @click="joinGuild()">
         <i class="mdi mdi-plus fs-3"></i>
-        <span class="fs-5">JOIN GUILD</span>
+        <span class="fs-5">Join Guild</span>
       </button>
       <button v-else class="btn" @click="removeFromGuild()">
         <i class="mdi mdi-minus fs-3"></i>
@@ -100,7 +99,7 @@
 <script>
 import { computed } from '@vue/reactivity';
 import { onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { AppState } from '../AppState';
 import { guildsService } from '../services/GuildsService';
 import { membersService } from '../services/MembersService';
@@ -115,6 +114,7 @@ import MainMap from '../components/MainMap.vue';
 export default {
   setup() {
     const route = useRoute();
+    const router = useRouter()
     async function getGuildById() {
       try {
         await guildsService.getGuildById(route.params.guildId);
@@ -145,6 +145,7 @@ export default {
       guilds: computed(() => AppState.guilds),
       cover: computed(() => `url(${AppState.activeGuild?.coverImg})`),
       cardImg: computed(() => `url(${AppState.activeGuild?.cardImg})`),
+      address: computed(() => AppState.members.profile?.location),
       isMember: computed(() => {
         if (AppState.members.find(m => m.accountId == AppState.account.id)) {
           return true
@@ -159,8 +160,8 @@ export default {
             accountId: AppState.account.id
           };
           await membersService.joinGuild(newMember);
-          Pop.toast(`You've joined the ${AppState.activeGuild.name} Guild`);
-          console.log(AppState.account);
+          Pop.success(`You've joined the ${AppState.activeGuild.name} Guild`);
+          console.log(AppState.members);
         }
         catch (error) {
           logger.error("[joining guild]", error);
@@ -170,8 +171,15 @@ export default {
 
       async removeFromGuild() {
         try {
+          const yes = await Pop.confirm(`Are you sure you want to leave the ${AppState.activeGuild.name} Guild?`)
+          if (!yes) {
+            return
+          }
           const removedMember = AppState.members.find(m => m.accountId == AppState.account.id)
           await membersService.removeFromGuild(removedMember.id)
+          router.push({
+            name: "Guild",
+          });
         } catch (error) {
           logger.error('[removing from guild]', error);
           Pop.error(error)

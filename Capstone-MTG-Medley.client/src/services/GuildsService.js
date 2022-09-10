@@ -18,6 +18,15 @@ class GuildsService {
     const res = await api.get(`api/guilds/${guildId}`)
     AppState.activeGuild = res.data
   }
+
+  async getGuildProfile(){
+  const res = await api.get(`account/members/`)
+  console.log('Guild Profile',res.data[0].guildId)
+  const guild = await this.getGuildById(res.data[0].guildId)
+  console.log(AppState.activeGuild)
+}
+
+
 }
 
 export const guildsService = new GuildsService()
