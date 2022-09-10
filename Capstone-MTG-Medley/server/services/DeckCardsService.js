@@ -20,8 +20,9 @@ class DeckCardsService {
   async addCardToDeck(data) {
     //                 ^^^  this needs an ID generated on client side, a deck ID and a Card Id
     const deckCard = await dbContext.DeckCards.create(data)
-    await deckCard.populate('deck')
-    await deckCard.populate('card')
+
+    await deckCard.populate('deck', 'name picture')
+    await deckCard.populate('card', 'name image_uris oracle_id type_line')
     return deckCard
   }
 
