@@ -6,5 +6,6 @@ export class Profile {
     this.picture = data.picture;
     this.coverImg = data.coverImg;
     this.bio = data.bio;
+    this.location = data.location
   }
 }

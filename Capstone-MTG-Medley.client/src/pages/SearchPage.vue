@@ -13,13 +13,10 @@
     </div>
     <div v-else class="text-light">
       <!-- <img src="../assets/img/Misterious mist.gif" alt=""> -->
-      Loading...
+      <LoadingImg />
     </div>
     <div v-if="nextPage" class="row justify-content-center py-3">
-      <button
-        @click="changePage(nextPage, page + 1)"
-        class="btn btn-outline-light w-50"
-      >
+      <button @click="changePage(nextPage, page + 1)" class="btn btn-outline-light w-50">
         More Results
       </button>
     </div>
@@ -39,6 +36,8 @@ import { logger } from "../utils/Logger.js";
 import { cardsService } from "../services/CardsService.js";
 import ClearNavBar from "../components/ClearNavBar.vue";
 import Navbar from "../components/Navbar.vue";
+import CollectionFilter from "../components/CollectionFilter.vue";
+import LoadingImg from "../components/LoadingImg.vue";
 export default {
   setup() {
     const page = ref(1);
@@ -62,7 +61,7 @@ export default {
       },
     };
   },
-  components: { SearchFilters, SearchForm, SearchedCards, ClearNavBar, Navbar },
+  components: { SearchFilters, SearchForm, SearchedCards, ClearNavBar, Navbar, CollectionFilter, LoadingImg },
 };
 </script>
 

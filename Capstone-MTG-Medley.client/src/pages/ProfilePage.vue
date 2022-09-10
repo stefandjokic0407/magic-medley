@@ -81,6 +81,7 @@ import { decksService } from "../services/DecksService.js";
 import { profilesService } from "../services/ProfilesService";
 import Pop from "../utils/Pop";
 import Navbar from "../components/Navbar.vue";
+import { guildsService } from "../services/GuildsService.js";
 
 export default {
   setup() {
@@ -105,9 +106,22 @@ export default {
         Pop.error("[getting profile decks]", error);
       }
     }
+
+    async function getGuildProfile(){
+    try {
+    await guildsService.getGuildProfile()
+    } catch (error) {
+    Pop.error(error)
+    }
+    }
+
+
+
+
     onMounted(() => {
       getProfileById();
       getProfileDecks();
+      getGuildProfile()
     });
     return {
       route,

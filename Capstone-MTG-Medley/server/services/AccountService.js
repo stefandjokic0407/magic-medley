@@ -37,7 +37,8 @@ async function mergeSubsIfNeeded(account, user) {
 function sanitizeBody(body) {
   const writable = {
     name: body.name,
-    picture: body.picture
+    picture: body.picture,
+    location: body.location
   }
   return writable
 }
@@ -90,6 +91,9 @@ class AccountService {
     account.coverImg = accountData.coverImg || account.coverImg
     // @ts-ignore
     account.bio = accountData.bio || account.bio
+    // @ts-ignore
+    account.location = accountData.location || account.location
+
     // @ts-ignore
     await account.save()
     return account
