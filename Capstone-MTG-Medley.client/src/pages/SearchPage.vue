@@ -69,11 +69,14 @@ export default {
 .card-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 0.4em;
+  grid-gap: 1em;
+  margin-top: 1em;
+  min-height: 100vh;
+  max-width: 100vw;
 
   .grid-item {
-    align-self: stretch;
-    justify-self: stretch;
+    align-self: center;
+    justify-self: center;
   }
 }
 

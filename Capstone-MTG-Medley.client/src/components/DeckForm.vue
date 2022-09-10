@@ -40,11 +40,11 @@ export default {
 
       async handleSubmit() {
         try {
-          debugger
           if (editable.value.id) {
             await decksService.editDeck(editable.value)
             Pop.success('Deck Edited!')
           } else {
+            editable.value.creatorId = AppState.account.id
             await decksService.createDeck(editable.value)
             Pop.success('Deck Created Successfully!')
             Modal.getOrCreateInstance(document.getElementById('deck-form')).hide()

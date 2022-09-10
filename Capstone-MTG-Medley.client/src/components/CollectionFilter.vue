@@ -22,14 +22,14 @@ import { logger } from '../utils/Logger.js';
 
 export default {
   setup() {
-    let color = 'WUBRG'
+    let color = ''
     return {
       color,
       cards: computed(() => AppState.collection),
 
       sortColor(option) {
-
-        let filteredCards = this.cards.filter(c => c.colors = option)
+        color = option
+        let filteredCards = this.cards.filter(c => c.colors == option)
         logger.log(color)
         logger.log(filteredCards)
 
