@@ -5,7 +5,6 @@
 
   <section class="row bg-search">
     <SearchFilters />
-    <!-- <div class="col-md-12 bg-search"> -->
     <div v-if="searchedCards.length" class="col-12 card-grid bg-search">
       <div v-for="c in searchedCards" :key="c.id" class="grid-item">
         <SearchedCards :card="c" />
@@ -29,11 +28,7 @@
         <div class="card"></div>
       </main>
     </div>
-
-    <!-- </div> -->
   </section>
-
-  <!-- FIXME maybe need to set a time for this to show while the page is loading? -->
 </template>
 
 <script>
