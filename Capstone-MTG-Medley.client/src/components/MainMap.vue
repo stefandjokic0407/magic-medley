@@ -30,7 +30,7 @@ export default {
 
     function initMap() {
       let map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 60.6067, lng: - 116.2867 },
+        center: { lat: 43.6067, lng: - 116.2867 },
         zoom: 18,
         mapTypeId: google.maps.MapTypeId.HYBRID
       })
@@ -39,12 +39,6 @@ export default {
         map: map
       })
     }
-
-
-
-
-
-
 
     function mountAutoComplete() {
       let autocomplete = new google.maps.places.Autocomplete(
@@ -58,25 +52,78 @@ export default {
         let place = autocomplete.getPlace()
         console.log(place);
         // NOTE this method needs to be fixed - showing undefined showUserLocationOnTheMap
-        let showLocation = userAddedLocation(place.geometry.location.lat(), place.geometry.location.lng())
-        showLocation
+        // userAddedLocation(place.geometry.location.lat(), place.geometry.location.lng())
+        userAddedLocation()
+        // let searchLocation = textSearch(place.geometry.location.lat(), place.geometry.location.lng())
+        // searchLocation
       })
     }
 
-    function userAddedLocation(latitude, longitude) {
-      console.log(latitude, longitude);
+    function userAddedLocation() {
       let map = new google.maps.Map(document.getElementById('map'), {
         zoom: 16,
-        center: new google.maps.LatLng(latitude, longitude),
+        center: new google.maps.LatLng(43.6150, -116.2023),
         mapTypeId: google.maps.MapTypeId.HYBRID
       })
-      console.log(map);
-      console.log(map.center.lng);
       new google.maps.Marker({
-        position: new google.maps.LatLng(latitude, longitude),
+        position: new google.maps.LatLng(43.6150, -116.2023),
         map: map
       })
+      let request = {
+        radius: '500',
+        location: new google.maps.LatLng(43.6150, -116.2023),
+        query: editable.value,
+      }
+      console.log(request);
+      let service = new google.maps.places.PlacesService(map)
+      service.textSearch(request, callback)
     }
+
+    // function textSearch(latitude, longitude) {
+    //   let map = new google.maps.Map(document.getElementById('map'), {
+    //     zoom: 15,
+    //     center: new google.maps.LatLng(latitude, longitude),
+    //     location: new google.maps.LatLng(latitude, longitude),
+    //     mapTypeId: google.maps.MapTypeId.HYBRID
+    //   })
+
+    //   let request = {
+    //     radius: '500',
+    //     query: editable,
+    //   }
+    //   let service = new google.maps.places.PlacesService(map)
+    //   service.textSearch(request, callback)
+    // }
+
+    function callback(results, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        for (let i = 0; i < results.length; i++) {
+          let place = results[i];
+          console.log(place)
+          let marker = new google.maps.Marker({
+            position: place.geometry.location,
+            map: map
+          })
+          marker(place)
+        }
+      }
+    }
+
+    // function createMarker(place) {
+    //   let map = new google.maps.Map(document.getElementById('map'), {
+    //     zoom: 16,
+    //     center: new google.maps.LatLng(43.6150, -116.2023),
+    //     mapTypeId: google.maps.MapTypeId.HYBRID
+    //   })
+    //   let marker = new google.maps.Marker({
+    //     position: place.geometry.location,
+    //     map: map
+    //   })
+
+    //   marker.setMap(map)
+    //   console.log(marker);
+    // }
+
 
     onMounted(() => {
       mountAutoComplete()
@@ -124,31 +171,6 @@ export default {
           map: map
         })
       },
-
-
-      textSearch(latitude, longitude) {
-        let map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: new google.maps.LatLng(latitude, longitude),
-          mapTypeId: google.maps.MapTypeId.HYBRID
-        })
-
-        let request = {
-          radius: '500',
-          query: editable,
-        }
-        let service = new google.maps.places.PlacesService(map)
-        service.textSearch(request, callback)
-      },
-
-      callback(results, status) {
-        if (status == google.maps.places.PlacesServiceStatus.OK) {
-          for (let i = 0; i < results.length; i++) {
-            let place = results[i];
-            console.log(place);
-          }
-        }
-      }
 
     };
   },

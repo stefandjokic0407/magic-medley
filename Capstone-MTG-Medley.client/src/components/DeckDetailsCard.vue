@@ -1,11 +1,11 @@
 <template>
   <div class="">
     <div v-if="card" class="">
-      <img class="img-fluid shadow cardsBg childElement deleteCard deck-details-card" :src=card.card?.image_uris?.normal
-        :title="card.card?.name">
+      <img class="img-fluid shadow cardsBg childElement deleteCard deck-details-card rounded"
+        :src=card.card?.image_uris?.normal :title="card.card?.name">
     </div>
     <div v-else>
-      <img class="img-fluid shadow cardsBg"
+      <img class="img-fluid shadow cardsBg rounded"
         src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712">
     </div>
   </div>
