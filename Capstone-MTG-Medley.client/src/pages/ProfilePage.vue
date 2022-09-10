@@ -109,7 +109,7 @@ export default {
 
     async function getGuildProfile(){
     try {
-    await guildsService.getProfileGuild()
+    await guildsService.getGuildProfile()
     } catch (error) {
     Pop.error(error)
     }
