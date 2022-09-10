@@ -8,7 +8,7 @@
     </header>
 
     <div>
-      <img @click="gotToProfile()" type="button" :src=activeDeck.profile?.picture alt="profile picture">
+      <img @click="gotToProfile()" type="button" class="profile-img" :src=activeDeck.profile?.picture alt="profile picture">
       {{activeDeck.profile?.name}}
     </div>
 
@@ -249,5 +249,13 @@ i {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
+}
+
+.profile-img {
+  height: 7rem;
+  width: 7rem;
+  object-fit: cover;
+  border-radius: 50%;
+  border: #b6d369 solid 2px;
 }
 </style>
