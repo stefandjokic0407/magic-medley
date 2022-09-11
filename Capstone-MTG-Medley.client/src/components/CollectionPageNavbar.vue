@@ -27,8 +27,9 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{ name: 'Profile', params: { profileId: account?.id } }"
-            class="my-2 btn deckText text-uppercase borderRadius buttonPadding accountImage">
+          <router-link :to="{ name: 'Profile', params: { profileId: account } }">
+            <div class="my-2 btn deckText text-uppercase borderRadius buttonPadding accountImage">
+            </div>
           </router-link>
         </li>
       </ul>
@@ -40,7 +41,9 @@
 
 <script>
 import { computed } from "@vue/reactivity";
+import { onMounted } from "vue";
 import { AppState } from "../AppState";
+import { accountService } from "../services/AccountService";
 import SearchForm from "./SearchForm.vue";
 export default {
   setup() {

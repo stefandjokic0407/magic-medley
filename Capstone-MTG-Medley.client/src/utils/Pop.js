@@ -15,7 +15,8 @@ export default class Pop {
     title = "Are you sure?",
     text = "You won't be able to revert this!",
     confirmButtonText = "Yes",
-    icon = "warning"
+    icon = "info",
+    background = ""
   ) {
     try {
       const res = await Swal.fire({

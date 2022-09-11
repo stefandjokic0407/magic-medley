@@ -63,13 +63,14 @@
       </div>
     </div>
 
+    <!-- SECTION MY DECK SIDEBAR BOTTOM BUTTONS -->
     <div class="row fixed-bottom mx-auto justify-content-end px-0">
       <button v-if="!activeDeck.id" data-bs-toggle="modal" data-bs-target="#deck-form"
-        class=" deckText  square col-2 createButton" @click.prevent="setEditable">CREATE</button>
+        class=" deckText col-2 createButton" @click.prevent="setEditable">CREATE</button>
       <button v-if="activeDeck.id" class="deckText square col-1 deleteButton" @click.prevent="deleteDeck">DELETE
       </button>
       <button v-if="activeDeck.id" data-bs-toggle="modal" data-bs-target="#deck-form"
-        class="deckText square col-1 editButton">EDIT</button>
+        class="deckText col-1 editButton">EDIT</button>
     </div>
 
 
@@ -99,32 +100,23 @@ import DeckCard from "../components/DeckCard.vue";
 import DeckCardCanvas from "../components/DeckCardCanvas.vue";
 import CollectionPageNavbar from "../components/CollectionPageNavbar.vue";
 import CollectionFilter from '../components/CollectionFilter.vue';
+import { accountService } from "../services/AccountService";
 
 export default {
   setup() {
 
-    // async function getAccountCards() {
-    //   try {
-    //     await cardsService.getAccountCards()
-    //   }
-    //   catch (error) {
-    //     logger.log("[getting all cards]", error);
-    //     Pop.error(error);
-    //   }
-    // }
-    // async function getAccountDecks() {
-    //   try {
-    //     const accountId = AppState.account.id
-    //     await decksService.getAccountDecks(accountId)
-    //   } catch (error) {
-    //     logger.error('[getting account decks]', error);
-    //     Pop.error(error);
-    //   }
-    // }
+    function getAccountId() {
+      try {
+        accountService.getAccount
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error')
+      }
+    }
 
     onMounted(() => {
       AppState.activeDeck = {}
-      // getAccountDecks();
+      getAccountId();
       // getAccountCards();
     });
 
@@ -208,7 +200,7 @@ export default {
 }
 
 .myDecksSideBar {
-  background: rgb(0 0 0 / 38%);
+  background: rgba(0, 0, 0, 0.188);
   backdrop-filter: blur(4px);
   border-left: solid 5px rgba(0, 0, 0, 0.43);
   border-right: solid 5px rgba(0, 0, 0, 0.43);
