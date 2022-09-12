@@ -4,7 +4,7 @@
       :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
       <div v-if="card.image_uris?.normal">
         <img class="img-fluid borderRadius shadow cardsBg"
-          :class="!activeDeck.id || deckCard?.find(d => d.cardId == card.cardId) ? '' : 'card-in-deck'"
+          :class="!activeDeck.id || deckCard?.find(d => d.card.name == card.name) ? '' : 'card-in-deck'"
           :src=card.image_uris?.normal :title="card.name">
         <!-- <p class="xsFont">{{deckCard}}</p> -->
       </div>

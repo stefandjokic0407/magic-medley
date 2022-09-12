@@ -171,7 +171,7 @@ class CardsService {
     return res;
   }
 
-  cloneCards() {
+  async cloneCards() {
     AppState.duplicates.forEach(async (d) => {
       if (AppState.collection.find(c => c.name == d.card.name)) { return }
       const clonedCard = await this.getCardOracleIdByCardId(d.cardId)
@@ -180,6 +180,8 @@ class CardsService {
       clonedCard.accountId = AppState.account.id
       this.createCard(clonedCard)
     })
+    await cardsService.getAccountCards()
+    await decksService.getAccountDecks(AppState.account.id)
   }
 }
 

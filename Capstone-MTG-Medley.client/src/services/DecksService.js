@@ -77,7 +77,7 @@ class DecksService {
       deckCardsService.createDeckCard(newCard)
     })
     Pop.success(`You cloned ${AppState.activeDeck.name}!`)
-    cardsService.cloneCards()
+    await cardsService.cloneCards()
   }
 }
 
