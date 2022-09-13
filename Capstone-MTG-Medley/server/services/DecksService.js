@@ -11,20 +11,20 @@ class DecksService {
 
   async getById(id) {
     const deck = await dbContext.Decks.findById(id)
-    .populate('profile', 'name picture')
+      .populate('profile', 'name picture')
     if (!deck) {
       throw new BadRequest('Invalid Deck')
     }
     return deck
   }
-  
+
   async getDeckCards(query = {}) {
     const deckCards = await dbContext.DeckCards.find(query).populate('card', 'name image_uris')
     return deckCards
   }
   async getAllDecks(query = {}) {
     const decks = await dbContext.Decks.find(query).populate('profile', 'name picture')
-    return decks 
+    return decks
   }
 
   async getDecksByAccountId(accountId) {
@@ -46,13 +46,13 @@ class DecksService {
     await deck.save()
     return deck
   }
-// add a rating to a deckId rating array
-  async rateDeck(deckId, rating){
+  // add a rating to a deckId rating array
+  async rateDeck(deckId, rating) {
     // get the deck by its id
     const deck = await this.getById(deckId)
     // check if user has already voted
-    let oldRating = deck.rating.find(d=>d.creatorId == rating.creatorId)
-    if(oldRating){
+    let oldRating = deck.rating.find(d => d.creatorId == rating.creatorId)
+    if (oldRating) {
       oldRating.value = rating.value
     } else {
       deck.rating.push(rating)

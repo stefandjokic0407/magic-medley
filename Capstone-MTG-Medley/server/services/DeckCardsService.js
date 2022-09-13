@@ -22,7 +22,7 @@ class DeckCardsService {
     const deckCard = await dbContext.DeckCards.create(data)
 
     await deckCard.populate('deck', 'name picture')
-    await deckCard.populate('card', 'name image_uris oracle_id type_line')
+    await deckCard.populate('card')
     return deckCard
   }
 

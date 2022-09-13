@@ -37,8 +37,8 @@
         </i>
       </div>
       <div class="col-3">
-        <i v-if="activeDeck" @click="createDeckCard(card.cardId)" title="Add to Deck"
-          class="deckText mdi mdi-plus-circle mdi" type="button"></i>
+        <i v-if="activeDeck" @click="createDeckCard(card)" title="Add to Deck" class="deckText mdi mdi-plus-circle mdi"
+          type="button"></i>
       </div>
     </div>
   </div>
@@ -82,13 +82,13 @@ export default {
           Pop.toast(error.message, "error");
         }
       },
-      async createDeckCard(cardId) {
+      async createDeckCard(card) {
         try {
           event.stopPropagation()
           event.stopImmediatePropagation()
           const deckId = AppState.activeDeck.id
           const DeckCard = {}
-          DeckCard.cardId = cardId
+          DeckCard.card = card
           DeckCard.deckId = deckId
           DeckCard.accountId = AppState.user.id
           // if ()

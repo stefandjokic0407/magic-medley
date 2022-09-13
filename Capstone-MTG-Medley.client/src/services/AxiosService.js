@@ -7,10 +7,10 @@ export const api = Axios.create({
 
 export const mtg = Axios.create({
   baseURL: 'https://api.scryfall.com/',
-  timeout: 4000
+  timeout: 8000
 })
 
 export const search = Axios.create({
   baseURL: 'https://api.scryfall.com/cards/',
-  timeout: 4000
+  timeout: 8000
 })
