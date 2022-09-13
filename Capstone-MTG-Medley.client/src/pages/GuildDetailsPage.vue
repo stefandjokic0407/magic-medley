@@ -37,7 +37,7 @@
     <!-- NOTE DECK -->
     <section class="col-md-12 my-3">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="azorius-deck rounded d-flex justify-content-end align-items-end">
             <div class="azorius-glass-card fs-5 text-center rounded-bottom p-1">
               <b>
@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        <section class="col-10 rounded guild-container-bg">
+        <section class="col-9 rounded guild-container-bg">
           <div class="row align-items-center">
             <div class="col-1 text-center" @click="scrollLeft">
               <i class="button-style mdi mdi-chevron-left"></i>
@@ -67,7 +67,7 @@
     </section>
     <!-- NOTE Background & Map Row -->
     <div class="col-md-12">
-      <div class="row align-items-center justify-content-evenly">
+      <div class="row justify-content-evenly">
         <section class="col-md-6">
           <div class="card p-3 azorius-bg elevation-4">
             <h4>
@@ -78,12 +78,7 @@
         </section>
         <!-- MAP -->
         <section class="col-md-6">
-          <div class="row justify-content-end">
-            <div class="col-md-8">
-              <!-- NOTE put map component back -->
-              <!-- <MainMap /> -->
-            </div>
-          </div>
+          <MainMap />
         </section>
       </div>
     </div>
@@ -91,7 +86,6 @@
     <!-- <div class="col-1 position-absolute cardPosition" v-if="hover">
                 <img :src="oracleCard.image_uris.small" alt="">
               </div> -->
-    <MainMap />
   </main>
   <!-- CHAT -->
 </template>
