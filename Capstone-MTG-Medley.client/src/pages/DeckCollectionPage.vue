@@ -60,24 +60,24 @@
     <div class="container">
       <div class="row">
         <!-- NOTE this shows proof of concept, need to access the card type_line in order to filter them properly.  I used a computed but there is prob a better way-->
-        <div class="col">
+        <!-- <div class="col">
           <p class="fs-4 mb-0 text-center">Lands<br>{{deckLandCards.length}}</p>
           <div class="card-grid">
             <div class="grid-item mx-3" v-for="(value, index) in deckLandCards" :key="index">
               <DeckDetailsCard :card="value" />
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- NOTE this one is still the old way -->
-        <div class="col">
-          <p class="fs-4 mb-0 text-center">Creatures<br>{{deckCards.length}}</p>
+        <div class="">
+          <!-- <p class="fs-4 mb-0 text-center">Creatures<br>{{deckCards.length}}</p> -->
           <div class="card-grid">
-            <div class="grid-item mx-3" v-for="c in deckCards" :key="c.id">
+            <div class="grid-item" v-for="c in deckCards" :key="c.id">
               <DeckDetailsCard :card="c" />
             </div>
           </div>
         </div>
-        <div class="col">
+        <!-- <div class="col">
           <p class="fs-4 mb-0 text-center">Artifacts<br>Enchantments<br>{{deckLandCards.length}}</p>
           <div class="card-grid">
             <div class="grid-item mx-3" v-for="(value, index) in deckLandCards" :key="index">
@@ -100,7 +100,7 @@
               <DeckDetailsCard :card="value" />
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -335,23 +335,38 @@ i {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 1em;
   margin-top: 1em;
-  // min-height: 100vh;
-  max-width: 16vw;
+  min-height: 100vh;
+  max-width: 100vw;
 
   .grid-item {
     align-self: center;
     justify-self: center;
-    max-height: 1.25vh;
-
-
-    :hover {
-      max-height: 50vh;
-      transform: translateY(-5px);
-      pointer-events: none;
-      // offset-path: path('M20,20 C20,100 200,0 200,100');
-      // offset-position: left top;
-      // animation: move 3000ms infinite alternate ease-in-out;
-    }
+    // max-height: 15px;
   }
 }
+
+// .card-grid {
+//   display: grid !important;
+//   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+//   grid-gap: 1em;
+//   margin-top: 1em;
+//   // min-height: 100vh;
+//   max-width: 16vw;
+
+//   .grid-item {
+//     align-self: center;
+//     justify-self: center;
+//     // max-height: 1.25vh;
+
+
+//     :hover {
+//       max-height: 50vh;
+//       transform: translateY(-5px);
+//       pointer-events: none;
+//       // offset-path: path('M20,20 C20,100 200,0 200,100');
+//       // offset-position: left top;
+//       // animation: move 3000ms infinite alternate ease-in-out;
+//     }
+//   }
+// }
 </style>
