@@ -1,35 +1,22 @@
 <template>
   <div
-    class="row fixed-bottom footer-style justify-content-around text-uppercase text-my-light no-select align-items-center"
-  >
+    class="row fixed-bottom footer-style justify-content-around text-uppercase text-my-light no-select align-items-center">
     <!-- SECTION Account -->
-    <div class="col-1 text-center xsFont">
+    <div class="col-2 text-center xsFont">
       <Login />
     </div>
-    <div
-      class="col-1 text-center text-my-light xsFont"
-      data-bs-toggle="modal"
-      data-bs-target="#contactUsModal"
-    >
+    <div class="col-2 text-center text-my-light xsFont" data-bs-toggle="modal" data-bs-target="#contactUsModal">
       Contact Us
     </div>
 
     <!-- SECTION Information -->
 
-    <div
-      class="col-1 text-center text-my-light xsFont"
-      data-bs-toggle="modal"
-      data-bs-target="#faqsModal"
-    >
+    <div class="col-2 text-center text-my-light xsFont" data-bs-toggle="modal" data-bs-target="#faqsModal">
       FAQs
     </div>
-    <div class="col-1 text-center text-my-light xsFont">Site Tour</div>
+    <div class="col-2 text-center text-my-light xsFont">Site Tour</div>
     <!-- NOTE modal is located in the contact us component -->
-    <div
-      class="col-1 text-center text-my-light xsFont"
-      data-bs-toggle="modal"
-      data-bs-target="#legalModal"
-    >
+    <div class="col-2 text-center text-my-light xsFont" data-bs-toggle="modal" data-bs-target="#legalModal">
       Legal
     </div>
   </div>

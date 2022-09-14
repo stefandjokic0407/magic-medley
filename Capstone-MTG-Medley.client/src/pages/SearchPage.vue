@@ -15,7 +15,7 @@
         </button>
       </div>
     </div>
-    <div v-else class="offset-3 col-8 mt-5 text-center">
+    <div v-else class="offset-3 col-8 text-center center-page">
       <main class="cards-wrapper">
         <div class="card"></div>
         <div class="card"></div>
@@ -164,5 +164,13 @@ main {
   100% {
     transform: translate(0px, 0px);
   }
+}
+
+.center-page {
+  position: fixed;
+  display: flex;
+  // align-items: baseline;
+  margin-top: 50vh;
+  justify-content: center;
 }
 </style>

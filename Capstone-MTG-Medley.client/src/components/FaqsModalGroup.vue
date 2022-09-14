@@ -6,17 +6,15 @@
       <div class="modal-content faq-modal">
         <div class="modal-header">
           <h5 class="modal-title" id="faqsModalLabel">FAQs</h5>
-          <div  class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></div>
+          <div class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i>
+          </div>
         </div>
         <div class="modal-body">
-          <div class="my-btn m-2" data-bs-target="#mtgExplainedModalToggle"
-            data-bs-toggle="modal">What is Magic
+          <div class="my-btn m-2" data-bs-target="#mtgExplainedModalToggle" data-bs-toggle="modal">What is Magic
             the Gathering?</div>
-          <div class="my-btn m-2" data-bs-target="#howToPlayModalToggle"
-            data-bs-toggle="modal">How to
+          <div class="my-btn m-2" data-bs-target="#howToPlayModalToggle" data-bs-toggle="modal">How to
             play</div>
-          <div class="my-btn m-2" data-bs-target="#glossaryModalToggle"
-            data-bs-toggle="modal">Glossary</div>
+          <div class="my-btn m-2" data-bs-target="#glossaryModalToggle" data-bs-toggle="modal">Glossary</div>
         </div>
       </div>
     </div>
@@ -25,14 +23,15 @@
   <!-- SECTION Modal What is MtG -->
   <section class="modal fade" id="mtgExplainedModalToggle" aria-hidden="true" aria-labelledby="mtgExplainedModalToggle"
     tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered ">
+    <div class="modal-dialog modal modal-dialog-scrollable modal-dialog-centered ">
       <div class="modal-content explain-mtg-modal">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel2">What is Magic the Gathering?</h5>
           <span class="d-flex">
             <button class="btn btn-outline-light border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
               FAQs</button>
-          <div  class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></div>
+            <div class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i>
+            </div>
           </span>
         </div>
         <div class="modal-body">
@@ -45,16 +44,13 @@
             A player in Magic takes the role of a Planeswalker, a powerful wizard who can travel ("walk") between
             dimensions ("planes") of the Multiverse, doing battle with other players as Planeswalkers by casting spells,
             using artifacts, and summoning creatures as depicted on individual cards drawn from their individual decks.
-            A player defeats their opponent typically (but not always) by casting spells and attacking with creatures to
-            deal damage to the opponent's "life total," with the object being to reduce it from 20 to 0. Although the
-            original concept of the game drew heavily from the motifs of traditional fantasy role-playing games such as
-            Dungeons & Dragons, the gameplay bears little similarity to paper-and-pencil games, while simultaneously
-            having substantially more cards and more complex rules than many other card games.<br><br>
+            <br><br>
 
             New cards are released on a regular basis through expansion sets. Further developments include the Wizards
             Play Network played at the international level and the worldwide community Players Tour, as well as a
             substantial resale market for Magic cards. Certain cards can be valuable due to their rarity in production
-            and utility in gameplay, with prices ranging from a few cents to tens of thousands of dollars.</p>
+            and utility in gameplay, with prices ranging from a few cents to tens of thousands of dollars.
+          </p>
         </div>
       </div>
     </div>
@@ -70,13 +66,16 @@
           <span class="d-flex">
             <button class="btn btn-outline-light border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
               FAQs</button>
-          <div  class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></div>
+            <div class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i>
+            </div>
           </span>
         </div>
         <div class="modal-body">
-          <p class="pb-2"><em>This guide is intended as a basic overview of a typical game of Magic. Many of the less
+          <span class="row pb-2 text-center"><em>This guide is intended as a basic overview of a typical game of Magic.
+              Many
+              of the less
               popular mechanics
-              have been omitted.</em></p>
+              have been omitted.</em></span>
 
 
           <!-- SECTION Formats -->
@@ -84,33 +83,46 @@
             <div class="col-12">
               <p class="fs-4 bg-dark rounded text-light ps-2 mb-2">PLAY FORMATS</p>
             </div>
-            <div class="col-12">
-              <p>
-                A format limits the cards available to you for play within your deck. MtG officially recognizes 21
-                different formats but we will only be covering the 7 major options that use a prebuilt deck.<br>
-                A deck consists of all the cards available to you in a game. Some formats allow a side board consisting
-                of additional cards that can be swapped out with cards in your main deck between rounds of a match. Some
-                cards even allow you to add sideboard into your deck mid-game.<br>
+            <div class="col-12 karn-img">
+              <div class="row">
+                <div class="col-6">
+                  <p>
+                    A format limits the cards available to you for play within your deck. MtG officially recognizes 21
+                    different formats but we will only be covering the 7 major options that use a prebuilt deck.<br>
+                    A deck consists of all the cards available to you in a game. Some formats allow a side board
+                    consisting
+                    of additional cards that can be swapped out with cards in your main deck between rounds of a match.
+                    Some
+                    cards even allow you to add sideboard into your deck mid-game.<br>
 
-                Unless otherwise stated, you start the game at 20 life and all cards in you main deck are shuffled,
-                creating your library, and you draw 7. At this point you choose to accept your hand or mulligan
-                .<br>
+                    Unless otherwise stated, you start the game at 20 life and all cards in you main deck are shuffled,
+                    creating your library, and you draw 7. At this point you choose to accept your hand or mulligan
+                    .<br>
 
-                All formats limit the count of any individual card and, with the exception of basic lands (Plains,
-                Island, Swamp, Mountain, Forest, and Wastes), your
-                combined deck and sideboard usually may not contain more than four of any individual card.<br>
+                    All formats limit the count of any individual card and, with the exception of basic lands (Plains,
+                    Island, Swamp, Mountain, Forest, and Wastes), your
+                    combined deck and sideboard usually may not contain more than four of any individual card.<br>
 
-                Most formats are designed for 2 players, but casual games of any format may have more. During
-                multiplayer gameplay, a player may choose to attack any other player, regardless of their position on
-                the table, and can also choose to attack multiple different players during their attack phase.
-                Permanents, spells, and abilities can also target any player around the table (as long as they
-                don't explicitly say they must be used on "you").<br>
+                    Most formats are designed for 2 players, but casual games of any format may have more. During
+                    multiplayer gameplay, a player may choose to attack any other player, regardless of their position
+                    on
+                    the table, and can also choose to attack multiple different players during their attack phase.
+                    Permanents, spells, and abilities can also target any player around the table (as long as they
+                    don't explicitly say they must be used on "you").<br>
 
-                Many of the
-                other formats require you to build a deck at the start of play to use for that event. For more
-                information on formats, please visit the official site <a
-                  href="https://magic.wizards.com/en/formats">here</a>.
-              </p>
+                    Many of the
+                    other formats require you to build a deck at the start of play to use for that event. For more
+                    information on formats, please visit the official site <a
+                      href="https://magic.wizards.com/en/formats">here</a>.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-8">
+              <img class="img-fluid"
+                src="https://images.ctfassets.net/s5n2t79q9icq/4NbFQcbtJSSxWE0GwE7XrS/2795d8165774acbd0a44dbe34c9f0ec2/playing-cards-img.png"
+                alt="">
             </div>
             <div class="col-4">
               <div class="accordion mt-2" id="accordionExample">
@@ -439,11 +451,7 @@
 
               </div>
             </div>
-            <div class="col-8">
-              <img class="img-fluid"
-                src="https://images.ctfassets.net/s5n2t79q9icq/4NbFQcbtJSSxWE0GwE7XrS/2795d8165774acbd0a44dbe34c9f0ec2/playing-cards-img.png"
-                alt="">
-            </div>
+
           </section>
 
 
@@ -479,38 +487,38 @@
                 </ul>
               </span>
             </div>
-            <div class="col-12">
-              <ul class="">
-                <b>
-                  Subtype
-                </b>
-                <p>Every card has a card type and may have one or more subtypes. These are printed on the type line.
-                  Most creatures, planeswalkers and tribal cards have at
-                  least one subtype.<br>
-                  On artifact, enchantment, instant, sorcery and land cards the subtypes are optional.</p>
-              </ul>
-              <p><b></b></p>
-              <p></p>
-            </div>
-            <div class="col-12">
-              <ul class="">
-                <b>
-                  Supertype
-                </b>
-                <p>A word that may appear on a card's type line
-                  just before its card types:</p>
-                <li class="ms-4">Basic- Found on basic land cards.</li>
-                <li class="ms-4">Legendary- Any permanent with the legendary supertype is bound by the "legend rule,"
-                  which prevents
-                  multiple copies of the card with the same name from existing on the battlefield under the same
-                  player's control.</li>
-                <li class="ms-4">Snow- a supertype with no inherent functionality. Instead, it serves as an identifying
-                  characteristic of permanents and spells, and is closely tied to snow activation costs and mana costs.
-                </li>
-                <li class="ms-4">World- only found on enchantments. All existing cards with this supertype were printed
-                  as being Enchant World cards (which despite the "Enchant" typeline, were global enchantments and not
-                  local enchantments). World enchantments have been retired for many years.</li>
-              </ul>
+            <div class="col-12 teferi-img">
+              <div class="row">
+                <div class="col-6">
+                  <ul class="">
+                    <b>
+                      Subtype
+                    </b>
+                    <p>Every card has a card type and may have one or more subtypes. These are printed on the type line.
+                      Most creatures, planeswalkers and tribal cards have at
+                      least one subtype.<br>
+                      On artifact, enchantment, instant, sorcery and land cards the subtypes are optional.</p>
+                  </ul>
+                  <ul class="">
+                    <b>
+                      Supertype
+                    </b>
+                    <p>A word that may appear on a card's type line
+                      just before its card types:</p>
+                    <li class="ms-4">Basic- Found on basic land cards.</li>
+                    <li class="ms-4">Legendary- Any permanent with the legendary supertype is bound by the "legend
+                      rule,"
+                      which prevents
+                      multiple copies of the card with the same name from existing on the battlefield under the same
+                      player's control.</li>
+                    <li class="ms-4">Snow- a supertype with no inherent functionality. Instead, it serves as an
+                      identifying
+                      characteristic of permanents and spells, and is closely tied to snow activation costs and mana
+                      costs.
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </section>
 
@@ -573,7 +581,7 @@
 
           <!-- SECTION Turns -->
           <section class="row">
-            <div class="col-12">
+            <div class="col-8">
               <p class="fs-4 bg-dark rounded text-light ps-2">WHATS IN A TURN</p>
               <p>
                 Each turn proceeds in the same sequence. Whenever you enter a new step or phase, any triggered abilities
@@ -690,6 +698,7 @@
                 </li>
               </ul>
             </div>
+            <div class="col-4 tower-img"></div>
           </section>
 
           <!-- SECTION Actions -->
@@ -721,10 +730,10 @@
             <!-- SECTION Casting Spells -->
             <section class="col-12">
               <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                   <img class="img-fluid rounded" src="../assets/img/serra-angel.jpg" alt="">
                 </div>
-                <div class="col-9">
+                <div class="col-8">
                   <p class="fs-5">Casting Spells</p>
                   <p>To cast a spell, you must pay its mana cost (located in the upper right corner of the card) by
                     tapping lands (or other permanents) to make the amount and Game Actions type of mana which that
@@ -751,43 +760,57 @@
             <!-- SECTION Attacking and Blocking -->
             <section class="col-12 mt-2">
               <div class="row">
-                <div class="col-12">
-                  <p class="fs-5">Attacking and Blocking</p>
-                  <p>The most common way to win the game is to attack with your creatures. If a creature that is
-                    attacking
-                    an opponent isn't blocked, it deals damage equal to its power to that opponent.<br><br>
+                <div class="col-12 elspeth-img">
+                  <div class="row">
+                    <div class="col-7">
 
-                    The middle phase of each turn is the combat phase. In your combat phase, you choose which of your
-                    creatures will attack, and you choose which opponents they will attack. Tap your creatures to show
-                    that
-                    they are attacking. Your opponents then choose which of their creatures will block, if any. Tapped
-                    creatures can't be declared as blockers.<br><br>
+                      <p class="fs-5">Attacking and Blocking</p>
+                      <p>The most common way to win the game is to attack with your creatures. If a creature that is
+                        attacking
+                        an opponent isn't blocked, it deals damage equal to its power to that opponent.<br><br>
 
-                    Once all blockers have been chosen, each creature—both attackers and blockers—simultaneously deals
-                    damage equal to its power (the number on the left side of the slash in the lower right corner of the
-                    card).<br><br>
+                        The middle phase of each turn is the combat phase. In your combat phase, you choose which of
+                        your
+                        creatures will attack, and you choose which opponents they will attack. Tap your creatures to
+                        show
+                        that
+                        they are attacking. Your opponents then choose which of their creatures will block, if any.
+                        Tapped
+                        creatures can't be declared as blockers.<br><br>
 
-                    An attacking creature that isn't blocked deals damage to the player it's attacking.
-                    An attacking creature that is blocked deals damage to the creature or creatures that are blocking
-                    it,
-                    and vice versa.
-                    If damage is dealt to your opponent, they lose that much life.<br><br>
+                        Once all blockers have been chosen, each creature—both attackers and blockers—simultaneously
+                        deals
+                        damage equal to its power (the number on the left side of the slash in the lower right corner of
+                        the
+                        card).<br><br>
 
-                    If one of your attacking creatures is blocked by multiple creatures, you decide how to divide its
-                    combat
-                    damage among them. You must assign at least enough damage to the first blocking creature to destroy
-                    it
-                    before you can assign damage to the second one, and so on.<br><br>
+                        An attacking creature that isn't blocked deals damage to the player it's attacking.
+                        An attacking creature that is blocked deals damage to the creature or creatures that are
+                        blocking
+                        it,
+                        and vice versa.
+                        If damage is dealt to your opponent, they lose that much life.<br><br>
 
-                    If a creature is dealt damage equal to or greater than its toughness over the course of a single
-                    turn
-                    (whether it be combat damage, damage from spells or abilities, or a combination of both), that
-                    creature
-                    is destroyed, and it goes to its owner's graveyard (or "dies"). If a creature takes damage that
-                    isn't
-                    enough to destroy it in a single turn, that creature stays on the battlefield, and the damage wears
-                    off
-                    at the end of the turn.</p>
+                        If one of your attacking creatures is blocked by multiple creatures, you decide how to divide
+                        its
+                        combat
+                        damage among them. You must assign at least enough damage to the first blocking creature to
+                        destroy
+                        it
+                        before you can assign damage to the second one, and so on.<br><br>
+
+                        If a creature is dealt damage equal to or greater than its toughness over the course of a single
+                        turn
+                        (whether it be combat damage, damage from spells or abilities, or a combination of both), that
+                        creature
+                        is destroyed, and it goes to its owner's graveyard (or "dies"). If a creature takes damage that
+                        isn't
+                        enough to destroy it in a single turn, that creature stays on the battlefield, and the damage
+                        wears
+                        off
+                        at the end of the turn.</p>
+                    </div>
+                  </div>
                 </div>
                 <div class="col text-center">
                   <img class="img-fluid" src="https://media.wizards.com/2018/mtg_portal/unblocked.png" alt="">
@@ -819,8 +842,8 @@
           </section>
 
           <!-- SECTION Targeting-->
-          <section class="row">
-            <div class="col-12">
+          <section class="row jace-img">
+            <div class="col-6">
               <p class="fs-4 bg-dark rounded text-light ps-2">TARGETING</p>
               <p>Some spells and abilities use the word "target" to describe something that the spell or ability will
                 affect. You must choose all targets for a spell when you cast it, and for an ability when it triggers or
@@ -835,6 +858,9 @@
                 the targets to make sure they're still legal (that is, they're still there and they still match the
                 requirements of the spell or ability). If a target isn't legal, the spell or ability can't affect it. If
                 none of the targets are legal, the spell or ability does nothing at all.</p>
+            </div>
+            <div class="col-6">
+              <img class="img-fluid" src="../assets/img/transparents/jace.png" alt="">
             </div>
           </section>
 
@@ -885,18 +911,18 @@
   <!-- SECTION Modal--Glossary -->
   <section class="modal fade" id="glossaryModalToggle" aria-hidden="true" aria-labelledby="glossaryModalToggle"
     tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
+    <div class="modal-dialog modal modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content glossary-modal">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel2">Glossary</h5>
           <span class="d-flex">
             <button class="btn btn-outline-light border-0" data-bs-target="#faqsModal" data-bs-toggle="modal">Back to
               FAQs</button>
-          <div  class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i></div>
+            <div class="text-light selectable" data-bs-dismiss="modal" aria-label="Close"><i class="mdi mdi-close"></i>
+            </div>
           </span>
         </div>
         <div class="modal-body">
-          <!-- NOTE need symbols all over in here -->
           <ul class="list-unstyled">
             <li>
               <b class="bg-dark text-light rounded px-2">
@@ -1320,6 +1346,7 @@ export default {
   font-size: large;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .faq-modal {
   background-image: url(https://c4.wallpaperflare.com/wallpaper/53/810/403/dark-magic-the-gathering-wallpaper-preview.jpg);
   background-position: center;
@@ -1329,6 +1356,7 @@ export default {
   font-size: large;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .glossary-modal {
   background-image: url(https://wallpaperaccess.com/full/2057218.jpg);
   background-position: center;
@@ -1338,6 +1366,7 @@ export default {
   // font-size: large;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .how-mtg-modal {
   background-image: url(https://wallpaperaccess.com/full/2057218.jpg);
   background-position: center;
@@ -1347,19 +1376,21 @@ export default {
   // font-size: large;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.my-btn{
+
+.my-btn {
   cursor: pointer;
   text-align: center;
   transform: scale(1.15);
 }
-.my-btn:hover{
+
+.my-btn:hover {
   background: white;
   border-radius: 4px;
   color: black;
   text-shadow: none;
 }
 
-.light-text{
+.light-text {
   color: whitesmoke;
   text-shadow: 1px 1px 3px black;
   font-size: large;
@@ -1406,5 +1437,29 @@ export default {
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+.karn-img {
+  background-image: url(../assets/img/transparents/karn.png);
+  background-position: top;
+  background-size: cover;
+}
+
+.teferi-img {
+  background-image: url(../assets/img/transparents/teferi.png);
+  background-position: top;
+  background-size: cover;
+}
+
+.tower-img {
+  background-image: url(../assets/img/transparents/crystal-tower.png);
+  background-position: top;
+  background-size: cover;
+}
+
+.elspeth-img {
+  background-image: url(../assets/img/transparents/elspeth.png);
+  background-position: top;
+  background-size: cover;
 }
 </style>

@@ -3,19 +3,19 @@
     <div class="col-12 text-center">
       <div class="row d-flex justify-content-evenly">
         <div @click="searchPage()"
-          class="col-3 bg-left text-light mx-1 d-flex align-items-center justify-content-center">
+          class="col-3 bg-left text-light rounded d-flex align-items-center justify-content-center">
           <div class="fs-4 selectable effect2">
             <h1 class="effect">Search for your cards</h1>
           </div>
         </div>
         <div @click="guildPage()"
-          class="col-3 bg-center mx-1 text-light d-flex align-items-center justify-content-center">
+          class="col-3 bg-center rounded text-light d-flex align-items-center justify-content-center">
           <div class="fs-4 selectable effect2">
             <h1 class="effect">Guild</h1>
           </div>
         </div>
         <div @click="collectionPage()"
-          class="col-3 bg-right mx-1 text-light d-flex align-items-center justify-content-center">
+          class="col-3 bg-right rounded text-light d-flex align-items-center justify-content-center">
           <div class="fs-4 selectable effect2">
             <router-link :to="{ name: 'Collection' }" class="text-my-light">
               <h1 class="effect">My Collection</h1>
@@ -140,15 +140,19 @@ img {
   background-size: cover;
   height: 93vh;
   transition: 2 ease;
+  transform: scale(.75);
+  transition: all 300ms ease-in-out;
 }
 
 .bg-left:hover {
-  border-left: 2px white solid;
-  border-right: 2px white solid;
+  // border-left: 2px white solid;
+  // border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(249, 58, 58);
   transform: translate(0, -1px);
   cursor: pointer;
   filter: brightness(90%);
+  transform: scale(.95);
+  transition: all 300ms ease-in-out;
 }
 
 
@@ -158,15 +162,19 @@ img {
   background-size: cover;
   height: 93vh;
   transition: 2 ease;
+  transform: scale(.75);
+  transition: all 300ms ease-in-out;
 }
 
 .bg-center:hover {
-  border-left: 2px white solid;
-  border-right: 2px white solid;
+  // border-left: 2px white solid;
+  // border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(15, 160, 238);
   transform: translate(0, -1px);
   cursor: pointer;
   filter: brightness(90%);
+  transform: scale(.95);
+  transition: all 300ms ease-in-out;
 }
 
 .bg-right {
@@ -175,15 +183,19 @@ img {
   background-size: cover;
   height: 93vh;
   transition: 2 ease;
+  transform: scale(.75);
+  transition: all 300ms ease-in-out;
 }
 
 .bg-right:hover {
-  border-left: 2px white solid;
-  border-right: 2px white solid;
+  // border-left: 2px white solid;
+  // border-right: 2px white solid;
   box-shadow: 0 0 100px rgb(255, 255, 255);
   transform: translate(0, -1px);
   cursor: pointer;
   filter: brightness(90%);
+  transform: scale(.95);
+  transition: all 300ms ease-in-out;
 }
 
 

@@ -3,7 +3,7 @@
     :data-bs-target="'#cardModal' + card.id" class="shadow rotated">
     <div class="card-bg">
       <div class="magic-card" :class="{ loaded: imgLoaded }">
-        <img @load="imgLoaded = true" class="img-fluid shadow rounded" :src="card.image_uris.normal"
+        <img @load="imgLoaded = true" class="img-fluid fix-edge shadow" :src="card.image_uris.normal"
           :title="card.name" />
       </div>
       <!-- <div v-else class="">
@@ -57,6 +57,7 @@ export default {
 .magic-card {
   opacity: 0;
 
+
   // transition: opacity 0.2s 0.1s linear;
   &.loaded {
     // opacity: 1;
@@ -93,5 +94,9 @@ input {
   100% {
     opacity: 1;
   }
+}
+
+.fix-edge {
+  border-radius: 13px;
 }
 </style>
