@@ -4,7 +4,7 @@
 @import "./utilities.scss";
 @import "./loaders.scss";
 
-body{
+body {
   overscroll-behavior: none;
   min-height: 100VH;
   display: flex;
@@ -12,7 +12,12 @@ body{
   font-size: 16px;
 }
 
-p{
+p {
+  max-width: 80ch;
+  font-size: 16px;
+}
+
+li {
   max-width: 80ch;
   font-size: 16px;
 }
@@ -39,6 +44,7 @@ select {
     &:valid {
       border: 1px solid $success;
     }
+
     &:invalid {
       border: 1px solid $danger;
     }
