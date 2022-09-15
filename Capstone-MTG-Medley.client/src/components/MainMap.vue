@@ -19,9 +19,9 @@ import { onMounted, ref } from 'vue';
 import { AppState } from '../AppState';
 
 export default {
-
   setup() {
     const editable = ref('')
+
 
     // function initMap() {
     //   let map = new google.maps.Map(document.getElementById("map"), {
@@ -36,11 +36,14 @@ export default {
     // }
 
     function initAutocomplete() {
+      // console.log(userAddress);
+
       const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 43.6067, lng: -116.2867 },
         zoom: 13,
-        mapTypeId: google.maps.MapTypeId.HYBRID
+        mapTypeId: google.maps.MapTypeId.ROADMAP
       })
+
       const userInput = document.getElementById('pac-input')
 
       const searchBox = new google.maps.places.SearchBox(userInput)
@@ -48,7 +51,6 @@ export default {
 
       // TODO get search box to layer on top map
       console.log(map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(userInput))
-      console.log(userInput);
       map.controls[google.maps.ControlPosition.TOP_LEFT].push(userInput)
 
       map.addListener("bounds_changed", () => {
@@ -69,6 +71,7 @@ export default {
         markers.forEach((marker) => {
           marker.setMap(null);
         })
+
         markers = []
 
         const bounds = new google.maps.LatLngBounds()
@@ -78,21 +81,30 @@ export default {
             console.log("Returned place contains no geometry");
             return;
           }
-
+          const image = "https://b.thumbs.redditmedia.com/1UCbc0UOhTcu8Yo_xAQUW7tp7CpAiWDVNJGEXLWXvYU.png"
           const icon = {
-            url: place.icon,
-            size: new google.maps.Size(71, 71),
-            origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(17, 34),
-            scaledSize: new google.maps.Size(25, 25)
+            url: image,
+            size: new google.maps.Size(50, 50),
+            origin: new google.maps.Point(10, 10),
+            anchor: new google.maps.Point(1, 1),
+            scaledSize: new google.maps.Size(50, 50),
+          };
+
+          const shape = {
+            coords: [1, 1, 1, 20, 18, 20, 18, 1],
+            type: "poly",
           };
 
           markers.push(
             new google.maps.Marker({
               map,
               icon,
+              shape,
               title: place.name,
-              position: place.geometry.location
+              position: place.geometry.location,
+              zoom: 16,
+              animation: google.maps.Animation.DROP,
+              clickable: true
             })
           )
 
@@ -101,7 +113,42 @@ export default {
           } else {
             bounds.extend(place.geometry.location);
           }
+
+          for (let i = 0; i < markers.length; i++) {
+            const marker = markers[i];
+            marker.addListener("click", () => {
+              map.setZoom(15)
+              map.setCenter(marker.position);
+              infoWindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+                infoWindow
+              })
+              console.log(marker);
+            })
+          }
+          const contentString =
+            `<div id="class">
+              <h3>${place.name}</h3>
+              <h5>${place.formatted_address}</h5>
+              <h6>Rating: ${place.rating}</h6>
+              <h6>Total Rates: ${place.user_ratings_total}</h6>
+            </div>`
+          const infoWindow = new google.maps.InfoWindow({
+            content: contentString,
+            maxWidth: 200
+          })
+
+          // for (const marker of markers) {
+          //   marker.addListener("click", () => {
+          //     map.setZoom(15)
+          //     map.setCenter(place.geometry.location);
+          //     console.log('getting here');
+          //   })
+          // }
         })
+
         map.fitBounds(bounds)
 
         // NOTE this method needs to be fixed - showing undefined showUserLocationOnTheMap
@@ -236,23 +283,31 @@ export default {
 #map {
   height: 100vh;
   width: 100%;
+  border: 3px solid black;
+  border-radius: 20px;
 }
 
 #autocomplete {
   width: 70%;
 }
 
-#infowindow-content .title {
-  font-weight: bold;
+.content {
+  color: black !important;
+  background-color: black !important;
 }
 
-#infowindow-content {
-  display: none;
-}
+// #infowindow-content .title {
+//   font-weight: bold;
+//   color: black;
+// }
 
-#map #infowindow-content {
-  display: inline;
-}
+// #infowindow-content {
+//   display: none;
+// }
+
+// #map #infowindow-content {
+//   display: inline;
+// }
 
 .pac-card {
   background-color: #fff;
@@ -289,14 +344,14 @@ export default {
   font-size: 15px;
   font-weight: 300;
   margin-top: 1em;
-  margin-left: 3em;
+  margin-left: 10em;
   padding: 1em;
   text-overflow: ellipsis;
-  width: 30em;
+  width: 40%;
   height: 2em;
   display: flex;
   border: 3px solid black;
-  border-radius: 3px;
+  border-radius: 20px;
 }
 
 #pac-input:focus {

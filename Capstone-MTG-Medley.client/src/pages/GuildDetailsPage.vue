@@ -139,7 +139,7 @@ export default {
       guilds: computed(() => AppState.guilds),
       cover: computed(() => `url(${AppState.activeGuild?.coverImg})`),
       cardImg: computed(() => `url(${AppState.activeGuild?.cardImg})`),
-      address: computed(() => AppState.members.profile?.location),
+      userAddress: computed(() => AppState.account.location),
       isMember: computed(() => {
         if (AppState.members.find(m => m.accountId == AppState.account.id)) {
           return true

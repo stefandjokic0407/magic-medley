@@ -133,10 +133,10 @@ export default {
   border: solid #8d8b8b1f;
   border-radius: 8px;
   color: #f2e9e4 !important;
-  z-index: 99;
+  z-index: auto;
 }
 
 #autocomplete {
-  z-index: 0;
+  z-index: 10;
 }
 </style>
