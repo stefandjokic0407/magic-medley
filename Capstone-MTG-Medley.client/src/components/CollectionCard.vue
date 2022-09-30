@@ -4,7 +4,7 @@
       :data-bs-target="'#collectionCardModal' + card.cardId" class="mt-4 col-12 px-0 cardCollection-image">
       <div v-if="card.image_uris?.normal">
         <img class="img-fluid borderRadius shadow cardsBg"
-          :class="!activeDeck.id || deckCard?.find(d => d.card.name == card.name) ? '' : 'card-in-deck'"
+          :class="!activeDeck.id || deckCard?.find(d => d.card.cardId == card.cardId) ? '' : 'card-in-deck'"
           :src=card.image_uris?.normal :title="card.name">
         <!-- <p class="xsFont">{{deckCard}}</p> -->
       </div>
@@ -86,9 +86,10 @@ export default {
         try {
           event.stopPropagation()
           event.stopImmediatePropagation()
-          const deckId = AppState.activeDeck.id
+          let deckId = AppState.activeDeck.id
           const DeckCard = {}
           DeckCard.card = card
+          DeckCard.cardId = card.cardId
           DeckCard.deckId = deckId
           DeckCard.accountId = AppState.user.id
           // if ()
