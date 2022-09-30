@@ -88,7 +88,8 @@ export default {
           event.stopImmediatePropagation()
           let deckId = AppState.activeDeck.id
           const DeckCard = {}
-          DeckCard.card = card
+          DeckCard.cardId = card.cardId
+          DeckCard.name = card.name
           DeckCard.cardId = card.cardId
           DeckCard.deckId = deckId
           DeckCard.accountId = AppState.user.id
