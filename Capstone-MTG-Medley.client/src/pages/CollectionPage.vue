@@ -101,9 +101,13 @@ import DeckCardCanvas from "../components/DeckCardCanvas.vue";
 import CollectionPageNavbar from "../components/CollectionPageNavbar.vue";
 import CollectionFilter from '../components/CollectionFilter.vue';
 import { accountService } from "../services/AccountService";
+import { router } from "../router.js";
+import { useRoute, useRouter } from "vue-router";
 
 export default {
   setup() {
+const router = useRouter();
+const route = useRoute();
 
     function getAccountId() {
       try {
@@ -117,7 +121,7 @@ export default {
     onMounted(() => {
       AppState.activeDeck = {}
       getAccountId();
-      // getAccountCards();
+      getAccountCards();
     });
 
     return {

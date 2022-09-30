@@ -114,7 +114,7 @@
 
 <script>
 
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { decksService } from '../services/DecksService.js';
 import { computed } from '@vue/reactivity';
 import { onMounted, ref } from 'vue';
@@ -129,6 +129,7 @@ import ShoppingCartModal from "../components/ShoppingCartModal.vue";
 
 export default {
   setup() {
+    const router = useRouter();
     const route = useRoute();
     const lands = 'Swamp' || 'Mountain'
 

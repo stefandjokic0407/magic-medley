@@ -40,9 +40,12 @@ import ClearNavBar from "../components/ClearNavBar.vue";
 import Navbar from "../components/Navbar.vue";
 import CollectionFilter from "../components/CollectionFilter.vue";
 import LoadingImg from "../components/LoadingImg.vue";
+import { useRoute, useRouter } from "vue-router";
 export default {
   setup() {
     const page = ref(1);
+    const router = useRouter();
+    const route = useRoute();
 
     return {
       page,
