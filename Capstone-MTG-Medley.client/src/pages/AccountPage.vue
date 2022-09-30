@@ -13,10 +13,14 @@
 
 <script>
 import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { AppState } from "../AppState";
 export default {
   name: "Account",
   setup() {
+    const router = useRouter();
+    const route = useRoute();
+
     return {
       account: computed(() => AppState.account),
       profile: computed(() => AppState.activeProfile),

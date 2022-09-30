@@ -74,7 +74,7 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { AppState } from "../AppState";
 import { router } from "../router";
 import { decksService } from "../services/DecksService.js";
@@ -86,7 +86,9 @@ import { guildsService } from "../services/GuildsService.js";
 export default {
   setup() {
     const scrollPosition = ref(0);
+    const router = useRouter();
     const route = useRoute();
+
     // NOTE this function is getting your profile using the Id, it takes in a users profileId
     async function getProfileById() {
       try {
