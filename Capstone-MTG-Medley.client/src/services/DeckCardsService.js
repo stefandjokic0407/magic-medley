@@ -4,6 +4,7 @@ import { api } from "./AxiosService.js";
 class DeckCardsService {
   async createDeckCard(deckCard) {
     const res = await api.post("api/deckCards", deckCard);
+    console.log(res.data);
     AppState.deckCards.push(res.data);
   }
 

@@ -118,6 +118,16 @@ const route = useRoute();
       }
     }
 
+    async function getAccountCards() {
+        try {
+          await cardsService.getAccountCards()
+        }
+        catch (error) {
+          logger.log("[getting all cards]", error);
+          Pop.error(error);
+        }
+      }
+
     onMounted(() => {
       AppState.activeDeck = {}
       getAccountId();

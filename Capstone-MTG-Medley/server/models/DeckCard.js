@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 export const DeckCardSchema = new Schema(
   {
     cardId: { type: Schema.Types.ObjectId, required: true, ref: 'Card'},
+    name: { type: String },
     deckId: { type: Schema.Types.ObjectId, required: true, ref: 'Deck'},
     accountId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
   },
