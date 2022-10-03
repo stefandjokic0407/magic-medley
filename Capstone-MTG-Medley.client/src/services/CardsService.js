@@ -157,7 +157,7 @@ class CardsService {
       case "none":
         break;
       case "confirm-delete":
-        if (await Pop.confirm("Deleting this card will delete all cards.")) {
+        if (await Pop.confirm("Deleting this card will remove it from any decks you own.")) {
           const res = await api.delete(
             "account/cards/" + cardId + "/deleteall"
           );
