@@ -10,6 +10,7 @@ class MembersService {
   }
 
   async getAccountGuildMemberships(accountId) {
+    debugger
     const memberships = await dbContext.Members.find({ accountId }).populate('profile', 'name picture')
     return memberships
   }

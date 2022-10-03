@@ -28,6 +28,12 @@ class ProfileService {
       .limit(20)
       .exec()
   }
+
+  async getProfileGuild(accountId) {
+    const profileGuildMember = await dbContext.Members.find({ accountId }).populate('guild', 'name')
+    return profileGuildMember
+  }
+
 }
 
 export const profileService = new ProfileService()

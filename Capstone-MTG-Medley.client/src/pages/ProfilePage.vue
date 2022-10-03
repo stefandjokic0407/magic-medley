@@ -109,12 +109,12 @@ export default {
       }
     }
 
-    async function getGuildProfile(){
-    try {
-    await guildsService.getGuildProfile()
-    } catch (error) {
-    Pop.error(error)
-    }
+    async function getGuildProfile() {
+      try {
+        await guildsService.getGuildProfile(route.params.profileId)
+      } catch (error) {
+        Pop.error(error)
+      }
     }
 
 

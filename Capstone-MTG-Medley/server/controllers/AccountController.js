@@ -100,7 +100,7 @@ export class AccountController extends BaseController {
   async getAccountGuildMemberships(req, res, next) {
     try {
       const memberships = await membersService.getAccountGuildMemberships(
-        req.userInfo.id
+        req.params.id
       );
       return res.send(memberships);
     } catch (error) {
