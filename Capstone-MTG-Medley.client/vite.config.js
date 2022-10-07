@@ -9,7 +9,7 @@ export default defineConfig({
     include: ['fast-deep-equal'],
   },
   build: {
-    outDir: 'Capstone-MTG-Medley\client',
+    outDir: '../Capstone-MTG-Medley/client',
     sourcemap: false,
   },
   server: {
