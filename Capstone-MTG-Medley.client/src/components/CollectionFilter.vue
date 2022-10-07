@@ -29,13 +29,6 @@ export default {
       color,
       filterCards,
       cards: computed(() => AppState.collection.filter(c => filterCards.value ? c.colors == filterCards.value : true)),
-
-      sortColor() {
-        console.log(AppState.collection.filter(c => c.colors == filterCards.value))
-
-
-      }
-
     }
   }
 }

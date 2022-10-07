@@ -50,7 +50,6 @@ export default {
 
 
       // TODO get search box to layer on top map
-      console.log(map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(userInput))
       map.controls[google.maps.ControlPosition.TOP_LEFT].push(userInput)
 
       map.addListener("bounds_changed", () => {
@@ -62,7 +61,6 @@ export default {
 
       searchBox.addListener("places_changed", () => {
         const places = searchBox.getPlaces()
-        console.log(places);
 
         if (places.length == 0) {
           return;
@@ -78,7 +76,6 @@ export default {
 
         places.forEach((place) => {
           if (!place.geometry || !place.geometry.location) {
-            console.log("Returned place contains no geometry");
             return;
           }
           const image = "https://b.thumbs.redditmedia.com/1UCbc0UOhTcu8Yo_xAQUW7tp7CpAiWDVNJGEXLWXvYU.png"
@@ -125,7 +122,6 @@ export default {
                 shouldFocus: false,
                 infoWindow
               })
-              console.log(marker);
             })
           }
           const contentString =

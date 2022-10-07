@@ -77,9 +77,6 @@ class CardsService {
       if (filterTerm.toughness) {
         searchTerm += toughnessTerm + filterTerm.toughness;
       }
-      console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
-
-      console.log("AAS searchTerm", searchTerm, "filterTerm", filterTerm);
 
       AppState.searchedCards = [];
       const res = await search.get(baseSearch + searchTerm);
@@ -113,7 +110,6 @@ class CardsService {
 
   async cardsById(oracleCardId) {
     const res = await mtg.get("cards/" + oracleCardId);
-    console.log("Oracle Card Id", res.data);
     AppState.activeCard = res.data;
   }
 
@@ -123,7 +119,6 @@ class CardsService {
       "cards/search?q=oracleid%3A" + oracleId + "&unique=prints"
     );
     AppState.oracleCard = res.data.data.map((c) => new Card(c));
-    console.log("Getting card by oracle", AppState.oracleCard);
   }
 
   async changePage(url) {
@@ -133,7 +128,6 @@ class CardsService {
       ...res.data.data.map((c) => new Card(c)),
     ];
     AppState.nextPage = res.data.next_page;
-    console.log("next page", AppState.nextPage);
     AppState.previousPage = res.data.previous_page;
   }
 

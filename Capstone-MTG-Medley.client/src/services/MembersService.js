@@ -6,11 +6,9 @@ class MembersService {
   async getGuildMembers(guildId) {
     const res = await api.get(`/api/guilds/${guildId}/members`)
     AppState.members = res.data
-    console.log(res.data);
   }
 
   async joinGuild(newMember) {
-    console.log(newMember);
     const res = await api.post('/api/members', newMember)
     AppState.members.push(res.data)
     AppState.activeGuild.members++

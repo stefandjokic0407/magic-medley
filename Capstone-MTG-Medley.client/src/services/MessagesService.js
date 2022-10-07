@@ -4,7 +4,6 @@ import { api } from "./AxiosService"
 class MessagesService {
   async sendMessage(newMessage) {
     const res = await api.post('/api/messages', newMessage)
-    console.log('creating message', res.data);
     // AppState.messages.push(res.data)
     // Sockets now pushed into array by sockets
   }

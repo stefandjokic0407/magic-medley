@@ -65,7 +65,6 @@ export default {
         try {
           router.push({ name: "Search", params: {} })
         } catch (error) {
-          console.log(error)
         }
       },
 
@@ -73,7 +72,6 @@ export default {
         try {
           router.push({ name: "Guild", params: {} })
         } catch (error) {
-          console.log(error)
         }
       },
 
@@ -81,7 +79,6 @@ export default {
         try {
           router.push({ name: "Collection", params: {} })
         } catch (error) {
-          console.log(error)
         }
       }
 

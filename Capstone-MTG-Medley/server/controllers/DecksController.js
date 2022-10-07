@@ -20,7 +20,6 @@ export class DecksController extends BaseController {
 
     async getDecksByAccountId(req, res, next) {
         try {
-            console.log(req.params.accountId);
             const decks = await decksService.getDecksByAccountId(req.params.accountId);
             return res.send(decks);
         } catch (error) {

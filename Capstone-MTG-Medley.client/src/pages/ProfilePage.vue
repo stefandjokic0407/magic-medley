@@ -102,7 +102,6 @@ export default {
     async function getProfileDecks() {
       try {
         await decksService.getProfileDecks(route.params.profileId);
-        console.log(route.params.profileId);
       }
       catch (error) {
         Pop.error("[getting profile decks]", error);
@@ -161,7 +160,6 @@ export default {
           // Modal.getOrCreateInstance(document.getElementById('deck-modal')).hide()
         }
         catch (error) {
-          console.log(error);
         }
       },
 

@@ -4,14 +4,12 @@ import { api } from "./AxiosService.js";
 class DeckCardsService {
   async createDeckCard(deckCard) {
     const res = await api.post("api/deckCards", deckCard);
-    console.log(res.data);
     AppState.deckCards.push(res.data);
   }
 
   async getDeckCards(deckId) {
     const res = await api.get("api/decks/" + deckId + "/deckCards");
     AppState.deckCards = res.data;
-    console.log('Deck Cards',res.data)
   }
 
   async removeCard(cardId) {

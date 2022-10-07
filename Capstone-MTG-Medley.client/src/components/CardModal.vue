@@ -230,7 +230,6 @@ export default {
 
       async createCard(activeCard) {
         try {
-          console.log('Active Card:', activeCard)
           await cardsService.createCard(activeCard)
           Pop.success('Added to Collection')
         } catch (error) {

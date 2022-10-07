@@ -61,7 +61,6 @@ export default {
             return;
           }
           const deckId = props.deck.id
-          console.log('Deck Id:', deckId)
           await decksService.deleteDeck(deckId)
         } catch (error) {
           logger.error('[Deleting Deck]', error)

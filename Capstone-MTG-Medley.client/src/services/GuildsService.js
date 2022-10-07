@@ -7,7 +7,6 @@ class GuildsService {
   async createGuild(newGuild) {
     const res = await api.post('/api/guilds', newGuild)
     AppState.guilds = res.data
-    console.log(res.data, AppState.guilds);
   }
 
   async getGuilds() {
@@ -20,9 +19,7 @@ class GuildsService {
   }
 
   async getGuildProfile(profileId) {
-    console.log('here?');
     const res = await api.get(`api/profiles/${profileId}/members`)
-    console.log('Guild Profile', res.data)
     // const guild = await this.getGuildById(res.data[0].guildId)
     // console.log(AppState.activeGuild)
   }

@@ -140,7 +140,6 @@ export default {
         createListOfDeckCardsWithQuantity()
       }
       catch (error) {
-        console.log(error);
         Pop.error("[setting active deck]", error);
       }
     }

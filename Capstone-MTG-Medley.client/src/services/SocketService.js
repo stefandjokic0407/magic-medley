@@ -14,7 +14,6 @@ class SocketService extends SocketHandler {
 
   joinGuild(guildName = 'general') {
     this.emit('join:guild', { guildName })
-    console.log(guildName);
   }
 
   joinedGuild(payload) {
@@ -22,7 +21,6 @@ class SocketService extends SocketHandler {
   }
 
   newMessage(payload) {
-    console.log('new:message', payload);
     AppState.messages.push(payload)
   }
 

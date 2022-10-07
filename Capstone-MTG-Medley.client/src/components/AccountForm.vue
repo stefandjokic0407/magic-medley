@@ -87,7 +87,6 @@ export default {
             name: "Profile",
             params: { profileId: editable.value.id },
           });
-          console.log('getting location', editable.value);
         } catch (error) {
           logger.error(error);
           Pop.toast(error.message, "error");
@@ -98,7 +97,6 @@ export default {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(position => {
             this.getAddress(position.coords.latitude, position.coords.longitude)
-            console.log(position.coords.latitude, position.coords.longitude);
           }, error => {
             logger.log(error)
             Pop.error(error)
@@ -111,7 +109,6 @@ export default {
         try {
           await mapsService.getAddress(lat, lng)
           editable.value.location = AppState.accountAddress
-          console.log(editable.value.location);
         } catch (error) {
           logger.error('[getting address]', error)
           Pop.error(error)

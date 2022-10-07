@@ -173,7 +173,6 @@ const route = useRoute();
             return;
           }
           const deckId = AppState.activeDeck.id
-          console.log('Deck Id:', deckId)
           await decksService.deleteDeck(deckId)
           AppState.activeDeck = {}
         } catch (error) {

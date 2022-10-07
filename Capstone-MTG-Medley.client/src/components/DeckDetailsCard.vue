@@ -62,7 +62,6 @@ export default {
 
       reset() {
         AppState.activeCard = props.card;
-        console.log("Active Card:", props.card);
       },
       async getCardByOracle() {
         try {
