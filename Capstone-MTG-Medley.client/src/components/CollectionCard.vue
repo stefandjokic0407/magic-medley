@@ -91,6 +91,7 @@ export default {
           DeckCard.cardId = card.cardId
           DeckCard.deckId = deckId
           DeckCard.accountId = AppState.user.id
+          // add logic to restrict number of cards to 4
           // if ()
           await deckCardsService.createDeckCard(DeckCard)
         } catch (error) {

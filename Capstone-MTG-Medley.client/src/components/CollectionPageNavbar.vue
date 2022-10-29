@@ -35,6 +35,7 @@
       </ul>
       <!-- <SearchForm /> -->
       <!-- LOGIN COMPONENT HERE -->
+      <Login />
     </div>
   </nav>
 </template>
