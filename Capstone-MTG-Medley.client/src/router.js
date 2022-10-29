@@ -21,6 +21,7 @@ const routes = [
     path: "/search",
     name: "Search",
     component: loadPage("SearchPage"),
+    beforeEnter: authSettled,
   },
   {
     path: "/guild",
