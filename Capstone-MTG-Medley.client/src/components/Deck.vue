@@ -46,6 +46,7 @@ export default {
       cover: computed(() => `url(${props.deck.picture})`),
 
       async setActiveDeck(deckId) {
+        debugger
         try {
           await decksService.setActiveDeck(deckId)
           await deckCardsService.getDeckCards(deckId)
