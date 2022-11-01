@@ -12,7 +12,7 @@
         </div>
         <!-- NOTE INPUT BUTTON FOR DELETING DECK -->
         <img v-if="!deck.picture" :title="deck.name" class="img-fluid shadow cardsBg"
-          src='https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013'>
+          src='https://preview.redd.it/fr7g5swymhc41.png?width=640&crop=smart&auto=webp&s=930c8edaa0acc0755c71c3d737840d08a9e9a0b0'>
       </div>
     </button>
     <!-- <div class="col-12">

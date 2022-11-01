@@ -35,13 +35,13 @@
               <div class=" px-3 pt-3 ">
                 <img v-if="d" :src='d?.picture' class="card-img-top img-max">
                 <img v-else
-                  src="https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013"
+                  src="https://preview.redd.it/fr7g5swymhc41.png?width=640&crop=smart&auto=webp&s=930c8edaa0acc0755c71c3d737840d08a9e9a0b0"
                   class="img-fluid" alt="...">
               </div>
               <h5 class="card-title text-center text-dark"><b>{{d?.name}}</b></h5>
               <div v-if="!d?.picture" class="card-img-top">
                 <img
-                  src="https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013"
+                  src="https://preview.redd.it/fr7g5swymhc41.png?width=640&crop=smart&auto=webp&s=930c8edaa0acc0755c71c3d737840d08a9e9a0b0"
                   class="" alt="...">
               </div>
               <div class="card-body text-dark fs-5">
