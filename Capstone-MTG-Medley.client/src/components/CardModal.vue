@@ -7,7 +7,7 @@
       </div>
       <div v-if="!activeCard.image_uris?.normal" class="col-md-6 cardBorder">
         <img
-          src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+          src="https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013"
           class="cardBg img-fluid" alt="...">
       </div>
       <!-- SECTION THE ORACLE CARD INFORMATION DIV -->

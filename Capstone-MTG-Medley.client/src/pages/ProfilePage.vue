@@ -35,13 +35,13 @@
               <div class=" px-3 pt-3 ">
                 <img v-if="d" :src='d?.picture' class="card-img-top img-max">
                 <img v-else
-                  src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+                  src="https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013"
                   class="img-fluid" alt="...">
               </div>
               <h5 class="card-title text-center text-dark"><b>{{d?.name}}</b></h5>
               <div v-if="!d?.picture" class="card-img-top">
                 <img
-                  src="https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712"
+                  src="https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013"
                   class="" alt="...">
               </div>
               <div class="card-body text-dark fs-5">

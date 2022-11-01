@@ -12,7 +12,7 @@
         </div>
         <!-- NOTE INPUT BUTTON FOR DELETING DECK -->
         <img v-if="!deck.picture" :title="deck.name" class="img-fluid shadow cardsBg"
-          src='https://c1.scryfall.com/file/scryfall-card-backs/large/59/597b79b3-7d77-4261-871a-60dd17403388.jpg?1561757712'>
+          src='https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f8/Magic_card_back.jpg/revision/latest?cb=20140813141013'>
       </div>
     </button>
     <!-- <div class="col-12">
